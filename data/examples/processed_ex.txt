@@ -1,0 +1,93 @@
+Bellow is a collection of responses to serve as guidance of the formatting that should ALWAYS be used in the output:
+
+**Title:**
+{'Unemployment Insurance Weekly Claims: Week Ending June 1, 2024'}
+
+**Overview:**
+||This report presents unemployment insurance claims data for the week ending June 1, 2024, with a focus on seasonally adjusted figures. The advance figure for seasonally adjusted initial claims increased by 8,000 from the previous week, while the 4-week moving average showed a slight decrease. The seasonally adjusted insured unemployment rate remained unchanged at 1.2% for the week ending May 25. The total number of continued weeks claimed for benefits across all programs decreased by 20,125 from the previous week.||
+
+**Key Takeaways:**
+- {**Seasonally Adjusted Initial Claims**}: [The advance figure for seasonally adjusted initial claims was 229,000 for the week ending June 1, 2024, an increase of 8,000 from the previous week's revised level of 221,000. This marks an upward trend in initial claims.]
+- {**4-Week Moving Average**}: [The 4-week moving average for seasonally adjusted initial claims decreased to 222,250, a reduction of 750 from the previous week's revised average of 223,000. This average continues to trend downwards.]
+- {**Seasonally Adjusted Insured Unemployment Rate**}: [The advance seasonally adjusted insured unemployment rate stood at 1.2% for the week ending May 25, 2024, unchanged from the previous week. This indicates a stabilization in the rate of insured unemployment.]
+- {**Total Continued Weeks Claimed**}: [The total number of continued weeks claimed for benefits across all programs for the week ending May 18 was 1,690,805, representing a notable decrease of 20,125 from the previous week. This suggests a potential short-term reduction in unemployment.]
+- {**State Variations**}: [The largest increases in initial claims for the week ending May 25 were observed in Tennessee (+1,880), Michigan (+1,557), Missouri (+839), Minnesota (+756), and Illinois (+750), while the most significant decreases occurred in California (-1,065), Pennsylvania (-818), Ohio (-546), New York (-463), and Florida (-336).]
+
+**Macro Environment Impacts**
+||The report's data reflects a dynamic labor market environment, with fluctuations in initial and continued unemployment claims. The overall increasing trend in seasonally adjusted initial claims and the slight decrease in the 4-week moving average suggest mixed signals regarding unemployment concerns. The unchanged insured unemployment rate and variations in state-level data indicate a complex landscape. The substantial decrease in total continued weeks claimed for benefits could signal a short-term improvement in labor market conditions, but further analysis is required to determine its impact on macroeconomic strategies and policies. According to the Taylor Rule, the Federal Reserve may need to consider these mixed signals when adjusting monetary policy, balancing between controlling inflation and supporting employment. The stability in the insured unemployment rate at 1.2% suggests that the labor market is not experiencing significant stress, which could influence the Fed's decision to maintain or slightly adjust interest rates.||
+# durgd.pdf -> Durable Goods Orders
+
+	Response:
+	**Title:**
+	{'Monthly Advance Report on Durable Goods Manufacturers’ Shipments, Inventories, and Orders: March 2024'}
+
+	**Overview:**
+	||The report presents insights into the US durable goods sector's performance in March 2024, highlighting growth in new orders and a slight decrease in shipments. The data reveals dynamic shifts in unfilled orders and inventories across industries, indicating potential adjustments in manufacturing dynamics and future production. The report also covers revised February data and plans for future data releases.||
+
+	**Key Takeaways:**
+	- {**New Orders**}: [New orders for manufactured durable goods rose to $283.4 billion in March 2024, marking a 2.6% increase from February, led by a 7.7% rise in transportation equipment to $95.9 billion. Excluding transportation, new orders increased by 0.2%, and excluding defense, they rose by 2.3%.]
+	- {**Shipments**}: [Shipments of manufactured durable goods decreased by $0.1 billion to $282.4 billion in March, with transportation equipment shipments down by 0.5% to $89.4 billion. This decrease occurred in three out of the last four months.]
+	- {**Unfilled Orders**}: [Unfilled orders for manufactured durable goods increased by $5.9 billion to $1,397.2 billion in March, driven by a rise in transportation equipment. This increase followed two consecutive monthly decreases.]
+	- {**Inventories**}: [Inventories of manufactured durable goods experienced a minor decrease to $527.9 billion in March, ending a seven-month streak of consecutive increases. Electrical equipment inventories fell by 0.4% to $25.9 billion, contributing to this slight decline.]
+	- {**Capital Goods**}: [Nondefense new orders for capital goods increased by 5.4% to $87.6 billion, while defense new orders rose by 10.6% to $12.9 billion. However, shipments for both categories decreased, with nondefense shipments down by 1.5% and defense shipments down by 0.4%.]
+
+	**Macro Environment Impacts**
+	||The March 2024 report reveals a nuanced environment for the US durable goods sector. While new orders, particularly for capital goods, showed promising growth, the slight decrease in shipments and inventories warrants cautious analysis. The sector-specific dynamics, such as the rise in unfilled orders for transportation equipment, provide valuable insights for economic strategy formulation and indicate potential adjustments in manufacturing and production plans.||
+
+# data.pdf -> Initial jobless claims
+
+	Response:
+	**Title:**
+	{'Unemployment Insurance Weekly Claims: Week Ending April 20, 2024'}
+
+	**Overview:**
+	||This report presents unemployment insurance claims data for the week ending April 20, 2024, with a focus on seasonally adjusted figures. The advance figure for seasonally adjusted initial claims decreased by 5,000 from the previous week, while the 4-week moving average also showed a decline. The seasonally adjusted insured unemployment rate remained unchanged at 1.2% for the week ending April 13. The total number of continued weeks claimed for benefits across all programs decreased by 79,491 from the previous week.||
+
+	**Key Takeaways:**
+	- {**Seasonally Adjusted Initial Claims**}: [The advance figure for seasonally adjusted initial claims was 207,000 for the week ending April 20, 2024, a decrease of 5,000 from the previous week's unrevised level of 212,000. This marks a downward trend in initial claims.]
+	- {**4-Week Moving Average**}: [The 4-week moving average for seasonally adjusted initial claims decreased to 213,250, a reduction of 1,250 from the previous week's unrevised average of 214,500. This 
+	average continues to trend downwards.]
+	- {**Seasonally Adjusted Insured Unemployment Rate**}: [The advance seasonally adjusted insured unemployment rate stood at 1.2% for the week ending April 13, 2024, unchanged from the previous week. This indicates a stabilization in the rate of insured unemployment.]
+	- {**Total Continued Weeks Claimed**}: [The total number of continued weeks claimed for benefits across all programs for the week ending April 6 was 1,873,546, representing a notable decrease of 79,491 from the previous week. This suggests a potential short-term reduction in unemployment.]
+	- {**State Variations**}: [The largest increases in initial claims for the week ending April 13 were observed in California, Connecticut, Georgia, Oregon, and New York, while the most significant decreases occurred in New Jersey, Wisconsin, Pennsylvania, Illinois, and Minnesota.]
+
+	**Macro Environment Impacts**
+	||The report's data reflects a dynamic labor market environment, with fluctuations in initial and continued unemployment claims. The overall decreasing trend in seasonally adjusted initial claims and the 4-week moving average suggests a potential easing of unemployment concerns. However, the unchanged insured unemployment rate and variations in state-level data indicate a complex landscape. The substantial decrease in total continued weeks claimed for benefits could signal a short-term improvement in labor market conditions, but further analysis is required to determine its impact on macroeconomic strategies and policies.||
+
+# https://www.bea.gov/data/income-saving/personal-income -> Personal Income
+
+	Response:
+	**Title:**
+	{'Personal Income and Outlays, March 2024'}
+
+	**Overview:**
+	||The report presents insights into the US personal income landscape for March 2024, highlighting increases in personal income, disposable personal income, and consumer spending. It also touches on the changes in personal saving rates and provides a broader context through comparisons with other economic indicators.||
+
+	**Key Takeaways:**
+	- {**Personal Income**}: [Personal income in the US rose by $122.0 billion, translating to a 0.5% increase at a monthly rate in March 2024. This growth reflects improvements in Americans' financial health and spending power.]
+	- {**Disposable Personal Income (DPI)**}: [DPI, excluding personal current taxes, witnessed an increase of $104.0 billion, or 0.5%. This rise contributes to higher discretionary spending and saving capabilities among individuals.]
+	- {**Consumer Spending**}: [Consumer spending, a key component of economic activity, increased by $160.9 billion, representing a 0.8% surge. This indicates that consumers are actively engaging in the 
+	market, which has implications for inflation and monetary policy.]
+	- {**Personal Saving Rate**}: [The personal saving rate stood at 3.2% in March 2024, calculated as a percentage of DPI. This metric influences individuals' capacity to withstand economic shocks and their propensity to spend or invest.]
+
+	**Macro Environment Impacts:**
+	||The March 2024 data on personal income and outlays in the US showcases a positive trajectory, with income and spending both on the rise. The increase in disposable personal income is particularly noteworthy as it fuels consumer spending and economic growth. However, the relatively modest increase in personal saving rates warrants attention, as it may impact households' resilience in case of economic downturns or unexpected expenses. These indicators collectively shape expectations for interest rates and monetary policy adjustments, with potential ripple effects on global markets.||
+
+# http://www.sca.isr.umich.edu/ -> University of Michigan Sentiment
+
+	Response:
+	**Title:**
+	{'Surveys of Consumers: April 2024'}
+
+	**Overview:**
+	||The report presents consumer sentiment and expectations for April 2024, indicating a plateau for the third consecutive month. While overall sentiment remains stable, there are nuanced differences across demographic groups. Consumers express uncertainty about the future trajectory of the economy, with a focus on the upcoming election rather than global geopolitical factors. Year-ahead and long-run inflation expectations have ticked upwards, remaining elevated compared to pre-pandemic levels. The report also covers various demographic and regional indices of consumer sentiment, as well as expectations regarding unemployment, interest rates, and prices.||
+
+	**Key Takeaways:**
+	- {**Consumer Sentiment**}: [Consumer sentiment remained virtually unchanged for the third straight month, exhibiting remarkable stability within a narrow 2.5-index point range. This stability suggests consumers are uncertain about the future direction of the economy, with a focus on domestic factors like the upcoming election.]
+	- {**Inflation Expectations**}: [Year-ahead inflation expectations rose from 2.9% to 3.2%, while long-run inflation expectations edged up from 2.8% to 3.0%. These expectations have remained elevated relative to pre-pandemic levels, indicating a sustained period of higher inflation.]
+	- {**Demographic Differences**}: [Consumer sentiment varied across demographic groups, with Republicans posting notable declines, while sentiment for younger consumers rose in contrast to middle-aged 
+	and older adults. These differences offset each other, resulting in an overall stable sentiment reading.]
+	- {**Business Outlook**}: [The long-run business outlook reached its highest reading since June 2021, indicating a cautious optimism among consumers about future economic conditions, despite the short-term uncertainties.]
+
+	**Macro Environment Impacts:**
+	||The plateauing of consumer sentiment for three consecutive months suggests a wait-and-see approach from consumers, with a focus on domestic factors like elections rather than external geopolitical issues. The nuanced differences in sentiment across demographic groups indicate a complex landscape that could influence policy decisions. The upward tick in inflation expectations, though modest, reinforces the need for careful monetary policy considerations. Overall, the report highlights a delicate balance of factors influencing consumer behaviour and economic outlook.||

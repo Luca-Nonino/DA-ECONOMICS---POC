@@ -1,0 +1,22 @@
+﻿DOCUMENT_ID;PATH;REFERENCE_MONTH;PIPE_NAME;PIPE_ID;FREQ;DOCUMENT_NAME;SOURCE_NAME;ESCOPE;CURRENT_RELEASE_DATE;HASH;NEXT_RELEASE_DATE;NEXT_RELEASE_TIME
+1;https://www.conference-board.org/topics/us-leading-indicators;CURRENT;On Page Content;1;M;LEADING INDICATORS;CONFERENCE BOARD;N;;;;
+2;https://www.conference-board.org/topics/consumer-confidence;CURRENT;On Page Content;1;M;CONFERENCE BOARD CONSUMER CONFIDENCE;CONFERENCE BOARD;N;;;;
+3;http://www.sca.isr.umich.edu/;CURRENT;Scraping for PDF Download Link;3;M;UNIVERSITY OF MICHIGAN SENTIMENT;UNIVERSITY OF MICHIGAN;N;;;;
+4;https://www.bls.gov/news.release/pdf/empsit.pdf;PREVIOUS;PDF Download Link;2;M;EMPLOYMENT SITUATION;BUREAU OF LABOR STATITICS;N;;;;
+5;https://www.fhfa.gov/;CURRENT;Scraping for PDF Download Link;3;M;FHFA HOUSING MARKET INDEX;FHFA;N;;;;
+6;https://www.dol.gov/ui/data.pdf;CURRENT;PDF Download Link;2;W;INITIAL JOBLESS CLAIMS;;N;;;;
+7;https://www.census.gov/construction/nrs/pdf/newressales.pdf;CURRENT;PDF Download Link;2;M;NEW HOME SALES;UNITED STATES CENSUS;N;;;;
+8;https://www.census.gov/manufacturing/m3/adv/pdf/durgd.pdf;CURRENT;PDF Download Link;2;M;DURABLE GOODS ORDERS;UNITED STATES CENSUS;N;;;;
+9;https://www.bls.gov/news.release/pdf/cpi.pdf;PREVIOUS;PDF Download Link;2;M;CONSUMER PRICE INDEX;BUREAU OF LABOR STATITICS;N;;;;
+10;https://www.census.gov/retail/marts/www/marts_current.pdf;CURRENT;PDF Download Link;2;M;RETAIL SALES ADVANCE MOM;UNITED STATES CENSUS;N;;;;
+11;https://www.nar.realtor/research-and-statistics/housing-statistics/existing-home-sales;CURRENT;Scraping for PDF Download Link;3;M;EXISTING HOME SALES;NATIONAL ASSOCIATION OF REALTORS;N;;;;
+12;https://www.bea.gov/data/gdp/gross-domestic-product;CURRENT;Scraping for PDF Download Link;3;T;GDP ANNUALIZED QOQ;BEA;N;;;;
+13;https://www.bea.gov/data/income-saving/personal-income;CURRENT;Scraping for PDF Download Link;3;M;PERSONAL INCOME;BEA;N;;;;
+14;https://www.bea.gov/data/consumer-spending/main;CURRENT;Scraping for PDF Download Link;3;M;PERSONAL SPENDING;BEA;N;;;;
+15;https://www.census.gov/manufacturing/m3/bench/pdf/text.pdf;CURRENT;PDF Download Link;2;M;BENCHMARK REPORT ON MANUFACTURERS’ SHIPMENTS, INVENTORIES AND ORDER;UNITED STATES CENSUS;N;;;;
+16;https://www.census.gov/foreign-trade/Press-Release/current_press_release/ft900.pdf;CURRENT;PDF Download Link;2;M;TRADE BALANCE;UNITED STATES CENSUS;N;;;;
+17;https://www.newyorkfed.org/survey/empire/empiresurvey_overview;CURRENT;Scraping for PDF Download Link;3;M;EMPIRE MANUFACTURING;FEDERAL RESERVE BANK OF NY;N;;;;
+18;https://adpemploymentreport.com;CURRENT;On Page Content;1;M;ADP EMPLOYMENT CHANGE;ADP;N;;;;
+19;https://www.bls.gov/news.release/pdf/eci.pdf;PREVIOUS;PDF Download Link;2;Q;EMPLOYMENT COST INDEX;BUREAU OF LABOR STATITICS;N;;;;
+20;https://www.bls.gov/news.release/pdf/ppi.pdf;PREVIOUS;PDF Download Link;2;M;PRODUCER PRICE INDEX;BUREAU OF LABOR STATITICS;N;;;;
+21;https://www.bls.gov/news.release/pdf/prod2.pdf;PREVIOUS;PDF Download Link;2;;PRODUCTIVITY AND COSTS;BUREAU OF LABOR STATITICS;R;;;;

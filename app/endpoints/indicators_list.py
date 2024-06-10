@@ -1,0 +1,39 @@
+# app/endpoints/indicators_list.py
+import logging
+from fastapi import FastAPI, Request, HTTPException, Depends
+from fastapi.responses import HTMLResponse
+from starlette.templating import Jinja2Templates
+import sqlite3
+from scripts.utils.auth import get_current_user
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(filename='app/logs/errors.log', level=logging.DEBUG)
+templates = Jinja2Templates(directory="app/templates")
+
+indicators_list_app = FastAPI()
+
+@indicators_list_app.get("/", response_class=HTMLResponse)
+async def indicators_list(request: Request, user: dict = Depends(get_current_user)):
+    try:
+        db_path = 'data/database/database.sqlite'
+        logger.info(f"Connecting to database at {db_path}")
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        # Fetch unique document names for the sidebar
+        cursor.execute("SELECT DISTINCT document_name FROM documents_table")
+        document_names = [row[0] for row in cursor.fetchall()]
+        if document_names:
+            logger.debug(f"Fetched document names: {document_names}")
+        else:
+            logger.debug("No document names fetched")
+
+        conn.close()
+        logger.info("Returning template response")
+        return templates.TemplateResponse("base.html", {"request": request, "document_names": document_names})
+    except sqlite3.Error as e:
+        logger.error(f"Database error: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    except Exception as e:
+        logger.error(f"Error fetching indicators list: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail="Internal Server Error")

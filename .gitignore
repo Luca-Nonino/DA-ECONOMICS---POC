@@ -1,0 +1,28 @@
+
+### .gitignore
+
+```plaintext
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+env/
+build/
+dist/
+*.egg-info/
+
+# Application files
+app/__init__.py
+app/config.py
+
+# Logs
+*.log
+
+# SQLite database
+data/database/database.sqlite
+
+# Temp Data
+data/raw

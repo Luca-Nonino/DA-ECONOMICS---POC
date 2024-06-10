@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>US Economy Indicators - AI Pipelines</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/main.css') }}">
+    <style>
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #1a1a1a; /* Updated for dark theme */
+            color: white; /* Updated for dark theme */
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <div class="header">
+        <div class="header-title">
+            <h1 class="text-4xl font-bold">US Economy Indicators - AI Pipelines</h1>
+        </div>
+        <div class="theme-switcher cursor-pointer" id="theme-switcher">Switch Theme</div>
+    </div>
+    <div class="nav-bar p-4 fixed w-60 overflow-y-auto">
+        <h2 class="text-xl font-bold text-center mb-4">Select Publication Below</h2>
+        <ul>
+            {% for doc_name in document_names %}
+            <li class="my-2"><a href="#" class="indicator-link" data-document-name="{{ doc_name }}">{{ doc_name }}</a></li>
+            <span class="indicator-separator">-----</span>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="content">
+        <div id="main-container">
+            <p>Select a publication to view summaries and key takeaways</p>
+        </div>
+        <div class="box hidden" id="details-container">
+            <div class="title-container flex justify-between items-center mb-4">
+                <div>
+                    <h2 class="title text-2xl" id="document-title"></h2>
+                    <p><a href="#" class="text-blue-800 hover:text-blue-600" id="document-path"></a></p>
+                    <div class="dropdown mb-4">
+                        <select id="release-date-select" class="bg-gray-700 text-white p-2 rounded">
+                        </select>
+                    </div>
+                </div>
+                <div class="buttons flex gap-2">
+                    <a class="button p-2 rounded cursor-pointer bg-green-500 hover:bg-green-700 text-white" id="check-new-release">Check for New Release</a>
+                    <a class="button p-2 rounded cursor-pointer bg-blue-500 hover:bg-blue-700 text-white" id="json-mode">Json Mode</a>
+                </div>
+            </div>
+            <div class="mb-4">
+                <h3 class="subtitle text-xl mb-2">Summary - English</h3>
+                <p id="en-summary"></p>
+            </div>
+            <div class="mb-4">
+                <h3 class="subtitle text-xl mb-2">Summary - Portuguese</h3>
+                <p id="pt-summary"></p>
+            </div>
+            <div>
+                <h3 class="subtitle text-xl mb-2">Key Takeaways</h3>
+                <div id="key-takeaways"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal structure -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('.indicator-link');
+            const mainContainer = document.getElementById('main-container');
+            const detailsContainer = document.getElementById('details-container');
+            const themeSwitcher = document.getElementById('theme-switcher');
+            const releaseDateSelect = document.getElementById('release-date-select');
+            const checkNewReleaseButton = document.getElementById('check-new-release');
+            const jsonModeButton = document.getElementById('json-mode');
+
+            const modal = document.getElementById("myModal");
+            const span = document.getElementsByClassName("close")[0];
+            const modalBody = document.getElementById('modal-body');
+
+            links.forEach(link => {
+                link.addEventListener('click', function () {
+                    const docName = this.getAttribute('data-document-name');
+                    fetch(`/DAeconomics/indicators/query/${docName}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById('document-title').textContent = data.document_name + ' - ' + data.source_name;
+                            document.getElementById('document-path').href = data.path;
+                            document.getElementById('document-path').textContent = data.path;
+                            releaseDateSelect.innerHTML = data.release_dates.map(date => {
+                                const dateStr = String(date); // Ensure the date is a string
+                                return `<option value="${dateStr}">${dateStr.replace(/-/g, '/')}</option>`;
+                            }).join('');
+                            releaseDateSelect.setAttribute('data-document-id', data.document_id);
+                            checkNewReleaseButton.setAttribute('data-document-id', data.document_id);
+                            jsonModeButton.setAttribute('data-document-id', data.document_id);
+                            document.getElementById('en-summary').textContent = data.en_summary;
+                            document.getElementById('pt-summary').textContent = data.pt_summary;
+                            document.getElementById('key-takeaways').innerHTML = data.key_takeaways.map(kt => `<h4 class="key-takeaway-title text-lg">${kt.title}</h4><p>${kt.content}</p>`).join('');
+                            detailsContainer.classList.remove('hidden');
+                            mainContainer.classList.add('hidden');
+                        });
+                });
+            });
+
+            themeSwitcher.addEventListener('click', function () {
+                document.body.classList.toggle('dark-mode');
+                document.body.classList.toggle('light-mode');
+                // Update button colors
+                if (document.body.classList.contains('dark-mode')) {
+                    themeSwitcher.style.backgroundColor = '#d2691e'; // Orangish Brown for dark mode
+                } else {
+                    themeSwitcher.style.backgroundColor = '#228b22'; // Dark Green for light mode
+                }
+            });
+
+            if (releaseDateSelect) {
+                releaseDateSelect.addEventListener('change', function () {
+                    const docId = this.getAttribute('data-document-id');
+                    const date = this.value;
+                    fetch(`/DAeconomics/indicators/query/${docId}?date=${date}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById('en-summary').textContent = data.en_summary;
+                            document.getElementById('pt-summary').textContent = data.pt_summary;
+                            document.getElementById('key-takeaways').innerHTML = data.key_takeaways.map(kt => `<h4 class="key-takeaway-title text-lg">${kt.title}</h4><p>${kt.content}</p>`).join('');
+                        });
+                });
+            }
+
+            if (checkNewReleaseButton) {
+                checkNewReleaseButton.addEventListener('click', function () {
+                    const docId = this.getAttribute('data-document-id');
+                    fetch(`/DAeconomics/indicators/update/?id=${docId}`)
+                        .then(response => response.text())
+                        .then(html => {
+                            modalBody.innerHTML = html;
+                            modal.style.display = "block"; // Display the modal
+                        });
+                });
+            }
+
+            if (jsonModeButton) {
+                jsonModeButton.addEventListener('click', function () {
+                    const docId = this.getAttribute('data-document-id');
+                    const date = releaseDateSelect ? releaseDateSelect.value : '';
+                    window.open(`/DAeconomics/indicators/api/?document_id=${docId}&date=${date}`, '_blank');
+                });
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        });
+    </script>
+</body>
+</html>

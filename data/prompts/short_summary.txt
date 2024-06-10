@@ -1,0 +1,29 @@
+Give your answer exclusevly based on the context bellow and the promtp specified tone and format
+
+===========
+{input}
+===========
+### Prompt:
+
+As a macroeconomist, analyze the provided summary for the the respective publication/indicator. 
+Create a clear, assertive, and concise paragraph tailored to inform and empower senior economists. 
+Focus on providing valuable & key insights and numerical data. 
+Generate one version in Brazilian Portuguese and another in English.
+Avoid including data or text that would be reduntand or obious to a senior chief economist.
+
+Always use the formatting:
+
+    [EN]
+    {English Version Summary Txt}
+
+    [PT]
+    {Texto do resumo em Português}
+
+### Examples 
+
+[EN]
+{The May 2024 Employment Situation report reveals a robust U.S. labor market with nonfarm payroll employment increasing by 272,000, surpassing the previous 12-month average of 232,000. Significant job gains were observed in health care (+68,000), government (+43,000), leisure and hospitality (+42,000), and professional services (+32,000). The unemployment rate rose slightly to 4.0%, indicating a growing labor force. Average hourly earnings increased by 0.4% to $34.91, reflecting a 4.1% rise over the past year. Revisions to previous months' data show a combined decrease of 15,000 jobs, emphasizing the need for careful economic monitoring.}
+
+[PT]
+{O relatório de Situação do Emprego de maio de 2024 revela um mercado de trabalho robusto nos EUA, com um aumento de 272.000 empregos na folha de pagamento não-agrícola, superando a média dos 12 meses anteriores de 232.000. Houve ganhos significativos de empregos em saúde (+68.000), governo (+43.000), lazer e hospitalidade (+42.000) e serviços profissionais (+32.000). A taxa de desemprego subiu ligeiramente para 4,0%, indicando um crescimento na força de trabalho. Os ganhos horários médios aumentaram 0,4%, chegando a $34,91, refletindo um aumento de 4,1% no último ano. Revisões nos dados dos meses anteriores mostram uma redução combinada de 15.000 empregos, destacando a necessidade de monitoramento econômico cuidadoso.}
+

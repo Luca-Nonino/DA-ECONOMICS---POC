@@ -1,0 +1,119 @@
+import logging
+from fastapi import FastAPI, Request, HTTPException, Depends, Query
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
+import sqlite3
+from typing import Optional
+from scripts.utils.auth import get_current_user
+from scripts.pipelines.orchestrator import run_pipeline
+from app.endpoints.api import api_app
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, handlers=[logging.StreamHandler()])
+logger = logging.getLogger(__name__)
+
+app = FastAPI()
+
+# Mounts
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
+app.mount("/DAeconomics/indicators/api", api_app)
+
+# Configure Jinja2 templates
+templates = Jinja2Templates(directory="app/templates")
+
+@app.get("/DAeconomics", response_class=HTMLResponse)
+async def redirect_to_list():
+    return RedirectResponse(url="/DAeconomics/indicators/list")
+
+@app.get("/", response_class=HTMLResponse)
+async def root():
+    return RedirectResponse(url="/DAeconomics/indicators/list")
+
+@app.get("/DAeconomics/indicators/list", response_class=HTMLResponse)
+async def indicators_list(request: Request, user: dict = Depends(get_current_user)):
+    try:
+        db_path = 'data/database/database.sqlite'
+        logger.info(f"Connecting to database at {db_path}")
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        # Fetch unique document names for the sidebar
+        cursor.execute("SELECT DISTINCT document_name FROM documents_table")
+        document_names = [row[0] for row in cursor.fetchall()]
+
+        # Fetch data for the main content
+        cursor.execute("SELECT document_id, document_name, source_name, path FROM documents_table")
+        data = cursor.fetchall()
+
+        conn.close()
+        logger.info("Returning template response")
+        return templates.TemplateResponse("base.html", {"request": request, "document_names": document_names, "data": data})
+    except sqlite3.Error as e:
+        logger.error(f"Database error: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    except Exception as e:
+        logger.error(f"Error fetching indicators list: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+
+@app.get("/DAeconomics/indicators/query/{doc_name}", response_class=JSONResponse)
+async def query_source(request: Request, doc_name: str, date: Optional[str] = None):
+    conn = None
+    try:
+        db_path = 'data/database/database.sqlite'
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT document_id, document_name, source_name, path FROM documents_table WHERE document_name = ?", (doc_name,))
+        document = cursor.fetchone()
+        if not document:
+            logger.error(f"Document with name {doc_name} not found")
+            raise HTTPException(status_code=404, detail="Document not found")
+
+        document_id, document_name, source_name, path = document
+
+        if date is None:
+            cursor.execute("SELECT release_date FROM summary_table WHERE document_id = ? ORDER BY release_date DESC LIMIT 1", (document_id,))
+            date = cursor.fetchone()[0]
+
+        cursor.execute("SELECT en_summary, pt_summary FROM summary_table WHERE document_id = ? AND release_date = ?", (document_id, date))
+        summary = cursor.fetchone()
+        en_summary, pt_summary = summary if summary else ("No summary available", "No summary available")
+
+        cursor.execute("SELECT title, content FROM key_takeaways_table WHERE document_id = ? AND release_date = ?", (document_id, date))
+        key_takeaways = cursor.fetchall()
+
+        cursor.execute("SELECT DISTINCT release_date FROM summary_table WHERE document_id = ?", (document_id,))
+        release_dates = [row[0] for row in cursor.fetchall()]
+
+        data = {
+            "document_id": document_id,
+            "document_name": document_name,
+            "source_name": source_name,
+            "path": path,
+            "en_summary": en_summary,
+            "pt_summary": pt_summary,
+            "key_takeaways": [{"title": kt[0], "content": kt[1]} for kt in key_takeaways],
+            "release_dates": release_dates
+        }
+
+        return JSONResponse(data)
+    except Exception as e:
+        logger.error(f"Error querying source: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    finally:
+        if conn:
+            conn.close()
+
+@app.get("/DAeconomics/indicators/update", response_class=HTMLResponse)
+async def update_source(id: int = Query(...)):
+    try:
+        result = run_pipeline(id)
+        return HTMLResponse(content=f"<html><body><h1>Update Result</h1><p>{result}</p></body></html>")
+    except Exception as e:
+        logger.error(f"Error updating source: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8000, log_level="info")

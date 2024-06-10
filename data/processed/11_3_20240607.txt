@@ -1,0 +1,25 @@
+**Title:**
+{'Existing-Home Sales Report: April 2024'}
+
+**Overview:**
+||The report from the National Association of REALTORS® details the performance of the existing-home sales market in April 2024. Key highlights include a 1.9% month-over-month decline in sales to a seasonally adjusted annual rate of 4.14 million, and a 5.7% year-over-year increase in the median sales price to $407,600. Inventory levels rose by 9% from March, reaching a 3.5-month supply. Regional analysis shows varied performance, with the West experiencing a year-over-year sales increase, while the Northeast, Midwest, and South saw declines. The report also notes a significant rise in inventory and sales for homes priced $1 million or more.||
+
+**Key Takeaways:**
+- {**Sales Volume**}: [Existing-home sales fell by 1.9% from March to a seasonally adjusted annual rate of 4.14 million in April 2024. This is also a 1.9% decrease from April 2023, indicating a slowdown in the housing market.]
+- {**Median Sales Price**}: [The median existing-home sales price increased by 5.7% year-over-year to $407,600, marking the tenth consecutive month of price gains and the highest price ever recorded for April.]
+- {**Inventory Levels**}: [Total housing inventory at the end of April was 1.21 million units, up 9% from March and 16.3% from April 2023. This represents a 3.5-month supply at the current sales pace, compared to 3.2 months in March and 3.0 months a year ago.]
+- {**High-End Market**}: [For homes priced $1 million or more, inventory and sales increased by 34% and 40%, respectively, from a year ago, indicating robust activity in the upper-end market.]
+- {**Regional Sales Trends**}: [Sales declined in all four major U.S. regions month-over-month. Year-over-year, sales decreased in the Northeast (-4%), Midwest (-1%), and South (-3.1%), but increased in the West (+1.3%).]
+- {**Days on Market**}: [Properties typically remained on the market for 26 days in April, down from 33 days in March but up from 22 days in April 2023.]
+- {**First-Time Buyers**}: [First-time buyers accounted for 33% of sales in April, up from 32% in March and 29% in April 2023, indicating increased participation from this demographic.]
+- {**All-Cash Sales**}: [All-cash sales made up 28% of transactions in April, consistent with March and April 2023, reflecting steady investor activity.]
+- {**Mortgage Rates**}: [The 30-year fixed-rate mortgage averaged 7.02% as of May 16, up from 6.39% a year ago, impacting affordability and buyer demand.]
+
+**Macro Environment Impacts:**
+||The April 2024 existing-home sales report highlights several key trends that could influence macroeconomic strategies and monetary policy. The decline in sales volume and the increase in median sales prices suggest a tightening housing market, which could contribute to inflationary pressures. The rise in inventory levels, particularly in the high-end market, indicates a potential easing of supply constraints, which may help moderate future price increases.
+
+From a monetary policy perspective, the Federal Reserve may need to consider these dynamics when setting interest rates. According to the Taylor Rule, the Fed should balance its dual mandate of controlling inflation and supporting employment. The increase in home prices, coupled with higher mortgage rates, could dampen consumer spending and economic growth, necessitating a cautious approach to further rate hikes.
+
+Additionally, the regional disparities in sales trends and the increased participation of first-time buyers highlight the need for targeted policy measures to address affordability and supply issues in specific markets. The steady level of all-cash sales and investor activity suggests continued confidence in the housing market, but also underscores the importance of monitoring speculative behavior that could exacerbate price volatility.
+
+Overall, the report underscores the complex interplay between housing market dynamics and broader economic conditions, necessitating a nuanced approach to policy formulation and implementation.||

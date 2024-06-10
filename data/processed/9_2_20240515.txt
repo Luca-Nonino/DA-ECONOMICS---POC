@@ -1,0 +1,19 @@
+**Title:**
+{'Consumer Price Index – April 2024'}
+
+**Overview:**
+||The Consumer Price Index (CPI) for All Urban Consumers (CPI-U) increased by 0.3% in April 2024 on a seasonally adjusted basis, following a 0.4% rise in March. Over the last 12 months, the all-items index increased by 3.4% before seasonal adjustment. The shelter and gasoline indexes were significant contributors to the monthly increase, with the energy index rising by 1.1% and the food index remaining unchanged. The core CPI, which excludes food and energy, also rose by 0.3% in April. Notable increases were observed in the indexes for motor vehicle insurance, medical care, apparel, and personal care, while decreases were seen in used cars and trucks, household furnishings, and new vehicles.||
+
+**Key Takeaways:**
+- {**Monthly CPI Increase**}: [The CPI-U rose by 0.3% in April 2024, following a 0.4% increase in March. This indicates a slight deceleration in monthly inflation.]
+- {**Annual CPI Increase**}: [The all-items index increased by 3.4% over the past 12 months, slightly lower than the 3.5% increase for the 12 months ending March 2024.]
+- {**Core CPI**}: [The index for all items less food and energy rose by 0.3% in April, maintaining the same pace as the previous month. Over the last 12 months, the core CPI increased by 3.6%.]
+- {**Shelter Index**}: [The shelter index increased by 0.4% in April, contributing significantly to the overall CPI rise. The rent and owners' equivalent rent indexes both rose by 0.4%.]
+- {**Energy Index**}: [The energy index rose by 1.1% in April, with gasoline prices increasing by 2.8%. Over the past year, the energy index increased by 2.6%.]
+- {**Food Index**}: [The food index was unchanged in April. The food at home index decreased by 0.2%, while the food away from home index rose by 0.3%.]
+- {**Used Cars and Trucks**}: [The index for used cars and trucks fell by 1.4% in April, following a 1.1% decrease in March, indicating a continued decline in this category.]
+- {**Medical Care Index**}: [The medical care index rose by 0.4% in April, with hospital services increasing by 0.6% and prescription drugs by 0.2%.]
+- {**Apparel Index**}: [The apparel index increased by 1.2% in April, showing a significant rise compared to previous months.]
+
+**Macro Environment Impacts**
+||The April 2024 CPI report indicates a nuanced inflationary environment with a slight deceleration in the monthly CPI increase. The core CPI's consistent rise of 0.3% suggests underlying inflationary pressures remain steady. The significant contributions from the shelter and energy indexes highlight persistent cost pressures in housing and energy sectors. The decline in the used cars and trucks index may signal easing supply chain constraints or reduced demand in this category. According to the Taylor Rule, the Federal Reserve may consider these mixed signals when adjusting monetary policy. The stable core CPI and the slight deceleration in the overall CPI suggest that the Fed might maintain its current interest rate stance, balancing between controlling inflation and supporting economic growth. The 3.4% annual increase in the all-items index, slightly lower than the previous month, could provide some leeway for the Fed to adopt a wait-and-see approach before making further rate adjustments.||

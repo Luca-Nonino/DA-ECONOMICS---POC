@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+jinja2
+sqlite3
+requests
+beautifulsoup4
+sqlalchemy
+PyMuPDF
+openai
+fake-useragent
+PyPDF2
