@@ -8,15 +8,18 @@ from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 import sqlite3
 from typing import Optional
 
+# Get the directory of the current file
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 # Add the root directory to the Python path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(BASE_DIR)
 
 from scripts.utils.auth import get_current_user
 from scripts.pipelines.orchestrator import run_pipeline
 from app.endpoints.api import api_app
 
 # Configure logging
-log_directory = os.path.join(os.path.dirname(__file__), 'logs')
+log_directory = os.path.join(BASE_DIR, 'app/logs')
 os.makedirs(log_directory, exist_ok=True)
 log_file = os.path.join(log_directory, 'errors.log')
 
@@ -28,14 +31,19 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
+
 app = FastAPI()
 
-# Mounts
-app.mount("/static", StaticFiles(directory="app/static"), name="static")
+# Mount static files and API
+static_directory = os.path.join(BASE_DIR, "app/static")
+if not os.path.exists(static_directory):
+    os.makedirs(static_directory)
+app.mount("/static", StaticFiles(directory=static_directory), name="static")
 app.mount("/indicators/api", api_app)
 
 # Configure Jinja2 templates
-templates = Jinja2Templates(directory="app/templates")
+templates_directory = os.path.join(BASE_DIR, "app/templates")
+templates = Jinja2Templates(directory=templates_directory)
 
 @app.get("", response_class=HTMLResponse)
 async def redirect_to_list():
@@ -48,7 +56,7 @@ async def root():
 @app.get("/indicators/list", response_class=HTMLResponse)
 async def indicators_list(request: Request, user: dict = Depends(get_current_user)):
     try:
-        db_path = 'data/database/database.sqlite'
+        db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
         logger.info(f"Connecting to database at {db_path}")
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
@@ -75,7 +83,7 @@ async def indicators_list(request: Request, user: dict = Depends(get_current_use
 async def query_source(request: Request, doc_name: str, date: Optional[str] = None):
     conn = None
     try:
-        db_path = 'data/database/database.sqlite'
+        db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
