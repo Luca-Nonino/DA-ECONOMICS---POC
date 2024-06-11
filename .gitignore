@@ -21,8 +21,6 @@ app/config.py
 # Logs
 *.log
 
-# SQLite database
-data/database/database.sqlite
 
 # Temp Data
 data/raw
