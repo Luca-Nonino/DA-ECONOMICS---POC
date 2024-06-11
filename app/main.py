@@ -36,9 +36,8 @@ app = FastAPI()
 
 # Mount static files and API
 static_directory = os.path.join(BASE_DIR, "app/static")
-if not os.path.exists(static_directory):
-    os.makedirs(static_directory)
 app.mount("/static", StaticFiles(directory=static_directory), name="static")
+
 app.mount("/indicators/api", api_app)
 
 # Configure Jinja2 templates
