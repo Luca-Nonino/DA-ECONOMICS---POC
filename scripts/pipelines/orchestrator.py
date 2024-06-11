@@ -41,7 +41,7 @@ PROCESSING_FUNCTIONS = {
     18: process_adp_html,
 }
 
-def get_document_details(document_id, db_path='data/database/database.sqlite'):
+def get_document_details(document_id, db_path=os.path.join(project_root, 'data/database/database.sqlite')):
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     cursor.execute("""
@@ -51,7 +51,7 @@ def get_document_details(document_id, db_path='data/database/database.sqlite'):
     conn.close()
     return result
 
-def is_already_processed(document_id, release_date, db_path='data/database/database.sqlite'):
+def is_already_processed(document_id, release_date, db_path=os.path.join(project_root, 'data/database/database.sqlite')):
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     cursor.execute("""
@@ -69,14 +69,14 @@ def process_html_content(process_func, url, document_id, pipe_id):
     # Determine the correct path based on document_id
     if document_id in [3, 5]:
         file_path_match = re.search(r'data/raw/pdf[\\/](\d+_\d+_\d{8}\.pdf)', log_message)
-        base_path = "data/raw/pdf"
+        base_path = os.path.join(project_root, "data/raw/pdf")
     else:
         file_path_match = re.search(r'data/raw/txt[\\/](\d+_\d+_\d{8}\.txt)', log_message)
-        base_path = "data/raw/txt"
+        base_path = os.path.join(project_root, "data/raw/txt")
 
     if file_path_match:
         file_name = file_path_match.group(1)
-        file_path = f"{base_path}/{file_name}"
+        file_path = os.path.join(base_path, file_name)
         release_date_match = re.search(r'_(\d{8})\.(txt|pdf)$', file_name)
         if release_date_match:
             release_date = release_date_match.group(1)
@@ -108,7 +108,7 @@ def process_pdf_content(document_id, url, pipe_id):
         pdf_path_match = re.search(r'PDF downloaded successfully: (data[\\/]raw[\\/]pdf[\\/]\d+_\d+_\d{8}\.pdf)', log_message)
 
     if pdf_path_match:
-        pdf_path = pdf_path_match.group(1).replace('\\', '/')  # Normalize path to use forward slashes
+        pdf_path = os.path.join(project_root, pdf_path_match.group(1).replace('\\', '/'))  # Normalize path to use forward slashes
         release_date_match = re.search(r'_(\d{8})\.pdf$', pdf_path)
         if release_date_match:
             release_date = release_date_match.group(1)
@@ -145,7 +145,7 @@ def run_pipeline(document_id):
 
             # Step 2: Check hash and extract release date for PDFs
             result = check_hash_and_extract_release_date(pdf_path)
-            
+
             if "Hash matches the previous one. No update needed." in result:
                 return "Hash matches the previous one. No update needed."
 
@@ -181,7 +181,7 @@ def run_pipeline(document_id):
             generate_output(txt_path)
 
         # Parse and load
-        processed_file_path = f"data/processed/{document_id}_{pipe_id}_{release_date}.txt"
+        processed_file_path = os.path.join(project_root, f"data/processed/{document_id}_{pipe_id}_{release_date}.txt")
         parse_and_load(processed_file_path)
 
         return "Pipeline executed successfully"

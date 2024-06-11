@@ -1,17 +1,19 @@
 import logging
+import os
 from fastapi import FastAPI, Query, Request, HTTPException
 from fastapi.responses import HTMLResponse
 from starlette.templating import Jinja2Templates
 import sqlite3
 from typing import Optional
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 logger = logging.getLogger(__name__)
-templates = Jinja2Templates(directory="app/templates")
+templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "app/templates"))
 
 query_source_app = FastAPI()
 
 # Set up file handler for logging errors
-file_handler = logging.FileHandler('app/logs/errors.log')
+file_handler = logging.FileHandler(os.path.join(BASE_DIR, 'app/logs/errors.log'))
 file_handler.setLevel(logging.ERROR)
 logger.addHandler(file_handler)
 
@@ -24,7 +26,7 @@ def log_all_documents(cursor):
 async def query_source(request: Request, document_name: str, date: Optional[str] = None):
     conn = None
     try:
-        db_path = 'data/database/database.sqlite'
+        db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 

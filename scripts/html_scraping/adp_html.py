@@ -1,7 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
 import os
+import sys
 from datetime import datetime
+
+# Define project root directory
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 # Function to fetch and parse HTML content from the URL
 def fetch_html_content(url):
@@ -31,33 +35,33 @@ def extract_release_date(html_content):
 # Function to save the page content as a .txt file
 def save_page_content(html_content, document_id, pipe_id, release_date):
     soup = BeautifulSoup(html_content, 'html.parser')
-    
+
     # Extract relevant sections based on their HTML structure
     sections = []
-    
+
     # Main report overview
     main_overview = soup.select_one('.report-overview.NER')
     if main_overview:
         sections.append(main_overview.get_text(separator='\n', strip=True))
-    
+
     # Change by establishment size
     establishment_size = soup.select_one('.report-section.NER.biz-size')
     if establishment_size:
         sections.append(establishment_size.get_text(separator='\n', strip=True))
-    
+
     # Change by industry
     industry_section = soup.select_one('.report-section.NER')
     if industry_section:
         sections.append(industry_section.get_text(separator='\n', strip=True))
-    
+
     # About this report
     about_report = soup.select_one('.prefooter')
     if about_report:
         sections.append(about_report.get_text(separator='\n', strip=True))
-    
+
     main_content = "\n\n".join(sections)
 
-    save_dir = 'data/raw/txt'
+    save_dir = os.path.join(PROJECT_ROOT, 'data/raw/txt')
     os.makedirs(save_dir, exist_ok=True)
     file_name = f"{document_id}_{pipe_id}_{release_date}.txt"
     save_path = os.path.join(save_dir, file_name)
@@ -77,6 +81,12 @@ def process_adp_html(url, document_id, pipe_id):
             print("Failed to extract release date.")
     else:
         print("Failed to fetch HTML content.")
+
+# Example usage
+url = "https://adpemploymentreport.com/"
+document_id = 18  # Replace with actual document_id
+pipe_id = "1"
+#process_adp_html(url, document_id, pipe_id)
 
 # Example usage
 url = "https://adpemploymentreport.com/"

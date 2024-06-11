@@ -1,21 +1,22 @@
-# app/endpoints/indicators_list.py
 import logging
+import os
 from fastapi import FastAPI, Request, HTTPException, Depends
 from fastapi.responses import HTMLResponse
 from starlette.templating import Jinja2Templates
 import sqlite3
 from scripts.utils.auth import get_current_user
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 logger = logging.getLogger(__name__)
-logging.basicConfig(filename='app/logs/errors.log', level=logging.DEBUG)
-templates = Jinja2Templates(directory="app/templates")
+logging.basicConfig(filename=os.path.join(BASE_DIR, 'app/logs/errors.log'), level=logging.DEBUG)
+templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "app/templates"))
 
 indicators_list_app = FastAPI()
 
 @indicators_list_app.get("/", response_class=HTMLResponse)
 async def indicators_list(request: Request, user: dict = Depends(get_current_user)):
     try:
-        db_path = 'data/database/database.sqlite'
+        db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
         logger.info(f"Connecting to database at {db_path}")
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()

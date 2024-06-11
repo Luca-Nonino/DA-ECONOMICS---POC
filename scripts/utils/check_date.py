@@ -1,6 +1,9 @@
+import os
 import sqlite3
 
-def get_current_release_date(document_id, db_path):
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+def get_current_release_date(document_id, db_path=os.path.join(BASE_DIR, 'data/database/database.sqlite')):
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     cursor.execute("""
@@ -10,7 +13,7 @@ def get_current_release_date(document_id, db_path):
     conn.close()
     return result[0] if result else None
 
-def update_release_date(document_id, new_date, db_path):
+def update_release_date(document_id, new_date, db_path=os.path.join(BASE_DIR, 'data/database/database.sqlite')):
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     cursor.execute("""
@@ -19,7 +22,7 @@ def update_release_date(document_id, new_date, db_path):
     conn.commit()
     conn.close()
 
-def check_and_update_release_date(document_id, new_date, db_path='data/database/database.sqlite'):
+def check_and_update_release_date(document_id, new_date, db_path=os.path.join(BASE_DIR, 'data/database/database.sqlite')):
     current_date = get_current_release_date(document_id, db_path)
     
     if current_date is None or current_date != new_date:
@@ -29,6 +32,7 @@ def check_and_update_release_date(document_id, new_date, db_path='data/database/
     else:
         print(f"Release date for document ID {document_id} is already up to date.")
         return False
+
 
 
 

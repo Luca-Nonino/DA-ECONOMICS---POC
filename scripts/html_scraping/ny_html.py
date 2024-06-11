@@ -1,6 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
 import os
+import sys
+
+# Define the project root directory
+project_root = os.path.abspath(os.path.dirname(__file__))
 
 # Function to fetch and parse HTML content from the URL
 def fetch_html_content(url):
@@ -16,21 +20,21 @@ def fetch_html_content(url):
 def extract_release_date(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
     table = soup.find('table', class_='greyborder')
-    
+
     if not table:
         print("Table not found. Please check the HTML structure.")
         return None
-    
+
     dates = []
     months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
     year = "2024"  # Hardcoded year as per the provided example
-    
+
     # Find all rows in the table
     rows = table.find_all('tr', {'valign': 'top'})
-    
+
     # Define the starting index of months
     month_idx = 0
-    
+
     for row in rows:
         cells = row.find_all('td', {'class': 'dirCol'})
         for cell in cells:
@@ -47,7 +51,7 @@ def extract_release_date(html_content):
                         dates.append(full_date)
             # Increment month index only if a valid month cell is processed
             month_idx += 1
-    
+
     # Extract the last date and format it
     if dates:
         last_date_str = dates[-1]
@@ -62,8 +66,8 @@ def save_page_content(html_content, document_id, pipe_id, release_date):
     soup = BeautifulSoup(html_content, 'html.parser')
     content_sections = soup.select("p, div.hidden")
     main_content = "\n\n".join([section.get_text(separator='\n', strip=True) for section in content_sections])
-    
-    save_dir = 'data/raw/txt'
+
+    save_dir = os.path.join(project_root, 'data/raw/txt')
     os.makedirs(save_dir, exist_ok=True)
     file_name = f"{document_id}_{pipe_id}_{release_date}.txt"
     save_path = os.path.join(save_dir, file_name)

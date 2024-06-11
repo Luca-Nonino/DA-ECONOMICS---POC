@@ -1,8 +1,12 @@
+import os
+import sys
 import requests
 from bs4 import BeautifulSoup
 import re
-import os
 from datetime import datetime
+
+# Define project root directory
+project_root = os.path.abspath(os.path.dirname(__file__))
 
 # Function to fetch and parse HTML content from the URL
 def fetch_html_content(url):
@@ -46,7 +50,7 @@ def extract_report_content(html_content):
 
 # Function to save the page content as a .txt file
 def save_page_content(content, document_id, pipe_id, release_date):
-    save_dir = 'data/raw/txt'
+    save_dir = os.path.join(project_root, 'data', 'raw', 'txt')
     os.makedirs(save_dir, exist_ok=True)
     file_name = f"{document_id}_{pipe_id}_{release_date}.txt"
     save_path = os.path.join(save_dir, file_name)

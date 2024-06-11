@@ -1,7 +1,11 @@
 import os
+import sys
 import sqlite3
 import re
 from scripts.utils.completions_general import generate_short_summaries
+
+# Define project root directory
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
 
 def read_processed_file(file_path):
     if not os.path.exists(file_path):
@@ -56,7 +60,10 @@ def parse_content(content):
 
     return data
 
-def insert_data_to_tables(document_id, release_date, data, file_path, db_path='data/database/database.sqlite'):
+def insert_data_to_tables(document_id, release_date, data, file_path, db_path=None):
+    if db_path is None:
+        db_path = os.path.join(project_root, 'data/database/database.sqlite')
+
     try:
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
@@ -110,7 +117,7 @@ def insert_data_to_tables(document_id, release_date, data, file_path, db_path='d
         conn.close()
         print(f"Data inserted into tables for document_id {document_id} and release_date {release_date}.")
 
-def parse_and_load(file_path, db_path='data/database/database.sqlite'):
+def parse_and_load(file_path, db_path=None):
     if not os.path.exists(file_path):
         print(f"File {file_path} does not exist.")
         return

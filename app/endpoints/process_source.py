@@ -1,13 +1,14 @@
-# app/endpoints/process_source.py
 import logging
+import os
 from fastapi import FastAPI, Query, HTTPException
 from fastapi.responses import HTMLResponse
 from scripts.pipelines.orchestrator import run_pipeline
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 logger = logging.getLogger(__name__)
 process_source_app = FastAPI()
 
-logging.basicConfig(filename='app/logs/errors.log', level=logging.DEBUG)
+logging.basicConfig(filename=os.path.join(BASE_DIR, 'app/logs/errors.log'), level=logging.DEBUG)
 
 @process_source_app.get("/", response_class=HTMLResponse)
 async def update_source(id: int = Query(...)):

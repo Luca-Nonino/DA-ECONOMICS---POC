@@ -1,12 +1,14 @@
-from openai import OpenAI
-import sqlite3
 import os
+import sqlite3
 import PyPDF2
 import re
 import time
 from datetime import datetime
+from openai import OpenAI
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from app.config import api_key
+
 client = OpenAI(base_url="https://api.openai.com/v1", api_key=api_key)
 
 # Function to convert PDF to text
@@ -20,8 +22,7 @@ def convert_pdf_to_text(pdf_path):
     except Exception as e:
         raise RuntimeError(f"Failed to convert PDF to text: {e}")
 
-    #print(text)  # print the converted text
-    return text  # Return the text content of the PDF
+    return text
 
 # Function to convert TXT to text
 def read_txt_file(txt_path):
@@ -90,7 +91,6 @@ def extract_release_date(pdf_path, num_chars=500, retries=3, timeout=20):
             if release_date:
                 return release_date
 
-            # Retry with 1000 characters and adjusted prompt if initial extraction fails
             if attempt == retries - 1:
                 num_chars = 1000
                 current_year = datetime.now().year
@@ -113,8 +113,7 @@ def extract_release_date(pdf_path, num_chars=500, retries=3, timeout=20):
     print("Failed to extract release date after multiple attempts.")
     return None
 
-# Function to retrieve prompt based on document_id
-def get_prompt(document_id, db_path='data/database/database.sqlite'):
+def get_prompt(document_id, db_path=os.path.join(BASE_DIR, 'data/database/database.sqlite')):
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     cursor.execute("""
@@ -133,7 +132,6 @@ def get_prompt(document_id, db_path='data/database/database.sqlite'):
     row = cursor.fetchone()
     conn.close()
 
-    # Organizing the prompt into a dictionary for easier access
     prompt_dict = {
         "PERSONA": row[0],
         "PERSONA_TONE": row[1],
@@ -161,7 +159,6 @@ def get_prompt(document_id, db_path='data/database/database.sqlite'):
         "CONSTRAINTS_SEARCH_TOOL_USE": row[23]
     }
 
-    # Formatting the prompt into a markdown-like style
     formatted_prompt = (
         f"#PERSONA:\n{prompt_dict['PERSONA']}\n\n"
         f"#PERSONA_TONE:\n{prompt_dict['PERSONA_TONE']}\n\n"
@@ -182,8 +179,7 @@ def get_prompt(document_id, db_path='data/database/database.sqlite'):
         f"#CONSTRAINTS_SEARCH_TOOL_USE:\n{prompt_dict['CONSTRAINTS_SEARCH_TOOL_USE']}"
     )
 
-    # Append the prompt example section
-    example_file_path = "data/examples/processed_ex.txt"  # Adjust the path according to your setup
+    example_file_path = os.path.join(BASE_DIR, "data/examples/processed_ex.txt")
     try:
         with open(example_file_path, 'r') as ex_file:
             prompt_example = ex_file.read()
@@ -191,12 +187,10 @@ def get_prompt(document_id, db_path='data/database/database.sqlite'):
     except FileNotFoundError:
         formatted_prompt += "\n\n#EXAMPLES:\nNo example available for this prompt ID."
 
-    print(f"Formatted prompt for document_id {document_id}:\n{formatted_prompt}")  # Debugging print statement
+    print(f"Formatted prompt for document_id {document_id}:\n{formatted_prompt}")
     return formatted_prompt
 
-# Function to generate formatted output based on prompt
-# Function to generate formatted output based on prompt
-def generate_output(file_path, db_path='data/database/database.sqlite', stream_timeout=None):
+def generate_output(file_path, db_path=os.path.join(BASE_DIR, 'data/database/database.sqlite'), stream_timeout=None):
     def request_inference(history, retries=3, timeout=20):
         for attempt in range(retries):
             try:
@@ -213,7 +207,6 @@ def generate_output(file_path, db_path='data/database/database.sqlite', stream_t
                 time.sleep(timeout)
         return None
 
-    # Extract document_id, pipe_id, and release_date from the file_path
     match = re.search(r'(\d+)_(\d+)_(\d{8})\.(txt|pdf)$', file_path)
     if not match:
         print("Invalid file path format. Expected format: 'data/raw/{file_type}/{document_id}_{pipe_id}_{release_date}.txt'")
@@ -260,29 +253,27 @@ def generate_output(file_path, db_path='data/database/database.sqlite', stream_t
         print("Failed to generate output after multiple attempts.")
         return
 
-    output = ""  # Initialize the output variable to accumulate the response content
+    output = ""
 
-    # Stream the response to the terminal and accumulate it in the output variable
     for chunk in response_stream:
         if chunk.choices[0].delta.content:
             print(chunk.choices[0].delta.content, end="", flush=True)
-            output += chunk.choices[0].delta.content  # Accumulate the content
+            output += chunk.choices[0].delta.content
 
-    print("\nStreaming completed.")  # Indicate the end of streaming
+    print("\nStreaming completed.")
 
     print("Saving generated output...")
-    save_dir = 'data/processed'
+    save_dir = os.path.join(BASE_DIR, 'data/processed')
     os.makedirs(save_dir, exist_ok=True)
     file_name = f"{document_id}_{pipe_id}_{release_date}.txt"
     save_path = os.path.join(save_dir, file_name)
 
     with open(save_path, 'w', encoding='utf-8') as file:
-        file.write(output)  # Write the accumulated output to the file
+        file.write(output)
 
     print(f"Generated output saved to {save_path}")
 
-
-def generate_short_summaries(file_path, prompt_path="data/prompts/short_summary.txt"):
+def generate_short_summaries(file_path, prompt_path=os.path.join(BASE_DIR, "data/prompts/short_summary.txt")):
     def make_request(input_text, prompt):
         history = [
             {
@@ -321,10 +312,8 @@ def generate_short_summaries(file_path, prompt_path="data/prompts/short_summary.
 
             full_response = make_request(input_text, prompt)
 
-            # Print the full response for debugging
             print("Full response:", full_response)
 
-            # Extract the summary (assuming the entire response is the summary)
             summary = full_response.strip()
             return summary
 
@@ -334,6 +323,7 @@ def generate_short_summaries(file_path, prompt_path="data/prompts/short_summary.
 
     print("Failed to generate short summaries after multiple attempts.")
     return None
+
 
 ############################# Test Functions - #################################
 

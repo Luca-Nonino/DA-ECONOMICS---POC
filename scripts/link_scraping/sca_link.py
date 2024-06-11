@@ -1,7 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
 import os
+import sys
 from datetime import datetime
+
+# Define project root directory
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 # Function to fetch and parse HTML content from the URL
 def fetch_html_content(url):
@@ -48,7 +52,7 @@ def process_sca_link(url, document_id, pipe_id):
 # Function for the second pipeline type
 def execute_pdf_download_with_url(document_id, pipe_id, url, current_release_date):
     # Define save path and file name
-    save_dir = 'data/raw/pdf'
+    save_dir = os.path.join(PROJECT_ROOT, 'data/raw/pdf')
     os.makedirs(save_dir, exist_ok=True)
     save_path = os.path.join(save_dir, f"{document_id}_{pipe_id}_{current_release_date}.pdf")
 

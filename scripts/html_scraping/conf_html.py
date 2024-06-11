@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 import os
 from datetime import datetime
 
+project_root = os.path.dirname(os.path.abspath(__file__))
+
 # Function to fetch and parse HTML content from the URL
 def fetch_html_content(url):
     try:
@@ -28,19 +30,19 @@ def extract_relevant_content(soup):
     relevant_content = []
     # Identify the main content section based on your HTML structure
     main_content = soup.find('div', {'id': 'mainContainer'})
-    
+
     if main_content:
         elements = main_content.find_all(['h2', 'h3', 'p'])
         for element in elements:
             text = element.get_text(strip=True)
             if text:
                 relevant_content.append(text)
-    
+
     return "\n\n".join(relevant_content)
 
 # Function to save the page content as a .txt file
 def save_page_content(relevant_content, document_id, pipe_id, release_date):
-    save_dir = 'data/raw/txt'
+    save_dir = os.path.join(project_root, 'data/raw/txt')
     os.makedirs(save_dir, exist_ok=True)
     file_name = f"{document_id}_{pipe_id}_{release_date}.txt"
     save_path = os.path.join(save_dir, file_name)

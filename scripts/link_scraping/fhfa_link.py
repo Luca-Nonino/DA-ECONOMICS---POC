@@ -5,6 +5,9 @@ import re
 import fitz  # PyMuPDF
 from datetime import datetime
 
+# Determine project root directory
+project_root = os.path.dirname(os.path.abspath(__file__))
+
 # Function to fetch and parse HTML content from the URL
 def fetch_html_content(url):
     try:
@@ -59,11 +62,11 @@ def process_fhfa_link(url, document_id, pipe_id):
         pdf_link = extract_pdf_link(html_content)
         if pdf_link:
             print(f"PDF Link: {pdf_link}")
-            pdf_save_path = f"data/raw/pdf/{document_id}_{pipe_id}.pdf"
+            pdf_save_path = os.path.join(project_root, "data/raw/pdf", f"{document_id}_{pipe_id}.pdf")
             if download_pdf(pdf_link, pdf_save_path):
                 release_date = extract_release_date_from_pdf(pdf_save_path)
                 if release_date:
-                    final_save_path = f"data/raw/pdf/{document_id}_{pipe_id}_{release_date}.pdf"
+                    final_save_path = os.path.join(project_root, "data/raw/pdf", f"{document_id}_{pipe_id}_{release_date}.pdf")
                     if os.path.exists(final_save_path):
                         os.remove(final_save_path)
                     os.rename(pdf_save_path, final_save_path)
