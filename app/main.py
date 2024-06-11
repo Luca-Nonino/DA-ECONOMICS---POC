@@ -1,3 +1,5 @@
+import sys
+import os
 import logging
 from fastapi import FastAPI, Request, HTTPException, Depends, Query
 from fastapi.staticfiles import StaticFiles
@@ -5,6 +7,10 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
 import sqlite3
 from typing import Optional
+
+# Add the root directory to the Python path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from scripts.utils.auth import get_current_user
 from scripts.pipelines.orchestrator import run_pipeline
 from app.endpoints.api import api_app
