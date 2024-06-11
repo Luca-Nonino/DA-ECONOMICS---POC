@@ -16,9 +16,18 @@ from scripts.pipelines.orchestrator import run_pipeline
 from app.endpoints.api import api_app
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, handlers=[logging.StreamHandler()])
-logger = logging.getLogger(__name__)
+log_directory = os.path.join(os.path.dirname(__file__), 'logs')
+os.makedirs(log_directory, exist_ok=True)
+log_file = os.path.join(log_directory, 'errors.log')
 
+logging.basicConfig(
+    level=logging.INFO,
+    handlers=[
+        logging.FileHandler(log_file),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
 app = FastAPI()
 
 # Mounts
