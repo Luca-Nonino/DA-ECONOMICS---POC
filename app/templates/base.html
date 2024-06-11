@@ -116,7 +116,7 @@
             links.forEach(link => {
                 link.addEventListener('click', function () {
                     const docName = this.getAttribute('data-document-name');
-                    fetch(`/DAeconomics/indicators/query/${docName}`)
+                    fetch(`/indicators/query/${docName}`)
                         .then(response => response.json())
                         .then(data => {
                             document.getElementById('document-title').textContent = data.document_name + ' - ' + data.source_name;
@@ -153,7 +153,7 @@
                 releaseDateSelect.addEventListener('change', function () {
                     const docId = this.getAttribute('data-document-id');
                     const date = this.value;
-                    fetch(`/DAeconomics/indicators/query/${docId}?date=${date}`)
+                    fetch(`/indicators/query/${docId}?date=${date}`)
                         .then(response => response.json())
                         .then(data => {
                             document.getElementById('en-summary').textContent = data.en_summary;
@@ -166,7 +166,7 @@
             if (checkNewReleaseButton) {
                 checkNewReleaseButton.addEventListener('click', function () {
                     const docId = this.getAttribute('data-document-id');
-                    fetch(`/DAeconomics/indicators/update/?id=${docId}`)
+                    fetch(`/indicators/update/?id=${docId}`)
                         .then(response => response.text())
                         .then(html => {
                             modalBody.innerHTML = html;
@@ -179,7 +179,7 @@
                 jsonModeButton.addEventListener('click', function () {
                     const docId = this.getAttribute('data-document-id');
                     const date = releaseDateSelect ? releaseDateSelect.value : '';
-                    window.open(`/DAeconomics/indicators/api/?document_id=${docId}&date=${date}`, '_blank');
+                    window.open(`/indicators/api/?document_id=${docId}&date=${date}`, '_blank');
                 });
             }
 

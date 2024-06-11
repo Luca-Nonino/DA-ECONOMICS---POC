@@ -17,20 +17,20 @@ app = FastAPI()
 
 # Mounts
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
-app.mount("/DAeconomics/indicators/api", api_app)
+app.mount("/indicators/api", api_app)
 
 # Configure Jinja2 templates
 templates = Jinja2Templates(directory="app/templates")
 
-@app.get("/DAeconomics", response_class=HTMLResponse)
+@app.get("", response_class=HTMLResponse)
 async def redirect_to_list():
-    return RedirectResponse(url="/DAeconomics/indicators/list")
+    return RedirectResponse(url="/indicators/list")
 
 @app.get("/", response_class=HTMLResponse)
 async def root():
-    return RedirectResponse(url="/DAeconomics/indicators/list")
+    return RedirectResponse(url="/indicators/list")
 
-@app.get("/DAeconomics/indicators/list", response_class=HTMLResponse)
+@app.get("/indicators/list", response_class=HTMLResponse)
 async def indicators_list(request: Request, user: dict = Depends(get_current_user)):
     try:
         db_path = 'data/database/database.sqlite'
@@ -56,7 +56,7 @@ async def indicators_list(request: Request, user: dict = Depends(get_current_use
         logger.error(f"Error fetching indicators list: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
-@app.get("/DAeconomics/indicators/query/{doc_name}", response_class=JSONResponse)
+@app.get("/indicators/query/{doc_name}", response_class=JSONResponse)
 async def query_source(request: Request, doc_name: str, date: Optional[str] = None):
     conn = None
     try:
@@ -105,7 +105,7 @@ async def query_source(request: Request, doc_name: str, date: Optional[str] = No
         if conn:
             conn.close()
 
-@app.get("/DAeconomics/indicators/update", response_class=HTMLResponse)
+@app.get("/indicators/update", response_class=HTMLResponse)
 async def update_source(id: int = Query(...)):
     try:
         result = run_pipeline(id)
