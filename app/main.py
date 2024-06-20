@@ -60,9 +60,9 @@ async def indicators_list(request: Request, user: dict = Depends(get_current_use
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
-        # Fetch unique document names for the sidebar
-        cursor.execute("SELECT DISTINCT document_name FROM documents_table")
-        document_names = [row[0] for row in cursor.fetchall()]
+        # Fetch unique document names and IDs for the sidebar
+        cursor.execute("SELECT DISTINCT document_name, document_id FROM documents_table")
+        document_names = cursor.fetchall()
 
         # Fetch data for the main content
         cursor.execute("SELECT document_id, document_name, source_name, path FROM documents_table")
@@ -78,18 +78,18 @@ async def indicators_list(request: Request, user: dict = Depends(get_current_use
         logger.error(f"Error fetching indicators list: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
-@app.get("/indicators/query/{doc_name}", response_class=JSONResponse)
-async def query_source(request: Request, doc_name: str, date: Optional[str] = None):
+@app.get("/indicators/query/{doc_id}", response_class=JSONResponse)
+async def query_source(request: Request, doc_id: int, date: Optional[str] = None):
     conn = None
     try:
         db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
-        cursor.execute("SELECT document_id, document_name, source_name, path FROM documents_table WHERE document_name = ?", (doc_name,))
+        cursor.execute("SELECT document_id, document_name, source_name, path FROM documents_table WHERE document_id = ?", (doc_id,))
         document = cursor.fetchone()
         if not document:
-            logger.error(f"Document with name {doc_name} not found")
+            logger.error(f"Document with ID {doc_id} not found")
             raise HTTPException(status_code=404, detail="Document not found")
 
         document_id, document_name, source_name, path = document

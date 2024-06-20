@@ -1,6 +1,12 @@
-# data/database/load_users.py
+# data/database/migrations/load_users.py
+import sys
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+
+# Add the directory containing users_table.py to the Python path
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
 from users_table import User, Base
 
 def load_users():

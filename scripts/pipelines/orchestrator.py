@@ -20,9 +20,11 @@ from scripts.html_scraping.adp_html import process_adp_html
 from scripts.html_scraping.conf_html import process_conference_board_html
 from scripts.html_scraping.ny_html import process_ny_html
 from scripts.link_scraping.bea_link import process_bea_link
-from scripts.link_scraping.fhfa_link import process_fhfa_link
 from scripts.link_scraping.nar_link import process_nar_link
-from scripts.link_scraping.sca_link import process_sca_link
+
+# Import the new modules for IDs 3 and 5
+from scripts.pipelines.modules.sca import process_sca_logic
+from scripts.pipelines.modules.fhfa import process_fhfa_logic
 
 # List of allowed document IDs
 ALLOWED_DOCUMENT_IDS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
@@ -31,8 +33,6 @@ ALLOWED_DOCUMENT_IDS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1
 PROCESSING_FUNCTIONS = {
     1: process_conference_board_html,
     2: process_conference_board_html,
-    3: process_sca_link,
-    5: process_fhfa_link,
     11: process_nar_link,
     12: process_bea_link,
     13: process_bea_link,
@@ -66,46 +66,36 @@ def process_html_content(process_func, url, document_id, pipe_id):
         process_func(url, document_id, pipe_id)
         log_message = buf.getvalue()
 
-    # Determine the correct path based on document_id
-    if document_id in [3, 5]:
-        file_path_match = re.search(r'data/raw/pdf[\\/](\d+_\d+_\d{8}\.pdf)', log_message)
-        base_path = os.path.join(project_root, "data/raw/pdf")
-    else:
-        file_path_match = re.search(r'data/raw/txt[\\/](\d+_\d+_\d{8}\.txt)', log_message)
-        base_path = os.path.join(project_root, "data/raw/txt")
+    print(f"Log message for document_id {document_id}: {log_message}")  # Debugging: Print the log message
+
+    # Update the regex pattern to match the actual file path format in the log message
+    file_path_match = re.search(r'Page content saved to (.+?\.txt)', log_message)
+    base_path = os.path.join(project_root, "data/raw/txt")
 
     if file_path_match:
-        file_name = file_path_match.group(1)
-        file_path = os.path.join(base_path, file_name)
-        release_date_match = re.search(r'_(\d{8})\.(txt|pdf)$', file_name)
+        file_path = file_path_match.group(1)
+        release_date_match = re.search(r'_(\d{8})\.txt$', file_path)
         if release_date_match:
             release_date = release_date_match.group(1)
-            return file_path, release_date
+            return file_path, release_date, None
         else:
-            raise ValueError(f"Failed to extract release date from {file_name}")
+            error_message = f"Failed to extract release date from {file_path}"
+            print(error_message)  # Debugging: Log the error
+            return None, None, error_message
     else:
-        raise ValueError(f"Failed to extract file path from log message: {log_message}")
+        error_message = f"Failed to extract file path from log message: {log_message}"
+        print(error_message)  # Debugging: Log the error
+        return None, None, error_message
+
 
 def process_pdf_content(document_id, url, pipe_id):
     with io.StringIO() as buf, redirect_stdout(buf):
-        if document_id in [3, 5]:
-            # For document IDs 3 and 5, use the specific link scraping functions
-            if document_id == 3:
-                process_sca_link(url, document_id, pipe_id)
-            elif document_id == 5:
-                process_fhfa_link(url, document_id, pipe_id)
-        else:
-            execute_pdf_download(document_id)
+        execute_pdf_download(document_id)
         log_message = buf.getvalue()
 
     print(f"Log message for document_id {document_id}: {log_message}")  # Debugging: Print the log message
 
-    if document_id in [3, 5]:
-        # Adjust the regex to handle backslashes for document IDs 3 and 5
-        pdf_path_match = re.search(r'PDF renamed and saved to (data[\\/]raw[\\/]pdf[\\/]\d+_\d+_\d{8}\.pdf)', log_message)
-    else:
-        # Original regex for other document IDs
-        pdf_path_match = re.search(r'PDF downloaded successfully: (data[\\/]raw[\\/]pdf[\\/]\d+_\d+_\d{8}\.pdf)', log_message)
+    pdf_path_match = re.search(r'PDF downloaded successfully: (data[\\/]raw[\\/]pdf[\\/]\d+_\d+_\d{8}\.pdf)', log_message)
 
     if pdf_path_match:
         pdf_path = os.path.join(project_root, pdf_path_match.group(1).replace('\\', '/'))  # Normalize path to use forward slashes
@@ -114,9 +104,13 @@ def process_pdf_content(document_id, url, pipe_id):
             release_date = release_date_match.group(1)
             return pdf_path, release_date, None
         else:
-            raise ValueError(f"Failed to extract release date from {pdf_path}")
+            error_message = f"Failed to extract release date from {pdf_path}"
+            print(error_message)  # Debugging: Log the error
+            return None, None, error_message
     else:
-        raise ValueError(f"Failed to extract PDF path from log message: {log_message}")
+        error_message = f"Failed to extract PDF path from log message: {log_message}"
+        print(error_message)  # Debugging: Log the error
+        return None, None, error_message
 
 def run_pipeline(document_id):
     if document_id not in ALLOWED_DOCUMENT_IDS:
@@ -133,38 +127,42 @@ def run_pipeline(document_id):
 
     try:
         if document_id in PROCESSING_FUNCTIONS:
-            txt_path, release_date = process_html_content(PROCESSING_FUNCTIONS[document_id], url, document_id, pipe_id)
-        elif document_id in [3, 5]:
-            pdf_path, release_date, message = process_pdf_content(document_id, url, pipe_id)
-            if message:
-                return message
+            txt_path, release_date, error_message = process_html_content(PROCESSING_FUNCTIONS[document_id], url, document_id, pipe_id)
+        elif document_id == 3:
+            # Redirect logic to the relevant script for ID 3
+            txt_path, release_date, error_message = process_sca_logic(document_id, url, pipe_id)
+        elif document_id == 5:
+            # Redirect logic to the relevant script for ID 5
+            txt_path, release_date, error_message = process_fhfa_logic(document_id, url, pipe_id)
         elif document_id in [4, 6, 7, 8, 9, 10, 15, 16, 19, 20, 21]:
-            pdf_path, release_date, message = process_pdf_content(document_id, url, pipe_id)
-            if message:
-                return message
+            pdf_path, release_date, error_message = process_pdf_content(document_id, url, pipe_id)
 
-            # Step 2: Check hash and extract release date for PDFs
-            result = check_hash_and_extract_release_date(pdf_path)
+            if not error_message:
+                # Step 2: Check hash and extract release date for PDFs
+                result = check_hash_and_extract_release_date(pdf_path)
 
-            if "Hash matches the previous one. No update needed." in result:
-                return "Hash matches the previous one. No update needed."
+                if "Hash matches the previous one. No update needed." in result:
+                    return "Hash matches the previous one. No update needed."
 
-            try:
-                response = json.loads(result)
-            except json.JSONDecodeError as e:
-                return f"Failed to parse JSON output: {e}. Output was: {result}"
+                try:
+                    response = json.loads(result)
+                except json.JSONDecodeError as e:
+                    return f"Failed to parse JSON output: {e}. Output was: {result}"
 
-            if response["status"] == "no_update":
-                return response["message"]
+                if response["status"] == "no_update":
+                    return response["message"]
 
-            if response["status"] == "error":
-                return response["message"]
+                if response["status"] == "error":
+                    return response["message"]
 
-            release_date = response.get("release_date")
-            pdf_path = response.get("updated_pdf_path")
+                release_date = response.get("release_date")
+                pdf_path = response.get("updated_pdf_path")
 
-            if not release_date or not pdf_path:
-                return "Failed to extract release date or updated PDF path"
+                if not release_date or not pdf_path:
+                    return "Failed to extract release date or updated PDF path"
+        
+        if error_message:
+            return f"Error occurred: {error_message}"
 
         # Check if the content has already been processed
         if release_date and is_already_processed(document_id, release_date):
@@ -190,7 +188,9 @@ def run_pipeline(document_id):
 
 if __name__ == "__main__":
     # Example usage
-    document_ids = range(1, 6)  # Adjusted to include document IDs 3 to 5 for testing
+    # document_ids = [4, 6, 7, 8, 9, 10, 15, 16, 19, 20, 21]
+    #document_ids = [3,5] 
+    document_ids = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20] 
     statuses = []
     for document_id in document_ids:
         try:

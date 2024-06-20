@@ -1,0 +1,17 @@
+**Title:**
+{'Existing-Home Sales Report: April 2024'}
+
+**Overview:**
+||The report from the National Association of REALTORS® details the performance of the existing-home sales market in April 2024. Key highlights include a 1.9% decline in sales from March to a seasonally adjusted annual rate of 4.14 million, and a 5.7% increase in the median existing-home sales price to $407,600. Inventory levels rose by 9% from March, reaching 1.21 million units, equivalent to a 3.5-month supply. Regional sales trends varied, with the West showing a year-over-year increase while other regions experienced declines. The report also notes a rise in first-time buyers and a stable rate of all-cash sales.||
+
+**Key Takeaways:**
+- {**Sales Volume**}: [Existing-home sales decreased by 1.9% from March to a seasonally adjusted annual rate of 4.14 million in April 2024. This is also a 1.9% decline from April 2023, indicating a consistent downward trend in sales volume.]
+- {**Median Sales Price**}: [The median existing-home sales price increased by 5.7% year-over-year to $407,600, marking the tenth consecutive month of price gains and the highest price ever recorded for April.]
+- {**Inventory Levels**}: [Total housing inventory rose by 9% from March to 1.21 million units, representing a 3.5-month supply at the current sales pace. This is a significant increase from the 3.0-month supply recorded in April 2023.]
+- {**Regional Sales Trends**}: [Sales declined in the Northeast (4%), Midwest (1%), and South (1.6%) from March, but increased in the West by 1.3% year-over-year. The median prices in these regions also saw varying increases, with the West experiencing the highest rise at 9.3%.]
+- {**First-Time Buyers**}: [First-time buyers accounted for 33% of sales in April, up from 32% in March and 29% in April 2023, indicating a growing participation of new entrants in the housing market.]
+- {**All-Cash Sales**}: [All-cash transactions made up 28% of sales, consistent with March and April 2023, reflecting stable investor activity in the market.]
+- {**Mortgage Rates**}: [The 30-year fixed-rate mortgage averaged 7.02% as of May 16, down slightly from 7.09% the previous week but up from 6.39% a year ago, impacting affordability and buyer decisions.]
+
+**Macro Environment Impacts**
+||The April 2024 existing-home sales report provides critical insights into the housing market's dynamics and its implications for broader economic strategies. The decline in sales volume, coupled with rising prices and inventory levels, suggests a market adjusting to higher mortgage rates and shifting buyer behavior. According to the Taylor Rule, the Federal Reserve may need to consider these housing market trends when calibrating monetary policy. The increase in median home prices, despite higher interest rates, indicates persistent demand pressures, which could influence inflationary trends. The rise in inventory levels, particularly in higher-end markets, may signal a potential easing of supply constraints, which could moderate future price increases. The stable rate of all-cash sales and the growing share of first-time buyers highlight ongoing investor interest and new market entrants, respectively. These factors collectively suggest a nuanced approach to monetary policy, balancing the need to control inflation with the goal of supporting housing market stability and broader economic growth.||

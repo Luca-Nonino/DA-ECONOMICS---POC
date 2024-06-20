@@ -261,8 +261,8 @@
     <div class="nav-bar p-4 fixed w-60 overflow-y-auto">
         <h2 class="text-xl font-bold text-center mb-4">Select Publication Below</h2>
         <ul>
-            {% for doc_name in document_names %}
-            <li class="my-2"><a href="#" class="indicator-link" data-document-name="{{ doc_name }}">{{ doc_name }}</a></li>
+            {% for doc in document_names %}
+            <li class="my-2"><a href="#" class="indicator-link" data-document-id="{{ doc[1] }}">{{ doc[0] }}</a></li>
             <span class="indicator-separator">-----</span>
             {% endfor %}
         </ul>
@@ -323,8 +323,8 @@
 
             links.forEach(link => {
                 link.addEventListener('click', function () {
-                    const docName = this.getAttribute('data-document-name');
-                    fetch(`/indicators/query/${docName}`)
+                    const docId = this.getAttribute('data-document-id');
+                    fetch(`/indicators/query/${docId}`)
                         .then(response => response.json())
                         .then(data => {
                             document.getElementById('document-title').textContent = data.document_name + ' - ' + data.source_name;

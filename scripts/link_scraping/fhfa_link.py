@@ -6,7 +6,7 @@ import fitz  # PyMuPDF
 from datetime import datetime
 
 # Determine project root directory
-project_root = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 # Function to fetch and parse HTML content from the URL
 def fetch_html_content(url):
@@ -31,13 +31,16 @@ def download_pdf(url, save_path):
     try:
         response = requests.get(url)
         response.raise_for_status()  # Check if the request was successful
+        os.makedirs(os.path.dirname(save_path), exist_ok=True)  # Ensure the directory exists
         with open(save_path, 'wb') as file:
             file.write(response.content)
-        print(f"PDF downloaded successfully: {save_path}")
-        return True
+        log_message = f"PDF downloaded successfully: {save_path}"
+        print(log_message)
+        return True, log_message
     except Exception as e:
-        print(f"Failed to download PDF: {e}")
-        return False
+        log_message = f"Failed to download PDF: {e}"
+        print(log_message)
+        return False, log_message
 
 # Adjusted function to extract the release date from the PDF using PyMuPDF
 def extract_release_date_from_pdf(pdf_path):
@@ -63,22 +66,31 @@ def process_fhfa_link(url, document_id, pipe_id):
         if pdf_link:
             print(f"PDF Link: {pdf_link}")
             pdf_save_path = os.path.join(project_root, "data/raw/pdf", f"{document_id}_{pipe_id}.pdf")
-            if download_pdf(pdf_link, pdf_save_path):
+            download_success, download_log = download_pdf(pdf_link, pdf_save_path)
+            if download_success:
                 release_date = extract_release_date_from_pdf(pdf_save_path)
                 if release_date:
                     final_save_path = os.path.join(project_root, "data/raw/pdf", f"{document_id}_{pipe_id}_{release_date}.pdf")
                     if os.path.exists(final_save_path):
                         os.remove(final_save_path)
                     os.rename(pdf_save_path, final_save_path)
-                    print(f"PDF renamed and saved to {final_save_path}")
+                    log_message = f"Release Date: {release_date}\nSave Path: {final_save_path}"
+                    print(log_message)
+                    return log_message
                 else:
-                    print("Failed to extract release date from PDF.")
+                    log_message = "Failed to extract release date from PDF."
+                    print(log_message)
+                    return log_message
             else:
-                print("Failed to download PDF.")
+                return download_log
         else:
-            print("Failed to extract PDF link.")
+            log_message = "Failed to extract PDF link."
+            print(log_message)
+            return log_message
     else:
-        print("Failed to fetch HTML content.")
+        log_message = "Failed to fetch HTML content."
+        print(log_message)
+        return log_message
 
 ############################# Test Examples #################################
 

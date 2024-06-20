@@ -3,8 +3,9 @@ from bs4 import BeautifulSoup
 import os
 import sys
 
-# Define the project root directory
-project_root = os.path.abspath(os.path.dirname(__file__))
+
+# Determine project root directory
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 # Function to fetch and parse HTML content from the URL
 def fetch_html_content(url):

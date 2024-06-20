@@ -1,14 +1,11 @@
 import logging
 import os
-from fastapi import FastAPI, Query, Request, HTTPException
-from fastapi.responses import HTMLResponse, JSONResponse
-from starlette.templating import Jinja2Templates
+from fastapi import FastAPI, Query, HTTPException
+from fastapi.responses import JSONResponse
 import sqlite3
-from typing import Optional
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 logger = logging.getLogger(__name__)
-templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "app/templates"))
 
 api_app = FastAPI()
 

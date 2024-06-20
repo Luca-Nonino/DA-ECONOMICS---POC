@@ -1,4 +1,4 @@
-# data/database/migrations/initiate_sqlite.py
+# data/database/migrations/initiate_and_load.py
 import csv
 import sys
 import os
@@ -8,12 +8,14 @@ from sqlalchemy.orm import sessionmaker
 
 # Ensure the root of the project is in the sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 from data.database.documents_table import DocumentsTable, Base as DocumentsBase
 from data.database.prompts_table import PromptsTable
 from data.database.summary_table import SummaryTable
 from data.database.keytakeaways_table import KeyTakeawaysTable
 from data.database.analysis_table import AnalysisTable
+from users_table import User, Base as UsersBase
 
 def parse_date(date_str):
     if date_str:
@@ -28,6 +30,7 @@ def initialize_db():
     db_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../database.sqlite'))
     engine = create_engine(f'sqlite:///{db_path}')
     DocumentsBase.metadata.create_all(engine)
+    UsersBase.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
 
@@ -35,6 +38,10 @@ def initialize_db():
     with open(os.path.join(os.path.dirname(__file__), 'documents_table.csv'), newline='', encoding='utf-8-sig') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=';')
         for row in reader:
+            document = session.query(DocumentsTable).filter_by(document_id=row['DOCUMENT_ID']).first()
+            if document:
+                print(f"Skipping duplicate document_id: {row['DOCUMENT_ID']}")
+                continue
             document = DocumentsTable(
                 document_id=row['DOCUMENT_ID'],
                 path=row['PATH'],
@@ -99,5 +106,29 @@ def initialize_db():
     session.close()
     print(f"Database initialized with documents and prompts data at {db_path}.")
 
+
+def load_users():
+    engine = create_engine('sqlite:///data/database/database.sqlite')
+    UsersBase.metadata.create_all(engine)
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    users = [
+        User(username='NataliaTonin', password='NT@2024'),
+        User(username='AlexLima', password='AL@2024'),
+        User(username='AnersonAlvarenga', password='AA@2024'),
+        User(username='ThalesCaramella', password='TC@2024'),
+        User(username='VitorOliveira', password='VO@2024'),
+        User(username='LucaNonino', password='LN@2024'),
+        User(username='PedroJuliato', password='PJ@2024'),
+        User(username='Admin', password='Admin@443251'),
+        User(username='Tester', password='Tester')
+    ]
+
+    session.bulk_save_objects(users)
+    session.commit()
+    session.close()
+
 if __name__ == "__main__":
     initialize_db()
+    load_users()

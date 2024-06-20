@@ -10,7 +10,7 @@ def get_current_user(credentials: HTTPBasicCredentials = Depends(security)):
     db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM users WHERE username=? AND password=?", (credentials.username, credentials.password))
+    cursor.execute("SELECT * FROM users_table WHERE username=? AND password=?", (credentials.username, credentials.password))
     user = cursor.fetchone()
     conn.close()
     if user:

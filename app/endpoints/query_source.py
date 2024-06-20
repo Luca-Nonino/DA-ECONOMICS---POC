@@ -1,6 +1,6 @@
 import logging
 import os
-from fastapi import FastAPI, Query, Request, HTTPException
+from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import HTMLResponse
 from starlette.templating import Jinja2Templates
 import sqlite3
@@ -22,8 +22,8 @@ def log_all_documents(cursor):
     documents = cursor.fetchall()
     logger.info(f"All documents: {documents}")
 
-@query_source_app.get("/{document_name}", response_class=HTMLResponse)
-async def query_source(request: Request, document_name: str, date: Optional[str] = None):
+@query_source_app.get("/{document_id}", response_class=HTMLResponse)
+async def query_source(request: Request, document_id: int, date: Optional[str] = None):
     conn = None
     try:
         db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
@@ -32,10 +32,10 @@ async def query_source(request: Request, document_name: str, date: Optional[str]
 
         log_all_documents(cursor)
 
-        cursor.execute("SELECT document_id, document_name, source_name, path FROM documents_table WHERE document_name = ?", (document_name,))
+        cursor.execute("SELECT document_id, document_name, source_name, path FROM documents_table WHERE document_id = ?", (document_id,))
         document = cursor.fetchone()
         if not document:
-            logger.error(f"Document with name {document_name} not found")
+            logger.error(f"Document with ID {document_id} not found")
             raise HTTPException(status_code=404, detail="Document not found")
 
         document_id, document_name, source_name, path = document

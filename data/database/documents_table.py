@@ -17,10 +17,10 @@ class DocumentsTable(Base):
     document_name = Column(String)
     source_name = Column(String)
     escope = Column(String)
-    current_release_date = Column(Date, nullable=True)
+    current_release_date = Column(Integer, nullable=True)
     hash = Column(String, nullable=True)
-    next_release_date = Column(Date, nullable=True)
-    next_release_time = Column(String, nullable=True)
+    next_release_date = Column(Integer, nullable=True)
+    next_release_time = Column(Integer, nullable=True)
 
     prompts = relationship("PromptsTable", back_populates="document")
     summaries = relationship("SummaryTable", order_by="SummaryTable.summary_id", back_populates="document")

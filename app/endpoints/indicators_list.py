@@ -21,9 +21,9 @@ async def indicators_list(request: Request, user: dict = Depends(get_current_use
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
-        # Fetch unique document names for the sidebar
-        cursor.execute("SELECT DISTINCT document_name FROM documents_table")
-        document_names = [row[0] for row in cursor.fetchall()]
+        # Fetch unique document names and IDs for the sidebar
+        cursor.execute("SELECT DISTINCT document_name, document_id FROM documents_table")
+        document_names = cursor.fetchall()
         if document_names:
             logger.debug(f"Fetched document names: {document_names}")
         else:
