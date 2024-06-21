@@ -77,7 +77,7 @@ def download_pdf(url, save_path):
         logger.error(f"Failed to download PDF. URL: {url}, Save Path: {save_path}. Error: {e}", exc_info=True)
 
 # Function for the first pipeline type
-def execute_pdf_download(document_id, db_path='data/database/database.sqlite'):
+def execute_pdf_download(document_id, db_path=os.path.join(project_root, 'data', 'database', 'database.sqlite')):
     db_path = os.path.abspath(db_path)
     # Fetch document details
     details = get_document_details(document_id, db_path)
@@ -89,7 +89,7 @@ def execute_pdf_download(document_id, db_path='data/database/database.sqlite'):
 
     # Define save path and file name
     current_date = datetime.now().strftime("%Y%m%d")
-    save_dir = os.path.abspath('data/raw/pdf')
+    save_dir = os.path.abspath(os.path.join(project_root, 'data', 'raw', 'pdf'))
     os.makedirs(save_dir, exist_ok=True)
     save_path = os.path.join(save_dir, f"{document_id}_{pipe_id}_{current_date}.pdf")
 
@@ -97,7 +97,7 @@ def execute_pdf_download(document_id, db_path='data/database/database.sqlite'):
     download_pdf(url, save_path)
 
 # Function for the second pipeline type
-def execute_pdf_download_with_url(document_id, url, current_release_date, db_path='data/database/database.sqlite'):
+def execute_pdf_download_with_url(document_id, url, current_release_date, db_path=os.path.join(project_root, 'data', 'database', 'database.sqlite')):
     db_path = os.path.abspath(db_path)
     # Fetch document details
     details = get_document_details(document_id, db_path)
@@ -108,7 +108,7 @@ def execute_pdf_download_with_url(document_id, url, current_release_date, db_pat
     pipe_id, document_id, _ = details  # We ignore the URL from the database in this case
 
     # Define save path and file name
-    save_dir = os.path.abspath('data/raw/pdf')
+    save_dir = os.path.abspath(os.path.join(project_root, 'data', 'raw', 'pdf'))
     os.makedirs(save_dir, exist_ok=True)
     save_path = os.path.join(save_dir, f"{document_id}_{pipe_id}_{current_release_date}.pdf")
 

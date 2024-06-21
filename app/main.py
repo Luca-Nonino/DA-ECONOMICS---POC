@@ -19,7 +19,7 @@ from scripts.pipelines.orchestrator import run_pipeline
 from app.endpoints.api import api_app
 
 # Configure logging
-log_directory = os.path.join(BASE_DIR, 'app/logs')
+log_directory = os.path.join(BASE_DIR, 'app', 'logs')
 os.makedirs(log_directory, exist_ok=True)
 log_file = os.path.join(log_directory, 'errors.log')
 
@@ -35,13 +35,13 @@ logger = logging.getLogger(__name__)
 app = FastAPI()
 
 # Mount static files and API
-static_directory = os.path.join(BASE_DIR, "app/static")
+static_directory = os.path.join(BASE_DIR, 'app', 'static')
 app.mount("/static", StaticFiles(directory=static_directory), name="static")
 
 app.mount("/indicators/api", api_app)
 
 # Configure Jinja2 templates
-templates_directory = os.path.join(BASE_DIR, "app/templates")
+templates_directory = os.path.join(BASE_DIR, 'app', 'templates')
 templates = Jinja2Templates(directory=templates_directory)
 
 @app.get("", response_class=HTMLResponse)
@@ -55,7 +55,7 @@ async def root():
 @app.get("/indicators/list", response_class=HTMLResponse)
 async def indicators_list(request: Request, user: dict = Depends(get_current_user)):
     try:
-        db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
+        db_path = os.path.join(BASE_DIR, 'data', 'database', 'database.sqlite')
         logger.info(f"Connecting to database at {db_path}")
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
@@ -82,7 +82,7 @@ async def indicators_list(request: Request, user: dict = Depends(get_current_use
 async def query_source(request: Request, doc_id: int, date: Optional[str] = None):
     conn = None
     try:
-        db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
+        db_path = os.path.join(BASE_DIR, 'data', 'database', 'database.sqlite')
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 

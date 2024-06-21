@@ -6,21 +6,17 @@ import sqlite3
 import re
 import io
 from contextlib import redirect_stdout
-
 import logging
-
 
 # Add the project root to the Python path
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 sys.path.insert(0, project_root)
-
 
 # Set up logging
 logging.basicConfig(filename=os.path.join(project_root, 'app', 'logs', 'errors.log'), 
                     level=logging.ERROR, 
                     format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
-
 
 from scripts.pdf.pdf_download import execute_pdf_download, execute_pdf_download_with_url
 from scripts.utils.completions_general import generate_output
@@ -52,7 +48,8 @@ PROCESSING_FUNCTIONS = {
     18: process_adp_html,
 }
 
-def get_document_details(document_id, db_path=os.path.join(project_root, 'data/database/database.sqlite')):
+def get_document_details(document_id, db_path=os.path.join(project_root, 'data', 'database', 'database.sqlite')):
+    db_path = os.path.abspath(db_path)
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     cursor.execute("""
@@ -62,7 +59,8 @@ def get_document_details(document_id, db_path=os.path.join(project_root, 'data/d
     conn.close()
     return result
 
-def is_already_processed(document_id, release_date, db_path=os.path.join(project_root, 'data/database/database.sqlite')):
+def is_already_processed(document_id, release_date, db_path=os.path.join(project_root, 'data', 'database', 'database.sqlite')):
+    db_path = os.path.abspath(db_path)
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     cursor.execute("""
@@ -81,10 +79,10 @@ def process_html_content(process_func, url, document_id, pipe_id):
 
     # Update the regex pattern to match the actual file path format in the log message
     file_path_match = re.search(r'Page content saved to (.+?\.txt)', log_message)
-    base_path = os.path.join(project_root, "data/raw/txt")
+    base_path = os.path.abspath(os.path.join(project_root, "data", "raw", "txt"))
 
     if file_path_match:
-        file_path = file_path_match.group(1).replace('\\', '/')
+        file_path = os.path.normpath(os.path.join(base_path, file_path_match.group(1).replace('\\', '/')))
         release_date_match = re.search(r'_(\d{8})\.txt$', file_path)
         if release_date_match:
             release_date = release_date_match.group(1)
@@ -108,7 +106,7 @@ def process_pdf_content(document_id, url, pipe_id):
     pdf_path_match = re.search(r'PDF downloaded successfully: (.+?\.pdf)', log_message.replace('\\', '/'))
 
     if pdf_path_match:
-        pdf_path = os.path.join(project_root, pdf_path_match.group(1))
+        pdf_path = os.path.normpath(os.path.join(project_root, pdf_path_match.group(1)))
         release_date_match = re.search(r'_(\d{8})\.pdf$', pdf_path)
         if release_date_match:
             release_date = release_date_match.group(1)
