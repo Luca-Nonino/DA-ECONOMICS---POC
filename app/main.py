@@ -129,11 +129,13 @@ async def query_source(request: Request, doc_id: int, date: Optional[str] = None
 
 @app.get("/indicators/update", response_class=HTMLResponse)
 async def update_source(id: int = Query(...)):
+    logger.info(f"Received request to update source with ID: {id}")
     try:
         result = run_pipeline(id)
+        logger.info(f"Pipeline execution result for ID {id}: {result}")
         return HTMLResponse(content=f"<html><body><h1>Update Result</h1><p>{result}</p></body></html>")
     except Exception as e:
-        logger.error(f"Error updating source: {e}", exc_info=True)
+        logger.error(f"Error updating source with ID {id}: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
 if __name__ == "__main__":

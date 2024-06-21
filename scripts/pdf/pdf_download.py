@@ -4,20 +4,36 @@ import sqlite3
 from datetime import datetime
 import time
 from fake_useragent import UserAgent
+import logging
+import sys
+
+# Add the project root to the Python path
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+sys.path.insert(0, project_root)
+
+# Set up logging
+logging.basicConfig(filename=os.path.join(project_root, 'app', 'logs', 'errors.log'),
+                    level=logging.ERROR,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 # Database connection function
 def get_document_details(document_id, db_path):
     db_path = os.path.abspath(db_path)
-    conn = sqlite3.connect(db_path)
-    cursor = conn.cursor()
-    cursor.execute("""
-        SELECT pipe_id, document_id, path
-        FROM documents_table
-        WHERE document_id = ?
-    """, (document_id,))
-    result = cursor.fetchone()
-    conn.close()
-    return result
+    try:
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT pipe_id, document_id, path
+            FROM documents_table
+            WHERE document_id = ?
+        """, (document_id,))
+        result = cursor.fetchone()
+        conn.close()
+        return result
+    except Exception as e:
+        logger.error(f"Error accessing database file at path: {db_path}. Error: {e}", exc_info=True)
+        raise
 
 # Generic PDF download function
 def download_pdf(url, save_path):
@@ -54,11 +70,11 @@ def download_pdf(url, save_path):
                     file.write(response.content)
                 print(f"PDF downloaded successfully: {os.path.normpath(save_path)}")
             except Exception as e:
-                print(f"Failed to download PDF on retry: {e}")
+                logger.error(f"Failed to download PDF on retry. URL: {url}, Save Path: {save_path}. Error: {e}", exc_info=True)
         else:
-            print(f"HTTP error occurred: {http_err}")
+            logger.error(f"HTTP error occurred. URL: {url}, Save Path: {save_path}. HTTP Error: {http_err}", exc_info=True)
     except Exception as e:
-        print(f"Failed to download PDF: {e}")
+        logger.error(f"Failed to download PDF. URL: {url}, Save Path: {save_path}. Error: {e}", exc_info=True)
 
 # Function for the first pipeline type
 def execute_pdf_download(document_id, db_path='data/database/database.sqlite'):

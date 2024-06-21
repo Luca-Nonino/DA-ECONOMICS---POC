@@ -7,9 +7,20 @@ import re
 import io
 from contextlib import redirect_stdout
 
+import logging
+
+
 # Add the project root to the Python path
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 sys.path.insert(0, project_root)
+
+
+# Set up logging
+logging.basicConfig(filename=os.path.join(project_root, 'app', 'logs', 'errors.log'), 
+                    level=logging.ERROR, 
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
 
 from scripts.pdf.pdf_download import execute_pdf_download, execute_pdf_download_with_url
 from scripts.utils.completions_general import generate_output
@@ -159,7 +170,7 @@ def run_pipeline(document_id):
 
                 if not release_date or not pdf_path:
                     return "Failed to extract release date or updated PDF path"
-        
+
         if error_message:
             return f"Error occurred: {error_message}"
 
@@ -183,19 +194,21 @@ def run_pipeline(document_id):
 
         return "Pipeline executed successfully"
     except Exception as e:
+        logger.error(f"Error in run_pipeline for document_id {document_id}: {e}", exc_info=True)
         return f"Error occurred: {e}"
 
 if __name__ == "__main__":
     # Example usage
-    #document_ids = [4, 6, 7, 8, 9, 10, 15, 16, 19, 20]
-    #document_ids = [3,5] 
-    document_ids = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20] 
+    document_ids = [4, 6, 7, 8, 9, 10, 15, 16, 19, 20]
+    #document_ids = [3,5]
+    #document_ids = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
     statuses = []
     for document_id in document_ids:
         try:
             result = run_pipeline(document_id)
             status = "success" if "successfully" in result or "No update needed" in result or "No processing needed" in result else "failed"
         except Exception as e:
+            logger.error(f"Exception occurred while processing document_id {document_id}: {e}", exc_info=True)
             result = f"Error occurred: {e}"
             status = "failed"
         print(f"Result for document_id {document_id}: {result}")
