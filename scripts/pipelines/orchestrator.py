@@ -73,7 +73,7 @@ def process_html_content(process_func, url, document_id, pipe_id):
     base_path = os.path.join(project_root, "data/raw/txt")
 
     if file_path_match:
-        file_path = file_path_match.group(1)
+        file_path = file_path_match.group(1).replace('\\', '/')
         release_date_match = re.search(r'_(\d{8})\.txt$', file_path)
         if release_date_match:
             release_date = release_date_match.group(1)
@@ -87,7 +87,6 @@ def process_html_content(process_func, url, document_id, pipe_id):
         print(error_message)  # Debugging: Log the error
         return None, None, error_message
 
-
 def process_pdf_content(document_id, url, pipe_id):
     with io.StringIO() as buf, redirect_stdout(buf):
         execute_pdf_download(document_id)
@@ -95,10 +94,10 @@ def process_pdf_content(document_id, url, pipe_id):
 
     print(f"Log message for document_id {document_id}: {log_message}")  # Debugging: Print the log message
 
-    pdf_path_match = re.search(r'PDF downloaded successfully: (data[\\/]raw[\\/]pdf[\\/]\d+_\d+_\d{8}\.pdf)', log_message)
+    pdf_path_match = re.search(r'PDF downloaded successfully: (.+?\.pdf)', log_message.replace('\\', '/'))
 
     if pdf_path_match:
-        pdf_path = os.path.join(project_root, pdf_path_match.group(1).replace('\\', '/'))  # Normalize path to use forward slashes
+        pdf_path = os.path.join(project_root, pdf_path_match.group(1))
         release_date_match = re.search(r'_(\d{8})\.pdf$', pdf_path)
         if release_date_match:
             release_date = release_date_match.group(1)
@@ -188,7 +187,7 @@ def run_pipeline(document_id):
 
 if __name__ == "__main__":
     # Example usage
-    # document_ids = [4, 6, 7, 8, 9, 10, 15, 16, 19, 20, 21]
+    #document_ids = [4, 6, 7, 8, 9, 10, 15, 16, 19, 20]
     #document_ids = [3,5] 
     document_ids = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20] 
     statuses = []

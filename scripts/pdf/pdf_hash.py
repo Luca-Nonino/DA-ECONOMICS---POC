@@ -14,6 +14,7 @@ sys.path.insert(0, project_root)
 from scripts.utils.completions_general import extract_release_date
 
 def get_previous_hash(document_id, db_path):
+    db_path = os.path.abspath(db_path)
     try:
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
@@ -29,6 +30,7 @@ def get_previous_hash(document_id, db_path):
         return None
 
 def update_hash(document_id, new_hash, db_path):
+    db_path = os.path.abspath(db_path)
     try:
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
@@ -42,6 +44,7 @@ def update_hash(document_id, new_hash, db_path):
         print(f"Database error occurred while updating hash: {e}")
 
 def calculate_pdf_hash(pdf_path, num_chars=300):
+    pdf_path = os.path.abspath(pdf_path)
     try:
         with open(pdf_path, 'rb') as file:
             content = file.read(num_chars)
@@ -53,6 +56,7 @@ def calculate_pdf_hash(pdf_path, num_chars=300):
         return None
 
 def update_current_release_date(document_id, release_date, db_path):
+    db_path = os.path.abspath(db_path)
     try:
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
@@ -66,8 +70,11 @@ def update_current_release_date(document_id, release_date, db_path):
         print(f"Database error occurred while updating current release date: {e}")
 
 def check_hash_and_extract_release_date(pdf_path, db_path='data/database/database.sqlite'):
+    db_path = os.path.abspath(db_path)
+    pdf_path = os.path.abspath(pdf_path)
+
     # Extract document_id from the pdf_path
-    match = re.search(r'(\d+)_(\d+)_(\d{8})\.pdf$', pdf_path)
+    match = re.search(r'(\d+)_(\d+)_(\d{8})\.pdf$', pdf_path.replace('\\', '/'))
     if not match:
         print("Invalid PDF path format. Expected format: 'data/raw/pdf/{document_id}_{pipe_id}_{release_date}.pdf'")
         return json.dumps({"status": "error", "message": "Invalid PDF path format"})
@@ -106,11 +113,3 @@ def check_hash_and_extract_release_date(pdf_path, db_path='data/database/databas
     else:
         print("Hash matches the previous one. No update needed.")
         return json.dumps({"status": "no_update", "message": "Hash matches the previous one. No update needed."})
-
-
-
-############################# Test Examples #################################
-
-# Example usage
-pdf_path = 'data/raw/pdf/4_2_20240607.pdf'
-#check_hash_and_extract_release_date(pdf_path)

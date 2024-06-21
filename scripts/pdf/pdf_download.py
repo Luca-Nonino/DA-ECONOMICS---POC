@@ -7,6 +7,7 @@ from fake_useragent import UserAgent
 
 # Database connection function
 def get_document_details(document_id, db_path):
+    db_path = os.path.abspath(db_path)
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     cursor.execute("""
@@ -20,6 +21,7 @@ def get_document_details(document_id, db_path):
 
 # Generic PDF download function
 def download_pdf(url, save_path):
+    save_path = os.path.abspath(save_path)
     ua = UserAgent()
     headers = {
         'User-Agent': ua.random,
@@ -40,7 +42,7 @@ def download_pdf(url, save_path):
             response.raise_for_status()  # Check if the request was successful
             with open(save_path, 'wb') as file:
                 file.write(response.content)
-            print(f"PDF downloaded successfully: {save_path}")
+            print(f"PDF downloaded successfully: {save_path.replace('\\', '/')}")
     except requests.exceptions.HTTPError as http_err:
         if http_err.response.status_code == 403:
             print("HTTP 403 Forbidden error. Retrying with different headers.")
@@ -50,7 +52,7 @@ def download_pdf(url, save_path):
                 response.raise_for_status()
                 with open(save_path, 'wb') as file:
                     file.write(response.content)
-                print(f"PDF downloaded successfully: {save_path}")
+                print(f"PDF downloaded successfully: {save_path.replace('\\', '/')}")
             except Exception as e:
                 print(f"Failed to download PDF on retry: {e}")
         else:
@@ -60,6 +62,7 @@ def download_pdf(url, save_path):
 
 # Function for the first pipeline type
 def execute_pdf_download(document_id, db_path='data/database/database.sqlite'):
+    db_path = os.path.abspath(db_path)
     # Fetch document details
     details = get_document_details(document_id, db_path)
     if not details:
@@ -70,7 +73,7 @@ def execute_pdf_download(document_id, db_path='data/database/database.sqlite'):
 
     # Define save path and file name
     current_date = datetime.now().strftime("%Y%m%d")
-    save_dir = 'data/raw/pdf'
+    save_dir = os.path.abspath('data/raw/pdf')
     os.makedirs(save_dir, exist_ok=True)
     save_path = os.path.join(save_dir, f"{document_id}_{pipe_id}_{current_date}.pdf")
 
@@ -79,6 +82,7 @@ def execute_pdf_download(document_id, db_path='data/database/database.sqlite'):
 
 # Function for the second pipeline type
 def execute_pdf_download_with_url(document_id, url, current_release_date, db_path='data/database/database.sqlite'):
+    db_path = os.path.abspath(db_path)
     # Fetch document details
     details = get_document_details(document_id, db_path)
     if not details:
@@ -88,11 +92,9 @@ def execute_pdf_download_with_url(document_id, url, current_release_date, db_pat
     pipe_id, document_id, _ = details  # We ignore the URL from the database in this case
 
     # Define save path and file name
-    save_dir = 'data/raw/pdf'
+    save_dir = os.path.abspath('data/raw/pdf')
     os.makedirs(save_dir, exist_ok=True)
     save_path = os.path.join(save_dir, f"{document_id}_{pipe_id}_{current_release_date}.pdf")
 
     # Download the PDF
     download_pdf(url, save_path)
-
-
