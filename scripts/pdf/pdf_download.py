@@ -42,7 +42,7 @@ def download_pdf(url, save_path):
             response.raise_for_status()  # Check if the request was successful
             with open(save_path, 'wb') as file:
                 file.write(response.content)
-            print(f"PDF downloaded successfully: {save_path.replace('\\', '/')}")
+            print(f"PDF downloaded successfully: {save_path.replace('\\\\', '/')}")
     except requests.exceptions.HTTPError as http_err:
         if http_err.response.status_code == 403:
             print("HTTP 403 Forbidden error. Retrying with different headers.")
@@ -52,7 +52,7 @@ def download_pdf(url, save_path):
                 response.raise_for_status()
                 with open(save_path, 'wb') as file:
                     file.write(response.content)
-                print(f"PDF downloaded successfully: {save_path.replace('\\', '/')}")
+                print(f"PDF downloaded successfully: {save_path.replace('\\\\', '/')}")
             except Exception as e:
                 print(f"Failed to download PDF on retry: {e}")
         else:
