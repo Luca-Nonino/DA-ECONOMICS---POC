@@ -69,7 +69,7 @@ def update_current_release_date(document_id, release_date, db_path):
     except sqlite3.Error as e:
         print(f"Database error occurred while updating current release date: {e}")
 
-def check_hash_and_extract_release_date(pdf_path, db_path='data/database/database.sqlite'):
+def check_hash_and_extract_release_date(pdf_path, db_path=os.path.join(project_root, 'data', 'database', 'database.sqlite')):
     db_path = os.path.abspath(db_path)
     pdf_path = os.path.abspath(pdf_path)
 
