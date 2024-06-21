@@ -5,7 +5,7 @@ import re
 from scripts.utils.completions_general import generate_short_summaries
 
 # Define project root directory
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
+project_root  = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 def read_processed_file(file_path):
     if not os.path.exists(file_path):

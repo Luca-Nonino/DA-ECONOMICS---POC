@@ -6,7 +6,7 @@ import time
 from datetime import datetime
 from openai import OpenAI
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 from app.config import api_key
 
 client = OpenAI(base_url="https://api.openai.com/v1", api_key=api_key)

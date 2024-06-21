@@ -1,7 +1,7 @@
 import os
 import sqlite3
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 def get_current_release_date(document_id, db_path=os.path.join(BASE_DIR, 'data/database/database.sqlite')):
     conn = sqlite3.connect(db_path)
