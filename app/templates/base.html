@@ -13,19 +13,19 @@
             color: black;
         }
         .header {
-            border-color: #d2691e; /* Orangish Brown */
-            color: #228b22; /* Dark Green */
+            border-color: #d2691e;
+            color: #228b22;
             background-color: inherit;
             z-index: 1000;
-            padding: 20px; /* Ensure enough padding */
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: fixed; /* Fixed positioning */
+            position: fixed;
             top: 0;
-            left: 250px; /* Adjust to accommodate the lateral menu */
+            left: 250px;
             right: 0;
-            width: calc(100% - 250px); /* Adjust width to fit between menu and switcher */
+            width: calc(100% - 250px);
             box-sizing: border-box;
         }
         .header-title {
@@ -37,8 +37,8 @@
             top: 0;
             left: 0;
             width: 250px;
-            height: 100%; /* Full height */
-            border: 1px solid #d2691e; /* Orangish Brown */
+            height: 100%;
+            border: 1px solid #d2691e;
             background-color: inherit;
             overflow-y: auto;
         }
@@ -49,22 +49,30 @@
             margin-bottom: 5px;
         }
         .nav-bar .indicator-link:hover {
-            color: #228b22; /* Dark Green */
+            color: #228b22;
         }
         .nav-bar .indicator-separator {
-            color: #228b22; /* Dark Green */
+            color: #228b22;
             text-align: center;
             margin: 5px 0;
         }
         .content {
             margin-left: 250px;
             padding: 20px;
-            padding-top: 100px; /* Adjust padding to ensure content is not hidden behind the header */
+            padding-top: 100px;
+            display: flex;
+            flex-wrap: wrap;
         }
-        #main-container {
-            border: 1px solid #d2691e; /* Orangish Brown */
+        #main-container, #crud-container {
+            border: 1px solid #d2691e;
             border-radius: 8px;
             padding: 20px;
+            background-color: inherit;
+            width: calc(50% - 20px);
+            margin: 10px;
+            box-sizing: border-box;
+            max-height: calc(100vh - 160px);
+            overflow-y: auto;
         }
         .box {
             background-color: inherit;
@@ -72,21 +80,21 @@
             margin-bottom: 20px;
         }
         .title, .subtitle {
-            color: #d2691e; /* Orangish Brown */
+            color: #d2691e;
         }
         .button {
             display: inline-block;
-            background-color: #d2691e; /* Orangish Brown */
+            background-color: #d2691e;
             color: white;
             padding: 10px 15px;
             text-align: center;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s ease;
-            white-space: nowrap; /* Ensure text doesn't wrap */
+            white-space: nowrap;
         }
         .button:hover {
-            background-color: #a0522d; /* Lighter Brown */
+            background-color: #a0522d;
         }
         .dropdown select {
             background-color: #555;
@@ -96,124 +104,129 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            background-color: #228b22; /* Dark Green */
+            background-color: #228b22;
             color: white;
             padding: 10px;
             border-radius: 5px;
             cursor: pointer;
         }
+        .edit-field {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+        .edit-field label {
+            margin-bottom: 5px;
+        }
+        .edit-field textarea {
+            padding: 5px;
+            border: 1px solid #d2691e;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            min-height: 40px;
+            resize: vertical;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .task {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .task textarea {
+            flex: 2;
+            margin-right: 10px;
+            padding: 5px;
+            border: 1px solid #d2691e;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        .task button {
+            flex: 0;
+            background-color: #d2691e;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .task button:hover {
+            background-color: #a0522d;
+        }
         .light-mode .header,
         .light-mode .nav-bar,
         .light-mode .box {
             background-color: #f9f9f9;
-            border-color: #d2691e; /* Orangish Brown */
+            border-color: #d2691e;
         }
         .light-mode .header h1,
         .light-mode .indicator-link,
         .light-mode .title,
         .light-mode .subtitle {
-            color: #228b22; /* Dark Green */
+            color: #228b22;
         }
         .light-mode .button {
-            background-color: #d2691e; /* Orangish Brown */
+            background-color: #d2691e;
             color: white;
         }
         .light-mode .button:hover {
-            background-color: #a0522d; /* Lighter Brown */
+            background-color: #a0522d;
         }
         .light-mode .indicator-separator {
-            color: #d2691e; /* Orangish Brown */
+            color: #d2691e;
         }
         .light-mode .key-takeaway-title {
-            color: #d2691e; /* Orangish Brown */
+            color: #d2691e;
         }
         .dark-mode .header,
         .dark-mode .nav-bar,
         .dark-mode .box {
             background-color: #1a1a1a;
-            border-color: #d2691e; /* Orangish Brown */
+            border-color: #d2691e;
         }
         .dark-mode .header h1,
         .dark-mode .indicator-link,
         .dark-mode .title,
         .dark-mode .subtitle {
-            color: #d2691e; /* Orangish Brown */
+            color: #d2691e;
         }
         .dark-mode .button {
-            background-color: #228b22; /* Dark Green */
+            background-color: #228b22;
             color: white;
         }
         .dark-mode .button:hover {
-            background-color: #006400; /* Darker Green */
+            background-color: #006400;
         }
         .dark-mode .indicator-separator {
-            color: #228b22; /* Dark Green */
+            color: #228b22;
         }
         .dark-mode .key-takeaway-title {
-            color: #228b22; /* Dark Green */
+            color: #228b22;
         }
         .buttons {
             display: flex;
-            gap: 10px; /* Add space between buttons */
-            align-items: center; /* Ensure buttons are vertically centered */
+            gap: 10px;
+            align-items: center;
         }
         .title-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 20px; /* Add some space between the title and buttons */
+            gap: 20px;
         }
         .dropdown {
-            margin-top: 10px; /* Reset any top margin */
+            margin-top: 10px;
         }
         button, a.button {
             display: inline-flex;
             align-items: center;
-            height: 40px; /* Ensure all buttons have the same height */
+            height: 40px;
         }
         .cursor-pointer {
             cursor: pointer;
         }
-        /* Modal container */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-            padding-top: 60px;
-        }
-
-        /* Modal content */
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto; /* 15% from the top and centered */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
-        }
-
-        /* Close button */
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        /* Modal styles */
         .modal {
             display: none;
             position: fixed;
@@ -228,14 +241,18 @@
             background-color: rgba(0,0,0,0.4);
         }
         .modal-content {
-            background-color: #1a1a1a; /* Updated for dark theme */
-            color: white; /* Updated for dark theme */
+            background-color: #f9f9f9;
+            color: black;
             margin: auto;
             padding: 20px;
             border: 1px solid #888;
             width: 80%;
-            max-width: 600px;
+            max-width: 800px;
             text-align: center;
+        }
+        .dark-mode .modal-content {
+            background-color: #1a1a1a;
+            color: white;
         }
         .close {
             color: #aaa;
@@ -268,22 +285,19 @@
         </ul>
     </div>
     <div class="content">
-        <div id="main-container">
-            <p>Select a publication to view summaries and key takeaways</p>
-        </div>
-        <div class="box hidden" id="details-container">
+        <div id="main-container" class="box hidden">
             <div class="title-container flex justify-between items-center mb-4">
                 <div>
                     <h2 class="title text-2xl" id="document-title"></h2>
                     <p><a href="#" class="text-blue-800 hover:text-blue-600" id="document-path"></a></p>
                     <div class="dropdown mb-4">
-                        <select id="release-date-select" class="bg-gray-700 text-white p-2 rounded">
-                        </select>
+                        <select id="release-date-select" class="bg-gray-700 text-white p-2 rounded"></select>
                     </div>
                 </div>
                 <div class="buttons flex gap-2">
                     <a class="button p-2 rounded cursor-pointer bg-green-500 hover:bg-green-700 text-white" id="check-new-release">Check for New Release</a>
                     <a class="button p-2 rounded cursor-pointer bg-blue-500 hover:bg-blue-700 text-white" id="json-mode">Json Mode</a>
+                    <a class="button p-2 rounded cursor-pointer bg-purple-500 hover:bg-purple-700 text-white" id="generate-final-pt-summary">Generate Final PT Summary</a>
                 </div>
             </div>
             <div class="mb-4">
@@ -299,27 +313,73 @@
                 <div id="key-takeaways"></div>
             </div>
         </div>
+        <div id="crud-container" class="box hidden">
+            <h3 class="subtitle text-xl mb-4">View & Edit Prompt</h3>
+            <form id="crud-form">
+                <div class="edit-field">
+                    <label>Macro Environment Impacts Description</label>
+                    <textarea id="macro-env-desc"></textarea>
+                </div>
+                <div class="edit-field">
+                    <label>Audience</label>
+                    <textarea id="audience"></textarea>
+                </div>
+                <div class="edit-field">
+                    <label>Objective</label>
+                    <textarea id="objective"></textarea>
+                </div>
+                <div class="edit-field">
+                    <label>Constraints Language Usage</label>
+                    <textarea id="constraints-lang-usage"></textarea>
+                </div>
+                <div class="edit-field">
+                    <label>Constraints Language Style</label>
+                    <textarea id="constraints-lang-style"></textarea>
+                </div>
+                <div id="tasks-container">
+                    <label>Tasks</label>
+                    <div class="task">
+                        <textarea class="task-input"></textarea>
+                        <button class="delete-task" type="button">-</button>
+                    </div>
+                </div>
+                <button id="add-task" type="button" class="button">Add Task</button>
+                <button type="button" id="save-changes" class="button mt-4">Save Changes</button>
+            </form>
+        </div>
     </div>
-    <!-- Modal structure -->
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <div id="modal-body"></div>
         </div>
     </div>
+    <div id="generated-summary-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-summary-modal">&times;</span>
+            <div id="generated-summary-content"></div>
+            <button id="copy-summary" class="button">Copy to Clipboard</button>
+        </div>
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const links = document.querySelectorAll('.indicator-link');
             const mainContainer = document.getElementById('main-container');
-            const detailsContainer = document.getElementById('details-container');
+            const crudContainer = document.getElementById('crud-container');
             const themeSwitcher = document.getElementById('theme-switcher');
             const releaseDateSelect = document.getElementById('release-date-select');
             const checkNewReleaseButton = document.getElementById('check-new-release');
             const jsonModeButton = document.getElementById('json-mode');
-
+            const generateFinalPTSummaryButton = document.getElementById('generate-final-pt-summary');
             const modal = document.getElementById("myModal");
             const span = document.getElementsByClassName("close")[0];
             const modalBody = document.getElementById('modal-body');
+            const generatedSummaryModal = document.getElementById('generated-summary-modal');
+            const closeSummaryModal = document.getElementsByClassName("close-summary-modal")[0];
+            const generatedSummaryContent = document.getElementById('generated-summary-content');
+            const copySummaryButton = document.getElementById('copy-summary');
+            const saveChangesButton = document.getElementById('save-changes');
+            const addTaskButton = document.getElementById('add-task');
 
             links.forEach(link => {
                 link.addEventListener('click', function () {
@@ -328,10 +388,11 @@
                         .then(response => response.json())
                         .then(data => {
                             document.getElementById('document-title').textContent = data.document_name + ' - ' + data.source_name;
+                            document.getElementById('document-title').setAttribute('data-document-id', data.document_id);
                             document.getElementById('document-path').href = data.path;
                             document.getElementById('document-path').textContent = data.path;
                             releaseDateSelect.innerHTML = data.release_dates.map(date => {
-                                const dateStr = String(date); // Ensure the date is a string
+                                const dateStr = String(date);
                                 return `<option value="${dateStr}">${dateStr.replace(/-/g, '/')}</option>`;
                             }).join('');
                             releaseDateSelect.setAttribute('data-document-id', data.document_id);
@@ -340,8 +401,30 @@
                             document.getElementById('en-summary').textContent = data.en_summary;
                             document.getElementById('pt-summary').textContent = data.pt_summary;
                             document.getElementById('key-takeaways').innerHTML = data.key_takeaways.map(kt => `<h4 class="key-takeaway-title text-lg">${kt.title}</h4><p>${kt.content}</p>`).join('');
-                            detailsContainer.classList.remove('hidden');
-                            mainContainer.classList.add('hidden');
+                            mainContainer.classList.remove('hidden');
+                            crudContainer.classList.remove('hidden');
+                        });
+
+                    fetch(`/indicators/api/prompts/${docId}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById('macro-env-desc').value = data.format_output_macro_environment_impacts_description || '';
+                            document.getElementById('audience').value = data.audience || '';
+                            document.getElementById('objective').value = data.objective || '';
+                            document.getElementById('constraints-lang-usage').value = data.constraints_language_usage || '';
+                            document.getElementById('constraints-lang-style').value = data.constraints_language_style || '';
+
+                            const tasksContainer = document.getElementById('tasks-container');
+                            tasksContainer.innerHTML = '';
+                            data.tasks.forEach((task, index) => {
+                                if (task) {
+                                    const taskDiv = document.createElement('div');
+                                    taskDiv.className = 'task';
+                                    taskDiv.innerHTML = `<textarea class="task-input">${task}</textarea><button class="delete-task" type="button">-</button>`;
+                                    tasksContainer.appendChild(taskDiv);
+                                }
+                            });
+                            updateTaskEvents();
                         });
                 });
             });
@@ -349,12 +432,15 @@
             themeSwitcher.addEventListener('click', function () {
                 document.body.classList.toggle('dark-mode');
                 document.body.classList.toggle('light-mode');
-                // Update button colors
-                if (document.body.classList.contains('dark-mode')) {
-                    themeSwitcher.style.backgroundColor = '#d2691e'; // Orangish Brown for dark mode
-                } else {
-                    themeSwitcher.style.backgroundColor = '#228b22'; // Dark Green for light mode
-                }
+                document.querySelectorAll('.button').forEach(button => {
+                    if (document.body.classList.contains('dark-mode')) {
+                        button.style.backgroundColor = '#228b22';
+                        button.style.color = 'white';
+                    } else {
+                        button.style.backgroundColor = '#d2691e';
+                        button.style.color = 'white';
+                    }
+                });
             });
 
             if (releaseDateSelect) {
@@ -378,7 +464,7 @@
                         .then(response => response.text())
                         .then(html => {
                             modalBody.innerHTML = html;
-                            modal.style.display = "block"; // Display the modal
+                            modal.style.display = "block";
                         });
                 });
             }
@@ -391,15 +477,142 @@
                 });
             }
 
-            // When the user clicks on <span> (x), close the modal
+            generateFinalPTSummaryButton.addEventListener('click', function () {
+                const docId = document.getElementById('document-title').getAttribute('data-document-id');
+                const releaseDate = document.getElementById('release-date-select').value;
+                const enSummary = document.getElementById('en-summary').textContent;
+                const ptSummary = document.getElementById('pt-summary').textContent;
+                const keyTakeaways = Array.from(document.querySelectorAll('#key-takeaways .key-takeaway-title')).map(title => {
+                    return {
+                        title: title.textContent,
+                        content: title.nextElementSibling.textContent
+                    };
+                });
+
+                const promptData = {
+                    macro_env_desc: document.getElementById('macro-env-desc').value,
+                    audience: document.getElementById('audience').value,
+                    objective: document.getElementById('objective').value,
+                    constraints_lang_usage: document.getElementById('constraints-lang-usage').value,
+                    constraints_lang_style: document.getElementById('constraints-lang-style').value,
+                    tasks: Array.from(document.querySelectorAll('.task-input')).map(task => task.value)
+                };
+
+                fetch('/indicators/api/generate_pt_summary', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        doc_id: docId,
+                        release_date: releaseDate,
+                        en_summary: enSummary,
+                        pt_summary: ptSummary,
+                        key_takeaways: keyTakeaways,
+                        prompt_data: promptData
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    generatedSummaryContent.innerText = data.pt_summary;
+                    generatedSummaryModal.style.display = "block";
+                })
+                .catch(error => {
+                    console.error('Error generating PT summary:', error);
+                    alert('Failed to generate PT summary.');
+                });
+            });
+
+            saveChangesButton.addEventListener('click', function () {
+                const docId = document.getElementById('document-title').getAttribute('data-document-id');
+                const macroEnvDesc = document.getElementById('macro-env-desc').value;
+                const audience = document.getElementById('audience').value;
+                const objective = document.getElementById('objective').value;
+                const constraintsLangUsage = document.getElementById('constraints-lang-usage').value;
+                const constraintsLangStyle = document.getElementById('constraints-lang-style').value;
+                const tasks = Array.from(document.querySelectorAll('.task-input')).map(input => input.value);
+
+                fetch(`/indicators/api/update_all`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        prompt_id: docId,
+                        macro_env_desc: macroEnvDesc,
+                        audience,
+                        objective,
+                        constraints_lang_usage: constraintsLangUsage,
+                        constraints_lang_style: constraintsLangStyle,
+                        tasks
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        alert('Changes saved successfully!');
+                    } else {
+                        alert('Failed to save changes.');
+                    }
+                });
+            });
+
+            addTaskButton.addEventListener('click', function () {
+                const tasksContainer = document.getElementById('tasks-container');
+                const taskCount = tasksContainer.querySelectorAll('.task').length;
+                if (taskCount < 5) {
+                    const newTask = document.createElement('div');
+                    newTask.className = 'task';
+                    newTask.innerHTML = `<textarea class="task-input"></textarea><button class="delete-task" type="button">-</button>`;
+                    tasksContainer.appendChild(newTask);
+                    updateTaskEvents();
+                } else {
+                    alert('Maximum 5 tasks allowed.');
+                }
+            });
+
+            function updateTaskEvents() {
+                document.querySelectorAll('.delete-task').forEach(button => {
+                    button.addEventListener('click', function () {
+                        const tasksContainer = document.getElementById('tasks-container');
+                        const taskCount = tasksContainer.querySelectorAll('.task').length;
+                        if (taskCount > 1) {
+                            this.parentElement.remove();
+                        } else {
+                            alert('At least one task is required.');
+                        }
+                    });
+                });
+            }
+
+            updateTaskEvents();
+
             span.onclick = function() {
                 modal.style.display = "none";
             }
 
-            // When the user clicks anywhere outside of the modal, close it
             window.onclick = function(event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
+                }
+            }
+
+            closeSummaryModal.onclick = function() {
+                generatedSummaryModal.style.display = "none";
+            }
+
+            copySummaryButton.onclick = function() {
+                const summaryText = generatedSummaryContent.innerText;
+                navigator.clipboard.writeText(summaryText).then(() => {
+                    alert("Summary copied to clipboard!");
+                }).catch(err => {
+                    console.error('Error copying to clipboard: ', err);
+                });
+            }
+
+            window.onclick = function(event) {
+                if (event.target == generatedSummaryModal) {
+                    generatedSummaryModal.style.display = "none";
                 }
             }
         });

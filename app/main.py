@@ -127,6 +127,42 @@ async def query_source(request: Request, doc_id: int, date: Optional[str] = None
         if conn:
             conn.close()
 
+@app.post("/indicators/api/update_field")
+async def update_field(data: dict):
+    try:
+        field = data['field']
+        value = data['value']
+        db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+        cursor.execute(f"UPDATE prompts_table SET {field} = ? WHERE prompt_id = ?", (value, data['prompt_id']))
+        conn.commit()
+        return {"status": "success"}
+    except Exception as e:
+        logger.error(f"Error updating field {field}: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    finally:
+        if conn:
+            conn.close()
+
+@app.post("/indicators/api/update_tasks")
+async def update_tasks(data: dict):
+    try:
+        tasks = data['tasks']
+        db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+        cursor.execute("UPDATE prompts_table SET tasks_1 = ?, tasks_2 = ?, tasks_3 = ?, tasks_4 = ?, tasks_5 = ? WHERE prompt_id = ?",
+                       (*tasks, data['prompt_id']))
+        conn.commit()
+        return {"status": "success"}
+    except Exception as e:
+        logger.error(f"Error updating tasks: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    finally:
+        if conn:
+            conn.close()
+
 @app.get("/indicators/update", response_class=HTMLResponse)
 async def update_source(id: int = Query(...)):
     logger.info(f"Received request to update source with ID: {id}")

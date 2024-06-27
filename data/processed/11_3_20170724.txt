@@ -1,0 +1,23 @@
+**Title:**
+{'Existing-Home Sales Report: May 2024'}
+
+**Overview:**
+||The report from the National Association of REALTORS® for May 2024 highlights a slight decline in existing-home sales by 0.7% to a seasonally adjusted annual rate of 4.11 million. Year-over-year, sales decreased by 2.8%. The median existing-home sales price reached a record high of $419,300, marking an 11th consecutive month of year-over-year price gains. Inventory of unsold homes increased by 6.7% from April to 1.28 million units, equivalent to a 3.7-month supply. Regional sales trends varied, with declines in the South but stability in the Northeast, Midwest, and West.||
+
+**Key Takeaways:**
+- {**Sales Volume**}: [Existing-home sales decreased by 0.7% from April to a seasonally adjusted annual rate of 4.11 million in May 2024. This represents a 2.8% decline from May 2023's rate of 4.23 million.]
+- {**Median Sales Price**}: [The median existing-home sales price rose by 5.8% year-over-year to $419,300, the highest price ever recorded. This marks the 11th consecutive month of year-over-year price increases.]
+- {**Inventory Levels**}: [The inventory of unsold existing homes grew by 6.7% from April to 1.28 million units, translating to a 3.7-month supply at the current sales pace. This is up from 3.5 months in April and 3.1 months in May 2023.]
+- {**Regional Sales Trends**}: [Sales in the South fell by 1.6% from April, while the Northeast, Midwest, and West saw no month-over-month changes. Year-over-year, sales increased by 1% in the Midwest but declined by 4% in the Northeast, 5.1% in the South, and 1.3% in the West.]
+- {**First-Time Buyers**}: [First-time buyers accounted for 31% of sales in May, down from 33% in April but up from 28% in May 2023.]
+- {**All-Cash Sales**}: [All-cash sales made up 28% of transactions in May, unchanged from April and up from 25% one year ago.]
+- {**Mortgage Rates**}: [The 30-year fixed-rate mortgage averaged 6.87% as of June 20, down from 6.95% the prior week but up from 6.67% one year ago.]
+
+**Macro Environment Impacts**
+||The May 2024 existing-home sales report indicates a complex housing market environment with mixed signals for monetary policy. The slight decline in sales volume, coupled with a record-high median sales price, suggests persistent demand pressures despite higher mortgage rates. The increase in inventory levels to a 3.7-month supply is a positive development, potentially easing price pressures in the future.
+
+From a Taylor Rule perspective, the Federal Reserve may need to consider the implications of rising home prices on inflation expectations. The record-high median price of $419,300, up 5.8% year-over-year, could contribute to broader inflationary pressures, necessitating a cautious approach to interest rate adjustments. However, the increase in housing inventory and the stabilization of sales in most regions may provide some relief, indicating that supply-side factors are beginning to address the demand-supply imbalance.
+
+The unchanged insured unemployment rate at 1.2% and the mixed regional sales trends further complicate the macroeconomic landscape. The Fed's policy adjustments will need to balance the dual mandate of controlling inflation while supporting employment. The rise in all-cash sales and the significant share of first-time buyers highlight the ongoing challenges in housing affordability, which could influence long-term economic stability and consumer spending patterns.
+
+Overall, the data suggests that while the housing market remains robust, there are emerging signs of stabilization that could influence future monetary policy decisions. The Fed may need to maintain a vigilant stance, closely monitoring housing market dynamics and broader economic indicators to ensure balanced and sustainable economic growth.||

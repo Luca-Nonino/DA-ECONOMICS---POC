@@ -13,6 +13,7 @@ env/
 build/
 dist/
 *.egg-info/
+venv/
 
 # Application files
 app/__init__.py
@@ -24,3 +25,6 @@ app/config.py
 
 # Temp Data
 data/raw
+
+scripts/tests/generate_context.py
+scripts/tests/consolidated_code.md

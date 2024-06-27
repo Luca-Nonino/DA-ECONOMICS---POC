@@ -1,0 +1,81 @@
+Example 1:
+
+🐲 *DA Economics – 21/06/2024 – Flash Reading – PMI US*
+
+*PMI Manufatura nos EUA mais forte que esperado: 51.7 (expectativas 51 , anterior 51,3). PMI Serviços: 55.1 (expectativas 53,4, anterior 54,8). PMI Composto 54,6 (expectativas 53.5, anterior 54,5).*
+O crescimento da atividade empresarial nos EUA acelerou para o nível mais alto em 26 meses em junho, com o PMI Composto subindo para 54,6. A atividade do setor de serviços liderou o crescimento, enquanto a produção manufatureira perdeu algum impulso. A confiança empresarial melhorou, impulsionando as contratações pela primeira vez em três meses. A inflação dos preços de venda diminuiu devido ao crescimento mais lento dos custos de insumos.
+
+**Principais Pontos**
+
+*Índice de Produção Composto do PMI*
+- Subiu para 54,6 em junho, de 54,5 em maio, atingindo o nível mais alto em 26 meses.
+
+*Atividade Empresarial do Setor de Serviços*
+- Atingiu 55,1 em junho, de 54,8 em maio, o nível mais alto em 26 meses.
+
+*Produção Manufatureira*
+- Caiu para 51,9 em junho, de 53,0 em maio, marcando uma baixa de dois meses.
+
+*Novas Encomendas e Emprego*
+- Novas encomendas e emprego apresentaram contribuições positivas ao PMI, com crescimento nas contratações após três meses de declínios.
+
+*Inflação dos Custos de Insumos*
+- A inflação dos custos de insumos desacelerou, embora permanecendo acima da média pré-pandêmica. A inflação dos preços de venda caiu para o nível mais baixo em cinco meses.
+
+*Confiança Empresarial*
+- A confiança empresarial para o próximo ano melhorou no setor de serviços, mas diminuiu na manufatura devido a preocupações com a demanda e incertezas políticas.
+
+Essas dinâmicas destacam um final robusto para o segundo trimestre e indicam uma tendência de crescimento econômico contínuo, embora com pressões inflacionárias moderadas.
+
+_*DA Economics*_
+
+Exemplo 2:
+
+🐲 *DA Economics – 25/06/2024 – Flash Reading – Consumer Confidence*
+
+*Confiança do Consumidor nos EUA (dado do Conference Board) ligeiramente acima do esperado: 100,4 (expectativas 100,0, anterior 102,0). Índice da Situação Atual melhorou para 141,5, refletindo melhores condições de negócios e mercado de trabalho. O Índice de Expectativas caiu para 73,0, abaixo do limiar de recessão pelo quinto mês consecutivo, indicando pessimismo contínuo. As expectativas de inflação diminuíram marginalmente para 5,3%, e a parcela de consumidores que esperam taxas de juros mais altas caiu para 52,6%.*
+
+**Principais Pontos**
+
+*Índice de Confiança do Consumidor*
+- O Índice de Confiança do Consumidor® diminuiu para 100,4 em junho de 2024, de 101,3 em maio, refletindo uma ligeira queda na confiança geral dos consumidores.
+
+*Índice da Situação Atual*
+- O Índice da Situação Atual aumentou para 141,5, de 140,8, indicando uma ligeira melhoria na avaliação dos consumidores sobre as condições atuais de negócios e mercado de trabalho.
+
+*Índice de Expectativas*
+- O Índice de Expectativas caiu para 73,0, de 74,9, permanecendo abaixo do limiar de recessão de 80 pelo quinto mês consecutivo, sinalizando um pessimismo contínuo dos consumidores sobre as condições econômicas futuras.
+
+*Condições do Mercado de Trabalho*
+- 38,1% dos consumidores relataram que os empregos eram "abundantes", acima dos 37,0% em maio, enquanto 14,1% disseram que os empregos eram "difíceis de conseguir", abaixo dos 14,3%. Isso sugere uma ligeira melhoria nas percepções do mercado de trabalho.
+
+*Perspectivas de Condições de Negócios a Curto Prazo*
+- 12,5% dos consumidores esperavam que as condições de negócios melhorassem, abaixo dos 13,7% em maio, enquanto 16,7% esperavam que as condições piorassem, abaixo dos 16,9%.
+
+*Perspectivas de Mercado de Trabalho a Curto Prazo*
+- 12,6% dos consumidores esperavam que mais empregos estivessem disponíveis, abaixo dos 13,1% em maio, enquanto 17,3% antecipavam menos empregos, abaixo dos 18,8%.
+
+*Perspectivas de Renda a Curto Prazo*
+- 15,2% dos consumidores esperavam que suas rendas aumentassem, abaixo dos 17,7% em maio, enquanto 11,7% esperavam que suas rendas diminuíssem, acima dos 11,5%.
+
+*Expectativas de Inflação*
+- As expectativas médias de inflação de 12 meses diminuíram ligeiramente de 5,4% para 5,3%.
+
+*Expectativas do Mercado de Ações*
+- 48,4% dos consumidores esperavam que os preços das ações aumentassem no próximo ano, em comparação com 23,5% que esperavam uma diminuição e 28,1% que esperavam nenhuma mudança.
+
+*Expectativas de Taxa de Juros*
+- A parcela de consumidores que esperam taxas de juros mais altas nos próximos doze meses caiu para 52,6%, seu nível mais baixo desde fevereiro.
+
+*DA Economics*
+
+Example 3 -> for guidance of the tone and vocabulary that should be used across the output:
+
+🐲 DA Economics – 24/06/2024 – Market Tidbit – CAC 40 penalized too harshly?
+
+Como discutimos em publicação anterior, o mercado penalizou ativos franceses depois da convocação de novas eleições parlamentares. O partido de extrema-direita de Marine Le Pen, Reagrupamento Nacional, lidera as pesquisas com aproximadamente 33% dos votos, seguido pela frente unida dos partidos de esquerda, com 27%. O partido de Macron está em terceiro lugar nas pesquisas, com 20%. Tanto a extrema-direita quanto o bloco de esquerda e extrema-esquerda apresentam propostas econômicas e fiscais questionáveis.
+
+O risco político, no entanto, pode ter gerado oportunidades no CAC 40: ações de empresas com expectativas positivas de faturamento no próximo trimestres estão sofrendo. Não é incomum que risco político gere desconto na avaliação de empresas/títulos e é o que parece estar acontecendo com papéis franceses. 
+No gráfico abaixo analisamos as variações de índices preço/lucro ( price/earnings ) de algumas empresas do CAC 40 e as estimativas de faturamento dos analistas de sell-side para as companhias e notamos que, embora a queda no preço seja generalizada, boa parte das empresas têm expectativa de crescimento no faturamento no próximo trimestre.
+
+DA Economics
