@@ -8,7 +8,7 @@ from datetime import datetime
 import time
 
 logger = logging.getLogger(__name__)
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from app.config import api_key
 
 client = OpenAI(base_url="https://api.openai.com/v1", api_key=api_key)
