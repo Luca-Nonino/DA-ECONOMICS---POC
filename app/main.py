@@ -39,7 +39,7 @@ app = FastAPI()
 static_directory = os.path.join(BASE_DIR, 'app', 'static')
 app.mount("/static", StaticFiles(directory=static_directory), name="static")
 
-app.mount("/indicators/api", api_app)
+app.mount("/solutions/DAE/ai-economist/api", api_app)
 
 # Configure Jinja2 templates
 templates_directory = os.path.join(BASE_DIR, 'app', 'templates')
@@ -47,13 +47,13 @@ templates = Jinja2Templates(directory=templates_directory)
 
 @app.get("", response_class=HTMLResponse)
 async def redirect_to_list():
-    return RedirectResponse(url="/indicators/list")
+    return RedirectResponse(url="/solutions/DAE/ai-economist/list")
 
 @app.get("/", response_class=HTMLResponse)
 async def root():
-    return RedirectResponse(url="/indicators/list")
+    return RedirectResponse(url="/solutions/DAE/ai-economist/list")
 
-@app.get("/indicators/list", response_class=HTMLResponse)
+@app.get("/solutions/DAE/ai-economist/list", response_class=HTMLResponse)
 async def indicators_list(request: Request, user: dict = Depends(get_current_user)):
     try:
         db_path = os.path.join(BASE_DIR, 'data', 'database', 'database.sqlite')
@@ -79,7 +79,7 @@ async def indicators_list(request: Request, user: dict = Depends(get_current_use
         logger.error(f"Error fetching indicators list: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
-@app.get("/indicators/query/{doc_id}", response_class=JSONResponse)
+@app.get("/solutions/DAE/ai-economist/query/{doc_id}", response_class=JSONResponse)
 async def query_source(request: Request, doc_id: int, date: Optional[str] = None):
     conn = None
     try:
@@ -128,7 +128,7 @@ async def query_source(request: Request, doc_id: int, date: Optional[str] = None
         if conn:
             conn.close()
 
-@app.post("/indicators/api/update_field")
+@app.post("/solutions/DAE/ai-economist/api/update_field")
 async def update_field(data: dict):
     try:
         field = data['field']
@@ -146,7 +146,7 @@ async def update_field(data: dict):
         if conn:
             conn.close()
 
-@app.post("/indicators/api/update_tasks")
+@app.post("/solutions/DAE/ai-economist/api/update_tasks")
 async def update_tasks(data: dict):
     try:
         tasks = data['tasks']
@@ -164,7 +164,7 @@ async def update_tasks(data: dict):
         if conn:
             conn.close()
 
-@app.get("/indicators/update", response_class=HTMLResponse)
+@app.get("/solutions/DAE/ai-economist/update", response_class=HTMLResponse)
 async def update_source(id: int = Query(...)):
     logger.info(f"Received request to update source with ID: {id}")
     try:
