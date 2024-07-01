@@ -31,7 +31,8 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
-
+db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
+logger.info(f"File permissions for {db_path}: {oct(os.stat(db_path).st_mode)[-3:]}")
 app = FastAPI()
 
 # Mount static files and API

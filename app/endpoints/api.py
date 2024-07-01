@@ -8,7 +8,14 @@ from datetime import datetime
 import time
 
 logger = logging.getLogger(__name__)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import sys
+import os
+
+# Add the parent directory to sys.path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from app.config import BASE_DIR
+
 from app.config import api_key
 
 client = OpenAI(base_url="https://api.openai.com/v1", api_key=api_key)
@@ -134,9 +141,11 @@ async def get_prompts(doc_id: int):
     conn = None
     try:
         db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
+        logger.info(f"Attempting to connect to database at: {db_path}")
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
+        logger.info(f"Querying prompt for document ID: {doc_id}")
         cursor.execute("SELECT prompt_id FROM prompts_table WHERE document_id = ?", (doc_id,))
         prompt_id = cursor.fetchone()
         if not prompt_id:
@@ -144,6 +153,8 @@ async def get_prompts(doc_id: int):
             raise HTTPException(status_code=404, detail="Prompt not found")
 
         prompt_id = prompt_id[0]
+        logger.info(f"Found prompt_id: {prompt_id}")
+
         cursor.execute("SELECT format_output_macro_environment_impacts_description, audience, objective, constraints_language_usage, constraints_language_style, tasks_1, tasks_2, tasks_3, tasks_4, tasks_5 FROM prompts_table WHERE prompt_id = ?", (prompt_id,))
         prompt = cursor.fetchone()
         if not prompt:
@@ -165,10 +176,10 @@ async def get_prompts(doc_id: int):
         return JSONResponse(data)
     except sqlite3.Error as db_error:
         logger.error(f"Database error: {db_error}", exc_info=True)
-        raise HTTPException(status_code=500, detail="Database error")
+        raise HTTPException(status_code=500, detail=f"Database error: {str(db_error)}")
     except Exception as e:
         logger.error(f"Error querying prompts: {e}", exc_info=True)
-        raise HTTPException(status_code=500, detail="Internal Server Error")
+        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
     finally:
         if conn:
             conn.close()
