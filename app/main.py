@@ -132,7 +132,7 @@ async def update_field(data: dict):
     try:
         field = data['field']
         value = data['value']
-        db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
+        db_path = os.path.join(BASE_DIR, 'data', 'database', 'database.sqlite')
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
         cursor.execute(f"UPDATE prompts_table SET {field} = ? WHERE prompt_id = ?", (value, data['prompt_id']))
@@ -149,7 +149,7 @@ async def update_field(data: dict):
 async def update_tasks(data: dict):
     try:
         tasks = data['tasks']
-        db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
+        db_path = os.path.join(BASE_DIR, 'data', 'database', 'database.sqlite')
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
         cursor.execute("UPDATE prompts_table SET tasks_1 = ?, tasks_2 = ?, tasks_3 = ?, tasks_4 = ?, tasks_5 = ? WHERE prompt_id = ?",
