@@ -1,0 +1,41 @@
+Title, "World and U.S. Supply and Use for Oilseeds"
+Unit, "Million Metric Tons"
+Source, "WASDE - 649 - 10"
+
+Category,Year,Output,Total Supply,Trade,Total Use,Ending Stocks
+Oilseeds,2022/23,,637.89,749.43,201.69,525.69
+Oilseeds,2023/24 (Est.) ,,656.83,775.74,198.56,543.13
+Oilseeds,2024/25 (Proj.) ,May,687.06,815.45,206.84,560.84
+Oilseeds,2024/25 (Proj.) ,Jun,685.81,813.63,206.1,559.96
+Oilmeals,2022/23,,357.63,377.53,97.81,355.47
+Oilmeals,2023/24 (Est.) ,,370.56,387.66,103.74,364.97
+Oilmeals,2024/25 (Proj.) ,May,384.14,402.55,106.98,377.39
+Oilmeals,2024/25 (Proj.) ,Jun,383.62,402.11,107.16,377.12
+Vegetable Oils,2022/23,,218.34,248.25,88.93,211.27
+Vegetable Oils,2023/24 (Est.) ,,223.63,255.53,88.33,218.82
+Vegetable Oils,2024/25 (Proj.) ,May,228.28,260.08,88.27,224.91
+Vegetable Oils,2024/25 (Proj.) ,Jun,227.89,259.63,88.15,224.84
+Oilseeds,2022/23,,125.75,136.42,55.12,64.16
+Oilseeds,2023/24 (Est.) ,,122.24,132.33,47.52,66.43
+Oilseeds,2024/25 (Proj.) ,May,131.16,143.05,50.83,70.32
+Oilseeds,2024/25 (Proj.) ,Jun,131.16,143.32,50.83,70.32
+Oilmeals,2022/23,,49.94,54.6,13.5,40.69
+Oilmeals,2023/24 (Est.) ,,51.35,56.0,14.72,40.84
+Oilmeals,2024/25 (Proj.) ,May,54.24,58.97,15.9,42.58
+Oilmeals,2024/25 (Proj.) ,Jun,54.24,58.97,16.08,42.4
+Vegetable Oils,2022/23,,13.18,20.75,0.33,19.28
+Vegetable Oils,2023/24 (Est.) ,,13.53,21.47,0.36,19.96
+Vegetable Oils,2024/25 (Proj.) ,May,14.29,22.54,0.37,20.93
+Vegetable Oils,2024/25 (Proj.) ,Jun,14.29,22.53,0.42,20.88
+Oilseeds,2022/23,,512.14,613.01,146.57,461.53
+Oilseeds,2023/24 (Est.) ,,534.58,643.42,151.04,476.7
+Oilseeds,2024/25 (Proj.) ,May,555.9,672.4,156.01,490.52
+Oilseeds,2024/25 (Proj.) ,Jun,554.65,670.31,155.26,489.64
+Oilmeals,2022/23,,307.69,322.94,84.31,314.79
+Oilmeals,2023/24 (Est.) ,,319.21,331.66,89.03,324.12
+Oilmeals,2024/25 (Proj.) ,May,329.9,343.58,91.08,334.81
+Oilmeals,2024/25 (Proj.) ,Jun,329.37,343.14,91.08,334.72
+Vegetable Oils,2022/23,,205.16,227.5,88.6,191.99
+Vegetable Oils,2023/24 (Est.) ,,210.1,234.06,87.96,198.85
+Vegetable Oils,2024/25 (Proj.) ,May,213.99,237.54,87.89,203.98
+Vegetable Oils,2024/25 (Proj.) ,Jun,213.6,237.1,87.73,203.96
