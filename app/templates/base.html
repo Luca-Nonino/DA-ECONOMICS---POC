@@ -14,9 +14,9 @@
         }
         .header {
             border-color: #d2691e;
-            color: #228b22;
+            color: inherit;
             background-color: inherit;
-            z-index: 1000;
+            z-index: 999;
             padding: 20px;
             display: flex;
             justify-content: center;
@@ -27,6 +27,7 @@
             right: 0;
             width: calc(100% - 250px);
             box-sizing: border-box;
+            height: 80px; /* Set the height of the header */
         }
         .header-title {
             flex: 1;
@@ -57,32 +58,35 @@
             margin: 5px 0;
         }
         .content {
-            margin-left: 250px;
-            padding: 20px;
-            padding-top: 100px;
             display: flex;
-            flex-wrap: nowrap;
-            height: calc(100vh - 100px);
+            flex-direction: column;
+            height: 100vh;
+            margin-left: 250px;
+            margin-top: 80px; /* Add a top margin equal to the header height */
         }
-        #main-container, #crud-container {
+        .resizable-container {
+            flex: 1;
+            display: flex;
+            height: 100%;
+            overflow: hidden;
+        }
+        #main-container, #crud-container, #placeholder {
+            flex: 1;
             border: 1px solid #d2691e;
             border-radius: 8px;
             padding: 20px;
             background-color: inherit;
             overflow-y: auto;
-            height: calc(100vh - 160px);
-        }
-        .resizable-container {
             display: flex;
-            flex-grow: 1;
-            height: 100%;
-            overflow: hidden;
+            flex-direction: column;
         }
         #main-container {
             flex: 3;
+            display: none;
         }
         #crud-container {
             flex: 1;
+            display: none;
         }
         .resizer {
             width: 10px;
@@ -98,10 +102,12 @@
             color: #d2691e;
         }
         .button {
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center text horizontally and vertically */
             background-color: #d2691e;
             color: white;
-            padding: 15px 20px; /* Increased padding for larger button */
+            padding: 10px 20px;
             text-align: center;
             text-decoration: none;
             border-radius: 5px;
@@ -124,6 +130,7 @@
             padding: 10px;
             border-radius: 5px;
             cursor: pointer;
+            z-index: 999;
         }
         .edit-field {
             display: flex;
@@ -251,7 +258,7 @@
         .modal {
             display: none;
             position: fixed;
-            z-index: 1;
+            z-index: 1001;
             padding-top: 100px;
             left: 0;
             top: 0;
@@ -299,7 +306,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 3;
+            z-index: 1002;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -315,12 +322,21 @@
             right: 0;
             bottom: 0;
             background-color: rgba(0,0,0,0.5);
-            z-index: 2;
+            z-index: 1000;
+        }
+        #placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #placeholder h2 {
+            font-size: 2rem;
+            text-align: center;
         }
     </style>
 </head>
 <body class="light-mode">
-    <div class="header">
+    <div class="header" id="header">
         <div class="header-title">
             <h1 class="text-4xl font-bold">US Economy Indicators - AI Pipelines</h1>
         </div>
@@ -336,8 +352,11 @@
         </ul>
     </div>
     <div class="content">
+        <div id="placeholder" class="box">
+            <h2 class="title text-2xl">Select a Publication from the list on the left</h2>
+        </div>
         <div class="resizable-container">
-            <div id="main-container" class="box hidden">
+            <div id="main-container" class="box">
                 <div class="title-container flex justify-between items-center mb-4">
                     <div>
                         <h2 class="title text-2xl" id="document-title"></h2>
@@ -366,7 +385,7 @@
                 </div>
             </div>
             <div class="resizer"></div>
-            <div id="crud-container" class="box hidden">
+            <div id="crud-container" class="box">
                 <h3 class="subtitle text-xl mb-4">View & Edit Prompt</h3>
                 <form id="crud-form">
                     <div class="edit-field">
@@ -422,6 +441,7 @@
             const links = document.querySelectorAll('.indicator-link');
             const mainContainer = document.getElementById('main-container');
             const crudContainer = document.getElementById('crud-container');
+            const placeholder = document.getElementById('placeholder');
             const themeSwitcher = document.getElementById('theme-switcher');
             const releaseDateSelect = document.getElementById('release-date-select');
             const checkNewReleaseButton = document.getElementById('check-new-release');
@@ -438,6 +458,7 @@
             const loadingIndicator = document.getElementById('loading-indicator');
             const overlay = document.getElementById('overlay');
             const resizer = document.querySelector('.resizer');
+            const header = document.getElementById('header');
             let startX, startWidthMain, startWidthCrud;
 
             resizer.addEventListener('mousedown', function(e) {
@@ -480,8 +501,9 @@
                             document.getElementById('en-summary').textContent = data.en_summary;
                             document.getElementById('pt-summary').textContent = data.pt_summary;
                             document.getElementById('key-takeaways').innerHTML = data.key_takeaways.map(kt => `<h4 class="key-takeaway-title text-lg">${kt.title}</h4><p>${kt.content}</p>`).join('');
-                            mainContainer.classList.remove('hidden');
-                            crudContainer.classList.remove('hidden');
+                            mainContainer.style.display = 'block';
+                            crudContainer.style.display = 'block';
+                            placeholder.style.display = 'none';
                             hideLoading();
                         }).catch(hideLoading);
 
@@ -623,7 +645,7 @@
                         audience,
                         objective,
                         constraints_lang_usage: constraintsLangUsage,
-                        constraints_lang_style: constraints_langStyle,
+                        constraints_lang_style: constraintsLangStyle,
                         tasks
                     })
                 })
@@ -669,50 +691,68 @@
             function showLoading() {
                 overlay.style.display = 'block';
                 loadingIndicator.style.display = 'block';
+                header.style.pointerEvents = 'none';
+                themeSwitcher.style.pointerEvents = 'none';
             }
 
             function hideLoading() {
                 overlay.style.display = 'none';
                 loadingIndicator.style.display = 'none';
+                header.style.pointerEvents = 'auto';
+                themeSwitcher.style.pointerEvents = 'auto';
             }
 
             function formatMarkdown(text) {
                 return text
-                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                    .replace(/__(.*?)__/g, '<em>$1</em>');
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
+                    .replace(/__(.*?)__/g, '<em>$1</em>'); // Italic
             }
 
             updateTaskEvents();
 
             span.onclick = function() {
                 modal.style.display = "none";
+                header.style.zIndex = 999; // Ensure the header returns to normal after modal is closed
             }
 
             window.onclick = function(event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
+                    header.style.zIndex = 999; // Ensure the header returns to normal after modal is closed
+                }
+                if (event.target == generatedSummaryModal) {
+                    generatedSummaryModal.style.display = "none";
+                    header.style.zIndex = 999; // Ensure the header returns to normal after modal is closed
                 }
             }
 
             closeSummaryModal.onclick = function() {
                 generatedSummaryModal.style.display = "none";
+                header.style.zIndex = 999; // Ensure the header returns to normal after modal is closed
             }
 
             copySummaryButton.onclick = function() {
                 const summaryText = generatedSummaryContent.innerText;
-                navigator.clipboard.writeText(summaryText).then(() => {
-                    alert("Summary copied to clipboard!");
-                }).catch(err => {
-                    console.error('Error copying to clipboard: ', err);
-                });
-            }
+                const formattedText = summaryText
+                    .replace(/<strong>(.*?)<\/strong>/g, '**$1**') // Reverse bold formatting
+                    .replace(/<em>(.*?)<\/em>/g, '__$1__'); // Reverse italic formatting
+                copyToClipboard(formattedText);
+                alert("Summary copied to clipboard!");
+            };
 
-            window.onclick = function(event) {
-                if (event.target == generatedSummaryModal) {
-                    generatedSummaryModal.style.display = "none";
-                }
+            function copyToClipboard(text) {
+                const tempInput = document.createElement('textarea');
+                tempInput.style.position = 'fixed';
+                tempInput.style.opacity = '0';
+                tempInput.value = text;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('Copy');
+                document.body.removeChild(tempInput);
             }
         });
     </script>
 </body>
 </html>
+
+
