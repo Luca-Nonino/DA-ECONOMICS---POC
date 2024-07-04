@@ -200,15 +200,15 @@ async def generate_pt_summary(request: Request):
 
         # Fetch release dates
         release_dates = fetch_release_dates(cursor, doc_id)
-        if len(release_dates) < 2:
-            logger.info("Release dates fetched: %s", release_dates)
-            raise HTTPException(status_code=404, detail="Not enough release dates found for comparison")
+        if not release_dates:
+            raise HTTPException(status_code=404, detail="No release dates found for the document")
 
         most_recent_date = release_dates[0]
-        second_most_recent_date = release_dates[1]
+        second_most_recent_date = release_dates[1] if len(release_dates) > 1 else None
 
-        logger.info("Most recent date: %s", most_recent_date)
-        logger.info("Second most recent date: %s", second_most_recent_date)
+        logger.info(f"Most recent date: {most_recent_date}")
+        if second_most_recent_date:
+            logger.info(f"Second most recent date: {second_most_recent_date}")
 
         # Fetch data for the most recent and second most recent dates
         def fetch_data_for_date(cursor, doc_id, date):
@@ -225,21 +225,32 @@ async def generate_pt_summary(request: Request):
             return en_summary, pt_summary, key_takeaways
 
         most_recent_en_summary, most_recent_pt_summary, most_recent_key_takeaways = fetch_data_for_date(cursor, doc_id, most_recent_date)
-        second_most_recent_en_summary, second_most_recent_pt_summary, second_most_recent_key_takeaways = fetch_data_for_date(cursor, doc_id, second_most_recent_date)
+        second_most_recent_en_summary, second_most_recent_pt_summary, second_most_recent_key_takeaways = (None, None, None)
+
+        if second_most_recent_date:
+            second_most_recent_en_summary, second_most_recent_pt_summary, second_most_recent_key_takeaways = fetch_data_for_date(cursor, doc_id, second_most_recent_date)
 
         logger.info("Most recent summaries fetched")
-        logger.info("Second most recent summaries fetched")
+        if second_most_recent_date:
+            logger.info("Second most recent summaries fetched")
 
-        if not most_recent_en_summary or not second_most_recent_en_summary:
-            raise HTTPException(status_code=404, detail="Summary data not found for the given dates")
+        if not most_recent_en_summary:
+            raise HTTPException(status_code=404, detail="Summary data not found for the most recent date")
 
         # Generate the prompt
         prompt = (
             f"Translate the following economic report summary into Portuguese and format it for easy sharing on WhatsApp.\n\n"
             f"Summary for {most_recent_date}:\n{most_recent_en_summary}\n\n"
             f"Key Takeaways:\n" + "\n".join([f"{kt[0]}: {kt[1]}" for kt in most_recent_key_takeaways]) + "\n\n"
-            f"Comparison with previous release ({second_most_recent_date}):\n{second_most_recent_en_summary}\n\n"
-            f"Key Takeaways:\n" + "\n".join([f"{kt[0]}: {kt[1]}" for kt in second_most_recent_key_takeaways]) + "\n\n"
+        )
+
+        if second_most_recent_date and second_most_recent_en_summary:
+            prompt += (
+                f"Comparison with previous release ({second_most_recent_date}):\n{second_most_recent_en_summary}\n\n"
+                f"Key Takeaways:\n" + "\n".join([f"{kt[0]}: {kt[1]}" for kt in second_most_recent_key_takeaways]) + "\n\n"
+            )
+
+        prompt += (
             f"Prompt Data:\n"
             f"Macro Environment Description: {prompt_data['macro_env_desc']}\n"
             f"Audience: {prompt_data['audience']}\n"
@@ -302,3 +313,4 @@ async def generate_pt_summary(request: Request):
     finally:
         if conn:
             conn.close()
+
