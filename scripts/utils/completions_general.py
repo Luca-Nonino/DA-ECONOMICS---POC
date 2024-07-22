@@ -46,7 +46,7 @@ def extract_release_date(pdf_path, num_chars=500, retries=3, timeout=20):
         ]
 
         response = client.chat.completions.create(
-            model="gpt-4o",
+            model="gpt-4o-mini",
             messages=history,
             temperature=0.1,
             stream=True,
