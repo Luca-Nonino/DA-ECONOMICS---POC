@@ -28,3 +28,5 @@ data/raw
 
 scripts/tests/generate_context.py
 scripts/tests/consolidated_code.md
+# Ensure SQLite file is not ignored
+!data/database.sqlite
