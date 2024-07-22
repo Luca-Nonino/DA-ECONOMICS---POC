@@ -179,7 +179,7 @@ def get_prompt(document_id, db_path=os.path.join(BASE_DIR, 'data/database/databa
         f"#CONSTRAINTS_SEARCH_TOOL_USE:\n{prompt_dict['CONSTRAINTS_SEARCH_TOOL_USE']}"
     )
 
-    example_file_path = os.path.join(BASE_DIR, "data/examples/processed_ex.txt")
+    example_file_path = os.path.join(BASE_DIR, "data/examples/processed_ex_us.txt")
     try:
         with open(example_file_path, 'r') as ex_file:
             prompt_example = ex_file.read()
