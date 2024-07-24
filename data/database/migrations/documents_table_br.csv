@@ -1,6 +1,6 @@
 ﻿DOCUMENT_ID;PATH;REFERENCE_MONTH;PIPE_NAME;PIPE_ID;FREQ;DOCUMENT_NAME;SOURCE;ESCOPE;CURRENT_RELEASE_DATE;HASH;NEXT_RELEASE_DATE;NEXT_RELEASE_TIME;COUNTRY
-22;https://anfavea.com.br/site/wp-content/uploads/2024/06/Release_Junho24.pdf;CURRENT;Custom Logic;4;M;PRODUÇÃO DE VEICULOS ANFAVEA;ANFAVEA;N;;;;;BR
-23;https://www.bcb.gov.br/publicacoes/focus;PREVIOUS;Scraping for PDF Download Link;3;M;pesquisa focus;BCB;N;;;;;BR
+22;https://anfavea.com.br/site/wp-content/uploads/2024/06/Release_Junho24.pdf;CURRENT;Scraping for PDF Download Link;3;M;PRODUÇÃO DE VEICULOS ANFAVEA;ANFAVEA;N;;;;;BR
+23;https://www.bcb.gov.br/publicacoes/focus;PREVIOUS;Custom Logic;4;M;pesquisa focus;BCB;N;;;;;BR
 24;https://www.bcb.gov.br/estatisticas/estatisticasfiscais;PREVIOUS;On Page Content;1;M;Dívida líquida e resultados primário e nominal;BCB;N;;;;;BR
 25;https://www.ibge.gov.br/estatisticas/economicas/industria/9294-pesquisa-industrial-mensal-producao-fisica-brasil.html?=&t=destaques;PREVIOUS;Scraping for PDF Download Link;3;M;PRODUÇÃO INDUSTRIAL MENSAL (PIM);IBGE;N;;;;;BR
 26;https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9256-indice-nacional-de-precos-ao-consumidor-amplo.html?=&t=noticias-e-releases;PREVIOUS;Scraping for PDF Download Link;3;M;ipca;IBGE;N;;;;;BR

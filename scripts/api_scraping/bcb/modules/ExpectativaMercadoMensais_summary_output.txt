@@ -1,0 +1,1349 @@
+Indicator: Câmbio
+
+(Reference Date: 01/2025):
+  - Current: Média = 5.20, Mediana = 5.19, Desvio Padrão = 0.15, Mínimo = 4.77, Máximo = 5.55, Respondentes = 3527.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 01/2026):
+  - Current: Média = 5.18, Mediana = 5.17, Desvio Padrão = 0.17, Mínimo = 4.73, Máximo = 5.59, Respondentes = 3006.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 02/2025):
+  - Current: Média = 5.19, Mediana = 5.19, Desvio Padrão = 0.15, Mínimo = 4.76, Máximo = 5.53, Respondentes = 3517.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 02/2026):
+  - Current: Média = 5.18, Mediana = 5.17, Desvio Padrão = 0.18, Mínimo = 4.73, Máximo = 5.61, Respondentes = 2958.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 03/2025):
+  - Current: Média = 5.19, Mediana = 5.19, Desvio Padrão = 0.15, Mínimo = 4.75, Máximo = 5.53, Respondentes = 3543.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 03/2026):
+  - Current: Média = 5.18, Mediana = 5.18, Desvio Padrão = 0.19, Mínimo = 4.65, Máximo = 5.62, Respondentes = 2936.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 04/2025):
+  - Current: Média = 5.19, Mediana = 5.18, Desvio Padrão = 0.15, Mínimo = 4.75, Máximo = 5.54, Respondentes = 3517.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 04/2026):
+  - Current: Média = 5.18, Mediana = 5.17, Desvio Padrão = 0.19, Mínimo = 4.78, Máximo = 5.65, Respondentes = 2880.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 05/2025):
+  - Current: Média = 5.18, Mediana = 5.18, Desvio Padrão = 0.16, Mínimo = 4.74, Máximo = 5.54, Respondentes = 3517.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 05/2026):
+  - Current: Média = 5.20, Mediana = 5.19, Desvio Padrão = 0.20, Mínimo = 4.64, Máximo = 5.69, Respondentes = 2642.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 06/2024):
+  - Current: Média = 5.31, Mediana = 5.34, Desvio Padrão = 0.09, Mínimo = 5.00, Máximo = 5.47, Respondentes = 1295.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 06/2025):
+  - Current: Média = 5.18, Mediana = 5.18, Desvio Padrão = 0.16, Mínimo = 4.72, Máximo = 5.55, Respondentes = 3543.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 06/2026):
+  - Current: Média = 5.23, Mediana = 5.20, Desvio Padrão = 0.20, Mínimo = 4.85, Máximo = 5.72, Respondentes = 895.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 07/2024):
+  - Current: Média = 5.36, Mediana = 5.37, Desvio Padrão = 0.11, Mínimo = 5.06, Máximo = 5.62, Respondentes = 3778.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 07/2025):
+  - Current: Média = 5.18, Mediana = 5.18, Desvio Padrão = 0.16, Mínimo = 4.72, Máximo = 5.56, Respondentes = 3517.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 08/2024):
+  - Current: Média = 5.33, Mediana = 5.33, Desvio Padrão = 0.12, Mínimo = 4.97, Máximo = 5.63, Respondentes = 3764.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 08/2025):
+  - Current: Média = 5.19, Mediana = 5.19, Desvio Padrão = 0.16, Mínimo = 4.72, Máximo = 5.57, Respondentes = 3517.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 09/2024):
+  - Current: Média = 5.29, Mediana = 5.30, Desvio Padrão = 0.12, Mínimo = 4.93, Máximo = 5.61, Respondentes = 3764.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 09/2025):
+  - Current: Média = 5.19, Mediana = 5.19, Desvio Padrão = 0.16, Mínimo = 4.72, Máximo = 5.58, Respondentes = 3543.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 10/2024):
+  - Current: Média = 5.26, Mediana = 5.27, Desvio Padrão = 0.13, Mínimo = 4.93, Máximo = 5.59, Respondentes = 3764.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 10/2025):
+  - Current: Média = 5.19, Mediana = 5.19, Desvio Padrão = 0.16, Mínimo = 4.73, Máximo = 5.59, Respondentes = 3517.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 11/2024):
+  - Current: Média = 5.24, Mediana = 5.24, Desvio Padrão = 0.14, Mínimo = 4.85, Máximo = 5.55, Respondentes = 3743.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 11/2025):
+  - Current: Média = 5.19, Mediana = 5.19, Desvio Padrão = 0.17, Mínimo = 4.72, Máximo = 5.60, Respondentes = 3483.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 12/2024):
+  - Current: Média = 5.22, Mediana = 5.22, Desvio Padrão = 0.14, Mínimo = 4.80, Máximo = 5.57, Respondentes = 3949.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+(Reference Date: 12/2025):
+  - Current: Média = 5.20, Mediana = 5.19, Desvio Padrão = 0.18, Mínimo = 4.72, Máximo = 5.69, Respondentes = 3827.0
+  - Last 5 Days Average: Média = 5.25, Mediana = 5.24, Desvio Padrão = 0.18, Mínimo = 4.62, Máximo = 5.76, Respondentes = 460.0
+  - Previous Week: Média = 5.22, Mediana = 5.20, Desvio Padrão = 0.15, Mínimo = 4.83, Máximo = 5.53, Respondentes = 141.0
+  - Previous Month: Média = 5.13, Mediana = 5.13, Desvio Padrão = 0.13, Mínimo = 4.76, Máximo = 5.50, Respondentes = 182.0
+
+
+
+Indicator: IGP-M
+
+(Reference Date: 01/2025):
+  - Current: Média = 0.38, Mediana = 0.38, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.59, Respondentes = 2113.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.37, Desvio Padrão = 0.16, Mínimo = -0.17, Máximo = 0.73, Respondentes = 279.0
+  - Previous Week: Média = 0.38, Mediana = 0.39, Desvio Padrão = 0.08, Mínimo = 0.08, Máximo = 0.55, Respondentes = 84.0
+  - Previous Month: Média = 0.37, Mediana = 0.38, Desvio Padrão = 0.11, Mínimo = -0.08, Máximo = 0.61, Respondentes = 115.0
+
+(Reference Date: 02/2025):
+  - Current: Média = 0.34, Mediana = 0.32, Desvio Padrão = 0.15, Mínimo = -0.04, Máximo = 0.66, Respondentes = 2113.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.37, Desvio Padrão = 0.16, Mínimo = -0.17, Máximo = 0.73, Respondentes = 279.0
+  - Previous Week: Média = 0.38, Mediana = 0.39, Desvio Padrão = 0.08, Mínimo = 0.08, Máximo = 0.55, Respondentes = 84.0
+  - Previous Month: Média = 0.37, Mediana = 0.38, Desvio Padrão = 0.11, Mínimo = -0.08, Máximo = 0.61, Respondentes = 115.0
+
+(Reference Date: 03/2025):
+  - Current: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.12, Mínimo = 0.04, Máximo = 0.69, Respondentes = 2113.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.37, Desvio Padrão = 0.16, Mínimo = -0.17, Máximo = 0.73, Respondentes = 279.0
+  - Previous Week: Média = 0.38, Mediana = 0.39, Desvio Padrão = 0.08, Mínimo = 0.08, Máximo = 0.55, Respondentes = 84.0
+  - Previous Month: Média = 0.37, Mediana = 0.38, Desvio Padrão = 0.11, Mínimo = -0.08, Máximo = 0.61, Respondentes = 115.0
+
+(Reference Date: 04/2025):
+  - Current: Média = 0.30, Mediana = 0.30, Desvio Padrão = 0.13, Mínimo = -0.17, Máximo = 0.64, Respondentes = 2113.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.37, Desvio Padrão = 0.16, Mínimo = -0.17, Máximo = 0.73, Respondentes = 279.0
+  - Previous Week: Média = 0.38, Mediana = 0.39, Desvio Padrão = 0.08, Mínimo = 0.08, Máximo = 0.55, Respondentes = 84.0
+  - Previous Month: Média = 0.37, Mediana = 0.38, Desvio Padrão = 0.11, Mínimo = -0.08, Máximo = 0.61, Respondentes = 115.0
+
+(Reference Date: 05/2025):
+  - Current: Média = 0.24, Mediana = 0.28, Desvio Padrão = 0.16, Mínimo = -0.42, Máximo = 0.65, Respondentes = 2113.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.37, Desvio Padrão = 0.16, Mínimo = -0.17, Máximo = 0.73, Respondentes = 279.0
+  - Previous Week: Média = 0.38, Mediana = 0.39, Desvio Padrão = 0.08, Mínimo = 0.08, Máximo = 0.55, Respondentes = 84.0
+  - Previous Month: Média = 0.37, Mediana = 0.38, Desvio Padrão = 0.11, Mínimo = -0.08, Máximo = 0.61, Respondentes = 115.0
+
+(Reference Date: 06/2024):
+  - Current: Média = 0.70, Mediana = 0.74, Desvio Padrão = 0.17, Mínimo = 0.30, Máximo = 1.12, Respondentes = 741.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.37, Desvio Padrão = 0.16, Mínimo = -0.17, Máximo = 0.73, Respondentes = 279.0
+  - Previous Week: Média = 0.38, Mediana = 0.39, Desvio Padrão = 0.08, Mínimo = 0.08, Máximo = 0.55, Respondentes = 84.0
+  - Previous Month: Média = 0.37, Mediana = 0.38, Desvio Padrão = 0.11, Mínimo = -0.08, Máximo = 0.61, Respondentes = 115.0
+
+(Reference Date: 06/2025):
+  - Current: Média = 0.26, Mediana = 0.25, Desvio Padrão = 0.13, Mínimo = -0.23, Máximo = 0.51, Respondentes = 2113.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.37, Desvio Padrão = 0.16, Mínimo = -0.17, Máximo = 0.73, Respondentes = 279.0
+  - Previous Week: Média = 0.38, Mediana = 0.39, Desvio Padrão = 0.08, Mínimo = 0.08, Máximo = 0.55, Respondentes = 84.0
+  - Previous Month: Média = 0.37, Mediana = 0.38, Desvio Padrão = 0.11, Mínimo = -0.08, Máximo = 0.61, Respondentes = 115.0
+
+(Reference Date: 07/2024):
+  - Current: Média = 0.36, Mediana = 0.35, Desvio Padrão = 0.15, Mínimo = 0.02, Máximo = 0.75, Respondentes = 2399.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.37, Desvio Padrão = 0.16, Mínimo = -0.17, Máximo = 0.73, Respondentes = 279.0
+  - Previous Week: Média = 0.38, Mediana = 0.39, Desvio Padrão = 0.08, Mínimo = 0.08, Máximo = 0.55, Respondentes = 84.0
+  - Previous Month: Média = 0.37, Mediana = 0.38, Desvio Padrão = 0.11, Mínimo = -0.08, Máximo = 0.61, Respondentes = 115.0
+
+(Reference Date: 07/2025):
+  - Current: Média = 0.22, Mediana = 0.22, Desvio Padrão = 0.11, Mínimo = -0.03, Máximo = 0.47, Respondentes = 2077.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.37, Desvio Padrão = 0.16, Mínimo = -0.17, Máximo = 0.73, Respondentes = 279.0
+  - Previous Week: Média = 0.38, Mediana = 0.39, Desvio Padrão = 0.08, Mínimo = 0.08, Máximo = 0.55, Respondentes = 84.0
+  - Previous Month: Média = 0.37, Mediana = 0.38, Desvio Padrão = 0.11, Mínimo = -0.08, Máximo = 0.61, Respondentes = 115.0
+
+(Reference Date: 08/2024):
+  - Current: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.12, Mínimo = 0.03, Máximo = 0.66, Respondentes = 2362.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.37, Desvio Padrão = 0.16, Mínimo = -0.17, Máximo = 0.73, Respondentes = 279.0
+  - Previous Week: Média = 0.38, Mediana = 0.39, Desvio Padrão = 0.08, Mínimo = 0.08, Máximo = 0.55, Respondentes = 84.0
+  - Previous Month: Média = 0.37, Mediana = 0.38, Desvio Padrão = 0.11, Mínimo = -0.08, Máximo = 0.61, Respondentes = 115.0
+
+(Reference Date: 08/2025):
+  - Current: Média = 0.25, Mediana = 0.25, Desvio Padrão = 0.10, Mínimo = -0.00, Máximo = 0.49, Respondentes = 2077.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.37, Desvio Padrão = 0.16, Mínimo = -0.17, Máximo = 0.73, Respondentes = 279.0
+  - Previous Week: Média = 0.38, Mediana = 0.39, Desvio Padrão = 0.08, Mínimo = 0.08, Máximo = 0.55, Respondentes = 84.0
+  - Previous Month: Média = 0.37, Mediana = 0.38, Desvio Padrão = 0.11, Mínimo = -0.08, Máximo = 0.61, Respondentes = 115.0
+
+(Reference Date: 09/2024):
+  - Current: Média = 0.41, Mediana = 0.39, Desvio Padrão = 0.17, Mínimo = 0.13, Máximo = 0.94, Respondentes = 2346.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.37, Desvio Padrão = 0.16, Mínimo = -0.17, Máximo = 0.73, Respondentes = 279.0
+  - Previous Week: Média = 0.38, Mediana = 0.39, Desvio Padrão = 0.08, Mínimo = 0.08, Máximo = 0.55, Respondentes = 84.0
+  - Previous Month: Média = 0.37, Mediana = 0.38, Desvio Padrão = 0.11, Mínimo = -0.08, Máximo = 0.61, Respondentes = 115.0
+
+(Reference Date: 09/2025):
+  - Current: Média = 0.38, Mediana = 0.35, Desvio Padrão = 0.14, Mínimo = 0.14, Máximo = 0.96, Respondentes = 2040.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.37, Desvio Padrão = 0.16, Mínimo = -0.17, Máximo = 0.73, Respondentes = 279.0
+  - Previous Week: Média = 0.38, Mediana = 0.39, Desvio Padrão = 0.08, Mínimo = 0.08, Máximo = 0.55, Respondentes = 84.0
+  - Previous Month: Média = 0.37, Mediana = 0.38, Desvio Padrão = 0.11, Mínimo = -0.08, Máximo = 0.61, Respondentes = 115.0
+
+(Reference Date: 10/2024):
+  - Current: Média = 0.45, Mediana = 0.43, Desvio Padrão = 0.14, Mínimo = 0.12, Máximo = 0.86, Respondentes = 2346.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.37, Desvio Padrão = 0.16, Mínimo = -0.17, Máximo = 0.73, Respondentes = 279.0
+  - Previous Week: Média = 0.38, Mediana = 0.39, Desvio Padrão = 0.08, Mínimo = 0.08, Máximo = 0.55, Respondentes = 84.0
+  - Previous Month: Média = 0.37, Mediana = 0.38, Desvio Padrão = 0.11, Mínimo = -0.08, Máximo = 0.61, Respondentes = 115.0
+
+(Reference Date: 10/2025):
+  - Current: Média = 0.40, Mediana = 0.37, Desvio Padrão = 0.16, Mínimo = 0.11, Máximo = 1.09, Respondentes = 1992.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.37, Desvio Padrão = 0.16, Mínimo = -0.17, Máximo = 0.73, Respondentes = 279.0
+  - Previous Week: Média = 0.38, Mediana = 0.39, Desvio Padrão = 0.08, Mínimo = 0.08, Máximo = 0.55, Respondentes = 84.0
+  - Previous Month: Média = 0.37, Mediana = 0.38, Desvio Padrão = 0.11, Mínimo = -0.08, Máximo = 0.61, Respondentes = 115.0
+
+(Reference Date: 11/2024):
+  - Current: Média = 0.45, Mediana = 0.44, Desvio Padrão = 0.15, Mínimo = 0.02, Máximo = 0.93, Respondentes = 2346.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.37, Desvio Padrão = 0.16, Mínimo = -0.17, Máximo = 0.73, Respondentes = 279.0
+  - Previous Week: Média = 0.38, Mediana = 0.39, Desvio Padrão = 0.08, Mínimo = 0.08, Máximo = 0.55, Respondentes = 84.0
+  - Previous Month: Média = 0.37, Mediana = 0.38, Desvio Padrão = 0.11, Mínimo = -0.08, Máximo = 0.61, Respondentes = 115.0
+
+(Reference Date: 11/2025):
+  - Current: Média = 0.38, Mediana = 0.35, Desvio Padrão = 0.17, Mínimo = 0.09, Máximo = 0.99, Respondentes = 1739.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.37, Desvio Padrão = 0.16, Mínimo = -0.17, Máximo = 0.73, Respondentes = 279.0
+  - Previous Week: Média = 0.38, Mediana = 0.39, Desvio Padrão = 0.08, Mínimo = 0.08, Máximo = 0.55, Respondentes = 84.0
+  - Previous Month: Média = 0.37, Mediana = 0.38, Desvio Padrão = 0.11, Mínimo = -0.08, Máximo = 0.61, Respondentes = 115.0
+
+(Reference Date: 12/2024):
+  - Current: Média = 0.40, Mediana = 0.41, Desvio Padrão = 0.23, Mínimo = -0.55, Máximo = 0.85, Respondentes = 2346.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.37, Desvio Padrão = 0.16, Mínimo = -0.17, Máximo = 0.73, Respondentes = 279.0
+  - Previous Week: Média = 0.38, Mediana = 0.39, Desvio Padrão = 0.08, Mínimo = 0.08, Máximo = 0.55, Respondentes = 84.0
+  - Previous Month: Média = 0.37, Mediana = 0.38, Desvio Padrão = 0.11, Mínimo = -0.08, Máximo = 0.61, Respondentes = 115.0
+
+(Reference Date: 12/2025):
+  - Current: Média = 0.31, Mediana = 0.35, Desvio Padrão = 0.33, Mínimo = -0.54, Máximo = 1.24, Respondentes = 1163.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.37, Desvio Padrão = 0.16, Mínimo = -0.17, Máximo = 0.73, Respondentes = 279.0
+  - Previous Week: Média = 0.38, Mediana = 0.39, Desvio Padrão = 0.08, Mínimo = 0.08, Máximo = 0.55, Respondentes = 84.0
+  - Previous Month: Média = 0.37, Mediana = 0.38, Desvio Padrão = 0.11, Mínimo = -0.08, Máximo = 0.61, Respondentes = 115.0
+
+
+
+Indicator: IPCA
+
+(Reference Date: 01/2025):
+  - Current: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.08, Mínimo = 0.18, Máximo = 0.61, Respondentes = 4466.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 01/2026):
+  - Current: Média = 0.40, Mediana = 0.40, Desvio Padrão = 0.10, Mínimo = 0.15, Máximo = 0.67, Respondentes = 3450.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 02/2025):
+  - Current: Média = 0.55, Mediana = 0.53, Desvio Padrão = 0.12, Mínimo = 0.29, Máximo = 0.91, Respondentes = 4466.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 02/2026):
+  - Current: Média = 0.52, Mediana = 0.51, Desvio Padrão = 0.14, Mínimo = 0.20, Máximo = 0.87, Respondentes = 3421.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 03/2025):
+  - Current: Média = 0.34, Mediana = 0.34, Desvio Padrão = 0.08, Mínimo = 0.15, Máximo = 0.79, Respondentes = 4466.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 03/2026):
+  - Current: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.10, Mínimo = 0.15, Máximo = 0.78, Respondentes = 3335.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 04/2025):
+  - Current: Média = 0.36, Mediana = 0.35, Desvio Padrão = 0.08, Mínimo = 0.20, Máximo = 0.59, Respondentes = 4466.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 04/2026):
+  - Current: Média = 0.33, Mediana = 0.32, Desvio Padrão = 0.08, Mínimo = 0.16, Máximo = 0.55, Respondentes = 3254.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 05/2025):
+  - Current: Média = 0.26, Mediana = 0.25, Desvio Padrão = 0.08, Mínimo = 0.06, Máximo = 0.49, Respondentes = 4466.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 05/2026):
+  - Current: Média = 0.26, Mediana = 0.25, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.50, Respondentes = 3152.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 06/2024):
+  - Current: Média = 0.31, Mediana = 0.33, Desvio Padrão = 0.08, Mínimo = -0.28, Máximo = 0.45, Respondentes = 3418.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 06/2025):
+  - Current: Média = 0.21, Mediana = 0.21, Desvio Padrão = 0.11, Mínimo = -0.35, Máximo = 0.51, Respondentes = 4462.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 06/2026):
+  - Current: Média = 0.19, Mediana = 0.20, Desvio Padrão = 0.12, Mínimo = -0.37, Máximo = 0.46, Respondentes = 2436.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 07/2024):
+  - Current: Média = 0.19, Mediana = 0.21, Desvio Padrão = 0.13, Mínimo = -0.38, Máximo = 0.44, Respondentes = 5102.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 07/2025):
+  - Current: Média = 0.20, Mediana = 0.20, Desvio Padrão = 0.09, Mínimo = -0.08, Máximo = 0.45, Respondentes = 4437.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 07/2026):
+  - Current: Média = 0.17, Mediana = 0.19, Desvio Padrão = 0.12, Mínimo = -0.16, Máximo = 0.43, Respondentes = 419.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 08/2024):
+  - Current: Média = 0.12, Mediana = 0.11, Desvio Padrão = 0.11, Mínimo = -0.09, Máximo = 0.56, Respondentes = 5075.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 08/2025):
+  - Current: Média = 0.17, Mediana = 0.17, Desvio Padrão = 0.08, Mínimo = 0.03, Máximo = 0.45, Respondentes = 4437.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 09/2024):
+  - Current: Média = 0.19, Mediana = 0.19, Desvio Padrão = 0.07, Mínimo = -0.01, Máximo = 0.43, Respondentes = 5008.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 09/2025):
+  - Current: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.07, Mínimo = 0.02, Máximo = 0.45, Respondentes = 4437.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 10/2024):
+  - Current: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.08, Mínimo = 0.11, Máximo = 0.58, Respondentes = 4988.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 10/2025):
+  - Current: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.07, Mínimo = 0.15, Máximo = 0.51, Respondentes = 4437.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 11/2024):
+  - Current: Média = 0.21, Mediana = 0.21, Desvio Padrão = 0.09, Mínimo = -0.02, Máximo = 0.53, Respondentes = 4988.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 11/2025):
+  - Current: Média = 0.28, Mediana = 0.28, Desvio Padrão = 0.09, Mínimo = 0.03, Máximo = 0.51, Respondentes = 4437.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 12/2024):
+  - Current: Média = 0.46, Mediana = 0.46, Desvio Padrão = 0.09, Mínimo = 0.21, Máximo = 0.73, Respondentes = 4988.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+(Reference Date: 12/2025):
+  - Current: Média = 0.49, Mediana = 0.47, Desvio Padrão = 0.14, Mínimo = 0.11, Máximo = 1.17, Respondentes = 4437.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.60, Respondentes = 518.0
+  - Previous Week: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.08, Mínimo = 0.21, Máximo = 0.58, Respondentes = 180.0
+  - Previous Month: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.60, Respondentes = 230.0
+
+
+
+Indicator: IPCA Administrados
+
+(Reference Date: 01/2025):
+  - Current: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.66, Respondentes = 2466.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 01/2026):
+  - Current: Média = 0.36, Mediana = 0.35, Desvio Padrão = 0.17, Mínimo = 0.03, Máximo = 1.02, Respondentes = 1900.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 02/2025):
+  - Current: Média = 0.36, Mediana = 0.34, Desvio Padrão = 0.17, Mínimo = -0.07, Máximo = 1.05, Respondentes = 2466.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 02/2026):
+  - Current: Média = 0.33, Mediana = 0.30, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.73, Respondentes = 1900.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 03/2025):
+  - Current: Média = 0.43, Mediana = 0.33, Desvio Padrão = 0.29, Mínimo = 0.21, Máximo = 1.66, Respondentes = 2466.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 03/2026):
+  - Current: Média = 0.36, Mediana = 0.32, Desvio Padrão = 0.15, Mínimo = 0.16, Máximo = 0.84, Respondentes = 1880.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 04/2025):
+  - Current: Média = 0.41, Mediana = 0.41, Desvio Padrão = 0.19, Mínimo = -0.05, Máximo = 0.89, Respondentes = 2466.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 04/2026):
+  - Current: Média = 0.39, Mediana = 0.36, Desvio Padrão = 0.20, Mínimo = -0.19, Máximo = 0.93, Respondentes = 1846.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 05/2025):
+  - Current: Média = 0.46, Mediana = 0.44, Desvio Padrão = 0.15, Mínimo = 0.10, Máximo = 0.91, Respondentes = 2466.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 05/2026):
+  - Current: Média = 0.40, Mediana = 0.40, Desvio Padrão = 0.21, Mínimo = -0.25, Máximo = 1.08, Respondentes = 1721.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 06/2024):
+  - Current: Média = 0.25, Mediana = 0.26, Desvio Padrão = 0.08, Mínimo = 0.04, Máximo = 0.46, Respondentes = 2045.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 06/2025):
+  - Current: Média = 0.31, Mediana = 0.27, Desvio Padrão = 0.18, Mínimo = 0.01, Máximo = 0.88, Respondentes = 2432.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 06/2026):
+  - Current: Média = 0.26, Mediana = 0.25, Desvio Padrão = 0.21, Mínimo = -0.32, Máximo = 1.02, Respondentes = 1565.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 07/2024):
+  - Current: Média = 0.30, Mediana = 0.40, Desvio Padrão = 0.45, Mínimo = -1.48, Máximo = 0.84, Respondentes = 3052.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 07/2025):
+  - Current: Média = 0.31, Mediana = 0.34, Desvio Padrão = 0.19, Mínimo = -0.30, Máximo = 0.71, Respondentes = 2407.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 07/2026):
+  - Current: Média = 0.27, Mediana = 0.27, Desvio Padrão = 0.14, Mínimo = -0.15, Máximo = 0.51, Respondentes = 273.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 08/2024):
+  - Current: Média = 0.29, Mediana = 0.20, Desvio Padrão = 0.39, Mínimo = -0.36, Máximo = 1.94, Respondentes = 3050.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 08/2025):
+  - Current: Média = 0.27, Mediana = 0.25, Desvio Padrão = 0.16, Mínimo = -0.14, Máximo = 0.93, Respondentes = 2407.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 09/2024):
+  - Current: Média = 0.13, Mediana = 0.13, Desvio Padrão = 0.16, Mínimo = -0.40, Máximo = 0.61, Respondentes = 3023.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 09/2025):
+  - Current: Média = 0.25, Mediana = 0.26, Desvio Padrão = 0.11, Mínimo = -0.16, Máximo = 0.48, Respondentes = 2407.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 10/2024):
+  - Current: Média = 0.12, Mediana = 0.15, Desvio Padrão = 0.17, Mínimo = -0.53, Máximo = 0.65, Respondentes = 3011.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 10/2025):
+  - Current: Média = 0.24, Mediana = 0.25, Desvio Padrão = 0.12, Mínimo = -0.28, Máximo = 0.46, Respondentes = 2407.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 11/2024):
+  - Current: Média = 0.13, Mediana = 0.15, Desvio Padrão = 0.17, Mínimo = -0.29, Máximo = 0.43, Respondentes = 3011.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 11/2025):
+  - Current: Média = 0.34, Mediana = 0.32, Desvio Padrão = 0.19, Mínimo = -0.37, Máximo = 0.97, Respondentes = 2407.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 12/2024):
+  - Current: Média = 0.15, Mediana = 0.15, Desvio Padrão = 0.13, Mínimo = -0.43, Máximo = 0.45, Respondentes = 3011.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+(Reference Date: 12/2025):
+  - Current: Média = 0.22, Mediana = 0.25, Desvio Padrão = 0.20, Mínimo = -0.65, Máximo = 0.74, Respondentes = 2407.0
+  - Last 5 Days Average: Média = 0.36, Mediana = 0.36, Desvio Padrão = 0.16, Mínimo = -0.09, Máximo = 0.91, Respondentes = 323.0
+  - Previous Week: Média = 0.32, Mediana = 0.33, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.62, Respondentes = 98.0
+  - Previous Month: Média = 0.32, Mediana = 0.32, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.71, Respondentes = 139.0
+
+
+
+Indicator: IPCA Alimentação no domicílio
+
+(Reference Date: 01/2025):
+  - Current: Média = 0.84, Mediana = 0.89, Desvio Padrão = 0.31, Mínimo = 0.21, Máximo = 1.61, Respondentes = 2147.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 01/2026):
+  - Current: Média = 0.73, Mediana = 0.76, Desvio Padrão = 0.35, Mínimo = 0.08, Máximo = 1.54, Respondentes = 1724.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 02/2025):
+  - Current: Média = 0.41, Mediana = 0.34, Desvio Padrão = 0.27, Mínimo = -0.00, Máximo = 1.13, Respondentes = 2147.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 02/2026):
+  - Current: Média = 0.40, Mediana = 0.40, Desvio Padrão = 0.22, Mínimo = 0.02, Máximo = 0.92, Respondentes = 1694.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 03/2025):
+  - Current: Média = 0.64, Mediana = 0.62, Desvio Padrão = 0.28, Mínimo = 0.01, Máximo = 1.37, Respondentes = 2147.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 03/2026):
+  - Current: Média = 0.53, Mediana = 0.51, Desvio Padrão = 0.27, Mínimo = 0.09, Máximo = 1.31, Respondentes = 1660.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 04/2025):
+  - Current: Média = 0.60, Mediana = 0.61, Desvio Padrão = 0.25, Mínimo = 0.14, Máximo = 1.36, Respondentes = 2147.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 04/2026):
+  - Current: Média = 0.54, Mediana = 0.52, Desvio Padrão = 0.27, Mínimo = 0.09, Máximo = 1.18, Respondentes = 1640.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 05/2025):
+  - Current: Média = 0.17, Mediana = 0.18, Desvio Padrão = 0.20, Mínimo = -0.36, Máximo = 0.62, Respondentes = 2147.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 05/2026):
+  - Current: Média = 0.16, Mediana = 0.19, Desvio Padrão = 0.20, Mínimo = -0.46, Máximo = 0.60, Respondentes = 1544.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 06/2024):
+  - Current: Média = 0.78, Mediana = 0.85, Desvio Padrão = 0.30, Mínimo = -0.17, Máximo = 1.20, Respondentes = 1865.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 06/2025):
+  - Current: Média = 0.05, Mediana = 0.09, Desvio Padrão = 0.28, Mínimo = -0.71, Máximo = 0.80, Respondentes = 2147.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 06/2026):
+  - Current: Média = 0.04, Mediana = 0.07, Desvio Padrão = 0.26, Mínimo = -0.58, Máximo = 0.57, Respondentes = 1384.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 07/2024):
+  - Current: Média = -0.22, Mediana = -0.21, Desvio Padrão = 0.37, Mínimo = -1.13, Máximo = 0.72, Respondentes = 2765.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 07/2025):
+  - Current: Média = -0.09, Mediana = -0.05, Desvio Padrão = 0.25, Mínimo = -1.12, Máximo = 0.29, Respondentes = 2118.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 07/2026):
+  - Current: Média = -0.24, Mediana = -0.17, Desvio Padrão = 0.31, Mínimo = -1.04, Máximo = 0.10, Respondentes = 213.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 08/2024):
+  - Current: Média = -0.42, Mediana = -0.42, Desvio Padrão = 0.36, Mínimo = -1.23, Máximo = 0.35, Respondentes = 2760.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 08/2025):
+  - Current: Média = -0.13, Mediana = -0.15, Desvio Padrão = 0.25, Mínimo = -0.72, Máximo = 0.37, Respondentes = 2118.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 09/2024):
+  - Current: Média = -0.20, Mediana = -0.22, Desvio Padrão = 0.29, Mínimo = -0.80, Máximo = 0.44, Respondentes = 2717.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 09/2025):
+  - Current: Média = 0.07, Mediana = 0.10, Desvio Padrão = 0.24, Mínimo = -0.50, Máximo = 0.91, Respondentes = 2118.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 10/2024):
+  - Current: Média = 0.22, Mediana = 0.24, Desvio Padrão = 0.20, Mínimo = -0.19, Máximo = 0.87, Respondentes = 2705.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 10/2025):
+  - Current: Média = 0.43, Mediana = 0.42, Desvio Padrão = 0.17, Mínimo = 0.00, Máximo = 0.87, Respondentes = 2118.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 11/2024):
+  - Current: Média = 0.34, Mediana = 0.34, Desvio Padrão = 0.17, Mínimo = -0.09, Máximo = 0.75, Respondentes = 2705.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 11/2025):
+  - Current: Média = 0.47, Mediana = 0.47, Desvio Padrão = 0.16, Mínimo = 0.07, Máximo = 0.88, Respondentes = 2118.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 12/2024):
+  - Current: Média = 0.61, Mediana = 0.58, Desvio Padrão = 0.33, Mínimo = -0.50, Máximo = 1.71, Respondentes = 2701.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+(Reference Date: 12/2025):
+  - Current: Média = 0.66, Mediana = 0.66, Desvio Padrão = 0.22, Mínimo = 0.13, Máximo = 1.17, Respondentes = 2118.0
+  - Last 5 Days Average: Média = 0.31, Mediana = 0.31, Desvio Padrão = 0.24, Mínimo = -0.41, Máximo = 0.95, Respondentes = 293.0
+  - Previous Week: Média = 0.85, Mediana = 0.90, Desvio Padrão = 0.29, Mínimo = 0.28, Máximo = 1.53, Respondentes = 81.0
+  - Previous Month: Média = 0.85, Mediana = 0.87, Desvio Padrão = 0.33, Mínimo = 0.18, Máximo = 1.72, Respondentes = 123.0
+
+
+
+Indicator: IPCA Bens industrializados
+
+(Reference Date: 01/2025):
+  - Current: Média = 0.21, Mediana = 0.22, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.61, Respondentes = 2157.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 01/2026):
+  - Current: Média = 0.25, Mediana = 0.24, Desvio Padrão = 0.11, Mínimo = 0.00, Máximo = 0.62, Respondentes = 1692.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 02/2025):
+  - Current: Média = 0.24, Mediana = 0.23, Desvio Padrão = 0.12, Mínimo = -0.02, Máximo = 0.55, Respondentes = 2157.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 02/2026):
+  - Current: Média = 0.27, Mediana = 0.25, Desvio Padrão = 0.13, Mínimo = 0.01, Máximo = 0.68, Respondentes = 1690.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 03/2025):
+  - Current: Média = 0.21, Mediana = 0.22, Desvio Padrão = 0.11, Mínimo = -0.08, Máximo = 0.47, Respondentes = 2157.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 03/2026):
+  - Current: Média = 0.20, Mediana = 0.20, Desvio Padrão = 0.10, Mínimo = -0.00, Máximo = 0.38, Respondentes = 1656.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 04/2025):
+  - Current: Média = 0.22, Mediana = 0.22, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.47, Respondentes = 2157.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 04/2026):
+  - Current: Média = 0.21, Mediana = 0.21, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.40, Respondentes = 1652.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 05/2025):
+  - Current: Média = 0.25, Mediana = 0.26, Desvio Padrão = 0.09, Mínimo = 0.01, Máximo = 0.44, Respondentes = 2157.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 05/2026):
+  - Current: Média = 0.23, Mediana = 0.24, Desvio Padrão = 0.11, Mínimo = -0.02, Máximo = 0.44, Respondentes = 1550.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 06/2024):
+  - Current: Média = 0.17, Mediana = 0.17, Desvio Padrão = 0.10, Mínimo = -0.11, Máximo = 0.43, Respondentes = 1880.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 06/2025):
+  - Current: Média = 0.12, Mediana = 0.12, Desvio Padrão = 0.10, Mínimo = -0.11, Máximo = 0.35, Respondentes = 2153.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 06/2026):
+  - Current: Média = 0.14, Mediana = 0.14, Desvio Padrão = 0.11, Mínimo = -0.10, Máximo = 0.37, Respondentes = 1419.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 07/2024):
+  - Current: Média = 0.04, Mediana = 0.04, Desvio Padrão = 0.11, Mínimo = -0.18, Máximo = 0.35, Respondentes = 2783.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 07/2025):
+  - Current: Média = 0.05, Mediana = 0.04, Desvio Padrão = 0.10, Mínimo = -0.14, Máximo = 0.29, Respondentes = 2128.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 07/2026):
+  - Current: Média = 0.09, Mediana = 0.10, Desvio Padrão = 0.12, Mínimo = -0.11, Máximo = 0.30, Respondentes = 224.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 08/2024):
+  - Current: Média = 0.21, Mediana = 0.20, Desvio Padrão = 0.10, Mínimo = -0.04, Máximo = 0.47, Respondentes = 2778.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 08/2025):
+  - Current: Média = 0.22, Mediana = 0.21, Desvio Padrão = 0.08, Mínimo = 0.07, Máximo = 0.49, Respondentes = 2128.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 09/2024):
+  - Current: Média = 0.16, Mediana = 0.17, Desvio Padrão = 0.09, Mínimo = -0.17, Máximo = 0.34, Respondentes = 2735.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 09/2025):
+  - Current: Média = 0.19, Mediana = 0.19, Desvio Padrão = 0.08, Mínimo = -0.01, Máximo = 0.36, Respondentes = 2128.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 10/2024):
+  - Current: Média = 0.30, Mediana = 0.29, Desvio Padrão = 0.11, Mínimo = 0.03, Máximo = 0.62, Respondentes = 2735.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 10/2025):
+  - Current: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.10, Mínimo = 0.15, Máximo = 0.57, Respondentes = 2128.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 11/2024):
+  - Current: Média = -0.01, Mediana = -0.01, Desvio Padrão = 0.18, Mínimo = -0.41, Máximo = 0.42, Respondentes = 2735.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 11/2025):
+  - Current: Média = 0.05, Mediana = 0.07, Desvio Padrão = 0.18, Mínimo = -0.39, Máximo = 0.33, Respondentes = 2128.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 12/2024):
+  - Current: Média = 0.41, Mediana = 0.42, Desvio Padrão = 0.13, Mínimo = 0.12, Máximo = 0.76, Respondentes = 2731.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+(Reference Date: 12/2025):
+  - Current: Média = 0.41, Mediana = 0.40, Desvio Padrão = 0.17, Mínimo = 0.14, Máximo = 0.94, Respondentes = 2128.0
+  - Last 5 Days Average: Média = 0.24, Mediana = 0.24, Desvio Padrão = 0.09, Mínimo = 0.02, Máximo = 0.46, Respondentes = 298.0
+  - Previous Week: Média = 0.21, Mediana = 0.23, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.60, Respondentes = 83.0
+  - Previous Month: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.14, Mínimo = -0.21, Máximo = 0.56, Respondentes = 123.0
+
+
+
+Indicator: IPCA Livres
+
+(Reference Date: 01/2025):
+  - Current: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.62, Respondentes = 2310.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 01/2026):
+  - Current: Média = 0.40, Mediana = 0.40, Desvio Padrão = 0.09, Mínimo = 0.24, Máximo = 0.63, Respondentes = 1792.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 02/2025):
+  - Current: Média = 0.60, Mediana = 0.60, Desvio Padrão = 0.13, Mínimo = 0.28, Máximo = 0.86, Respondentes = 2310.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 02/2026):
+  - Current: Média = 0.55, Mediana = 0.55, Desvio Padrão = 0.17, Mínimo = 0.13, Máximo = 0.93, Respondentes = 1790.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 03/2025):
+  - Current: Média = 0.30, Mediana = 0.30, Desvio Padrão = 0.08, Mínimo = 0.04, Máximo = 0.46, Respondentes = 2310.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 03/2026):
+  - Current: Média = 0.28, Mediana = 0.28, Desvio Padrão = 0.10, Mínimo = -0.05, Máximo = 0.53, Respondentes = 1770.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 04/2025):
+  - Current: Média = 0.33, Mediana = 0.33, Desvio Padrão = 0.07, Mínimo = 0.16, Máximo = 0.53, Respondentes = 2310.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 04/2026):
+  - Current: Média = 0.34, Mediana = 0.32, Desvio Padrão = 0.08, Mínimo = 0.17, Máximo = 0.55, Respondentes = 1770.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 05/2025):
+  - Current: Média = 0.19, Mediana = 0.19, Desvio Padrão = 0.10, Mínimo = -0.04, Máximo = 0.43, Respondentes = 2310.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 05/2026):
+  - Current: Média = 0.21, Mediana = 0.20, Desvio Padrão = 0.15, Mínimo = -0.06, Máximo = 0.75, Respondentes = 1654.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 06/2024):
+  - Current: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.08, Mínimo = 0.05, Máximo = 0.51, Respondentes = 2002.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 06/2025):
+  - Current: Média = 0.21, Mediana = 0.21, Desvio Padrão = 0.10, Mínimo = -0.12, Máximo = 0.40, Respondentes = 2306.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 06/2026):
+  - Current: Média = 0.21, Mediana = 0.22, Desvio Padrão = 0.11, Mínimo = -0.11, Máximo = 0.53, Respondentes = 1526.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 07/2024):
+  - Current: Média = 0.16, Mediana = 0.15, Desvio Padrão = 0.09, Mínimo = -0.09, Máximo = 0.36, Respondentes = 2990.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 07/2025):
+  - Current: Média = 0.16, Mediana = 0.16, Desvio Padrão = 0.08, Mínimo = -0.11, Máximo = 0.31, Respondentes = 2281.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 07/2026):
+  - Current: Média = 0.13, Mediana = 0.14, Desvio Padrão = 0.10, Mínimo = -0.10, Máximo = 0.27, Respondentes = 256.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 08/2024):
+  - Current: Média = 0.05, Mediana = 0.05, Desvio Padrão = 0.10, Mínimo = -0.18, Máximo = 0.30, Respondentes = 2985.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 08/2025):
+  - Current: Média = 0.13, Mediana = 0.13, Desvio Padrão = 0.09, Mínimo = -0.07, Máximo = 0.39, Respondentes = 2281.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 09/2024):
+  - Current: Média = 0.19, Mediana = 0.20, Desvio Padrão = 0.08, Mínimo = 0.02, Máximo = 0.39, Respondentes = 2942.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 09/2025):
+  - Current: Média = 0.23, Mediana = 0.23, Desvio Padrão = 0.07, Mínimo = 0.05, Máximo = 0.44, Respondentes = 2281.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 10/2024):
+  - Current: Média = 0.35, Mediana = 0.36, Desvio Padrão = 0.09, Mínimo = 0.10, Máximo = 0.64, Respondentes = 2926.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 10/2025):
+  - Current: Média = 0.36, Mediana = 0.35, Desvio Padrão = 0.09, Mínimo = 0.10, Máximo = 0.61, Respondentes = 2281.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 11/2024):
+  - Current: Média = 0.20, Mediana = 0.21, Desvio Padrão = 0.10, Mínimo = 0.01, Máximo = 0.46, Respondentes = 2926.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 11/2025):
+  - Current: Média = 0.25, Mediana = 0.25, Desvio Padrão = 0.08, Mínimo = 0.08, Máximo = 0.45, Respondentes = 2281.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 12/2024):
+  - Current: Média = 0.56, Mediana = 0.57, Desvio Padrão = 0.13, Mínimo = 0.18, Máximo = 0.87, Respondentes = 2926.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+(Reference Date: 12/2025):
+  - Current: Média = 0.55, Mediana = 0.55, Desvio Padrão = 0.13, Mínimo = 0.23, Máximo = 0.86, Respondentes = 2281.0
+  - Last 5 Days Average: Média = 0.29, Mediana = 0.29, Desvio Padrão = 0.10, Mínimo = 0.05, Máximo = 0.54, Respondentes = 316.0
+  - Previous Week: Média = 0.42, Mediana = 0.43, Desvio Padrão = 0.10, Mínimo = 0.23, Máximo = 0.61, Respondentes = 91.0
+  - Previous Month: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.10, Mínimo = 0.22, Máximo = 0.65, Respondentes = 132.0
+
+
+
+Indicator: IPCA Serviços
+
+(Reference Date: 01/2025):
+  - Current: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.01, Máximo = 0.58, Respondentes = 2133.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 01/2026):
+  - Current: Média = 0.34, Mediana = 0.35, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.58, Respondentes = 1690.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 02/2025):
+  - Current: Média = 0.92, Mediana = 0.90, Desvio Padrão = 0.21, Mínimo = 0.35, Máximo = 1.30, Respondentes = 2133.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 02/2026):
+  - Current: Média = 0.85, Mediana = 0.85, Desvio Padrão = 0.20, Mínimo = 0.36, Máximo = 1.31, Respondentes = 1686.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 03/2025):
+  - Current: Média = 0.23, Mediana = 0.23, Desvio Padrão = 0.10, Mínimo = 0.06, Máximo = 0.49, Respondentes = 2133.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 03/2026):
+  - Current: Média = 0.23, Mediana = 0.23, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.67, Respondentes = 1686.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 04/2025):
+  - Current: Média = 0.28, Mediana = 0.28, Desvio Padrão = 0.10, Mínimo = 0.04, Máximo = 0.55, Respondentes = 2133.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 04/2026):
+  - Current: Média = 0.27, Mediana = 0.27, Desvio Padrão = 0.09, Mínimo = 0.06, Máximo = 0.48, Respondentes = 1652.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 05/2025):
+  - Current: Média = 0.13, Mediana = 0.11, Desvio Padrão = 0.14, Mínimo = -0.17, Máximo = 0.44, Respondentes = 2133.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 05/2026):
+  - Current: Média = 0.15, Mediana = 0.15, Desvio Padrão = 0.14, Mínimo = -0.19, Máximo = 0.56, Respondentes = 1592.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 06/2024):
+  - Current: Média = 0.25, Mediana = 0.25, Desvio Padrão = 0.10, Mínimo = 0.04, Máximo = 0.46, Respondentes = 1896.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 06/2025):
+  - Current: Média = 0.34, Mediana = 0.33, Desvio Padrão = 0.10, Mínimo = 0.13, Máximo = 0.61, Respondentes = 2129.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 06/2026):
+  - Current: Média = 0.31, Mediana = 0.30, Desvio Padrão = 0.10, Mínimo = 0.06, Máximo = 0.58, Respondentes = 1458.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 07/2024):
+  - Current: Média = 0.42, Mediana = 0.42, Desvio Padrão = 0.09, Mínimo = 0.11, Máximo = 0.66, Respondentes = 2816.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 07/2025):
+  - Current: Média = 0.35, Mediana = 0.34, Desvio Padrão = 0.11, Mínimo = 0.06, Máximo = 0.56, Respondentes = 2104.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 07/2026):
+  - Current: Média = 0.34, Mediana = 0.32, Desvio Padrão = 0.09, Mínimo = 0.21, Máximo = 0.50, Respondentes = 224.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 08/2024):
+  - Current: Média = 0.15, Mediana = 0.16, Desvio Padrão = 0.10, Mínimo = -0.09, Máximo = 0.39, Respondentes = 2811.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 08/2025):
+  - Current: Média = 0.18, Mediana = 0.18, Desvio Padrão = 0.10, Mínimo = -0.03, Máximo = 0.45, Respondentes = 2104.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 09/2024):
+  - Current: Média = 0.40, Mediana = 0.42, Desvio Padrão = 0.11, Mínimo = 0.10, Máximo = 0.66, Respondentes = 2768.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 09/2025):
+  - Current: Média = 0.33, Mediana = 0.33, Desvio Padrão = 0.10, Mínimo = 0.11, Máximo = 0.62, Respondentes = 2104.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 10/2024):
+  - Current: Média = 0.44, Mediana = 0.44, Desvio Padrão = 0.14, Mínimo = 0.14, Máximo = 0.73, Respondentes = 2756.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 10/2025):
+  - Current: Média = 0.34, Mediana = 0.34, Desvio Padrão = 0.10, Mínimo = 0.15, Máximo = 0.57, Respondentes = 2104.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 11/2024):
+  - Current: Média = 0.29, Mediana = 0.30, Desvio Padrão = 0.10, Mínimo = 0.06, Máximo = 0.60, Respondentes = 2756.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 11/2025):
+  - Current: Média = 0.27, Mediana = 0.28, Desvio Padrão = 0.08, Mínimo = 0.07, Máximo = 0.43, Respondentes = 2104.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 12/2024):
+  - Current: Média = 0.63, Mediana = 0.64, Desvio Padrão = 0.17, Mínimo = -0.06, Máximo = 1.00, Respondentes = 2752.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+(Reference Date: 12/2025):
+  - Current: Média = 0.58, Mediana = 0.55, Desvio Padrão = 0.19, Mínimo = 0.26, Máximo = 1.21, Respondentes = 2104.0
+  - Last 5 Days Average: Média = 0.32, Mediana = 0.31, Desvio Padrão = 0.13, Mínimo = -0.04, Máximo = 0.65, Respondentes = 292.0
+  - Previous Week: Média = 0.32, Mediana = 0.34, Desvio Padrão = 0.12, Mínimo = 0.01, Máximo = 0.54, Respondentes = 82.0
+  - Previous Month: Média = 0.33, Mediana = 0.35, Desvio Padrão = 0.13, Mínimo = 0.00, Máximo = 0.60, Respondentes = 122.0
+
+
+
+Indicator: Taxa de desocupação
+
+(Reference Date: 01/2025):
+  - Current: Média = 7.45, Mediana = 7.44, Desvio Padrão = 0.49, Mínimo = 6.48, Máximo = 8.54, Respondentes = 1697.0
+  - Last 5 Days Average: Média = 7.24, Mediana = 7.20, Desvio Padrão = 0.52, Mínimo = 6.03, Máximo = 8.50, Respondentes = 267.0
+  - Previous Week: Média = 7.35, Mediana = 7.25, Desvio Padrão = 0.55, Mínimo = 6.40, Máximo = 8.45, Respondentes = 60.0
+  - Previous Month: Média = 7.60, Mediana = 7.65, Desvio Padrão = 0.47, Mínimo = 6.70, Máximo = 8.80, Respondentes = 96.0
+
+(Reference Date: 02/2025):
+  - Current: Média = 7.62, Mediana = 7.63, Desvio Padrão = 0.45, Mínimo = 6.76, Máximo = 8.54, Respondentes = 1697.0
+  - Last 5 Days Average: Média = 7.24, Mediana = 7.20, Desvio Padrão = 0.52, Mínimo = 6.03, Máximo = 8.50, Respondentes = 267.0
+  - Previous Week: Média = 7.35, Mediana = 7.25, Desvio Padrão = 0.55, Mínimo = 6.40, Máximo = 8.45, Respondentes = 60.0
+  - Previous Month: Média = 7.60, Mediana = 7.65, Desvio Padrão = 0.47, Mínimo = 6.70, Máximo = 8.80, Respondentes = 96.0
+
+(Reference Date: 03/2025):
+  - Current: Média = 7.78, Mediana = 7.78, Desvio Padrão = 0.44, Mínimo = 6.76, Máximo = 8.67, Respondentes = 1697.0
+  - Last 5 Days Average: Média = 7.24, Mediana = 7.20, Desvio Padrão = 0.52, Mínimo = 6.03, Máximo = 8.50, Respondentes = 267.0
+  - Previous Week: Média = 7.35, Mediana = 7.25, Desvio Padrão = 0.55, Mínimo = 6.40, Máximo = 8.45, Respondentes = 60.0
+  - Previous Month: Média = 7.60, Mediana = 7.65, Desvio Padrão = 0.47, Mínimo = 6.70, Máximo = 8.80, Respondentes = 96.0
+
+(Reference Date: 04/2025):
+  - Current: Média = 7.73, Mediana = 7.76, Desvio Padrão = 0.45, Mínimo = 6.76, Máximo = 8.63, Respondentes = 1697.0
+  - Last 5 Days Average: Média = 7.24, Mediana = 7.20, Desvio Padrão = 0.52, Mínimo = 6.03, Máximo = 8.50, Respondentes = 267.0
+  - Previous Week: Média = 7.35, Mediana = 7.25, Desvio Padrão = 0.55, Mínimo = 6.40, Máximo = 8.45, Respondentes = 60.0
+  - Previous Month: Média = 7.60, Mediana = 7.65, Desvio Padrão = 0.47, Mínimo = 6.70, Máximo = 8.80, Respondentes = 96.0
+
+(Reference Date: 05/2024):
+  - Current: Média = 7.48, Mediana = 7.43, Desvio Padrão = 0.27, Mínimo = 7.07, Máximo = 8.30, Respondentes = 639.0
+  - Last 5 Days Average: Média = 7.24, Mediana = 7.20, Desvio Padrão = 0.52, Mínimo = 6.03, Máximo = 8.50, Respondentes = 267.0
+  - Previous Week: Média = 7.35, Mediana = 7.25, Desvio Padrão = 0.55, Mínimo = 6.40, Máximo = 8.45, Respondentes = 60.0
+  - Previous Month: Média = 7.60, Mediana = 7.65, Desvio Padrão = 0.47, Mínimo = 6.70, Máximo = 8.80, Respondentes = 96.0
+
+(Reference Date: 05/2025):
+  - Current: Média = 7.70, Mediana = 7.75, Desvio Padrão = 0.48, Mínimo = 6.70, Máximo = 8.63, Respondentes = 1697.0
+  - Last 5 Days Average: Média = 7.24, Mediana = 7.20, Desvio Padrão = 0.52, Mínimo = 6.03, Máximo = 8.50, Respondentes = 267.0
+  - Previous Week: Média = 7.35, Mediana = 7.25, Desvio Padrão = 0.55, Mínimo = 6.40, Máximo = 8.45, Respondentes = 60.0
+  - Previous Month: Média = 7.60, Mediana = 7.65, Desvio Padrão = 0.47, Mínimo = 6.70, Máximo = 8.80, Respondentes = 96.0
+
+(Reference Date: 06/2024):
+  - Current: Média = 7.32, Mediana = 7.26, Desvio Padrão = 0.31, Mínimo = 6.86, Máximo = 8.35, Respondentes = 1798.0
+  - Last 5 Days Average: Média = 7.24, Mediana = 7.20, Desvio Padrão = 0.52, Mínimo = 6.03, Máximo = 8.50, Respondentes = 267.0
+  - Previous Week: Média = 7.35, Mediana = 7.25, Desvio Padrão = 0.55, Mínimo = 6.40, Máximo = 8.45, Respondentes = 60.0
+  - Previous Month: Média = 7.60, Mediana = 7.65, Desvio Padrão = 0.47, Mínimo = 6.70, Máximo = 8.80, Respondentes = 96.0
+
+(Reference Date: 06/2025):
+  - Current: Média = 7.64, Mediana = 7.69, Desvio Padrão = 0.50, Mínimo = 6.63, Máximo = 8.67, Respondentes = 1697.0
+  - Last 5 Days Average: Média = 7.24, Mediana = 7.20, Desvio Padrão = 0.52, Mínimo = 6.03, Máximo = 8.50, Respondentes = 267.0
+  - Previous Week: Média = 7.35, Mediana = 7.25, Desvio Padrão = 0.55, Mínimo = 6.40, Máximo = 8.45, Respondentes = 60.0
+  - Previous Month: Média = 7.60, Mediana = 7.65, Desvio Padrão = 0.47, Mínimo = 6.70, Máximo = 8.80, Respondentes = 96.0
+
+(Reference Date: 07/2024):
+  - Current: Média = 7.32, Mediana = 7.26, Desvio Padrão = 0.31, Mínimo = 6.83, Máximo = 8.27, Respondentes = 1798.0
+  - Last 5 Days Average: Média = 7.24, Mediana = 7.20, Desvio Padrão = 0.52, Mínimo = 6.03, Máximo = 8.50, Respondentes = 267.0
+  - Previous Week: Média = 7.35, Mediana = 7.25, Desvio Padrão = 0.55, Mínimo = 6.40, Máximo = 8.45, Respondentes = 60.0
+  - Previous Month: Média = 7.60, Mediana = 7.65, Desvio Padrão = 0.47, Mínimo = 6.70, Máximo = 8.80, Respondentes = 96.0
+
+(Reference Date: 07/2025):
+  - Current: Média = 7.64, Mediana = 7.68, Desvio Padrão = 0.52, Mínimo = 6.55, Máximo = 8.74, Respondentes = 1697.0
+  - Last 5 Days Average: Média = 7.24, Mediana = 7.20, Desvio Padrão = 0.52, Mínimo = 6.03, Máximo = 8.50, Respondentes = 267.0
+  - Previous Week: Média = 7.35, Mediana = 7.25, Desvio Padrão = 0.55, Mínimo = 6.40, Máximo = 8.45, Respondentes = 60.0
+  - Previous Month: Média = 7.60, Mediana = 7.65, Desvio Padrão = 0.47, Mínimo = 6.70, Máximo = 8.80, Respondentes = 96.0
+
+(Reference Date: 08/2024):
+  - Current: Média = 7.30, Mediana = 7.24, Desvio Padrão = 0.32, Mínimo = 6.81, Máximo = 8.15, Respondentes = 1798.0
+  - Last 5 Days Average: Média = 7.24, Mediana = 7.20, Desvio Padrão = 0.52, Mínimo = 6.03, Máximo = 8.50, Respondentes = 267.0
+  - Previous Week: Média = 7.35, Mediana = 7.25, Desvio Padrão = 0.55, Mínimo = 6.40, Máximo = 8.45, Respondentes = 60.0
+  - Previous Month: Média = 7.60, Mediana = 7.65, Desvio Padrão = 0.47, Mínimo = 6.70, Máximo = 8.80, Respondentes = 96.0
+
+(Reference Date: 08/2025):
+  - Current: Média = 7.60, Mediana = 7.63, Desvio Padrão = 0.53, Mínimo = 6.47, Máximo = 8.75, Respondentes = 1663.0
+  - Last 5 Days Average: Média = 7.24, Mediana = 7.20, Desvio Padrão = 0.52, Mínimo = 6.03, Máximo = 8.50, Respondentes = 267.0
+  - Previous Week: Média = 7.35, Mediana = 7.25, Desvio Padrão = 0.55, Mínimo = 6.40, Máximo = 8.45, Respondentes = 60.0
+  - Previous Month: Média = 7.60, Mediana = 7.65, Desvio Padrão = 0.47, Mínimo = 6.70, Máximo = 8.80, Respondentes = 96.0
+
+(Reference Date: 09/2024):
+  - Current: Média = 7.28, Mediana = 7.23, Desvio Padrão = 0.36, Mínimo = 6.69, Máximo = 8.12, Respondentes = 1798.0
+  - Last 5 Days Average: Média = 7.24, Mediana = 7.20, Desvio Padrão = 0.52, Mínimo = 6.03, Máximo = 8.50, Respondentes = 267.0
+  - Previous Week: Média = 7.35, Mediana = 7.25, Desvio Padrão = 0.55, Mínimo = 6.40, Máximo = 8.45, Respondentes = 60.0
+  - Previous Month: Média = 7.60, Mediana = 7.65, Desvio Padrão = 0.47, Mínimo = 6.70, Máximo = 8.80, Respondentes = 96.0
+
+(Reference Date: 09/2025):
+  - Current: Média = 7.56, Mediana = 7.60, Desvio Padrão = 0.55, Mínimo = 6.38, Máximo = 8.80, Respondentes = 1632.0
+  - Last 5 Days Average: Média = 7.24, Mediana = 7.20, Desvio Padrão = 0.52, Mínimo = 6.03, Máximo = 8.50, Respondentes = 267.0
+  - Previous Week: Média = 7.35, Mediana = 7.25, Desvio Padrão = 0.55, Mínimo = 6.40, Máximo = 8.45, Respondentes = 60.0
+  - Previous Month: Média = 7.60, Mediana = 7.65, Desvio Padrão = 0.47, Mínimo = 6.70, Máximo = 8.80, Respondentes = 96.0
+
+(Reference Date: 10/2024):
+  - Current: Média = 7.22, Mediana = 7.16, Desvio Padrão = 0.38, Mínimo = 6.57, Máximo = 8.03, Respondentes = 1798.0
+  - Last 5 Days Average: Média = 7.24, Mediana = 7.20, Desvio Padrão = 0.52, Mínimo = 6.03, Máximo = 8.50, Respondentes = 267.0
+  - Previous Week: Média = 7.35, Mediana = 7.25, Desvio Padrão = 0.55, Mínimo = 6.40, Máximo = 8.45, Respondentes = 60.0
+  - Previous Month: Média = 7.60, Mediana = 7.65, Desvio Padrão = 0.47, Mínimo = 6.70, Máximo = 8.80, Respondentes = 96.0
+
+(Reference Date: 10/2025):
+  - Current: Média = 7.51, Mediana = 7.52, Desvio Padrão = 0.61, Mínimo = 6.30, Máximo = 8.90, Respondentes = 1479.0
+  - Last 5 Days Average: Média = 7.24, Mediana = 7.20, Desvio Padrão = 0.52, Mínimo = 6.03, Máximo = 8.50, Respondentes = 267.0
+  - Previous Week: Média = 7.35, Mediana = 7.25, Desvio Padrão = 0.55, Mínimo = 6.40, Máximo = 8.45, Respondentes = 60.0
+  - Previous Month: Média = 7.60, Mediana = 7.65, Desvio Padrão = 0.47, Mínimo = 6.70, Máximo = 8.80, Respondentes = 96.0
+
+(Reference Date: 11/2024):
+  - Current: Média = 7.17, Mediana = 7.10, Desvio Padrão = 0.42, Mínimo = 6.41, Máximo = 8.06, Respondentes = 1798.0
+  - Last 5 Days Average: Média = 7.24, Mediana = 7.20, Desvio Padrão = 0.52, Mínimo = 6.03, Máximo = 8.50, Respondentes = 267.0
+  - Previous Week: Média = 7.35, Mediana = 7.25, Desvio Padrão = 0.55, Mínimo = 6.40, Máximo = 8.45, Respondentes = 60.0
+  - Previous Month: Média = 7.60, Mediana = 7.65, Desvio Padrão = 0.47, Mínimo = 6.70, Máximo = 8.80, Respondentes = 96.0
+
+(Reference Date: 11/2025):
+  - Current: Média = 7.20, Mediana = 7.18, Desvio Padrão = 0.59, Mínimo = 6.11, Máximo = 8.14, Respondentes = 526.0
+  - Last 5 Days Average: Média = 7.24, Mediana = 7.20, Desvio Padrão = 0.52, Mínimo = 6.03, Máximo = 8.50, Respondentes = 267.0
+  - Previous Week: Média = 7.35, Mediana = 7.25, Desvio Padrão = 0.55, Mínimo = 6.40, Máximo = 8.45, Respondentes = 60.0
+  - Previous Month: Média = 7.60, Mediana = 7.65, Desvio Padrão = 0.47, Mínimo = 6.70, Máximo = 8.80, Respondentes = 96.0
+
+(Reference Date: 12/2024):
+  - Current: Média = 7.21, Mediana = 7.16, Desvio Padrão = 0.46, Mínimo = 6.31, Máximo = 8.20, Respondentes = 1981.0
+  - Last 5 Days Average: Média = 7.24, Mediana = 7.20, Desvio Padrão = 0.52, Mínimo = 6.03, Máximo = 8.50, Respondentes = 267.0
+  - Previous Week: Média = 7.35, Mediana = 7.25, Desvio Padrão = 0.55, Mínimo = 6.40, Máximo = 8.45, Respondentes = 60.0
+  - Previous Month: Média = 7.60, Mediana = 7.65, Desvio Padrão = 0.47, Mínimo = 6.70, Máximo = 8.80, Respondentes = 96.0
+
+

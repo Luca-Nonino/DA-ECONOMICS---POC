@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import os
+import sys
 from datetime import datetime
 import certifi
 
@@ -92,7 +93,7 @@ def format_table(table):
 
 # Function to save the page content as a .txt file
 def save_page_content(relevant_content, document_id, pipe_id, release_date):
-    save_dir = os.path.join(project_root, 'data/raw/txt')
+    save_dir = os.path.join(project_root, 'data', 'raw', 'txt')
     os.makedirs(save_dir, exist_ok=True)
     file_name = f"{document_id}_{pipe_id}_{release_date}.txt"
     save_path = os.path.join(save_dir, file_name)
@@ -115,8 +116,10 @@ def process_balança_comercial_html(url, document_id, pipe_id):
     else:
         print("Failed to fetch HTML content.")
 
+############################# Test Examples #################################
+
 # Example usage
 url = "https://balanca.economia.gov.br/balanca/pg_principal_bc/principais_resultados.html"
 document_id = 30  # Replace with actual document_id
 pipe_id = "1"
-process_balança_comercial_html(url, document_id, pipe_id)
+#process_balança_comercial_html(url, document_id, pipe_id)

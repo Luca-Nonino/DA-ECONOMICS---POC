@@ -1,10 +1,12 @@
+import os
+import sys
 import requests
 from bs4 import BeautifulSoup
-import os
+import re
 from datetime import datetime
 
-# Define project root directory
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+# Determine project root directory
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 # Function to fetch and parse HTML content from the URL
 def fetch_html_content(url):
@@ -45,7 +47,7 @@ def extract_publication_content(html_content):
 
 # Function to save the page content as a .txt file
 def save_page_content(content, document_id, pipe_id, release_date):
-    save_dir = os.path.join(PROJECT_ROOT, 'data/raw/txt')
+    save_dir = os.path.join(project_root, 'data', 'raw', 'txt')
     os.makedirs(save_dir, exist_ok=True)
     file_name = f"{document_id}_{pipe_id}_{release_date}.txt"
     save_path = os.path.join(save_dir, file_name)
@@ -74,6 +76,8 @@ def process_ibge_link(url, document_id, pipe_id):
             print("Failed to extract release date or secondary link.")
     else:
         print("Failed to fetch HTML content.")
+
+############################# Test Examples #################################
 
 # Example usage
 if __name__ == "__main__":
