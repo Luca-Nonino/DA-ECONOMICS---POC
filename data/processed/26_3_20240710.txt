@@ -1,0 +1,15 @@
+**Title:**
+{'Índice Nacional de Preços ao Consumidor Amplo (IPCA) e Índice Nacional de Preços ao Consumidor (INPC) - Junho 2024'}
+
+**Overview:**
+||O relatório apresenta os dados do IPCA e do INPC para junho de 2024, destacando uma alta de 0,21% no IPCA, que acumula 2,48% no ano e 4,23% nos últimos 12 meses. O grupo de Alimentação e Bebidas teve o maior impacto, enquanto Transportes registrou uma queda. O INPC, por sua vez, teve alta de 0,25%, com variações regionais significativas e desaceleração nos produtos alimentícios e não alimentícios.||
+
+**Key Takeaways:**
+- {**IPCA de Junho**}: [O IPCA registrou uma alta de 0,21% em junho de 2024, abaixo da taxa de 0,46% em maio. No acumulado do ano, a inflação é de 2,48%, e nos últimos 12 meses, 4,23%, superando os 3,93% do período anterior.]
+- {**Contribuição dos Grupos**}: [Sete dos nove grupos de produtos e serviços apresentaram alta, com Alimentação e Bebidas contribuindo com 0,10 p.p. e Saúde e Cuidados Pessoais com 0,07 p.p. Transportes teve uma queda de 0,19%.]
+- {**Variações em Alimentação**}: [A alimentação no domicílio desacelerou de 0,66% em maio para 0,47% em junho, com altas significativas em produtos como batata inglesa (14,49%) e leite longa vida (7,43%).]
+- {**INPC de Junho**}: [O INPC teve alta de 0,25% em junho, abaixo do 0,46% do mês anterior, acumulando 2,68% no ano e 3,70% nos últimos 12 meses, superando os 3,34% do período anterior.]
+- {**Variações Regionais**}: [A maior variação do IPCA foi em Goiânia (0,50%), enquanto Porto Alegre apresentou a menor (-0,14%). No INPC, Belo Horizonte e Brasília tiveram a maior variação (0,58%).]
+
+**Macro Environment Impacts**
+||Os dados de junho de 2024 revelam um cenário inflacionário moderado, com o IPCA mostrando uma desaceleração em relação ao mês anterior. A alta de 0,21% no IPCA, embora ainda acima da meta de inflação, sugere uma tendência de controle inflacionário, especialmente com a contribuição significativa de Alimentação e Bebidas. A queda em Transportes pode indicar uma pressão deflacionária em setores específicos, o que pode influenciar as decisões do Banco Central em relação à política monetária. O aumento no INPC, embora moderado, reflete a pressão contínua sobre os preços, especialmente em serviços essenciais como saúde e habitação. A variação regional dos índices sugere que as políticas de ajuste devem considerar as especificidades locais, especialmente em áreas com altas taxas de inflação. O cenário atual pode levar o Banco Central a manter uma postura cautelosa em relação a futuras elevações de taxas de juros, priorizando a estabilidade econômica e o crescimento sustentável. A análise dos componentes do IPCA e do INPC será crucial para a formulação de estratégias macroeconômicas e ajustes de políticas monetárias nos próximos meses.||

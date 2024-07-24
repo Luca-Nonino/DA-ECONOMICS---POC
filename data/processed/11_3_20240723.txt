@@ -1,0 +1,18 @@
+**Title:**
+{'Existing-Home Sales Report: June 2024'}
+
+**Overview:**
+||The June 2024 report from the National Association of REALTORS® indicates a significant decline in existing-home sales, which fell by 5.4% to a seasonally adjusted annual rate of 3.89 million. This decline is mirrored in year-over-year comparisons, with sales also down 5.4% from June 2023. Despite the drop in sales volume, the median existing-home price reached an all-time high of $426,900, reflecting a 4.1% increase from the previous year. The inventory of unsold homes rose by 3.1% to 1.32 million units, equating to a 4.1-month supply at the current sales pace, indicating a shift towards a more balanced market. The report highlights regional variations in sales and prices, with all four major U.S. regions experiencing declines in sales.||
+
+**Key Takeaways:**
+- {**Sales Volume Decline**}: [Existing-home sales decreased by 5.4% in June 2024, reaching a seasonally adjusted annual rate of 3.89 million, down from 4.11 million in June 2023.]
+- {**Record Median Price**}: [The median existing-home price rose to $426,900 in June, marking a 4.1% increase from $410,100 in June 2023, and achieving the highest price recorded for the second consecutive month.]
+- {**Inventory Increase**}: [Total housing inventory increased by 3.1% from May to 1.32 million units, representing a 23.4% rise year-over-year, resulting in a 4.1-month supply of unsold homes.]
+- {**Days on Market**}: [Properties remained on the market for an average of 22 days in June, slightly down from 24 days in May but up from 18 days in June 2023, indicating a slower sales pace.]
+- {**First-Time Buyers**}: [First-time buyers accounted for 29% of sales in June, a decrease from 31% in May but an increase from 27% in June 2023, reflecting ongoing challenges in affordability.]
+- {**Regional Sales Trends**}: [Sales declined across all major regions: Northeast (-2.1%), Midwest (-8%), South (-5.9%), and West (-2.6%), with median prices increasing in all regions.]
+
+**Macro Environment Impacts**
+||The June 2024 existing-home sales report reveals critical insights into the housing market's current state, suggesting a transition from a seller's market to a more balanced environment. The significant decline in sales volume, coupled with rising inventory levels, indicates that buyers are becoming more selective, which could lead to a stabilization of prices in the near term. The record-high median price, despite the sales decline, suggests persistent demand pressures, likely driven by limited supply and ongoing inflationary trends in housing. 
+
+From a monetary policy perspective, the Federal Reserve may interpret these trends as indicative of a cooling housing market, which could influence their decisions regarding interest rates. According to the Taylor Rule, if inflationary pressures remain high, the Fed may need to consider tightening monetary policy further. However, the increase in inventory and the longer time homes are on the market could signal a need for caution in rate hikes, as these factors may contribute to a slowdown in economic activity. The mixed signals from the housing market—declining sales but rising prices—will require careful monitoring as they could impact consumer confidence and spending, ultimately influencing broader economic growth. The Fed's approach will need to balance these dynamics to ensure sustainable economic recovery while managing inflation effectively.||

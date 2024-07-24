@@ -60,6 +60,14 @@ def parse_content(content):
 
     return data
 
+import re
+import sqlite3
+import os
+
+import re
+import sqlite3
+import os
+
 def insert_data_to_tables(document_id, release_date, data, file_path, db_path=None):
     if db_path is None:
         db_path = os.path.join(project_root, 'data/database/database.sqlite')
@@ -97,12 +105,13 @@ def insert_data_to_tables(document_id, release_date, data, file_path, db_path=No
         print("Generated Summaries:", short_summaries)  # Debugging: Print the generated summaries
 
         if short_summaries:
-            en_match = re.search(r'\[EN\]\n\{(.+?)\}', short_summaries)
-            pt_match = re.search(r'\[PT\]\n\{(.+?)\}', short_summaries)
+            # Updated regex pattern to match the entire summary block for each language
+            en_match = re.search(r'\[EN\]([\s\S]*?)(?=\[PT\]|\Z)', short_summaries)
+            pt_match = re.search(r'\[PT\]([\s\S]*?)(?=\[EN\]|\Z)', short_summaries)
 
             if en_match and pt_match:
-                en_summary = en_match.group(1)
-                pt_summary = pt_match.group(1)
+                en_summary = en_match.group(1).strip()
+                pt_summary = pt_match.group(1).strip()
                 cursor.execute("""
                     UPDATE summary_table
                     SET en_summary = ?, pt_summary = ?
@@ -116,6 +125,7 @@ def insert_data_to_tables(document_id, release_date, data, file_path, db_path=No
     finally:
         conn.close()
         print(f"Data inserted into tables for document_id {document_id} and release_date {release_date}.")
+
 
 def parse_and_load(file_path, db_path=None):
     if not os.path.exists(file_path):

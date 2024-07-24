@@ -35,7 +35,7 @@ def read_txt_file(txt_path):
 
     return text
 
-def extract_release_date(pdf_path, num_chars=500, retries=3, timeout=20):
+def extract_release_date(pdf_path, num_chars=1000, retries=3, timeout=20):
     def make_request(content, prompt):
         history = [
             {
@@ -79,6 +79,7 @@ def extract_release_date(pdf_path, num_chars=500, retries=3, timeout=20):
         "- Given 'The product was launched on May 30, 2024.', your response should be '**20240530**'. "
         "- Given 'Release Date: 2024-05-30', your response should still be '**20240530**'."
         "OUTPUT FORMAT: **YYYYMMDD** -> DO NOT OUTPUT THE LOGIC USED, ONLY THE DATE, REMEMBER, THIS INFERENCE HAS THE GOAL OF REPLACING A PYTHON FUNCTION"
+        "ABSOLUTELY ALWAYS OUTPUT A SIX LETTER NUMBER FOR THE COMBINED DATE BETWEEN ASTERISKS"
     )
 
     for attempt in range(retries):
@@ -195,7 +196,7 @@ def generate_output(file_path, db_path=os.path.join(BASE_DIR, 'data/database/dat
         for attempt in range(retries):
             try:
                 response_stream = client.chat.completions.create(
-                    model="gpt-4o",
+                    model="gpt-4o-mini",
                     messages=history,
                     temperature=0.1,
                     stream=True,
@@ -288,7 +289,7 @@ def generate_short_summaries(file_path, prompt_path=os.path.join(BASE_DIR, "data
         ]
 
         response = client.chat.completions.create(
-            model="gpt-4o",
+            model="gpt-4o-mini",
             messages=history,
             temperature=0.1,
             max_tokens=500,

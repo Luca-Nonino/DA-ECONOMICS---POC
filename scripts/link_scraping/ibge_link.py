@@ -70,12 +70,20 @@ def process_ibge_link(url, document_id, pipe_id):
             if secondary_html_content:
                 publication_content = extract_publication_content(secondary_html_content)
                 save_page_content(publication_content, document_id, pipe_id, release_date)
+                file_path = os.path.join(project_root, 'data', 'raw', 'txt', f"{document_id}_{pipe_id}_{release_date}.txt")
+                return file_path, release_date, None
             else:
-                print("Failed to fetch secondary HTML content.")
+                error_message = "Failed to fetch secondary HTML content."
+                print(error_message)
+                return None, None, error_message
         else:
-            print("Failed to extract release date or secondary link.")
+            error_message = "Failed to extract release date or secondary link."
+            print(error_message)
+            return None, None, error_message
     else:
-        print("Failed to fetch HTML content.")
+        error_message = "Failed to fetch HTML content."
+        print(error_message)
+        return None, None, error_message
 
 ############################# Test Examples #################################
 

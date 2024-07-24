@@ -1,9 +1,12 @@
-import pandas as pd
+
 import datetime
+import pandas as pd
+import os
 
 # Load the dataset
-file_path = 'scripts/api_scraping/ExpectativaMercadoMensais_data.csv'
-print(f"Loading dataset from {file_path}...")
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..', '..'))
+
+file_path = os.path.join(PROJECT_ROOT, 'scripts/api_scraping/bcb/data/ExpectativaMercadoMensais_data.csv')
 data = pd.read_csv(file_path)
 
 # Print columns for debugging

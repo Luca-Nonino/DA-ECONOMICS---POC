@@ -197,9 +197,9 @@ def run_pipeline(document_id):
 
 if __name__ == "__main__":
     # Example usage
-    document_ids = [1,11]
+    #document_ids = [1,11]
     #document_ids = [3,5]
-    #document_ids = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+    document_ids = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
     statuses = []
     for document_id in document_ids:
         try:

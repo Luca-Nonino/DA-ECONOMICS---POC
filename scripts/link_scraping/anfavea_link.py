@@ -71,6 +71,8 @@ def process_anfavea_link(document_id, pipe_id):
         release_date = extract_release_date_from_pdf(pdf_save_path)
         if release_date:
             final_save_path = os.path.join(PROJECT_ROOT, "data/raw/pdf", f"{document_id}_{pipe_id}_{release_date}.pdf")
+            if os.path.exists(final_save_path):
+                os.remove(final_save_path)
             os.rename(pdf_save_path, final_save_path)
             print(f"Release Date: {release_date}")
             print(f"Save Path: {final_save_path}")
