@@ -1,0 +1,15 @@
+**Title:**
+{'Existing-Home Sales: June 2024'}
+
+**Overview:**
+||The report details the performance of existing-home sales in June 2024, indicating a significant decline in sales volume and a record high in median prices. Existing-home sales fell by 5.4% from May to a seasonally adjusted annual rate of 3.89 million, mirroring a similar year-over-year decline. The median sales price reached $426,900, marking the second consecutive month of record highs. Additionally, inventory levels increased, suggesting a shift in market dynamics.||
+
+**Key Takeaways:**
+- {**Sales Volume Decline**}: [Existing-home sales decreased by 5.4% in June 2024 from May, falling to a seasonally adjusted annual rate of 3.89 million. This represents a 5.4% decline compared to June 2023, when sales were at 4.11 million.]
+- {**Record Median Price**}: [The median existing-home sales price rose to $426,900, a 4.1% increase from June 2023, marking the highest price recorded for the second consecutive month and the twelfth month of year-over-year price gains.]
+- {**Inventory Increase**}: [The inventory of unsold existing homes increased by 3.1% from May to 1.32 million units, equivalent to a 4.1-month supply at the current sales pace, up from 3.7 months in May and 3.1 months in June 2023.]
+- {**Regional Sales Trends**}: [All four major U.S. regions experienced declines in sales, with the Northeast down 2.1%, the Midwest down 8%, the South down 5.9%, and the West down 2.6% from the previous month.]
+- {**First-Time Buyers**}: [First-time buyers accounted for 29% of sales in June, a slight decrease from 31% in May but an increase from 27% in June 2023.]
+
+**Macro Environment Impacts:**
+||The June 2024 existing-home sales report indicates a notable shift in the housing market, transitioning from a seller's market to a more balanced environment. The 5.4% decline in sales volume, coupled with a record median price, suggests that while demand remains, affordability issues may be constraining buyer activity. The increase in inventory to a 4.1-month supply indicates that sellers are facing longer selling times and fewer offers, which could lead to a stabilization in prices moving forward. According to the Taylor Rule, the Federal Reserve may need to consider these housing market dynamics when formulating monetary policy. The persistent high median prices, alongside rising inventory, could influence inflation expectations and necessitate a cautious approach to interest rate adjustments. The mixed signals from the housing market—declining sales but rising prices—highlight the complexities the Fed faces in balancing economic growth with inflation control. As the market adjusts, monitoring these trends will be crucial for anticipating future policy shifts.||

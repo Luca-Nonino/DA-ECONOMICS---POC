@@ -1,24 +1,39 @@
 ## mdic_html.py
 
 ```python
-import requests
+from fake_useragent import UserAgent
+import httpx
 from bs4 import BeautifulSoup
 import os
 import sys
 from datetime import datetime
 import certifi
 
+# Initialize UserAgent
+ua = UserAgent()
+
 # Determine project root directory
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
-# Function to fetch and parse HTML content from the URL
+# Function to fetch and parse HTML content from the URL using httpx
 def fetch_html_content(url):
+    headers = {
+        'User-Agent': ua.random,
+        'Referer': url,
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Connection': 'keep-alive',
+        'Accept': 'application/pdf',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache',
+    }
     try:
-        response = requests.get(url, verify=False)
-        response.raise_for_status()
-        return response.content
-    except requests.RequestException as e:
-        print(f"Failed to fetch content from {url}: {e}")
+        with httpx.Client(timeout=30, verify=False) as client:
+            response = client.get(url, headers=headers)
+            response.raise_for_status()
+            return response.content
+    except httpx.RequestError as e:
+        print(f"Failed to fetch content: {e}")
         return None
 
 # Function to extract the release date in YYYYMMDD format
@@ -118,8 +133,6 @@ def process_balança_comercial_html(url, document_id, pipe_id):
             print("Failed to extract release date.")
     else:
         print("Failed to fetch HTML content.")
-
-############################# Test Examples #################################
 
 # Example usage
 url = "https://balanca.economia.gov.br/balanca/pg_principal_bc/principais_resultados.html"
@@ -349,79 +362,52 @@ print(f"PROJECT_ROOT: {PROJECT_ROOT}")
 # Calculate the last Friday or return the current date if it's Friday
 def get_last_friday(date):
     weekday = date.weekday()
-    if weekday == 4:  # Friday
+    if weekday == 4:
         return date
     days_to_last_friday = (weekday - 4) % 7
     return date - timedelta(days_to_last_friday)
 
-# Function to execute a script
 def execute_script(script_path):
     try:
         result = subprocess.run(['python', script_path], check=True, capture_output=True, text=True)
         print(f"Executed {script_path} successfully.")
-        print(result.stdout)  # Print the standard output from the script
+        print(result.stdout)
     except subprocess.CalledProcessError as e:
         print(f"Error executing {script_path}: {e}")
-        print(e.stdout)  # Print the standard output if there is an error
-        print(e.stderr)  # Print the standard error if there is an error
+        print(e.stdout)
+        print(e.stderr)
 
-# Main function to process the BCB API data
 def process_bcb_api(document_id, pipe_id):
-    # Define paths to scripts
     script_ema = os.path.join(PROJECT_ROOT, 'scripts', 'api_scraping', 'bcb', 'modules', 'db_read_ema.py')
     script_emm = os.path.join(PROJECT_ROOT, 'scripts', 'api_scraping', 'bcb', 'modules', 'db_read_emm.py')
-    
-    # Execute the scripts
     execute_script(script_ema)
     execute_script(script_emm)
-    
-    # Define paths to summary files
     mensais_summary_path = os.path.join(PROJECT_ROOT, 'scripts', 'api_scraping', 'bcb', 'modules', 'ExpectativaMercadoMensais_summary_output.txt')
     anuais_summary_path = os.path.join(PROJECT_ROOT, 'scripts', 'api_scraping', 'bcb', 'modules', 'ExpectativasMercadoAnuais_summary_output.txt')
-    
-    # Print paths for debugging
-    print(f"mensais_summary_path: {mensais_summary_path}")
-    print(f"anuais_summary_path: {anuais_summary_path}")
-    
-    # Check if the files exist
     if not os.path.exists(mensais_summary_path):
         print(f"File not found: {mensais_summary_path}")
-        return
-    
+        return None, None
     if not os.path.exists(anuais_summary_path):
         print(f"File not found: {anuais_summary_path}")
-        return
-    
-    # Read the content from the updated summary files
+        return None, None
     with open(mensais_summary_path, 'r', encoding='utf-8') as mensais_file:
         mensais_content = mensais_file.read()
-    
     with open(anuais_summary_path, 'r', encoding='utf-8') as anuais_file:
         anuais_content = anuais_file.read()
-    
-    # Get the last Friday or current date if it's Friday
     current_date = datetime.now()
     last_friday = get_last_friday(current_date)
     formatted_date = last_friday.strftime('%Y-%m-%d')
-    
-    # Define titles
     mensais_title = f"Relatório Focus - Dados de expectativas Mensais por indicador - {formatted_date}"
     anuais_title = f"Relatório Focus - Dados de expectativas Anuais por indicador - {formatted_date}"
-    
-    # Consolidate the content with titles
     consolidated_content = f"{mensais_title}\n\n{mensais_content}\n\n{anuais_title}\n\n{anuais_content}"
-    
-    # Define the save path and file name
-    save_dir = os.path.join(PROJECT_ROOT, 'data', 'raw','txt')
+    save_dir = os.path.join(PROJECT_ROOT, 'data', 'raw', 'txt')
     os.makedirs(save_dir, exist_ok=True)
     file_name = f"{document_id}_{pipe_id}_{last_friday.strftime('%Y%m%d')}.txt"
     save_path = os.path.join(save_dir, file_name)
-    
-    # Save the consolidated content to the file
     with open(save_path, 'w', encoding='utf-8') as output_file:
         output_file.write(consolidated_content)
-    
     print(f"Consolidated content saved to {save_path}")
+    return save_path, formatted_date
 
 # Example usage
 if __name__ == "__main__":
@@ -1354,7 +1340,7 @@ def check_hash_and_extract_release_date(pdf_path, db_path=os.path.join(project_r
         if release_date:
             print(f"Extracted release date: {release_date}")
             valid_release_date = release_date.strip("*")
-            new_file_name = os.path.join(os.path.dirname(pdf_path), f"{document_id}_2_{valid_release_date}.pdf")
+            new_file_name = os.path.join(os.path.dirname(pdf_path), f"{document_id}_{pipe_id}_{valid_release_date}.pdf")
 
             if not os.path.exists(os.path.dirname(new_file_name)):
                 os.makedirs(os.path.dirname(new_file_name))
@@ -1574,9 +1560,9 @@ def run_pipeline(document_id):
 
 if __name__ == "__main__":
     # Example usage
-    document_ids = [1,11]
+    #document_ids = [1,11]
     #document_ids = [3,5]
-    #document_ids = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+    document_ids = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
     statuses = []
     for document_id in document_ids:
         try:
@@ -1672,6 +1658,9 @@ def process_output(file_path, document_id, pipe_id, release_date):
         except Exception as e:
             logger.error(f"Error processing PDF file for document_id {document_id}: {e}", exc_info=True)
 
+
+from datetime import datetime
+
 def run_pipeline(document_id):
     if document_id not in PROCESSING_FUNCTIONS:
         return f"Document ID {document_id} not supported in this orchestrator."
@@ -1686,26 +1675,42 @@ def run_pipeline(document_id):
         if document_id in [22, 23]:
             # Specific processing for PDF generating functions
             file_path, release_date = process_func(document_id, pipe_id)
-            if file_path and release_date:
-                process_output(file_path, document_id, pipe_id, release_date)
-            else:
-                return f"Failed to process document_id {document_id}"
         else:
             # Generic processing for HTML scraping functions
             file_path, release_date, error_message = process_func(url, document_id, pipe_id)
-            if file_path and release_date:
-                process_output(file_path, document_id, pipe_id, release_date)
-            else:
-                return f"Failed to extract file path from function output for document_id {document_id}"
+        
+        if file_path and release_date:
+            # Ensure release_date is in YYYYMMDD format
+            try:
+                # Try parsing as YYYY-MM-DD first
+                parsed_date = datetime.strptime(release_date, "%Y-%m-%d")
+            except ValueError:
+                try:
+                    # If that fails, try parsing as YYYYMMDD
+                    parsed_date = datetime.strptime(release_date, "%Y%m%d")
+                except ValueError:
+                    # If both fail, log an error and return
+                    logger.error(f"Invalid date format for document_id {document_id}: {release_date}")
+                    return f"Failed to process document_id {document_id}: Invalid date format"
+
+            # Convert to YYYYMMDD format
+            formatted_release_date = parsed_date.strftime("%Y%m%d")
+            process_output(file_path, document_id, pipe_id, formatted_release_date)
+        else:
+            return f"Failed to process document_id {document_id}"
     except Exception as e:
         logger.error(f"Error in run_pipeline for document_id {document_id}: {e}", exc_info=True)
         return f"Error occurred: {e}"
 
     return f"Pipeline executed successfully for document_id {document_id}"
 
+
+
+
 if __name__ == "__main__":
     # Example usage
-    document_ids = [22, 23, 25, 26, 27, 28, 29, 30]
+    # document_ids = [22, 23, 25, 26, 27, 28, 29, 30]
+    document_ids = [24]
     statuses = []
     for document_id in document_ids:
         try:
@@ -1856,6 +1861,7 @@ def extract_release_date(pdf_path, num_chars=1000, retries=3, timeout=20):
         "- Given 'The product was launched on May 30, 2024.', your response should be '**20240530**'. "
         "- Given 'Release Date: 2024-05-30', your response should still be '**20240530**'."
         "OUTPUT FORMAT: **YYYYMMDD** -> DO NOT OUTPUT THE LOGIC USED, ONLY THE DATE, REMEMBER, THIS INFERENCE HAS THE GOAL OF REPLACING A PYTHON FUNCTION"
+        "ABSOLUTELY ALWAYS OUTPUT A SIX LETTER NUMBER FOR THE COMBINED DATE BETWEEN ASTERISKS"
     )
 
     for attempt in range(retries):
@@ -1895,19 +1901,24 @@ def get_prompt(document_id, db_path=os.path.join(BASE_DIR, 'data/database/databa
     cursor = conn.cursor()
     cursor.execute("""
         SELECT
-            persona_expertise, persona_tone, format_input, format_output_overview_title,
-            format_output_overview_description, format_output_overview_enclosure,
-            format_output_overview_title_enclosure, format_output_key_takeaways_title,
-            format_output_key_takeaways_description, format_output_key_takeaways_enclosure,
-            format_output_key_takeaways_title_enclosure, format_output_macro_environment_impacts_title,
-            format_output_macro_environment_impacts_description, format_output_macro_environment_impacts_enclosure,
-            tasks_1, tasks_2, tasks_3, tasks_4, tasks_5, audience, objective,
-            constraints_language_usage, constraints_language_style, constraints_search_tool_use
-        FROM prompts_table
-        WHERE document_id =?
+            p.persona_expertise, p.persona_tone, p.format_input, p.format_output_overview_title,
+            p.format_output_overview_description, p.format_output_overview_enclosure,
+            p.format_output_overview_title_enclosure, p.format_output_key_takeaways_title,
+            p.format_output_key_takeaways_description, p.format_output_key_takeaways_enclosure,
+            p.format_output_key_takeaways_title_enclosure, p.format_output_macro_environment_impacts_title,
+            p.format_output_macro_environment_impacts_description, p.format_output_macro_environment_impacts_enclosure,
+            p.tasks_1, p.tasks_2, p.tasks_3, p.tasks_4, p.tasks_5, p.audience, p.objective,
+            p.constraints_language_usage, p.constraints_language_style, p.constraints_search_tool_use,
+            d.country
+        FROM prompts_table p
+        JOIN documents_table d ON p.document_id = d.document_id
+        WHERE p.document_id = ?
     """, (document_id,))
     row = cursor.fetchone()
     conn.close()
+
+    if row is None:
+        raise ValueError(f"No data found for document_id {document_id}")
 
     prompt_dict = {
         "PERSONA": row[0],
@@ -1933,7 +1944,8 @@ def get_prompt(document_id, db_path=os.path.join(BASE_DIR, 'data/database/databa
         "OBJECTIVE": row[20],
         "CONSTRAINTS_LANGUAGE_USAGE": row[21],
         "CONSTRAINTS_LANGUAGE_STYLE": row[22],
-        "CONSTRAINTS_SEARCH_TOOL_USE": row[23]
+        "CONSTRAINTS_SEARCH_TOOL_USE": row[23],
+        "COUNTRY": row[24]
     }
 
     formatted_prompt = (
@@ -1956,6 +1968,13 @@ def get_prompt(document_id, db_path=os.path.join(BASE_DIR, 'data/database/databa
         f"#CONSTRAINTS_SEARCH_TOOL_USE:\n{prompt_dict['CONSTRAINTS_SEARCH_TOOL_USE']}"
     )
 
+    if prompt_dict['COUNTRY'] == 'BR':
+        portuguese_system_message = "Sistema: Você é um assistente de IA especializado em análise de dados e relatórios econômicos para o mercado brasileiro. Por favor, responda em português conforme os exemplos fornecidos."
+        formatted_prompt = portuguese_system_message + "\n\n" + formatted_prompt
+    else:
+        english_system_message = "System: You are an AI assistant specialized in data analysis and economic reporting. Please respond in English."
+        formatted_prompt = english_system_message + "\n\n" + formatted_prompt
+
     example_file_path = os.path.join(BASE_DIR, "data/examples/processed_ex_us.txt")
     try:
         with open(example_file_path, 'r') as ex_file:
@@ -1966,6 +1985,7 @@ def get_prompt(document_id, db_path=os.path.join(BASE_DIR, 'data/database/databa
 
     print(f"Formatted prompt for document_id {document_id}:\n{formatted_prompt}")
     return formatted_prompt
+
 
 def generate_output(file_path, db_path=os.path.join(BASE_DIR, 'data/database/database.sqlite'), stream_timeout=None):
     def request_inference(history, retries=3, timeout=20):
@@ -2019,6 +2039,7 @@ def generate_output(file_path, db_path=os.path.join(BASE_DIR, 'data/database/dat
                 "You are an assistant designed to generate a comprehensive analysis based on the provided document. "
                 "Your task is to analyze the document content and create a structured response that adheres to the following prompt format. "
                 "Please ensure your response is detailed and follows the guidelines provided."
+                "When provided input that is partially in brazillian portuguese, answer in brazillian portuguese"
             )
         },
         {"role": "user", "content": full_prompt},
@@ -2202,7 +2223,6 @@ def parse_content(content):
     print("Parsed data:", data)
 
     return data
-
 def insert_data_to_tables(document_id, release_date, data, file_path, db_path=None):
     if db_path is None:
         db_path = os.path.join(project_root, 'data/database/database.sqlite')
@@ -2240,12 +2260,13 @@ def insert_data_to_tables(document_id, release_date, data, file_path, db_path=No
         print("Generated Summaries:", short_summaries)  # Debugging: Print the generated summaries
 
         if short_summaries:
-            en_match = re.search(r'\[EN\]\n\{(.+?)\}', short_summaries)
-            pt_match = re.search(r'\[PT\]\n\{(.+?)\}', short_summaries)
+            # Updated regex pattern to match the entire summary block for each language
+            en_match = re.search(r'\[EN\]([\s\S]*?)(?=\[PT\]|\Z)', short_summaries)
+            pt_match = re.search(r'\[PT\]([\s\S]*?)(?=\[EN\]|\Z)', short_summaries)
 
             if en_match and pt_match:
-                en_summary = en_match.group(1)
-                pt_summary = pt_match.group(1)
+                en_summary = en_match.group(1).strip()
+                pt_summary = pt_match.group(1).strip()
                 cursor.execute("""
                     UPDATE summary_table
                     SET en_summary = ?, pt_summary = ?
@@ -2259,6 +2280,7 @@ def insert_data_to_tables(document_id, release_date, data, file_path, db_path=No
     finally:
         conn.close()
         print(f"Data inserted into tables for document_id {document_id} and release_date {release_date}.")
+
 
 def parse_and_load(file_path, db_path=None):
     if not os.path.exists(file_path):

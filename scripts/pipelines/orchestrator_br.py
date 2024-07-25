@@ -23,6 +23,7 @@ from scripts.html_scraping.mdic_html import process_balança_comercial_html
 from scripts.link_scraping.ibge_link import process_ibge_link
 from scripts.link_scraping.anfavea_link import process_anfavea_link
 from scripts.api_scraping.bcb_api import process_bcb_api
+from scripts.html_scraping.bcb_html import process_bcb_html
 from scripts.pdf.pdf_download import execute_pdf_download, execute_pdf_download_with_url
 from scripts.utils.completions_general import generate_output
 from scripts.utils.parse_load import parse_and_load
@@ -33,6 +34,7 @@ from scripts.utils.check_date import check_and_update_release_date
 PROCESSING_FUNCTIONS = {
     22: process_anfavea_link,
     23: process_bcb_api,
+    24: process_bcb_html,
     25: process_ibge_link,
     26: process_ibge_link,
     27: process_ibge_link,
@@ -90,17 +92,29 @@ def run_pipeline(document_id):
         if document_id in [22, 23]:
             # Specific processing for PDF generating functions
             file_path, release_date = process_func(document_id, pipe_id)
-            if file_path and release_date:
-                process_output(file_path, document_id, pipe_id, release_date)
-            else:
-                return f"Failed to process document_id {document_id}"
         else:
             # Generic processing for HTML scraping functions
             file_path, release_date, error_message = process_func(url, document_id, pipe_id)
-            if file_path and release_date:
-                process_output(file_path, document_id, pipe_id, release_date)
-            else:
-                return f"Failed to extract file path from function output for document_id {document_id}"
+        
+        if file_path and release_date:
+            # Ensure release_date is in YYYYMMDD format
+            try:
+                # Try parsing as YYYY-MM-DD first
+                parsed_date = datetime.strptime(release_date, "%Y-%m-%d")
+            except ValueError:
+                try:
+                    # If that fails, try parsing as YYYYMMDD
+                    parsed_date = datetime.strptime(release_date, "%Y%m%d")
+                except ValueError:
+                    # If both fail, log an error and return
+                    logger.error(f"Invalid date format for document_id {document_id}: {release_date}")
+                    return f"Failed to process document_id {document_id}: Invalid date format"
+
+            # Convert to YYYYMMDD format
+            formatted_release_date = parsed_date.strftime("%Y%m%d")
+            process_output(file_path, document_id, pipe_id, formatted_release_date)
+        else:
+            return f"Failed to process document_id {document_id}"
     except Exception as e:
         logger.error(f"Error in run_pipeline for document_id {document_id}: {e}", exc_info=True)
         return f"Error occurred: {e}"
@@ -109,8 +123,8 @@ def run_pipeline(document_id):
 
 if __name__ == "__main__":
     # Example usage
-    document_ids = [22, 23, 25, 26, 27, 28, 29, 30]
-    #document_ids = [22]
+    # document_ids = [22, 23, 25, 26, 27, 28, 29, 30]
+    document_ids = [24]
     statuses = []
     for document_id in document_ids:
         try:

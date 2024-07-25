@@ -1,21 +1,36 @@
-import requests
+from fake_useragent import UserAgent
+import httpx
 from bs4 import BeautifulSoup
 import os
 import sys
 from datetime import datetime
 import certifi
 
+# Initialize UserAgent
+ua = UserAgent()
+
 # Determine project root directory
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
-# Function to fetch and parse HTML content from the URL
+# Function to fetch and parse HTML content from the URL using httpx
 def fetch_html_content(url):
+    headers = {
+        'User-Agent': ua.random,
+        'Referer': url,
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Connection': 'keep-alive',
+        'Accept': 'application/pdf',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache',
+    }
     try:
-        response = requests.get(url, verify=False)
-        response.raise_for_status()
-        return response.content
-    except requests.RequestException as e:
-        print(f"Failed to fetch content from {url}: {e}")
+        with httpx.Client(timeout=30, verify=False) as client:
+            response = client.get(url, headers=headers)
+            response.raise_for_status()
+            return response.content
+    except httpx.RequestError as e:
+        print(f"Failed to fetch content: {e}")
         return None
 
 # Function to extract the release date in YYYYMMDD format
@@ -115,8 +130,6 @@ def process_balança_comercial_html(url, document_id, pipe_id):
             print("Failed to extract release date.")
     else:
         print("Failed to fetch HTML content.")
-
-############################# Test Examples #################################
 
 # Example usage
 url = "https://balanca.economia.gov.br/balanca/pg_principal_bc/principais_resultados.html"

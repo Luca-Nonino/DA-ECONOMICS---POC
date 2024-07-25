@@ -37,10 +37,9 @@ def fetch_dynamic_content(url):
         logger.info(f"Attempting to fetch content from URL: {url}")
         driver.get(url)
         
-        # Wait for a specific element that you know exists on the page after it's loaded
-        # Replace 'specific-element-id' with an actual ID from the page
+        # Wait for the h1 element with text 'Estatísticas fiscais'
         WebDriverWait(driver, 30).until(
-            EC.presence_of_element_located((By.ID, "specific-element-id"))
+            EC.presence_of_element_located((By.XPATH, "//h1[text()='Estatísticas fiscais']"))
         )
         
         logger.debug("Page loaded, getting page source")
@@ -73,6 +72,7 @@ def save_extracted_content(content, document_id, pipe_id, release_date):
     with open(save_path, 'w', encoding='utf-8') as file:
         file.write(content)
     logger.info(f"Content saved to {save_path}")
+    return save_path
 
 def process_bcb_html(url, document_id, pipe_id):
     logger.info(f"Starting process for URL: {url} with document_id: {document_id} and pipe_id: {pipe_id}")
@@ -82,11 +82,14 @@ def process_bcb_html(url, document_id, pipe_id):
         release_date = datetime.now().strftime("%Y%m%d")  # Use current date as fallback
         content = extract_section_paragraphs(soup)
         if content.strip():
-            save_extracted_content(content, document_id, pipe_id, release_date)
+            file_path = save_extracted_content(content, document_id, pipe_id, release_date)
+            return file_path, release_date, None
         else:
             logger.error("Failed to extract content.")
+            return None, None, "Failed to extract content"
     else:
         logger.error("Failed to fetch HTML content.")
+        return None, None, "Failed to fetch HTML content"
 
 # Example usage
 if __name__ == "__main__":

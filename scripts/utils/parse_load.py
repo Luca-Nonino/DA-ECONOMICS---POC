@@ -59,15 +59,6 @@ def parse_content(content):
     print("Parsed data:", data)
 
     return data
-
-import re
-import sqlite3
-import os
-
-import re
-import sqlite3
-import os
-
 def insert_data_to_tables(document_id, release_date, data, file_path, db_path=None):
     if db_path is None:
         db_path = os.path.join(project_root, 'data/database/database.sqlite')

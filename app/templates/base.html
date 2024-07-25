@@ -48,6 +48,7 @@
             font-size: 14px;
             font-weight: bold;
             margin-bottom: 5px;
+            text-transform: uppercase;
         }
         .nav-bar .indicator-link:hover {
             color: #228b22;
@@ -346,10 +347,12 @@
         <h2 class="text-xl font-bold text-center mb-4">Select Publication Below</h2>
         <ul>
             {% for doc in document_names %}
-            <li class="my-2"><a href="#" class="indicator-link" data-document-id="{{ doc[1] }}">{{ doc[0] }}</a></li>
-            <span class="indicator-separator">-----</span>
+                <li class="my-2">
+                    <a href="#" class="indicator-link" data-document-id="{{ doc[1] }}">{{ doc[0] }}</a>
+                </li>
+                <span class="indicator-separator">-----</span>
             {% endfor %}
-        </ul>
+        </ul>        
     </div>
     <div class="content">
         <div id="placeholder" class="box">
@@ -484,11 +487,12 @@
             links.forEach(link => {
                 link.addEventListener('click', function () {
                     const docId = this.getAttribute('data-document-id');
+                    console.log(`Document ID clicked: ${docId}`);  // Debugging
                     showLoading();
                     fetch(`/indicators/query/${docId}`)
                         .then(response => response.json())
                         .then(data => {
-                            document.getElementById('document-title').textContent = data.document_name + ' - ' + data.source_name;
+                            document.getElementById('document-title').textContent = data.document_name.toUpperCase() + ' - ' + data.source_name.toUpperCase();
                             document.getElementById('document-title').setAttribute('data-document-id', data.document_id);
                             document.getElementById('document-path').href = data.path;
                             document.getElementById('document-path').textContent = data.path;
