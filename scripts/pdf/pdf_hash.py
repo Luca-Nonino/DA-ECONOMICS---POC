@@ -98,7 +98,7 @@ def check_hash_and_extract_release_date(pdf_path, db_path=os.path.join(project_r
         if release_date:
             print(f"Extracted release date: {release_date}")
             valid_release_date = release_date.strip("*")
-            new_file_name = os.path.join(os.path.dirname(pdf_path), f"{document_id}_2_{valid_release_date}.pdf")
+            new_file_name = os.path.join(os.path.dirname(pdf_path), f"{document_id}_{pipe_id}_{valid_release_date}.pdf")
 
             if not os.path.exists(os.path.dirname(new_file_name)):
                 os.makedirs(os.path.dirname(new_file_name))

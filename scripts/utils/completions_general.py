@@ -119,19 +119,24 @@ def get_prompt(document_id, db_path=os.path.join(BASE_DIR, 'data/database/databa
     cursor = conn.cursor()
     cursor.execute("""
         SELECT
-            persona_expertise, persona_tone, format_input, format_output_overview_title,
-            format_output_overview_description, format_output_overview_enclosure,
-            format_output_overview_title_enclosure, format_output_key_takeaways_title,
-            format_output_key_takeaways_description, format_output_key_takeaways_enclosure,
-            format_output_key_takeaways_title_enclosure, format_output_macro_environment_impacts_title,
-            format_output_macro_environment_impacts_description, format_output_macro_environment_impacts_enclosure,
-            tasks_1, tasks_2, tasks_3, tasks_4, tasks_5, audience, objective,
-            constraints_language_usage, constraints_language_style, constraints_search_tool_use
-        FROM prompts_table
-        WHERE document_id =?
+            p.persona_expertise, p.persona_tone, p.format_input, p.format_output_overview_title,
+            p.format_output_overview_description, p.format_output_overview_enclosure,
+            p.format_output_overview_title_enclosure, p.format_output_key_takeaways_title,
+            p.format_output_key_takeaways_description, p.format_output_key_takeaways_enclosure,
+            p.format_output_key_takeaways_title_enclosure, p.format_output_macro_environment_impacts_title,
+            p.format_output_macro_environment_impacts_description, p.format_output_macro_environment_impacts_enclosure,
+            p.tasks_1, p.tasks_2, p.tasks_3, p.tasks_4, p.tasks_5, p.audience, p.objective,
+            p.constraints_language_usage, p.constraints_language_style, p.constraints_search_tool_use,
+            d.country
+        FROM prompts_table p
+        JOIN documents_table d ON p.document_id = d.document_id
+        WHERE p.document_id = ?
     """, (document_id,))
     row = cursor.fetchone()
     conn.close()
+
+    if row is None:
+        raise ValueError(f"No data found for document_id {document_id}")
 
     prompt_dict = {
         "PERSONA": row[0],
@@ -157,7 +162,8 @@ def get_prompt(document_id, db_path=os.path.join(BASE_DIR, 'data/database/databa
         "OBJECTIVE": row[20],
         "CONSTRAINTS_LANGUAGE_USAGE": row[21],
         "CONSTRAINTS_LANGUAGE_STYLE": row[22],
-        "CONSTRAINTS_SEARCH_TOOL_USE": row[23]
+        "CONSTRAINTS_SEARCH_TOOL_USE": row[23],
+        "COUNTRY": row[24]
     }
 
     formatted_prompt = (
@@ -180,6 +186,13 @@ def get_prompt(document_id, db_path=os.path.join(BASE_DIR, 'data/database/databa
         f"#CONSTRAINTS_SEARCH_TOOL_USE:\n{prompt_dict['CONSTRAINTS_SEARCH_TOOL_USE']}"
     )
 
+    if prompt_dict['COUNTRY'] == 'BR':
+        portuguese_system_message = "Sistema: Você é um assistente de IA especializado em análise de dados e relatórios econômicos para o mercado brasileiro. Por favor, responda em português conforme os exemplos fornecidos."
+        formatted_prompt = portuguese_system_message + "\n\n" + formatted_prompt
+    else:
+        english_system_message = "System: You are an AI assistant specialized in data analysis and economic reporting. Please respond in English."
+        formatted_prompt = english_system_message + "\n\n" + formatted_prompt
+
     example_file_path = os.path.join(BASE_DIR, "data/examples/processed_ex_us.txt")
     try:
         with open(example_file_path, 'r') as ex_file:
@@ -190,6 +203,7 @@ def get_prompt(document_id, db_path=os.path.join(BASE_DIR, 'data/database/databa
 
     print(f"Formatted prompt for document_id {document_id}:\n{formatted_prompt}")
     return formatted_prompt
+
 
 def generate_output(file_path, db_path=os.path.join(BASE_DIR, 'data/database/database.sqlite'), stream_timeout=None):
     def request_inference(history, retries=3, timeout=20):
@@ -243,6 +257,7 @@ def generate_output(file_path, db_path=os.path.join(BASE_DIR, 'data/database/dat
                 "You are an assistant designed to generate a comprehensive analysis based on the provided document. "
                 "Your task is to analyze the document content and create a structured response that adheres to the following prompt format. "
                 "Please ensure your response is detailed and follows the guidelines provided."
+                "When provided input that is partially in brazillian portuguese, answer in brazillian portuguese"
             )
         },
         {"role": "user", "content": full_prompt},
