@@ -1,0 +1,11 @@
+﻿;;x;;Time Cost;
+1;PRODUÇÃO INDUSTRIAL MENSAL (PIM);ibge;https://www.ibge.gov.br/estatisticas/economicas/industria/9294-pesquisa-industrial-mensal-producao-fisica-brasil.html?=&t=destaques;low;new method(simple)
+2;PRODUÇÃO DE VEICULOS ANFAVEA;ANFAVEA;https://anfavea.com.br/site/wp-content/uploads/2024/06/Release_Junho24.pdf;low;3 phase craping
+3;Balança comercial mensal;mdic;https://balanca.economia.gov.br/balanca/pg_principal_bc/principais_resultados.html;minimal;----
+4;ipca;ibge;https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9256-indice-nacional-de-precos-ao-consumidor-amplo.html;low;1 phase scraping
+5;ipca-15;ibge;https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9260-indice-nacional-de-precos-ao-consumidor-amplo-15.html;low;2 phase scraping
+6;vendas no varejo (pesquisa mensal do comércio);ibge;https://www.ibge.gov.br/estatisticas/economicas/comercio/9227-pesquisa-mensal-de-comercio.html;low;2 phase scraping
+7;pesquisa focus;bcb;https://www.bcb.gov.br/publicacoes/focus;medium;2 phase scraping
+8;Pesquisa mensal de serviços (PMS);IBGE;https://www.ibge.gov.br/estatisticas/economicas/servicos/9229-pesquisa-mensal-de-servicos.html;low;2 phase scraping
+9;ATIVIDADE ECONOMICA MENSAL (ibc-br);BCB;https://dadosabertos.bcb.gov.br/dataset/24363-indice-de-atividade-economica-do-banco-central---ibc-br;----;2 phase scraping
+10;Dívida líquida e resultados primário e nominal;BCB;https://www.bcb.gov.br/estatisticas/estatisticasfiscais;minimal;1 phase scraping

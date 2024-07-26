@@ -1,0 +1,15 @@
+**Title:**
+{'Prévia da Inflação: IPCA-15 de Julho de 2024'}
+
+**Overview:**
+||O relatório apresenta os dados do Índice Nacional de Preços ao Consumidor Amplo 15 (IPCA-15) para julho de 2024, que registrou uma inflação de 0,30%, uma queda de 0,09 ponto percentual em relação ao mês anterior. No acumulado dos últimos 12 meses, a inflação atingiu 4,45%, superando os 4,06% do período anterior. O relatório detalha as variações de preços em diferentes grupos de produtos e serviços, destacando o impacto positivo de Transportes e Habitação, enquanto Alimentação e Bebidas apresentou uma queda significativa.||
+
+**Key Takeaways:**
+- {**Inflação Mensal**}: [O IPCA-15 registrou uma inflação de 0,30% em julho de 2024, uma redução em relação à taxa de 0,39% de junho, indicando uma desaceleração no ritmo inflacionário.]
+- {**Inflação Anual**}: [Nos últimos 12 meses, o IPCA-15 acumulou 4,45%, acima dos 4,06% do período anterior, refletindo pressões inflacionárias persistentes em comparação ao ano passado, quando a taxa foi de -0,07%.]
+- {**Grupos em Alta**}: [Os grupos de Transportes (1,12%) e Habitação (0,49%) foram os principais responsáveis pelo aumento da inflação, com Transportes contribuindo com 0,23 pontos percentuais ao índice.]
+- {**Grupos em Baixa**}: [O grupo Alimentação e Bebidas teve uma queda de 0,44%, com a alimentação no domicílio recuando 0,70%, impactada por quedas significativas em itens como cenoura (-21,60%) e tomate (-17,94%).]
+- {**Variações Regionais**}: [Brasília apresentou a maior variação (0,61%), impulsionada por altas em passagens aéreas (13,68%) e gasolina (2,94%), enquanto Recife teve a menor variação (-0,05%), devido a quedas nos preços de tomate (-37,13%) e cenoura (-28,27%).]
+
+**Macro Environment Impacts**
+||Os dados do IPCA-15 de julho de 2024 indicam um cenário inflacionário complexo, com uma desaceleração na inflação mensal, mas um aumento no acumulado anual. A alta nos grupos de Transportes e Habitação sugere que os custos de serviços e tarifas continuam a pressionar a inflação, enquanto a queda em Alimentação e Bebidas pode aliviar parcialmente a pressão sobre o poder de compra das famílias. A inflação de 4,45% nos últimos 12 meses pode levar o Banco Central a considerar ajustes na política monetária, especialmente se a tendência de alta em Transportes e Habitação persistir. A estabilidade ou queda nos preços de alimentos pode oferecer um alívio temporário, mas a volatilidade em outros setores requer monitoramento contínuo. O cenário sugere que o Comitê de Política Monetária (Copom) deve avaliar cuidadosamente esses dados ao decidir sobre futuras taxas de juros, considerando o equilíbrio entre o controle da inflação e o suporte ao crescimento econômico.||
