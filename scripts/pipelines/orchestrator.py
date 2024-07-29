@@ -275,7 +275,8 @@ def run_pipeline_new(document_id):
     return f"Pipeline executed successfully for document_id {document_id}"
 
 if __name__ == "__main__":
-    document_ids = list(range(1, 31))
+    document_ids = [30]
+    #document_ids = list(range(1, 31))
     statuses = []
     for document_id in document_ids:
         try:

@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup
 import os
 import sys
 from datetime import datetime
-import certifi
 
 # Initialize UserAgent
 ua = UserAgent()
@@ -38,9 +37,13 @@ def extract_release_date(soup):
     date_element = soup.find('h4', class_='date')
     if date_element:
         date_text = date_element.get_text(strip=True).replace("Atualizado em ", "")
-        date_obj = datetime.strptime(date_text, "%d/%m/%Y")
-        formatted_date = date_obj.strftime("%Y%m%d")
-        return formatted_date
+        try:
+            date_obj = datetime.strptime(date_text, "%d/%m/%Y")
+            formatted_date = date_obj.strftime("%Y%m%d")
+            return formatted_date
+        except ValueError as e:
+            print(f"Failed to parse date: {e}")
+            return None
     return None
 
 # Function to extract and format the relevant parts of the HTML
@@ -116,6 +119,7 @@ def save_page_content(relevant_content, document_id, pipe_id, release_date):
     with open(save_path, 'w', encoding='utf-8') as file:
         file.write(relevant_content)
     print(f"Page content saved to {save_path}")
+    return save_path
 
 # Main function to process the URL and perform both extraction and saving
 def process_balança_comercial_html(url, document_id, pipe_id):
@@ -124,15 +128,20 @@ def process_balança_comercial_html(url, document_id, pipe_id):
         soup = BeautifulSoup(html_content, 'html.parser')
         release_date = extract_release_date(soup)
         if release_date:
+            print(f"Release date: {release_date}")
             relevant_content = extract_relevant_content(soup)
-            save_page_content(relevant_content, document_id, pipe_id, release_date)
+            file_path = save_page_content(relevant_content, document_id, pipe_id, release_date)
+            return file_path, release_date, None  # Return None as the third value
         else:
             print("Failed to extract release date.")
+            return None, None, "Failed to extract release date."
     else:
         print("Failed to fetch HTML content.")
+        return None, None, "Failed to fetch HTML content."
+
 
 # Example usage
 url = "https://balanca.economia.gov.br/balanca/pg_principal_bc/principais_resultados.html"
 document_id = 30  # Replace with actual document_id
 pipe_id = "1"
-#process_balança_comercial_html(url, document_id, pipe_id)
+process_balança_comercial_html(url, document_id, pipe_id)
