@@ -95,4 +95,4 @@ def process_ny_html(url, document_id, pipe_id):
 url = "https://www.newyorkfed.org/survey/empire/empiresurvey_overview"
 document_id = 17  # Replace with actual document_id
 pipe_id = "1"
-process_ny_html(url, document_id, pipe_id)
+#process_ny_html(url, document_id, pipe_id)

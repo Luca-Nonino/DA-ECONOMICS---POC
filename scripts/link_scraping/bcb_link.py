@@ -70,4 +70,4 @@ def process_bcb_link(url, document_id, pipe_id):
 url = "https://www.bcb.gov.br/publicacoes/focus"
 document_id = 22  # Example document ID
 pipe_id = "1"
-process_bcb_link(url, document_id, pipe_id)
+#process_bcb_link(url, document_id, pipe_id)

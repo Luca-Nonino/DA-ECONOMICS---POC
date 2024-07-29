@@ -2,7 +2,6 @@ from fake_useragent import UserAgent
 import httpx
 from bs4 import BeautifulSoup
 import os
-import sys
 from datetime import datetime
 
 # Initialize UserAgent
@@ -34,11 +33,11 @@ def fetch_html_content(url):
 
 # Function to extract the release date in YYYYMMDD format
 def extract_release_date(soup):
-    date_element = soup.find('h4', class_='date')
-    if date_element:
-        date_text = date_element.get_text(strip=True).replace("Atualizado em ", "")
+    title_element = soup.find('div', class_='page_title')
+    if title_element:
+        title_text = title_element.get_text(strip=True)
         try:
-            date_obj = datetime.strptime(date_text, "%d/%m/%Y")
+            date_obj = datetime.strptime(title_text, "Final Results for %B %Y")
             formatted_date = date_obj.strftime("%Y%m%d")
             return formatted_date
         except ValueError as e:
@@ -50,44 +49,19 @@ def extract_release_date(soup):
 def extract_relevant_content(soup):
     relevant_content = []
 
-    # Extract the updated date
-    updated_date = soup.find('h4', class_='date')
-    if updated_date:
-        relevant_content.append(updated_date.get_text(strip=True) + '\n')
+    # Extract the table with id 'front_table'
+    table = soup.find('table', id='front_table')
+    if table:
+        relevant_content.append(format_table(table))
 
-    # Extract main results
-    main_results_section = soup.find('div', {'id': 'totais---principais-resultados'})
-    if main_results_section:
-        relevant_content.append(format_section(main_results_section, "Totais - Principais Resultados"))
-
-    # Extract highlights
-    highlights_section = soup.find('div', {'id': 'destaques'})
-    if highlights_section:
-        relevant_content.append(format_section(highlights_section, "Destaques"))
-
-    # Extract totals section
-    totals_section = soup.find('div', {'id': 'totais'})
-    if totals_section:
-        relevant_content.append(format_section(totals_section, "Totais"))
-
-    # Extract sectors and products
-    sectors_products_section = soup.find('div', {'id': 'setores-e-produtos'})
-    if sectors_products_section:
-        relevant_content.append(format_section(sectors_products_section, "Setores e Produtos"))
+    # Extract the paragraphs under the 'richnote' class
+    richnote_div = soup.find('div', id='richnote')
+    if richnote_div:
+        paragraphs = richnote_div.find_all('div')
+        for paragraph in paragraphs:
+            relevant_content.append(paragraph.get_text(separator='\n', strip=True))
 
     return "\n\n".join(relevant_content)
-
-# Function to format each section with proper headings and tables
-def format_section(section, heading):
-    formatted_section = f"{heading}\n{'=' * len(heading)}\n"
-    if section:
-        tables = section.find_all('table')
-        if tables:
-            for table in tables:
-                formatted_section += format_table(table) + '\n\n'
-        else:
-            formatted_section += section.get_text(separator='\n', strip=True) + '\n'
-    return formatted_section
 
 # Function to format table data for better readability
 def format_table(table):
@@ -95,14 +69,18 @@ def format_table(table):
     headers = []
     rows = []
 
-    thead = table.find('thead')
-    if thead:
-        headers = [th.get_text(strip=True) for th in thead.find_all('th')]
-        formatted_table += "\t".join(headers) + "\n"
+    # Extracting header rows
+    header_rows = table.find_all('tr')
+    if header_rows:
+        for tr in header_rows[:2]:  # First two rows are headers
+            header = [th.get_text(strip=True) for th in tr.find_all('td')]
+            headers.append("\t".join(header))
+        formatted_table += "\n".join(headers) + "\n"
 
-    tbody = table.find('tbody')
-    if tbody:
-        for tr in tbody.find_all('tr'):
+    # Extracting data rows
+    data_rows = header_rows[2:]
+    if data_rows:
+        for tr in data_rows:
             row = [td.get_text(strip=True) for td in tr.find_all('td')]
             rows.append("\t".join(row))
 
@@ -122,7 +100,7 @@ def save_page_content(relevant_content, document_id, pipe_id, release_date):
     return save_path
 
 # Main function to process the URL and perform both extraction and saving
-def process_balança_comercial_html(url, document_id, pipe_id):
+def process_sca_html(url, document_id, pipe_id):
     html_content = fetch_html_content(url)
     if html_content:
         soup = BeautifulSoup(html_content, 'html.parser')
@@ -139,9 +117,8 @@ def process_balança_comercial_html(url, document_id, pipe_id):
         print("Failed to fetch HTML content.")
         return None, None, "Failed to fetch HTML content."
 
-
 # Example usage
-url = "https://balanca.economia.gov.br/balanca/pg_principal_bc/principais_resultados.html"
-document_id = 30  # Replace with actual document_id
+url = "http://www.sca.isr.umich.edu/"
+document_id = 3  # Replace with actual document_id
 pipe_id = "1"
-#process_balança_comercial_html(url, document_id, pipe_id)
+#process_sca_html(url, document_id, pipe_id)

@@ -22,9 +22,9 @@ logger = logging.getLogger(__name__)
 from scripts.html_scraping.adp_html import process_adp_html
 from scripts.html_scraping.conf_html import process_conference_board_html
 from scripts.html_scraping.ny_html import process_ny_html
+from scripts.html_scraping.sca_html import process_sca_html
 from scripts.link_scraping.bea_link import process_bea_link
 from scripts.link_scraping.nar_link import process_nar_link
-from scripts.pipelines.modules.sca import process_sca_logic
 from scripts.pipelines.modules.fhfa import process_fhfa_logic
 from scripts.html_scraping.mdic_html import process_balança_comercial_html
 from scripts.link_scraping.ibge_link import process_ibge_link
@@ -44,6 +44,7 @@ ALLOWED_DOCUMENT_IDS = list(range(1, 31))
 PROCESSING_FUNCTIONS = {
     1: process_conference_board_html,
     2: process_conference_board_html,
+    3: process_sca_html,  # Adding the new script
     11: process_nar_link,
     12: process_bea_link,
     13: process_bea_link,
@@ -172,9 +173,6 @@ def run_pipeline_old(document_id):
     try:
         if document_id in PROCESSING_FUNCTIONS:
             txt_path, release_date, error_message = process_html_content(PROCESSING_FUNCTIONS[document_id], url, document_id, pipe_id)
-        elif document_id == 3:
-            # Redirect logic to the relevant script for ID 3
-            txt_path, release_date, error_message = process_sca_logic(document_id, url, pipe_id)
         elif document_id == 5:
             # Redirect logic to the relevant script for ID 5
             txt_path, release_date, error_message = process_fhfa_logic(document_id, url, pipe_id)
@@ -275,7 +273,7 @@ def run_pipeline_new(document_id):
     return f"Pipeline executed successfully for document_id {document_id}"
 
 if __name__ == "__main__":
-    document_ids = [30]
+    document_ids = [3,5]
     #document_ids = list(range(1, 31))
     statuses = []
     for document_id in document_ids:

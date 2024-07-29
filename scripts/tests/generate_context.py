@@ -25,7 +25,6 @@ files_to_consolidate = [
     'scripts\\link_scraping\\bea_link.py',
     'scripts\\link_scraping\\fhfa_link.py',
     'scripts\\link_scraping\\nar_link.py',
-    'scripts\\link_scraping\\sca_link.py',
     'scripts\\pdf\\pdf_download.py',
     'scripts\\pdf\\pdf_hash.py',
     'scripts\\pipelines\\orchestrator.py',

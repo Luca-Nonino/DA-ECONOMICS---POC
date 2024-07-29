@@ -21,7 +21,7 @@ def fetch_html_content(url):
 # Function to extract the PDF link from the HTML
 def extract_pdf_link(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
-    link_element = soup.find('a', href=re.compile(r'/sites/default/files/\d{4}-\d{2}/HPI_\d{4}Q\d.pdf'))
+    link_element = soup.find('a', href=re.compile(r'/sites/default/files/\d{4}-\d{2}/FHFA-HPI-Monthly_\d{8}.pdf'))
     if link_element:
         return "https://www.fhfa.gov" + link_element['href']
     return None
