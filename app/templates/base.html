@@ -5,12 +5,12 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body.dark-mode {
-            background-color: #2a2a2a; /* Darker black */
-            color: #f1f1f1; /* Lighter white */
+            background-color: #2a2a2a;
+            color: #f1f1f1;
         }
         body.light-mode {
-            background-color: #f0f0f0; /* Lighter white */
-            color: #1a1a1a; /* Darker black */
+            background-color: #f0f0f0;
+            color: #1a1a1a;
         }
         .header {
             border-color: #d2691e;
@@ -27,7 +27,7 @@
             right: 0;
             width: calc(100% - 250px);
             box-sizing: border-box;
-            height: 80px; /* Set the height of the header */
+            height: 80px;
         }
         .header-title {
             flex: 1;
@@ -63,36 +63,8 @@
             flex-direction: column;
             height: 100vh;
             margin-left: 250px;
-            margin-top: 80px; /* Add a top margin equal to the header height */
-        }
-        .resizable-container {
-            flex: 1;
-            display: flex;
-            height: 100%;
-            overflow: hidden;
-        }
-        #main-container, #crud-container, #placeholder {
-            flex: 1;
-            border: 1px solid #d2691e;
-            border-radius: 8px;
-            padding: 20px;
-            background-color: inherit;
+            margin-top: 80px;
             overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-        }
-        #main-container {
-            flex: 3;
-            display: none;
-        }
-        #crud-container {
-            flex: 1;
-            display: none;
-        }
-        .resizer {
-            width: 10px;
-            background-color: #ddd;
-            cursor: ew-resize;
         }
         .box {
             background-color: inherit;
@@ -105,7 +77,7 @@
         .button {
             display: flex;
             align-items: center;
-            justify-content: center; /* Center text horizontally and vertically */
+            justify-content: center;
             background-color: #d2691e;
             color: white;
             padding: 10px 20px;
@@ -181,14 +153,14 @@
         .light-mode .header,
         .light-mode .nav-bar,
         .light-mode .box {
-            background-color: #f0f0f0; /* Lighter white */
+            background-color: #f0f0f0;
             border-color: #d2691e;
         }
         .light-mode .header h1,
         .light-mode .indicator-link,
         .light-mode .title,
         .light-mode .subtitle {
-            color: #1a1a1a; /* Darker black */
+            color: #1a1a1a;
         }
         .light-mode .button {
             background-color: #d2691e;
@@ -206,14 +178,14 @@
         .dark-mode .header,
         .dark-mode .nav-bar,
         .dark-mode .box {
-            background-color: #2a2a2a; /* Darker black */
+            background-color: #2a2a2a;
             border-color: #d2691e;
         }
         .dark-mode .header h1,
         .dark-mode .indicator-link,
         .dark-mode .title,
         .dark-mode .subtitle {
-            color: #f1f1f1; /* Lighter white */
+            color: #f1f1f1;
         }
         .dark-mode .button {
             background-color: #228b22;
@@ -235,7 +207,7 @@
         }
         .buttons {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: 10px;
             align-items: center;
         }
@@ -277,7 +249,7 @@
             width: 75%;
             max-width: 75%;
             text-align: center;
-            white-space: pre-wrap; /* Preserve white space */
+            white-space: pre-wrap;
         }
         .dark-mode .modal-content {
             background-color: #1a1a1a;
@@ -334,6 +306,10 @@
             font-size: 2rem;
             text-align: center;
         }
+        .separator {
+            border-bottom: 3px solid #d2691e;
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body class="light-mode">
@@ -358,70 +334,71 @@
         <div id="placeholder" class="box">
             <h2 class="title text-2xl">Select a Publication from the list on the left</h2>
         </div>
-        <div class="resizable-container">
-            <div id="main-container" class="box">
-                <div class="title-container flex justify-between items-center mb-4">
-                    <div>
-                        <h2 class="title text-2xl" id="document-title"></h2>
-                        <p><a href="#" class="text-blue-800 hover:text-blue-600" id="document-path"></a></p>
-                        <div class="dropdown mb-4">
-                            <span>Release Date: </span>
-                            <select id="release-date-select" class="bg-gray-700 text-white p-2 rounded"></select>
-                        </div>
-                    </div>
-                    <div class="buttons flex flex-col gap-2">
-                        <a class="button p-2 rounded cursor-pointer bg-green-500 hover:bg-green-700 text-white" id="check-new-release">Check for New Release</a>
-                        <a class="button p-2 rounded cursor-pointer bg-purple-500 hover:bg-purple-700 text-white" id="generate-final-pt-summary">Generate Final PT Summary</a>
-                    </div>
-                </div>
-                <div class="mb-4">
-                    <h3 class="subtitle text-xl mb-2">Summary - English</h3>
-                    <p id="en-summary"></p>
-                </div>
-                <div class="mb-4">
-                    <h3 class="subtitle text-xl mb-2">Summary - Portuguese</h3>
-                    <p id="pt-summary"></p>
-                </div>
+        <div id="main-container" class="box hidden">
+            <div class="title-container flex justify-between items-center mb-4">
                 <div>
-                    <h3 class="subtitle text-xl mb-2">Key Takeaways</h3>
-                    <div id="key-takeaways"></div>
+                    <h2 class="title text-2xl" id="document-title"></h2>
+                    <p><a href="#" class="text-blue-800 hover:text-blue-600" id="document-path"></a></p>
+                    <div class="dropdown mb-4">
+                        <span>Release Date: </span>
+                        <select id="release-date-select" class="bg-gray-700 text-white p-2 rounded"></select>
+                    </div>
+                </div>
+                <div class="buttons flex flex-row gap-2">
+                    <a class="button p-2 rounded cursor-pointer bg-green-500 hover:bg-green-700 text-white" id="run-ai-agent">Run AI Agent</a>
+                    <button id="copy-summary" class="button">Copy to Clipboard</button>
                 </div>
             </div>
-            <div class="resizer"></div>
-            <div id="crud-container" class="box">
-                <h3 class="subtitle text-xl mb-4">View & Edit Prompt</h3>
-                <form id="crud-form">
-                    <div class="edit-field">
-                        <label>Macro Environment Impacts Description</label>
-                        <textarea id="macro-env-desc"></textarea>
-                    </div>
-                    <div class="edit-field">
-                        <label>Audience</label>
-                        <textarea id="audience"></textarea>
-                    </div>
-                    <div class="edit-field">
-                        <label>Objective</label>
-                        <textarea id="objective"></textarea>
-                    </div>
-                    <div class="edit-field">
-                        <label>Constraints Language Usage</label>
-                        <textarea id="constraints-lang-usage"></textarea>
-                    </div>
-                    <div class="edit-field">
-                        <label>Constraints Language Style</label>
-                        <textarea id="constraints-lang-style"></textarea>
-                    </div>
-                    <div id="tasks-container">
-                        <label>Tasks</label>
-                        <div class="task">
-                            <textarea class="task-input"></textarea>
-                            <button class="delete-task" type="button">-</button>
-                        </div>
-                    </div>
-                    <button id="add-task" type="button" class="button">Add Task</button>
-                    <button type="button" id="save-changes" class="button mt-4">Save Changes</button>
-                </form>
+            <div class="mb-4">
+                <h3 class="subtitle text-xl mb-2">Summary - English</h3>
+                <p id="en-summary"></p>
             </div>
+            <div class="mb-4">
+                <h3 class="subtitle text-xl mb-2">Summary - Portuguese</h3>
+                <p id="pt-summary"></p>
+            </div>
+            <div>
+                <h3 class="subtitle text-xl mb-2">Key Takeaways</h3>
+                <div id="key-takeaways"></div>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div id="crud-container" class="box hidden">
+            <h3 class="subtitle text-xl mb-4">View & Edit Prompts</h3>
+            <form id="crud-form">
+                <div class="edit-field">
+                    <label>Macro Environment Impacts Description</label>
+                    <textarea id="macro-env-desc"></textarea>
+                </div>
+                <div class="edit-field">
+                    <label>Audience</label>
+                    <textarea id="audience"></textarea>
+                </div>
+                <div class="edit-field">
+                    <label>Objective</label>
+                    <textarea id="objective"></textarea>
+                </div>
+                <div class="edit-field">
+                    <label>Constraints Language Usage</label>
+                    <textarea id="constraints-lang-usage"></textarea>
+                </div>
+                <div class="edit-field">
+                    <label>Constraints Language Style</label>
+                    <textarea id="constraints-lang-style"></textarea>
+                </div>
+                <div id="tasks-container">
+                    <label>Tasks</label>
+                    <div class="task">
+                        <textarea class="task-input"></textarea>
+                        <button class="delete-task" type="button">-</button>
+                    </div>
+                </div>
+                <div class="buttons flex flex-row gap-2 mt-4">
+                    <button id="add-task" type="button" class="button">Add Task</button>
+                    <button type="button" id="test-prompt" class="button">Test Prompt</button>
+                    <button type="button" id="save-changes" class="button">Save Changes</button>
+                </div>
+            </form>
         </div>
     </div>
     <div id="myModal" class="modal">
@@ -434,7 +411,7 @@
         <div class="modal-content">
             <span class="close-summary-modal">&times;</span>
             <div id="generated-summary-content"></div>
-            <button id="copy-summary" class="button">Copy to Clipboard</button>
+            <button id="copy-generated-summary" class="button mt-4">Copy Summary</button>
         </div>
     </div>
     <div class="overlay" id="overlay"></div>
@@ -447,8 +424,8 @@
             const placeholder = document.getElementById('placeholder');
             const themeSwitcher = document.getElementById('theme-switcher');
             const releaseDateSelect = document.getElementById('release-date-select');
-            const checkNewReleaseButton = document.getElementById('check-new-release');
-            const generateFinalPTSummaryButton = document.getElementById('generate-final-pt-summary');
+            const runAIButton = document.getElementById('run-ai-agent');
+            const testPromptButton = document.getElementById('test-prompt');
             const modal = document.getElementById("myModal");
             const span = document.getElementsByClassName("close")[0];
             const modalBody = document.getElementById('modal-body');
@@ -456,38 +433,16 @@
             const closeSummaryModal = document.getElementsByClassName("close-summary-modal")[0];
             const generatedSummaryContent = document.getElementById('generated-summary-content');
             const copySummaryButton = document.getElementById('copy-summary');
+            const copyGeneratedSummaryButton = document.getElementById('copy-generated-summary');
             const saveChangesButton = document.getElementById('save-changes');
             const addTaskButton = document.getElementById('add-task');
             const loadingIndicator = document.getElementById('loading-indicator');
             const overlay = document.getElementById('overlay');
-            const resizer = document.querySelector('.resizer');
-            const header = document.getElementById('header');
-            let startX, startWidthMain, startWidthCrud;
-
-            resizer.addEventListener('mousedown', function(e) {
-                startX = e.clientX;
-                startWidthMain = mainContainer.getBoundingClientRect().width;
-                startWidthCrud = crudContainer.getBoundingClientRect().width;
-                document.addEventListener('mousemove', resizeContainers);
-                document.addEventListener('mouseup', stopResizeContainers);
-            });
-
-            function resizeContainers(e) {
-                const newWidthMain = startWidthMain + (e.clientX - startX);
-                const newWidthCrud = startWidthCrud - (e.clientX - startX);
-                mainContainer.style.flex = `0 0 ${newWidthMain}px`;
-                crudContainer.style.flex = `0 0 ${newWidthCrud}px`;
-            }
-
-            function stopResizeContainers() {
-                document.removeEventListener('mousemove', resizeContainers);
-                document.removeEventListener('mouseup', stopResizeContainers);
-            }
 
             links.forEach(link => {
                 link.addEventListener('click', function () {
                     const docId = this.getAttribute('data-document-id');
-                    console.log(`Document ID clicked: ${docId}`);  // Debugging
+                    console.log(`Document ID clicked: ${docId}`);
                     showLoading();
                     fetch(`/indicators/query/${docId}`)
                         .then(response => response.json())
@@ -501,7 +456,7 @@
                                 return `<option value="${dateStr}">${dateStr}</option>`;
                             }).join('');
                             releaseDateSelect.setAttribute('data-document-id', data.document_id);
-                            checkNewReleaseButton.setAttribute('data-document-id', data.document_id);
+                            runAIButton.setAttribute('data-document-id', data.document_id);
                             document.getElementById('en-summary').textContent = data.en_summary;
                             document.getElementById('pt-summary').textContent = data.pt_summary;
                             document.getElementById('key-takeaways').innerHTML = data.key_takeaways.map(kt => `<h4 class="key-takeaway-title text-lg">${kt.title}</h4><p>${kt.content}</p>`).join('');
@@ -565,8 +520,8 @@
                 });
             }
 
-            if (checkNewReleaseButton) {
-                checkNewReleaseButton.addEventListener('click', function () {
+            if (runAIButton) {
+                runAIButton.addEventListener('click', function () {
                     const docId = this.getAttribute('data-document-id');
                     showLoading();
                     fetch(`/indicators/update/?id=${docId}`)
@@ -574,12 +529,34 @@
                         .then(html => {
                             modalBody.innerHTML = html;
                             modal.style.display = "block";
-                            hideLoading();
+
+                            span.onclick = function() {
+                                modal.style.display = "none";
+                                fetchDocumentData(docId);
+                            }
+
+                            window.onclick = function(event) {
+                                if (event.target == modal) {
+                                    modal.style.display = "none";
+                                    fetchDocumentData(docId);
+                                }
+                            }
                         }).catch(hideLoading);
                 });
             }
 
-            generateFinalPTSummaryButton.addEventListener('click', function () {
+            function fetchDocumentData(docId) {
+                fetch(`/indicators/query/${docId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('en-summary').textContent = data.en_summary;
+                        document.getElementById('pt-summary').textContent = data.pt_summary;
+                        document.getElementById('key-takeaways').innerHTML = data.key_takeaways.map(kt => `<h4 class="key-takeaway-title text-lg">${kt.title}</h4><p>${kt.content}</p>`).join('');
+                        testPromptButton.click();
+                    }).catch(hideLoading);
+            }
+
+            testPromptButton.addEventListener('click', function () {
                 const docId = document.getElementById('document-title').getAttribute('data-document-id');
                 const releaseDate = document.getElementById('release-date-select').value.replace(/\//g, '');
                 const enSummary = document.getElementById('en-summary').textContent;
@@ -600,7 +577,8 @@
                     tasks: Array.from(document.querySelectorAll('.task-input')).map(task => task.value)
                 };
 
-                showLoading();
+                showLoading(); // Trigger loading state when Test Prompt button is clicked
+
                 fetch('/indicators/api/generate_pt_summary', {
                     method: 'POST',
                     headers: {
@@ -619,6 +597,27 @@
                 .then(data => {
                     generatedSummaryContent.innerHTML = formatMarkdown(data.pt_summary);
                     generatedSummaryModal.style.display = "block";
+
+                    closeSummaryModal.onclick = function() {
+                        generatedSummaryModal.style.display = "none";
+                        header.style.zIndex = 999;
+                    }
+
+                    window.onclick = function(event) {
+                        if (event.target == generatedSummaryModal) {
+                            generatedSummaryModal.style.display = "none";
+                            header.style.zIndex = 999;
+                        }
+                    }
+
+                    copyGeneratedSummaryButton.addEventListener('click', function () {
+                        const summaryText = `
+Summary - Portuguese:
+${data.pt_summary}`;
+                        copyToClipboard(summaryText);
+                        alert("Summary copied to clipboard!");
+                    });
+
                     hideLoading();
                 })
                 .catch(error => {
@@ -649,7 +648,7 @@
                         audience,
                         objective,
                         constraints_lang_usage: constraintsLangUsage,
-                        constraints_lang_style: constraintsLangStyle,
+                        constraints_lang_style: constraints_langStyle,
                         tasks
                     })
                 })
@@ -678,6 +677,23 @@
                 }
             });
 
+            copySummaryButton.addEventListener('click', function () {
+                const summaryText = `
+Summary - English:
+${document.getElementById('en-summary').textContent}
+
+Summary - Portuguese:
+${document.getElementById('pt-summary').textContent}
+
+Key Takeaways:
+${Array.from(document.querySelectorAll('#key-takeaways .key-takeaway-title')).map(title => {
+                    return `\n${title.textContent}\n${title.nextElementSibling.textContent}`;
+                }).join('\n')}`;
+
+                copyToClipboard(summaryText);
+                alert("Summary copied to clipboard!");
+            });
+
             function updateTaskEvents() {
                 document.querySelectorAll('.delete-task').forEach(button => {
                     button.addEventListener('click', function () {
@@ -697,6 +713,9 @@
                 loadingIndicator.style.display = 'block';
                 header.style.pointerEvents = 'none';
                 themeSwitcher.style.pointerEvents = 'none';
+                mainContainer.style.pointerEvents = 'none';
+                crudContainer.style.pointerEvents = 'none';
+                placeholder.style.pointerEvents = 'none';
             }
 
             function hideLoading() {
@@ -704,6 +723,9 @@
                 loadingIndicator.style.display = 'none';
                 header.style.pointerEvents = 'auto';
                 themeSwitcher.style.pointerEvents = 'auto';
+                mainContainer.style.pointerEvents = 'auto';
+                crudContainer.style.pointerEvents = 'auto';
+                placeholder.style.pointerEvents = 'auto';
             }
 
             function formatMarkdown(text) {
@@ -711,38 +733,6 @@
                     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
                     .replace(/__(.*?)__/g, '<em>$1</em>'); // Italic
             }
-
-            updateTaskEvents();
-
-            span.onclick = function() {
-                modal.style.display = "none";
-                header.style.zIndex = 999; // Ensure the header returns to normal after modal is closed
-            }
-
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                    header.style.zIndex = 999; // Ensure the header returns to normal after modal is closed
-                }
-                if (event.target == generatedSummaryModal) {
-                    generatedSummaryModal.style.display = "none";
-                    header.style.zIndex = 999; // Ensure the header returns to normal after modal is closed
-                }
-            }
-
-            closeSummaryModal.onclick = function() {
-                generatedSummaryModal.style.display = "none";
-                header.style.zIndex = 999; // Ensure the header returns to normal after modal is closed
-            }
-
-            copySummaryButton.onclick = function() {
-                const summaryText = generatedSummaryContent.innerText;
-                const formattedText = summaryText
-                    .replace(/<strong>(.*?)<\/strong>/g, '**$1**') // Reverse bold formatting
-                    .replace(/<em>(.*?)<\/em>/g, '__$1__'); // Reverse italic formatting
-                copyToClipboard(formattedText);
-                alert("Summary copied to clipboard!");
-            };
 
             function copyToClipboard(text) {
                 const tempInput = document.createElement('textarea');
@@ -754,9 +744,30 @@
                 document.execCommand('Copy');
                 document.body.removeChild(tempInput);
             }
+
+            updateTaskEvents();
+
+            span.onclick = function() {
+                modal.style.display = "none";
+                fetchDocumentData(document.getElementById('document-title').getAttribute('data-document-id'));
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    fetchDocumentData(document.getElementById('document-title').getAttribute('data-document-id'));
+                }
+                if (event.target == generatedSummaryModal) {
+                    generatedSummaryModal.style.display = "none";
+                    header.style.zIndex = 999;
+                }
+            }
+
+            closeSummaryModal.onclick = function() {
+                generatedSummaryModal.style.display = "none";
+                header.style.zIndex = 999;
+            }
         });
     </script>
 </body>
 </html>
-
-

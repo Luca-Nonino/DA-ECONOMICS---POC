@@ -272,17 +272,19 @@ def run_pipeline_new(document_id):
 
     return f"Pipeline executed successfully for document_id {document_id}"
 
+def run_pipeline(document_id):
+    if document_id in range(1, 22):
+        return run_pipeline_old(document_id)
+    else:
+        return run_pipeline_new(document_id)
+
 if __name__ == "__main__":
-    document_ids = [3,5]
+    document_ids = [3, 5]
     #document_ids = list(range(1, 31))
     statuses = []
     for document_id in document_ids:
         try:
-            if document_id in range(1, 22):
-                result = run_pipeline_old(document_id)
-            else:
-                result = run_pipeline_new(document_id)
-                
+            result = run_pipeline(document_id)
             status = "success" if "successfully" in result or "No update needed" in result or "No processing needed" in result else "failed"
         except Exception as e:
             logger.error(f"Exception occurred while processing document_id {document_id}: {e}", exc_info=True)

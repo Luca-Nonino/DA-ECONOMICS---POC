@@ -1,0 +1,15 @@
+**Title:**
+{'Resultados Fiscais e Dívida Pública: Junho de 2024'}
+
+**Overview:**
+||O relatório apresenta os resultados fiscais do setor público consolidado para junho de 2024, destacando um déficit primário de R$40,9 bilhões, uma melhora em relação ao déficit de R$48,9 bilhões no mesmo mês do ano anterior. O relatório também analisa a evolução da Dívida Líquida do Setor Público (DLSP) e da Dívida Bruta do Governo Geral (DBGG), que atingiram 62,2% e 77,8% do PIB, respectivamente. Além disso, são discutidos os impactos dos juros nominais e da desvalorização cambial sobre a dívida pública.||
+
+**Key Takeaways:**
+- {**Déficit Primário**}: [O déficit primário do setor público consolidado foi de R$40,9 bilhões em junho de 2024, melhorando em relação ao déficit de R$48,9 bilhões em junho de 2023, refletindo uma tendência de contenção fiscal.]
+- {**Juros Nominais**}: [Os juros nominais do setor público não financeiro consolidado totalizaram R$94,9 bilhões em junho de 2024, um aumento significativo em relação a R$40,7 bilhões no mesmo mês do ano anterior, impactados por operações de swap cambial.]
+- {**Dívida Líquida do Setor Público (DLSP)**}: [A DLSP alcançou 62,2% do PIB (R$6,9 trilhões) em junho, um aumento de 0,1 p.p. em relação ao mês anterior, influenciada por juros nominais e déficit primário.]
+- {**Dívida Bruta do Governo Geral (DBGG)**}: [A DBGG atingiu 77,8% do PIB (R$8,7 trilhões) em junho de 2024, um aumento de 1,1 p.p. do PIB, refletindo principalmente os juros nominais apropriados e emissões líquidas.]
+- {**Déficit Nominal**}: [O déficit nominal do setor público consolidado foi de R$135,7 bilhões em junho, com um acumulado de R$1.108,0 bilhões (9,92% do PIB) nos últimos doze meses, indicando uma pressão contínua sobre as contas públicas.]
+
+**Macro Environment Impacts**
+||Os resultados fiscais de junho de 2024 indicam um cenário desafiador para a política fiscal brasileira, com um déficit primário que, embora tenha melhorado em relação ao ano anterior, ainda representa uma preocupação para a sustentabilidade fiscal. O aumento significativo dos juros nominais, que alcançaram R$94,9 bilhões, sugere que o governo enfrenta custos crescentes de financiamento, exacerbados pela desvalorização cambial de 6,1% no mês. A DLSP e a DBGG em níveis elevados (62,2% e 77,8% do PIB, respectivamente) refletem a necessidade urgente de reformas fiscais e controle de gastos para evitar uma deterioração adicional da situação fiscal. A pressão sobre a dívida pública pode influenciar as decisões do Banco Central em relação à política monetária, especialmente se a inflação continuar a ser uma preocupação. A análise das elasticidades da dívida em relação a variações na taxa de câmbio e juros será crucial para entender como essas dinâmicas podem afetar a economia brasileira nos próximos meses. A combinação de déficits elevados e juros crescentes pode limitar a capacidade do governo de investir em áreas críticas, impactando o crescimento econômico a longo prazo.||
