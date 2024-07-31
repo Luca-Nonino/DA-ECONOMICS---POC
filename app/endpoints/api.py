@@ -3,7 +3,6 @@ import os
 import sqlite3
 from fastapi import FastAPI, Request, Query, HTTPException
 from fastapi.responses import JSONResponse
-from openai import OpenAI
 from datetime import datetime
 import time
 
@@ -14,17 +13,16 @@ import os
 # Add the parent directory to sys.path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from app.config import BASE_DIR
+from app.config import BASE_DIR, client
 
-from app.config import api_key
-
-client = OpenAI(base_url="https://api.openai.com/v1", api_key=api_key)
 api_app = FastAPI()
 
 # Set up file handler for logging errors
 file_handler = logging.FileHandler(os.path.join(BASE_DIR, 'app/logs/errors.log'))
 file_handler.setLevel(logging.ERROR)
 logger.addHandler(file_handler)
+
+
 
 
 def log_all_documents(cursor):
@@ -270,7 +268,7 @@ async def generate_pt_summary(request: Request):
 
         logger.info("Prompt generated")
 
-        # Make the request to the OpenAI API
+        # Make the request to the Azure OpenAI API
         history = [
             {"role": "system", "content": "You are an assistant specialized in translating and formatting economic summaries from English to Brazilian Portuguese. Your task is to ensure the translated summaries are clear, accurate, and well-formatted."},
             {"role": "user", "content": prompt}
@@ -299,7 +297,7 @@ async def generate_pt_summary(request: Request):
 
         pt_summary = ""
         for chunk in response_stream:
-            if chunk.choices[0].delta.content:
+            if chunk.choices and chunk.choices[0].delta.content:
                 pt_summary += chunk.choices[0].delta.content
 
         pt_summary = pt_summary.strip()
@@ -313,4 +311,5 @@ async def generate_pt_summary(request: Request):
     finally:
         if conn:
             conn.close()
+
 

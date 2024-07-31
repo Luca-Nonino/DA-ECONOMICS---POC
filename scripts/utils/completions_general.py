@@ -4,12 +4,14 @@ import PyPDF2
 import re
 import time
 from datetime import datetime
-from openai import OpenAI
+import sys
+# Add the project root directory to the system path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+
+# Import the Azure OpenAI client from the config module
+from app.config import client
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-from app.config import api_key
-
-client = OpenAI(base_url="https://api.openai.com/v1", api_key=api_key)
 
 # Function to convert PDF to text
 def convert_pdf_to_text(pdf_path):
@@ -37,29 +39,31 @@ def read_txt_file(txt_path):
 
 def extract_release_date(pdf_path, num_chars=1000, retries=3, timeout=20):
     def make_request(content, prompt):
-        history = [
-            {
-                "role": "system",
-                "content": prompt
-            },
-            {"role": "user", "content": content},
-        ]
+        try:
+            response = client.chat.completions.create(
+                model="gpt-4o",
+                messages=[
+                    {"role": "system", "content": prompt},
+                    {"role": "user", "content": content},
+                ],
+                temperature=0.1,
+                max_tokens=1000,
+                stream=True,
+            )
 
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=history,
-            temperature=0.1,
-            stream=True,
-        )
+            full_response = ""
+            for chunk in response:
+                if chunk.choices and chunk.choices[0].delta.content:
+                    full_response += chunk.choices[0].delta.content
 
-        full_response = ""
-        for chunk in response:
-            if chunk.choices[0].delta.content:
-                full_response += chunk.choices[0].delta.content
-
-        return full_response
+            return full_response
+        except Exception as e:
+            print(f"Error in make_request: {e}")
+            return None
 
     def extract_date_from_response(response):
+        if response is None:
+            return None
         match = re.search(r'\*\*(\d{8})\*\*', response)
         if match:
             return match.group(1)
@@ -210,7 +214,7 @@ def generate_output(file_path, db_path=os.path.join(BASE_DIR, 'data/database/dat
         for attempt in range(retries):
             try:
                 response_stream = client.chat.completions.create(
-                    model="gpt-4o-mini",
+                    model="gpt-4o",
                     messages=history,
                     temperature=0.1,
                     stream=True,
@@ -249,7 +253,7 @@ def generate_output(file_path, db_path=os.path.join(BASE_DIR, 'data/database/dat
     print("Appending content to the prompt...")
     full_prompt = f"{formatted_prompt}\n\n{content}"
 
-    print("Initializing OpenAI client...")
+    print("Initializing Azure OpenAI client...")
     history = [
         {
             "role": "system",
@@ -257,7 +261,7 @@ def generate_output(file_path, db_path=os.path.join(BASE_DIR, 'data/database/dat
                 "You are an assistant designed to generate a comprehensive analysis based on the provided document. "
                 "Your task is to analyze the document content and create a structured response that adheres to the following prompt format. "
                 "Please ensure your response is detailed and follows the guidelines provided."
-                "When provided input that is partially in brazillian portuguese, answer in brazillian portuguese"
+                "When provided input that is partially in Brazilian Portuguese, answer in Brazilian Portuguese"
             )
         },
         {"role": "user", "content": full_prompt},
@@ -272,9 +276,10 @@ def generate_output(file_path, db_path=os.path.join(BASE_DIR, 'data/database/dat
     output = ""
 
     for chunk in response_stream:
-        if chunk.choices[0].delta.content:
-            print(chunk.choices[0].delta.content, end="", flush=True)
-            output += chunk.choices[0].delta.content
+        if chunk.choices and chunk.choices[0].delta.content:
+            content = chunk.choices[0].delta.content
+            print(content, end="", flush=True)
+            output += content
 
     print("\nStreaming completed.")
 
@@ -289,34 +294,24 @@ def generate_output(file_path, db_path=os.path.join(BASE_DIR, 'data/database/dat
 
     print(f"Generated output saved to {save_path}")
 
-def generate_short_summaries(file_path, prompt_path=os.path.join(BASE_DIR, "data/prompts/short_summary.txt")):
-    def make_request(input_text, prompt):
-        history = [
-            {
-                "role": "system",
-                "content": (
-                    "You are an assistant designed to generate concise summaries. "
-                    "Your task is to analyze the provided text and create a short summary. "
-                    "The summary should be clear and concise, capturing the key points of the input text."
+
+def generate_short_summaries(file_path, prompt_path=os.path.join(BASE_DIR, "data/prompts/short_summary.txt"), stream_timeout=None):
+    def request_inference(history, retries=3, timeout=20):
+        for attempt in range(retries):
+            try:
+                response_stream = client.chat.completions.create(
+                    model="gpt-4o",
+                    messages=history,
+                    temperature=0.1,
+                    max_tokens=500,
+                    stream=True,
+                    timeout=stream_timeout
                 )
-            },
-            {"role": "user", "content": prompt},
-        ]
-
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=history,
-            temperature=0.1,
-            max_tokens=500,
-            stream=True,
-        )
-
-        full_response = ""
-        for chunk in response:
-            if chunk.choices[0].delta.content:
-                full_response += chunk.choices[0].delta.content
-
-        return full_response
+                return response_stream
+            except Exception as e:
+                print(f"Attempt {attempt + 1} failed: {e}")
+                time.sleep(timeout)
+        return None
 
     for attempt in range(3):
         try:
@@ -326,8 +321,29 @@ def generate_short_summaries(file_path, prompt_path=os.path.join(BASE_DIR, "data
             with open(prompt_path, 'r', encoding='utf-8') as file:
                 prompt = file.read().replace('{input}', input_text)
 
-            full_response = make_request(input_text, prompt)
+            print("Initializing Azure OpenAI client...")
+            history = [
+                {
+                    "role": "system",
+                    "content": "You are an assistant designed to generate concise summaries. Your task is to analyze the provided text and create a short summary. The summary should be clear and concise, capturing the key points of the input text."
+                },
+                {"role": "user", "content": prompt},
+            ]
 
+            print("Performing LLM inference...")
+            response_stream = request_inference(history)
+            if not response_stream:
+                print("Failed to generate output after multiple attempts.")
+                return None
+
+            full_response = ""
+            for chunk in response_stream:
+                if chunk.choices and chunk.choices[0].delta.content:
+                    content = chunk.choices[0].delta.content
+                    print(content, end="", flush=True)
+                    full_response += content
+
+            print("\nStreaming completed.")
             print("Full response:", full_response)
 
             summary = full_response.strip()
@@ -363,14 +379,14 @@ def test_pdf():
     convert_pdf_to_text(pdf_path)
 
 def test_generate_short_summaries():
-    file_path = "data/processed/6_2_20240607.txt"  # Replace with your test file path
+    file_path = "data/processed/4_2_20240607.txt"  # Replace with your test file path
     summaries = generate_short_summaries(file_path)
     print("Generated Summaries:")
     print(summaries)
 
-# Uncomment the following lines to run the tests individually -> all tests performed
+# Uncomment the following lines to run the tests individually
 # test_get_prompt()
 # test_generate_output()
 # test_pdf()
-# test_extract_date()
+test_extract_date()
 # test_generate_short_summaries()

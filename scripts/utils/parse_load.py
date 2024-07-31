@@ -24,10 +24,10 @@ def read_processed_file(file_path):
 def parse_content(content):
     data = {}
     sections = content.split("\n\n")
-    print("Sections found:", sections)  # Debugging: Print all sections to check if they are correctly split
+    print("Sections found:", [s.encode('utf-8') for s in sections])  # Debugging: Print all sections with Unicode encoding
 
     for section in sections:
-        print("Processing section:", section[:20])  # Debugging: Print the start of each section for inspection
+        print("Processing section:", section[:20].encode('utf-8'))  # Debugging: Print the start of each section with Unicode encoding
         try:
             if section.startswith("**Title:**"):
                 data['title'] = section.split("{")[1].split("}")[0]
@@ -55,10 +55,11 @@ def parse_content(content):
         except Exception as e:
             print(f"Error parsing section: {e}")
 
-    # Debugging: Print the parsed data to check if all sections are correctly parsed
-    print("Parsed data:", data)
+    # Debugging: Print the parsed data with Unicode encoding
+    print("Parsed data:", {k: v.encode('utf-8') if isinstance(v, str) else v for k, v in data.items()})
 
     return data
+
 def insert_data_to_tables(document_id, release_date, data, file_path, db_path=None):
     if db_path is None:
         db_path = os.path.join(project_root, 'data/database/database.sqlite')
@@ -93,7 +94,7 @@ def insert_data_to_tables(document_id, release_date, data, file_path, db_path=No
 
         # Generate short summaries
         short_summaries = generate_short_summaries(file_path)
-        print("Generated Summaries:", short_summaries)  # Debugging: Print the generated summaries
+        print("Generated Summaries:", short_summaries.encode('utf-8'))  # Debugging: Print the generated summaries with Unicode encoding
 
         if short_summaries:
             # Updated regex pattern to match the entire summary block for each language
@@ -116,7 +117,6 @@ def insert_data_to_tables(document_id, release_date, data, file_path, db_path=No
     finally:
         conn.close()
         print(f"Data inserted into tables for document_id {document_id} and release_date {release_date}.")
-
 
 def parse_and_load(file_path, db_path=None):
     if not os.path.exists(file_path):
