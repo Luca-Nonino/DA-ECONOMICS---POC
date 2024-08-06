@@ -28,7 +28,7 @@ files_to_consolidate = [
     'scripts\\pdf\\pdf_download.py',
     'scripts\\pdf\\pdf_hash.py',
     'scripts\\pipelines\\orchestrator.py',
-    'scripts\\pipelines\\ocherstrator_br.py',
+    #'scripts\\pipelines\\ocherstrator_br.py',
     #"scripts\\pipelines\\modules\\fhfa.py",
     #'scripts\\tests\\consolidated_code.md',
     #'scripts\\tests\\generate_context.py',

@@ -5,16 +5,16 @@ import json
 import sqlite3
 import re
 import io
-from contextlib import redirect_stdout
 import logging
+from contextlib import redirect_stdout 
 
 # Add the project root to the Python path
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 sys.path.insert(0, project_root)
 
 # Set up logging
-logging.basicConfig(filename=os.path.join(project_root, 'app', 'logs', 'orchestrator_br.log'), 
-                    level=logging.INFO, 
+logging.basicConfig(filename=os.path.join(project_root, 'app', 'logs', 'orchestrator_br.log'),
+                    level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
@@ -36,19 +36,27 @@ from scripts.utils.completions_general import generate_output
 from scripts.utils.parse_load import parse_and_load
 from scripts.pdf.pdf_hash import check_hash_and_extract_release_date
 from scripts.utils.check_date import check_and_update_release_date
+from scripts.html_scraping.census_html import process_census_html
+from scripts.html_scraping.atlanta_html import process_gdpnow_html
+from scripts.html_scraping.ism_html import process_ism_html  # Import ISM processing function
 
 # List of allowed document IDs
-ALLOWED_DOCUMENT_IDS = list(range(1, 31))
+ALLOWED_DOCUMENT_IDS = list(range(1, 50))
 
 # Mapping document IDs to processing functions
 PROCESSING_FUNCTIONS = {
     1: process_conference_board_html,
     2: process_conference_board_html,
-    3: process_sca_html,  # Adding the new script
+    39: process_conference_board_html,
+    40: process_conference_board_html,
+    3: process_sca_html,
     11: process_nar_link,
     12: process_bea_link,
     13: process_bea_link,
     14: process_bea_link,
+    42: process_bea_link,
+    43: process_bea_link,
+    15: process_census_html,
     17: process_ny_html,
     18: process_adp_html,
     22: process_anfavea_link,
@@ -60,6 +68,9 @@ PROCESSING_FUNCTIONS = {
     28: process_ibge_link,
     29: process_ibge_link,
     30: process_balança_comercial_html,
+    41: process_gdpnow_html,
+    44: process_ism_html,  # Added the new script for PMI
+    45: process_ism_html,  # Added the new script for Services
 }
 
 def get_document_details(document_id, db_path=os.path.join(project_root, 'data', 'database', 'database.sqlite')):
@@ -67,7 +78,7 @@ def get_document_details(document_id, db_path=os.path.join(project_root, 'data',
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     cursor.execute("""
-        SELECT pipe_id, path FROM documents_table WHERE document_id = ?
+        SELECT pipe_id, path, country FROM documents_table WHERE document_id = ?
     """, (document_id,))
     result = cursor.fetchone()
     conn.close()
@@ -135,7 +146,6 @@ def process_pdf_content(document_id, url, pipe_id):
 
 def process_output(file_path, document_id, pipe_id, release_date):
     if file_path.endswith('.txt'):
-        # Handle TXT output
         try:
             generate_output(file_path)
             processed_file_path = os.path.join(project_root, f"data/processed/{document_id}_{pipe_id}_{release_date}.txt")
@@ -143,7 +153,6 @@ def process_output(file_path, document_id, pipe_id, release_date):
         except Exception as e:
             logger.error(f"Error processing TXT file for document_id {document_id}: {e}", exc_info=True)
     elif file_path.endswith('.pdf'):
-        # Handle PDF output
         try:
             result = check_hash_and_extract_release_date(file_path)
             response = json.loads(result)
@@ -157,15 +166,10 @@ def process_output(file_path, document_id, pipe_id, release_date):
         except Exception as e:
             logger.error(f"Error processing PDF file for document_id {document_id}: {e}", exc_info=True)
 
-def run_pipeline_old(document_id):
+def run_pipeline_old(document_id, pipe_id, url):
     if document_id not in ALLOWED_DOCUMENT_IDS:
         return "Document ID not allowed"
 
-    details = get_document_details(document_id)
-    if not details:
-        return f"No details found for document_id {document_id}"
-
-    pipe_id, url = details
     release_date = None
     txt_path = None
     pdf_path = None
@@ -176,7 +180,7 @@ def run_pipeline_old(document_id):
         elif document_id == 5:
             # Redirect logic to the relevant script for ID 5
             txt_path, release_date, error_message = process_fhfa_logic(document_id, url, pipe_id)
-        elif document_id in [4, 6, 7, 8, 9, 10, 15, 16, 19, 20, 21]:
+        elif document_id in [4, 6, 7, 8, 9, 10, 16, 19, 20, 21, 31, 32, 33, 34, 35, 36, 37, 38]:
             pdf_path, release_date, error_message = process_pdf_content(document_id, url, pipe_id)
 
             if not error_message:
@@ -229,15 +233,10 @@ def run_pipeline_old(document_id):
         logger.error(f"Error in run_pipeline for document_id {document_id}: {e}", exc_info=True)
         return f"Error occurred: {e}"
 
-def run_pipeline_new(document_id):
+def run_pipeline_new(document_id, pipe_id, url):
     if document_id not in PROCESSING_FUNCTIONS:
         return f"Document ID {document_id} not supported in this orchestrator."
 
-    details = get_document_details(document_id)
-    if not details:
-        return f"No details found for document_id {document_id}"
-
-    pipe_id, url = details
     try:
         process_func = PROCESSING_FUNCTIONS[document_id]
         if document_id in [22, 23]:
@@ -273,19 +272,51 @@ def run_pipeline_new(document_id):
     return f"Pipeline executed successfully for document_id {document_id}"
 
 def run_pipeline(document_id):
-    if document_id in range(1, 22):
-        return run_pipeline_old(document_id)
+    details = get_document_details(document_id)
+    if not details:
+        return f"No details found for document_id {document_id}"
+
+    pipe_id, url, country = details
+
+    # Specific handling for document IDs 44 and 45
+    if document_id in [44, 45]:
+        try:
+            if document_id == 44:
+                base_url = "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/pmi"
+            else:
+                base_url = "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/services"
+
+            process_ism_html(base_url, document_id, pipe_id)
+            
+            # Extract the output path and release date from the ISM script's log
+            file_path = f"data/raw/txt/{document_id}_{pipe_id}_{datetime.now().strftime('%Y%m%d')}.txt"
+            release_date = datetime.now().strftime('%Y%m%d')
+
+            process_output(file_path, document_id, pipe_id, release_date)
+
+            return f"Pipeline executed successfully for document_id {document_id}"
+        except Exception as e:
+            logger.error(f"Error running ism_html.py for document_id {document_id}: {e}", exc_info=True)
+            return f"Error occurred: {e}"
+
+    # Default handling for other document IDs
+    if country == 'US':
+        return run_pipeline_old(document_id, pipe_id, url)
+    elif country == 'BR':
+        return run_pipeline_new(document_id, pipe_id, url)
     else:
-        return run_pipeline_new(document_id)
+        return f"Unsupported country '{country}' for document_id {document_id}"
 
 if __name__ == "__main__":
-    document_ids = [3, 5]
-    #document_ids = list(range(1, 31))
+    document_ids = [43, 44, 45]  # Specify the document IDs to process
     statuses = []
     for document_id in document_ids:
         try:
             result = run_pipeline(document_id)
-            status = "success" if "successfully" in result or "No update needed" in result or "No processing needed" in result else "failed"
+            if isinstance(result, str):
+                status = "failed" if "Error" in result or "Unsupported" in result else "success"
+            else:
+                status = "success" if "successfully" in result or "No update needed" in result or "No processing needed" in result else "failed"
         except Exception as e:
             logger.error(f"Exception occurred while processing document_id {document_id}: {e}", exc_info=True)
             result = f"Error occurred: {e}"

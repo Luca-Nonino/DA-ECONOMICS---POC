@@ -24,13 +24,14 @@ def extract_release_date(html_content):
     date_element = soup.find('div', class_='field--name-field-description')
     if date_element:
         date_text = date_element.get_text(strip=True)
-        date_match = re.search(r'Current release:\s*([A-Za-z]+\s+\d{1,2},\s+\d{4})', date_text)
+        date_match = re.search(r'Current [Rr]elease:\s*([A-Za-z]+\s+\d{1,2},\s+\d{4})', date_text)
         if date_match:
             date_str = date_match.group(1)
             date_obj = datetime.strptime(date_str, "%B %d, %Y")
             formatted_date = date_obj.strftime("%Y%m%d")
             return formatted_date
     return None
+
 
 # Function to extract the specific publication link
 def extract_publication_link(html_content):
@@ -96,7 +97,7 @@ pipe_id_2 = 3
 #process_bea_link(url_2, document_id_2, pipe_id_2)
 
 # Example usage for the third URL
-url_3 = "https://www.bea.gov/data/income-saving/personal-income"
-document_id_3 = "14"
+url_3 = "https://www.bea.gov/data/intl-trade-investment/international-trade-goods-and-services"
+document_id_3 = "43"
 pipe_id_3 = 3
 #process_bea_link(url_3, document_id_3, pipe_id_3)

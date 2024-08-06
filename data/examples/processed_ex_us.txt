@@ -101,3 +101,5 @@ pressionar a inflação, levando a possíveis ajustes nas taxas de juros. A aná
 ====================================================
 ====================================================
 ====================================================
+
+Mantenha a formatação da resposta com títulos em inglês mesmo quando o conteúdo for em portugues, **Title:** ; **Overview:** ; **Key Takeaways:** ; **Macro Environment Impacts:**

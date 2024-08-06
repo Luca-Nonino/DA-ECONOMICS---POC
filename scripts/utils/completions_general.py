@@ -41,7 +41,7 @@ def extract_release_date(pdf_path, num_chars=1000, retries=3, timeout=20):
     def make_request(content, prompt):
         try:
             response = client.chat.completions.create(
-                model="gpt-4o",
+                model="gpt-4o-mini",
                 messages=[
                     {"role": "system", "content": prompt},
                     {"role": "user", "content": content},
@@ -214,7 +214,7 @@ def generate_output(file_path, db_path=os.path.join(BASE_DIR, 'data/database/dat
         for attempt in range(retries):
             try:
                 response_stream = client.chat.completions.create(
-                    model="gpt-4o",
+                    model="gpt-4o-mini",
                     messages=history,
                     temperature=0.1,
                     stream=True,
@@ -300,7 +300,7 @@ def generate_short_summaries(file_path, prompt_path=os.path.join(BASE_DIR, "data
         for attempt in range(retries):
             try:
                 response_stream = client.chat.completions.create(
-                    model="gpt-4o",
+                    model="gpt-4o-mini",
                     messages=history,
                     temperature=0.1,
                     max_tokens=500,
@@ -370,7 +370,7 @@ def test_generate_output():
     generate_output(pdf_path, db_path)
 
 def test_extract_date():
-    pdf_path = "data/raw/pdf/6_2_20240606.pdf"
+    pdf_path = "data/raw/pdf/36_2_20240719.pdf"
     release_date = extract_release_date(pdf_path)
     print(f"Extracted release date: {release_date}")
 
