@@ -1,3 +1,667 @@
+## main.py
+
+```python
+import sys
+import os
+import logging
+from fastapi import FastAPI, Request, HTTPException, Depends, Query
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse, RedirectResponse, JSONResponse
+import sqlite3
+from typing import Optional
+
+# Get the directory of the current file
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Add the root directory to the Python path
+sys.path.append(BASE_DIR)
+
+from scripts.utils.auth import get_current_user
+from scripts.pipelines.orchestrator import run_pipeline
+from app.endpoints.api import api_app
+
+# Configure logging
+log_directory = os.path.join(BASE_DIR, 'app', 'logs')
+os.makedirs(log_directory, exist_ok=True)
+log_file = os.path.join(log_directory, 'errors.log')
+
+logging.basicConfig(
+    level=logging.INFO,
+    handlers=[
+        logging.FileHandler(log_file),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
+logger.info(f"File permissions for {db_path}: {oct(os.stat(db_path).st_mode)[-3:]}")
+app = FastAPI()
+
+# Mount static files and API
+static_directory = os.path.join(BASE_DIR, 'app', 'static')
+app.mount("/static", StaticFiles(directory=static_directory), name="static")
+
+app.mount("/indicators/api", api_app)
+
+# Configure Jinja2 templates
+templates_directory = os.path.join(BASE_DIR, 'app', 'templates')
+templates = Jinja2Templates(directory=templates_directory)
+
+@app.get("", response_class=HTMLResponse)
+async def redirect_to_list():
+    return RedirectResponse(url="/indicators/list")
+
+@app.get("/", response_class=HTMLResponse)
+async def root():
+    return RedirectResponse(url="/indicators/list")
+
+@app.get("/indicators/list", response_class=HTMLResponse)
+async def indicators_list(request: Request, user: dict = Depends(get_current_user)):
+    try:
+        db_path = os.path.join(BASE_DIR, 'data', 'database', 'database.sqlite')
+        logger.info(f"Connecting to database at {db_path}")
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        # Fetch unique document names and IDs for the sidebar
+        cursor.execute("SELECT DISTINCT document_name, document_id, country, source_name FROM documents_table")
+        document_names = cursor.fetchall()
+
+        # Fetch data for the main content
+        cursor.execute("SELECT document_id, document_name, source_name, path FROM documents_table")
+        data = cursor.fetchall()
+
+        conn.close()
+        logger.info("Returning template response")
+        return templates.TemplateResponse("base.html", {"request": request, "document_names": document_names, "data": data})
+    except sqlite3.Error as e:
+        logger.error(f"Database error: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    except Exception as e:
+        logger.error(f"Error fetching indicators list: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+
+@app.get("/indicators/query/{doc_id}", response_class=JSONResponse)
+async def query_source(request: Request, doc_id: int, date: Optional[str] = None):
+    conn = None
+    try:
+        db_path = os.path.join(BASE_DIR, 'data', 'database', 'database.sqlite')
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT document_id, document_name, source_name, country, path FROM documents_table WHERE document_id = ?", (doc_id,))
+        document = cursor.fetchone()
+        if not document:
+            logger.error(f"Document with ID {doc_id} not found")
+            raise HTTPException(status_code=404, detail="Document not found")
+
+        document_id, document_name, source_name, country, path = document
+
+        if date is None:
+            cursor.execute("SELECT release_date FROM summary_table WHERE document_id = ? ORDER BY release_date DESC LIMIT 1", (document_id,))
+            date = cursor.fetchone()[0]
+
+        cursor.execute("SELECT en_summary, pt_summary FROM summary_table WHERE document_id = ? AND release_date = ?", (document_id, date))
+        summary = cursor.fetchone()
+        en_summary, pt_summary = summary if summary else ("No summary available", "No summary available")
+
+        cursor.execute("SELECT title, content FROM key_takeaways_table WHERE document_id = ? AND release_date = ?", (document_id, date))
+        key_takeaways = cursor.fetchall()
+
+        cursor.execute("SELECT DISTINCT release_date FROM summary_table WHERE document_id = ?", (document_id,))
+        release_dates = [row[0] for row in cursor.fetchall()]
+
+        data = {
+            "document_id": document_id,
+            "document_name": document_name,
+            "source_name": source_name,
+            "country": country,
+            "path": path,
+            "en_summary": en_summary,
+            "pt_summary": pt_summary,
+            "key_takeaways": [{"title": kt[0], "content": kt[1]} for kt in key_takeaways],
+            "release_dates": release_dates
+        }
+
+        return JSONResponse(data)
+    except Exception as e:
+        logger.error(f"Error querying source: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    finally:
+        if conn:
+            conn.close()
+
+@app.post("/indicators/api/update_field")
+async def update_field(data: dict):
+    try:
+        field = data['field']
+        value = data['value']
+        db_path = os.path.join(BASE_DIR, 'data', 'database', 'database.sqlite')
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+        cursor.execute(f"UPDATE prompts_table SET {field} = ? WHERE prompt_id = ?", (value, data['prompt_id']))
+        conn.commit()
+        return {"status": "success"}
+    except Exception as e:
+        logger.error(f"Error updating field {field}: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    finally:
+        if conn:
+            conn.close()
+
+@app.post("/indicators/api/update_tasks")
+async def update_tasks(data: dict):
+    try:
+        tasks = data['tasks']
+        db_path = os.path.join(BASE_DIR, 'data', 'database', 'database.sqlite')
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+        cursor.execute("UPDATE prompts_table SET tasks_1 = ?, tasks_2 = ?, tasks_3 = ?, tasks_4 = ?, tasks_5 = ? WHERE prompt_id = ?",
+                       (*tasks, data['prompt_id']))
+        conn.commit()
+        return {"status": "success"}
+    except Exception as e:
+        logger.error(f"Error updating tasks: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    finally:
+        if conn:
+            conn.close()
+
+@app.get("/indicators/update", response_class=HTMLResponse)
+async def update_source(id: int = Query(...)):
+    logger.info(f"Received request to update source with ID: {id}")
+    try:
+        result = run_pipeline(id)
+        logger.info(f"Pipeline execution result for ID {id}: {result}")
+        return HTMLResponse(content=f"<html><body><h1>Update Result</h1><p>{result}</p></body></html>")
+    except Exception as e:
+        logger.error(f"Error updating source with ID {id}: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8000, log_level="info")
+
+
+```
+
+## api.py
+
+```python
+import logging
+import os
+import sqlite3
+from fastapi import FastAPI, Request, Query, HTTPException
+from fastapi.responses import JSONResponse
+from datetime import datetime
+import time
+
+logger = logging.getLogger(__name__)
+import sys
+import os
+
+# Add the parent directory to sys.path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from app.config import BASE_DIR, client
+
+api_app = FastAPI()
+
+# Set up file handler for logging errors
+file_handler = logging.FileHandler(os.path.join(BASE_DIR, 'app/logs/errors.log'))
+file_handler.setLevel(logging.ERROR)
+logger.addHandler(file_handler)
+
+def log_all_documents(cursor):
+    cursor.execute("SELECT document_id, document_name FROM documents_table")
+    documents = cursor.fetchall()
+    logger.info(f"All documents: {documents}")
+
+def fetch_release_dates(cursor, document_id):
+    cursor.execute("SELECT DISTINCT CAST(release_date AS INTEGER) FROM key_takeaways_table WHERE document_id = ? ORDER BY release_date DESC", (document_id,))
+    return [row[0] for row in cursor.fetchall()]
+
+@api_app.get("/", response_class=JSONResponse)
+async def query_source_api(document_id: int, date: str):
+    conn = None
+    try:
+        db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        log_all_documents(cursor)
+
+        logger.info(f"Querying document with ID: {document_id}")
+
+        cursor.execute("SELECT document_id, document_name, source_name, country, path FROM documents_table WHERE document_id = ?", (document_id,))
+        document = cursor.fetchone()
+        if not document:
+            logger.error(f"Document with ID {document_id} not found")
+            raise HTTPException(status_code=404, detail="Document not found")
+
+        document_id, document_name, source_name, country, path = document
+        logger.info(f"Found document: {document_name}, Source: {source_name}, Country: {country}, Path: {path}")
+
+        logger.info(f"Using release date: {date}")
+
+        cursor.execute("SELECT en_summary, pt_summary FROM summary_table WHERE document_id = ? AND release_date = ?", (document_id, date))
+        summary = cursor.fetchone()
+        if not summary:
+            en_summary, pt_summary = "No summary available", "No summary available"
+            logger.warning(f"No summaries found for document ID {document_id} and release date {date}")
+        else:
+            en_summary, pt_summary = summary
+
+        cursor.execute("SELECT title, content FROM key_takeaways_table WHERE document_id = ? AND release_date = ?", (document_id, date))
+        key_takeaways = cursor.fetchall()
+        if not key_takeaways:
+            logger.warning(f"No key takeaways found for document ID {document_id} and release date {date}")
+
+        data = {
+            "release_date": date,
+            "document_id": document_id,
+            "document_name": document_name,
+            "source_name": source_name,
+            "country": country,
+            "path": path,
+            "en_summary": en_summary,
+            "pt_summary": pt_summary,
+            "key_takeaways": [{"title": kt[0], "content": kt[1]} for kt in key_takeaways]
+        }
+
+        logger.info(f"Successfully retrieved data for document ID {document_id}")
+        return JSONResponse(content=data)
+    except sqlite3.Error as db_error:
+        logger.error(f"Database error: {db_error}", exc_info=True)
+        raise HTTPException(status_code=500, detail="Database error")
+    except Exception as e:
+        logger.error(f"Error querying source: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    finally:
+        if conn:
+            conn.close()
+
+@api_app.post("/update_all")
+async def update_all(data: dict):
+    try:
+        db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+        cursor.execute("""
+            UPDATE prompts_table
+            SET format_output_macro_environment_impacts_description = ?,
+                audience = ?,
+                objective = ?,
+                constraints_language_usage = ?,
+                constraints_language_style = ?,
+                tasks_1 = ?,
+                tasks_2 = ?,
+                tasks_3 = ?,
+                tasks_4 = ?,
+                tasks_5 = ?
+            WHERE prompt_id = ?
+        """, (
+            data['macro_env_desc'],
+            data['audience'],
+            data['objective'],
+            data['constraints_lang_usage'],
+            data['constraints_lang_style'],
+            data['tasks'][0] if len(data['tasks']) > 0 else None,
+            data['tasks'][1] if len(data['tasks']) > 1 else None,
+            data['tasks'][2] if len(data['tasks']) > 2 else None,
+            data['tasks'][3] if len(data['tasks']) > 3 else None,
+            data['tasks'][4] if len(data['tasks']) > 4 else None,
+            data['prompt_id']
+        ))
+        conn.commit()
+        return {"status": "success"}
+    except Exception as e:
+        logger.error(f"Error updating all fields: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    finally:
+        if conn:
+            conn.close()
+
+@api_app.get("/prompts/{doc_id}", response_class=JSONResponse)
+async def get_prompts(doc_id: int):
+    conn = None
+    try:
+        db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
+        logger.info(f"Attempting to connect to database at: {db_path}")
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        logger.info(f"Querying prompt for document ID: {doc_id}")
+        cursor.execute("SELECT prompt_id FROM prompts_table WHERE document_id = ?", (doc_id,))
+        prompt_id = cursor.fetchone()
+        if not prompt_id:
+            logger.error(f"Prompt with Document ID {doc_id} not found")
+            raise HTTPException(status_code=404, detail="Prompt not found")
+
+        prompt_id = prompt_id[0]
+        logger.info(f"Found prompt_id: {prompt_id}")
+
+        cursor.execute("SELECT format_output_macro_environment_impacts_description, audience, objective, constraints_language_usage, constraints_language_style, tasks_1, tasks_2, tasks_3, tasks_4, tasks_5 FROM prompts_table WHERE prompt_id = ?", (prompt_id,))
+        prompt = cursor.fetchone()
+        if not prompt:
+            logger.error(f"Prompt with ID {prompt_id} not found")
+            raise HTTPException(status_code=404, detail="Prompt not found")
+
+        format_output_macro_environment_impacts_description, audience, objective, constraints_language_usage, constraints_language_style, tasks_1, tasks_2, tasks_3, tasks_4, tasks_5 = prompt
+
+        data = {
+            "prompt_id": prompt_id,
+            "format_output_macro_environment_impacts_description": format_output_macro_environment_impacts_description,
+            "audience": audience,
+            "objective": objective,
+            "constraints_language_usage": constraints_language_usage,
+            "constraints_language_style": constraints_language_style,
+            "tasks": [tasks_1, tasks_2, tasks_3, tasks_4, tasks_5]
+        }
+
+        return JSONResponse(data)
+    except sqlite3.Error as db_error:
+        logger.error(f"Database error: {db_error}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Database error: {str(db_error)}")
+    except Exception as e:
+        logger.error(f"Error querying prompts: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
+    finally:
+        if conn:
+            conn.close()
+
+@api_app.post("/generate_pt_summary")
+async def generate_pt_summary(request: Request):
+    data = await request.json()
+    doc_id = data['doc_id']
+    release_date = data['release_date']
+    en_summary = data['en_summary']
+    pt_summary = data['pt_summary']
+    key_takeaways = data['key_takeaways']
+    prompt_data = data['prompt_data']
+
+    try:
+        db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        # Fetch release dates
+        release_dates = fetch_release_dates(cursor, doc_id)
+        if not release_dates:
+            raise HTTPException(status_code=404, detail="No release dates found for the document")
+
+        most_recent_date = release_dates[0]
+        second_most_recent_date = release_dates[1] if len(release_dates) > 1 else None
+
+        logger.info(f"Most recent date: {most_recent_date}")
+        if second_most_recent_date:
+            logger.info(f"Second most recent date: {second_most_recent_date}")
+
+        # Fetch data for the most recent and second most recent dates
+        def fetch_data_for_date(cursor, doc_id, date):
+            cursor.execute("SELECT en_summary, pt_summary FROM summary_table WHERE document_id = ? AND release_date = ?", (doc_id, date))
+            summary = cursor.fetchone()
+            if not summary:
+                logger.warning("Summary not found for date: %s", date)
+                return None, None, None
+            en_summary, pt_summary = summary
+
+            cursor.execute("SELECT title, content FROM key_takeaways_table WHERE document_id = ? AND release_date = ?", (doc_id, date))
+            key_takeaways = cursor.fetchall()
+
+            return en_summary, pt_summary, key_takeaways
+
+        most_recent_en_summary, most_recent_pt_summary, most_recent_key_takeaways = fetch_data_for_date(cursor, doc_id, most_recent_date)
+        second_most_recent_en_summary, second_most_recent_pt_summary, second_most_recent_key_takeaways = (None, None, None)
+
+        if second_most_recent_date:
+            second_most_recent_en_summary, second_most_recent_pt_summary, second_most_recent_key_takeaways = fetch_data_for_date(cursor, doc_id, second_most_recent_date)
+
+        logger.info("Most recent summaries fetched")
+        if second_most_recent_date:
+            logger.info("Second most recent summaries fetched")
+
+        if not most_recent_en_summary:
+            raise HTTPException(status_code=404, detail="Summary data not found for the most recent date")
+
+        # Generate the prompt
+        prompt = (
+            f"Translate the following economic report summary into Portuguese and format it for easy sharing on WhatsApp.\n\n"
+            f"Summary for {most_recent_date}:\n{most_recent_en_summary}\n\n"
+            f"Key Takeaways:\n" + "\n".join([f"{kt[0]}: {kt[1]}" for kt in most_recent_key_takeaways]) + "\n\n"
+        )
+
+        if second_most_recent_date and second_most_recent_en_summary:
+            prompt += (
+                f"Comparison with previous release ({second_most_recent_date}):\n{second_most_recent_en_summary}\n\n"
+                f"Key Takeaways:\n" + "\n".join([f"{kt[0]}: {kt[1]}" for kt in second_most_recent_key_takeaways]) + "\n\n"
+            )
+
+        prompt += (
+            f"Prompt Data:\n"
+            f"Macro Environment Description: {prompt_data['macro_env_desc']}\n"
+            f"Audience: {prompt_data['audience']}\n"
+            f"Objective: {prompt_data['objective']}\n"
+            f"Language Usage Constraints: {prompt_data['constraints_lang_usage']}\n"
+            f"Language Style Constraints: {prompt_data['constraints_lang_style']}\n"
+            f"Tasks: " + "\n".join([f"{i + 1}. {task}" for i, task in enumerate(prompt_data['tasks'])])
+        )
+
+        example_file_path = os.path.join(BASE_DIR, "data/examples/summarys_pt.txt")
+        try:
+            with open(example_file_path, 'r', encoding='utf-8') as ex_file:
+                prompt_example = ex_file.read()
+                prompt += "\n\n#EXAMPLES:\n" + prompt_example
+        except FileNotFoundError:
+            prompt += "\n\n#EXAMPLES:\nNo example available for this prompt ID."
+
+        logger.info("Prompt generated")
+
+        # Make the request to the Azure OpenAI API
+        history = [
+            {"role": "system", "content": "You are an assistant specialized in translating and formatting economic summaries from English to Brazilian Portuguese. Your task is to ensure the translated summaries are clear, accurate, and well-formatted."},
+            {"role": "user", "content": prompt}
+        ]
+
+        def request_inference(history, retries=3, timeout=20):
+            for attempt in range(retries):
+                try:
+                    response_stream = client.chat.completions.create(
+                        model="gpt-4o-mini",
+                        messages=history,
+                        temperature=0.1,
+                        stream=True,
+                        timeout=timeout
+                    )
+                    logger.info("Request attempt %s successful", attempt + 1)
+                    return response_stream
+                except Exception as e:
+                    logger.error(f"Attempt {attempt + 1} failed: {e}")
+                    time.sleep(timeout)
+            return None
+
+        response_stream = request_inference(history)
+        if not response_stream:
+            raise HTTPException(status_code=500, detail="Failed to generate output after multiple attempts")
+
+        pt_summary = ""
+        for chunk in response_stream:
+            if chunk.choices and chunk.choices[0].delta.content:
+                pt_summary += chunk.choices[0].delta.content
+
+        pt_summary = pt_summary.strip()
+
+        logger.info("PT summary generated successfully")
+
+        return JSONResponse({"pt_summary": pt_summary})
+    except Exception as e:
+        logger.error(f"Error generating PT summary: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Error generating PT summary: {e}")
+    finally:
+        if conn:
+            conn.close()
+
+```
+
+## indicators_list.py
+
+```python
+import logging
+import os
+from fastapi import FastAPI, Request, HTTPException, Depends
+from fastapi.responses import HTMLResponse
+from starlette.templating import Jinja2Templates
+import sqlite3
+from scripts.utils.auth import get_current_user
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+logger = logging.getLogger(__name__)
+logging.basicConfig(filename=os.path.join(BASE_DIR, 'app/logs/errors.log'), level=logging.DEBUG)
+templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "app/templates"))
+
+indicators_list_app = FastAPI()
+
+@indicators_list_app.get("/", response_class=HTMLResponse)
+async def indicators_list(request: Request, user: dict = Depends(get_current_user)):
+    try:
+        db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
+        logger.info(f"Connecting to database at {db_path}")
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        # Fetch unique document names and IDs for the sidebar
+        cursor.execute("SELECT DISTINCT document_name, document_id, country, source_name FROM documents_table")
+        document_names = cursor.fetchall()
+        if document_names:
+            logger.debug(f"Fetched document names: {document_names}")
+        else:
+            logger.debug("No document names fetched")
+
+        conn.close()
+        logger.info("Returning template response")
+        return templates.TemplateResponse("base.html", {"request": request, "document_names": document_names})
+    except sqlite3.Error as e:
+        logger.error(f"Database error: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    except Exception as e:
+        logger.error(f"Error fetching indicators list: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+
+
+```
+
+## process_source.py
+
+```python
+import logging
+import os
+from fastapi import FastAPI, Query, HTTPException
+from fastapi.responses import HTMLResponse
+from scripts.pipelines.orchestrator import run_pipeline
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+logger = logging.getLogger(__name__)
+process_source_app = FastAPI()
+
+logging.basicConfig(filename=os.path.join(BASE_DIR, 'app/logs/errors.log'), level=logging.DEBUG)
+
+@process_source_app.get("/", response_class=HTMLResponse)
+async def update_source(id: int = Query(...)):
+    try:
+        logger.debug(f"Fetching document with ID: {id}")
+        result = run_pipeline(id)
+        logger.debug(f"Pipeline result for document ID {id}: {result}")
+        return HTMLResponse(content=f"<html><body><h1>Update Result</h1><p>{result}</p></body></html>")
+    except Exception as e:
+        logger.error(f"Error updating source for document ID {id}: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+
+```
+
+## query_source.py
+
+```python
+import logging
+import os
+from fastapi import FastAPI, Request, HTTPException
+from fastapi.responses import HTMLResponse
+from starlette.templating import Jinja2Templates
+import sqlite3
+from typing import Optional
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+logger = logging.getLogger(__name__)
+templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "app/templates"))
+
+query_source_app = FastAPI()
+
+# Set up file handler for logging errors
+file_handler = logging.FileHandler(os.path.join(BASE_DIR, 'app/logs/errors.log'))
+file_handler.setLevel(logging.ERROR)
+logger.addHandler(file_handler)
+
+def log_all_documents(cursor):
+    cursor.execute("SELECT document_id, document_name FROM documents_table")
+    documents = cursor.fetchall()
+    logger.info(f"All documents: {documents}")
+
+@query_source_app.get("/{document_id}", response_class=HTMLResponse)
+async def query_source(request: Request, document_id: int, date: Optional[str] = None):
+    conn = None
+    try:
+        db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        log_all_documents(cursor)
+
+        cursor.execute("SELECT document_id, document_name, source_name, country, path FROM documents_table WHERE document_id = ?", (document_id,))
+        document = cursor.fetchone()
+        if not document:
+            logger.error(f"Document with ID {document_id} not found")
+            raise HTTPException(status_code=404, detail="Document not found")
+
+        document_id, document_name, source_name, country, path = document
+
+        if date is None:
+            cursor.execute("SELECT release_date FROM summary_table WHERE document_id = ? ORDER BY release_date DESC LIMIT 1", (document_id,))
+            date = cursor.fetchone()[0]
+
+        cursor.execute("SELECT en_summary, pt_summary FROM summary_table WHERE document_id = ? AND release_date = ?", (document_id, date))
+        summary = cursor.fetchone()
+        en_summary, pt_summary = summary if summary else ("No summary available", "No summary available")
+
+        cursor.execute("SELECT title, content FROM key_takeaways_table WHERE document_id = ? AND release_date = ?", (document_id, date))
+        key_takeaways = cursor.fetchall()
+
+        cursor.execute("SELECT DISTINCT release_date FROM summary_table WHERE document_id = ?", (document_id,))
+        release_dates = [row[0] for row in cursor.fetchall()]
+
+        data = {
+            "document_id": document_id,
+            "document_name": document_name,
+            "source_name": source_name,
+            "country": country,
+            "path": path,
+            "en_summary": en_summary,
+            "pt_summary": pt_summary,
+            "key_takeaways": [{"title": kt[0], "content": kt[1]} for kt in key_takeaways],
+            "release_dates": release_dates
+        }
+
+        logger.debug(f"Data to be passed to template: {data}")
+
+        return templates.TemplateResponse("indicator_details.html", {"request": request, **data})
+    except Exception as e:
+        logger.error(f"Error querying source: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    finally:
+        if conn:
+            conn.close()
+
+```
+
 ## mdic_html.py
 
 ```python
@@ -753,13 +1417,14 @@ def extract_release_date(html_content):
     date_element = soup.find('div', class_='field--name-field-description')
     if date_element:
         date_text = date_element.get_text(strip=True)
-        date_match = re.search(r'Current release:\s*([A-Za-z]+\s+\d{1,2},\s+\d{4})', date_text)
+        date_match = re.search(r'Current [Rr]elease:\s*([A-Za-z]+\s+\d{1,2},\s+\d{4})', date_text)
         if date_match:
             date_str = date_match.group(1)
             date_obj = datetime.strptime(date_str, "%B %d, %Y")
             formatted_date = date_obj.strftime("%Y%m%d")
             return formatted_date
     return None
+
 
 # Function to extract the specific publication link
 def extract_publication_link(html_content):
@@ -825,8 +1490,8 @@ pipe_id_2 = 3
 #process_bea_link(url_2, document_id_2, pipe_id_2)
 
 # Example usage for the third URL
-url_3 = "https://www.bea.gov/data/income-saving/personal-income"
-document_id_3 = "14"
+url_3 = "https://www.bea.gov/data/intl-trade-investment/international-trade-goods-and-services"
+document_id_3 = "43"
 pipe_id_3 = 3
 #process_bea_link(url_3, document_id_3, pipe_id_3)
 
@@ -1292,16 +1957,16 @@ import json
 import sqlite3
 import re
 import io
-from contextlib import redirect_stdout
 import logging
+from contextlib import redirect_stdout 
 
 # Add the project root to the Python path
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 sys.path.insert(0, project_root)
 
 # Set up logging
-logging.basicConfig(filename=os.path.join(project_root, 'app', 'logs', 'orchestrator_br.log'), 
-                    level=logging.INFO, 
+logging.basicConfig(filename=os.path.join(project_root, 'app', 'logs', 'orchestrator_br.log'),
+                    level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
@@ -1323,21 +1988,27 @@ from scripts.utils.completions_general import generate_output
 from scripts.utils.parse_load import parse_and_load
 from scripts.pdf.pdf_hash import check_hash_and_extract_release_date
 from scripts.utils.check_date import check_and_update_release_date
-from scripts.html_scraping.census_html import process_census_html  # Import the new script
+from scripts.html_scraping.census_html import process_census_html
+from scripts.html_scraping.atlanta_html import process_gdpnow_html
+from scripts.html_scraping.ism_html import process_ism_html  # Import ISM processing function
 
 # List of allowed document IDs
-ALLOWED_DOCUMENT_IDS = list(range(1, 31))
+ALLOWED_DOCUMENT_IDS = list(range(1, 50))
 
 # Mapping document IDs to processing functions
 PROCESSING_FUNCTIONS = {
     1: process_conference_board_html,
     2: process_conference_board_html,
-    3: process_sca_html,  # Adding the new script
+    39: process_conference_board_html,
+    40: process_conference_board_html,
+    3: process_sca_html,
     11: process_nar_link,
     12: process_bea_link,
     13: process_bea_link,
     14: process_bea_link,
-    15: process_census_html,  # Updated to use the new on-page content scraping logic
+    42: process_bea_link,
+    43: process_bea_link,
+    15: process_census_html,
     17: process_ny_html,
     18: process_adp_html,
     22: process_anfavea_link,
@@ -1349,6 +2020,9 @@ PROCESSING_FUNCTIONS = {
     28: process_ibge_link,
     29: process_ibge_link,
     30: process_balança_comercial_html,
+    41: process_gdpnow_html,
+    44: process_ism_html,  # Added the new script for PMI
+    45: process_ism_html,  # Added the new script for Services
 }
 
 def get_document_details(document_id, db_path=os.path.join(project_root, 'data', 'database', 'database.sqlite')):
@@ -1356,7 +2030,7 @@ def get_document_details(document_id, db_path=os.path.join(project_root, 'data',
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     cursor.execute("""
-        SELECT pipe_id, path FROM documents_table WHERE document_id = ?
+        SELECT pipe_id, path, country FROM documents_table WHERE document_id = ?
     """, (document_id,))
     result = cursor.fetchone()
     conn.close()
@@ -1424,7 +2098,6 @@ def process_pdf_content(document_id, url, pipe_id):
 
 def process_output(file_path, document_id, pipe_id, release_date):
     if file_path.endswith('.txt'):
-        # Handle TXT output
         try:
             generate_output(file_path)
             processed_file_path = os.path.join(project_root, f"data/processed/{document_id}_{pipe_id}_{release_date}.txt")
@@ -1432,7 +2105,6 @@ def process_output(file_path, document_id, pipe_id, release_date):
         except Exception as e:
             logger.error(f"Error processing TXT file for document_id {document_id}: {e}", exc_info=True)
     elif file_path.endswith('.pdf'):
-        # Handle PDF output
         try:
             result = check_hash_and_extract_release_date(file_path)
             response = json.loads(result)
@@ -1446,15 +2118,10 @@ def process_output(file_path, document_id, pipe_id, release_date):
         except Exception as e:
             logger.error(f"Error processing PDF file for document_id {document_id}: {e}", exc_info=True)
 
-def run_pipeline_old(document_id):
+def run_pipeline_old(document_id, pipe_id, url):
     if document_id not in ALLOWED_DOCUMENT_IDS:
         return "Document ID not allowed"
 
-    details = get_document_details(document_id)
-    if not details:
-        return f"No details found for document_id {document_id}"
-
-    pipe_id, url = details
     release_date = None
     txt_path = None
     pdf_path = None
@@ -1465,7 +2132,7 @@ def run_pipeline_old(document_id):
         elif document_id == 5:
             # Redirect logic to the relevant script for ID 5
             txt_path, release_date, error_message = process_fhfa_logic(document_id, url, pipe_id)
-        elif document_id in [4, 6, 7, 8, 9, 10, 16, 19, 20, 21]:
+        elif document_id in [4, 6, 7, 8, 9, 10, 16, 19, 20, 21, 31, 32, 33, 34, 35, 36, 37, 38]:
             pdf_path, release_date, error_message = process_pdf_content(document_id, url, pipe_id)
 
             if not error_message:
@@ -1518,15 +2185,10 @@ def run_pipeline_old(document_id):
         logger.error(f"Error in run_pipeline for document_id {document_id}: {e}", exc_info=True)
         return f"Error occurred: {e}"
 
-def run_pipeline_new(document_id):
+def run_pipeline_new(document_id, pipe_id, url):
     if document_id not in PROCESSING_FUNCTIONS:
         return f"Document ID {document_id} not supported in this orchestrator."
 
-    details = get_document_details(document_id)
-    if not details:
-        return f"No details found for document_id {document_id}"
-
-    pipe_id, url = details
     try:
         process_func = PROCESSING_FUNCTIONS[document_id]
         if document_id in [22, 23]:
@@ -1562,19 +2224,51 @@ def run_pipeline_new(document_id):
     return f"Pipeline executed successfully for document_id {document_id}"
 
 def run_pipeline(document_id):
-    if document_id in range(1, 22):
-        return run_pipeline_old(document_id)
+    details = get_document_details(document_id)
+    if not details:
+        return f"No details found for document_id {document_id}"
+
+    pipe_id, url, country = details
+
+    # Specific handling for document IDs 44 and 45
+    if document_id in [44, 45]:
+        try:
+            if document_id == 44:
+                base_url = "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/pmi"
+            else:
+                base_url = "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/services"
+
+            process_ism_html(base_url, document_id, pipe_id)
+            
+            # Extract the output path and release date from the ISM script's log
+            file_path = f"data/raw/txt/{document_id}_{pipe_id}_{datetime.now().strftime('%Y%m%d')}.txt"
+            release_date = datetime.now().strftime('%Y%m%d')
+
+            process_output(file_path, document_id, pipe_id, release_date)
+
+            return f"Pipeline executed successfully for document_id {document_id}"
+        except Exception as e:
+            logger.error(f"Error running ism_html.py for document_id {document_id}: {e}", exc_info=True)
+            return f"Error occurred: {e}"
+
+    # Default handling for other document IDs
+    if country == 'US':
+        return run_pipeline_old(document_id, pipe_id, url)
+    elif country == 'BR':
+        return run_pipeline_new(document_id, pipe_id, url)
     else:
-        return run_pipeline_new(document_id)
+        return f"Unsupported country '{country}' for document_id {document_id}"
 
 if __name__ == "__main__":
-    document_ids = [15]
-    #document_ids = list(range(1, 31))
+    document_ids = [43, 44, 45]  # Specify the document IDs to process
     statuses = []
     for document_id in document_ids:
         try:
             result = run_pipeline(document_id)
-            status = "success" if "successfully" in result or "No update needed" in result or "No processing needed" in result else "failed"
+            if isinstance(result, str):
+                status = "failed" if "Error" in result or "Unsupported" in result else "success"
+            else:
+                status = "success" if "successfully" in result or "No update needed" in result or "No processing needed" in result else "failed"
         except Exception as e:
             logger.error(f"Exception occurred while processing document_id {document_id}: {e}", exc_info=True)
             result = f"Error occurred: {e}"
@@ -1682,7 +2376,7 @@ def extract_release_date(pdf_path, num_chars=1000, retries=3, timeout=20):
     def make_request(content, prompt):
         try:
             response = client.chat.completions.create(
-                model="gpt-4o",
+                model="gpt-4o-mini",
                 messages=[
                     {"role": "system", "content": prompt},
                     {"role": "user", "content": content},
@@ -1855,7 +2549,7 @@ def generate_output(file_path, db_path=os.path.join(BASE_DIR, 'data/database/dat
         for attempt in range(retries):
             try:
                 response_stream = client.chat.completions.create(
-                    model="gpt-4o",
+                    model="gpt-4o-mini",
                     messages=history,
                     temperature=0.1,
                     stream=True,
@@ -1941,7 +2635,7 @@ def generate_short_summaries(file_path, prompt_path=os.path.join(BASE_DIR, "data
         for attempt in range(retries):
             try:
                 response_stream = client.chat.completions.create(
-                    model="gpt-4o",
+                    model="gpt-4o-mini",
                     messages=history,
                     temperature=0.1,
                     max_tokens=500,
@@ -2011,7 +2705,7 @@ def test_generate_output():
     generate_output(pdf_path, db_path)
 
 def test_extract_date():
-    pdf_path = "data/raw/pdf/6_2_20240606.pdf"
+    pdf_path = "data/raw/pdf/36_2_20240719.pdf"
     release_date = extract_release_date(pdf_path)
     print(f"Extracted release date: {release_date}")
 
@@ -2029,7 +2723,7 @@ def test_generate_short_summaries():
 # test_get_prompt()
 # test_generate_output()
 # test_pdf()
-#test_extract_date()
+test_extract_date()
 # test_generate_short_summaries()
 
 ```

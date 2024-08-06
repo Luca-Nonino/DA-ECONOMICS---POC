@@ -18,27 +18,31 @@ engine = create_engine(f'sqlite:///{db_path}', echo=True)
 # Create a session factory
 Session = sessionmaker(bind=engine)
 
-def query_htm_documents():
+def list_all_documents():
     session = Session()
 
     try:
         # Create the select statement
-        stmt = select(DocumentsTable.document_id, DocumentsTable.path).where(
-            DocumentsTable.path.like('%htm')
+        stmt = select(
+            DocumentsTable.document_id,
+            DocumentsTable.document_name,
+            DocumentsTable.source_name,
+            DocumentsTable.path,
+            DocumentsTable.country
         )
 
         # Execute the query
         result = session.execute(stmt)
 
         # Fetch all results
-        htm_documents = result.fetchall()
+        documents = result.fetchall()
 
         # Print the results
-        print("Documents with paths ending in 'htm':")
-        for doc in htm_documents:
-            print(f"ID: {doc.document_id}, Path: {doc.path}")
+        print("All documents:")
+        for doc in documents:
+            print(f"ID: {doc.document_id}, Name: {doc.document_name}, Source: {doc.source_name}, Path: {doc.path}, Country: {doc.country}")
 
-        return htm_documents
+        return documents
 
     except Exception as e:
         print(f"An error occurred: {e}")
@@ -46,4 +50,4 @@ def query_htm_documents():
         session.close()
 
 if __name__ == "__main__":
-    query_htm_documents()
+    list_all_documents()

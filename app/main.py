@@ -62,22 +62,34 @@ async def indicators_list(request: Request, user: dict = Depends(get_current_use
         cursor = conn.cursor()
 
         # Fetch unique document names and IDs for the sidebar
-        cursor.execute("SELECT DISTINCT document_name, document_id FROM documents_table")
-        document_names = cursor.fetchall()
+        cursor.execute("SELECT document_name, document_id, country, source_name FROM documents_table")
+        documents = cursor.fetchall()
 
-        # Fetch data for the main content
-        cursor.execute("SELECT document_id, document_name, source_name, path FROM documents_table")
-        data = cursor.fetchall()
+        # Structure data into a nested dictionary
+        country_sources_documents = {}
+        for document_name, document_id, country, source_name in documents:
+            if country not in country_sources_documents:
+                country_sources_documents[country] = {}
+            if source_name not in country_sources_documents[country]:
+                country_sources_documents[country][source_name] = []
+            country_sources_documents[country][source_name].append({
+                "document_name": document_name,
+                "document_id": document_id
+            })
 
         conn.close()
         logger.info("Returning template response")
-        return templates.TemplateResponse("base.html", {"request": request, "document_names": document_names, "data": data})
+        return templates.TemplateResponse("base.html", {
+            "request": request,
+            "country_sources_documents": country_sources_documents
+        })
     except sqlite3.Error as e:
         logger.error(f"Database error: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail="Internal Server Error")
     except Exception as e:
         logger.error(f"Error fetching indicators list: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail="Internal Server Error")
+
 
 @app.get("/indicators/query/{doc_id}", response_class=JSONResponse)
 async def query_source(request: Request, doc_id: int, date: Optional[str] = None):
@@ -87,13 +99,13 @@ async def query_source(request: Request, doc_id: int, date: Optional[str] = None
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
-        cursor.execute("SELECT document_id, document_name, source_name, path FROM documents_table WHERE document_id = ?", (doc_id,))
+        cursor.execute("SELECT document_id, document_name, source_name, country, path FROM documents_table WHERE document_id = ?", (doc_id,))
         document = cursor.fetchone()
         if not document:
             logger.error(f"Document with ID {doc_id} not found")
             raise HTTPException(status_code=404, detail="Document not found")
 
-        document_id, document_name, source_name, path = document
+        document_id, document_name, source_name, country, path = document
 
         if date is None:
             cursor.execute("SELECT release_date FROM summary_table WHERE document_id = ? ORDER BY release_date DESC LIMIT 1", (document_id,))
@@ -113,6 +125,7 @@ async def query_source(request: Request, doc_id: int, date: Optional[str] = None
             "document_id": document_id,
             "document_name": document_name,
             "source_name": source_name,
+            "country": country,
             "path": path,
             "en_summary": en_summary,
             "pt_summary": pt_summary,
@@ -178,3 +191,4 @@ async def update_source(id: int = Query(...)):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=8000, log_level="info")
+

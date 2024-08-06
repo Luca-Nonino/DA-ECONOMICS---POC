@@ -22,17 +22,14 @@ file_handler = logging.FileHandler(os.path.join(BASE_DIR, 'app/logs/errors.log')
 file_handler.setLevel(logging.ERROR)
 logger.addHandler(file_handler)
 
-
-
-
 def log_all_documents(cursor):
     cursor.execute("SELECT document_id, document_name FROM documents_table")
     documents = cursor.fetchall()
     logger.info(f"All documents: {documents}")
+
 def fetch_release_dates(cursor, document_id):
     cursor.execute("SELECT DISTINCT CAST(release_date AS INTEGER) FROM key_takeaways_table WHERE document_id = ? ORDER BY release_date DESC", (document_id,))
     return [row[0] for row in cursor.fetchall()]
-
 
 @api_app.get("/", response_class=JSONResponse)
 async def query_source_api(document_id: int, date: str):
@@ -46,14 +43,14 @@ async def query_source_api(document_id: int, date: str):
 
         logger.info(f"Querying document with ID: {document_id}")
 
-        cursor.execute("SELECT document_id, document_name, source_name, path FROM documents_table WHERE document_id = ?", (document_id,))
+        cursor.execute("SELECT document_id, document_name, source_name, country, path FROM documents_table WHERE document_id = ?", (document_id,))
         document = cursor.fetchone()
         if not document:
             logger.error(f"Document with ID {document_id} not found")
             raise HTTPException(status_code=404, detail="Document not found")
 
-        document_id, document_name, source_name, path = document
-        logger.info(f"Found document: {document_name}, Source: {source_name}, Path: {path}")
+        document_id, document_name, source_name, country, path = document
+        logger.info(f"Found document: {document_name}, Source: {source_name}, Country: {country}, Path: {path}")
 
         logger.info(f"Using release date: {date}")
 
@@ -75,6 +72,7 @@ async def query_source_api(document_id: int, date: str):
             "document_id": document_id,
             "document_name": document_name,
             "source_name": source_name,
+            "country": country,
             "path": path,
             "en_summary": en_summary,
             "pt_summary": pt_summary,
@@ -181,6 +179,7 @@ async def get_prompts(doc_id: int):
     finally:
         if conn:
             conn.close()
+
 @api_app.post("/generate_pt_summary")
 async def generate_pt_summary(request: Request):
     data = await request.json()
@@ -278,7 +277,7 @@ async def generate_pt_summary(request: Request):
             for attempt in range(retries):
                 try:
                     response_stream = client.chat.completions.create(
-                        model="gpt-4o",
+                        model="gpt-4o-mini",
                         messages=history,
                         temperature=0.1,
                         stream=True,
@@ -311,5 +310,3 @@ async def generate_pt_summary(request: Request):
     finally:
         if conn:
             conn.close()
-
-

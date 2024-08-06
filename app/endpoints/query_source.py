@@ -32,13 +32,13 @@ async def query_source(request: Request, document_id: int, date: Optional[str] =
 
         log_all_documents(cursor)
 
-        cursor.execute("SELECT document_id, document_name, source_name, path FROM documents_table WHERE document_id = ?", (document_id,))
+        cursor.execute("SELECT document_id, document_name, source_name, country, path FROM documents_table WHERE document_id = ?", (document_id,))
         document = cursor.fetchone()
         if not document:
             logger.error(f"Document with ID {document_id} not found")
             raise HTTPException(status_code=404, detail="Document not found")
 
-        document_id, document_name, source_name, path = document
+        document_id, document_name, source_name, country, path = document
 
         if date is None:
             cursor.execute("SELECT release_date FROM summary_table WHERE document_id = ? ORDER BY release_date DESC LIMIT 1", (document_id,))
@@ -58,6 +58,7 @@ async def query_source(request: Request, document_id: int, date: Optional[str] =
             "document_id": document_id,
             "document_name": document_name,
             "source_name": source_name,
+            "country": country,
             "path": path,
             "en_summary": en_summary,
             "pt_summary": pt_summary,

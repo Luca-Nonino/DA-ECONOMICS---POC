@@ -76,3 +76,5 @@ Bellow is a collection of responses to serve as guidance of the formatting that 
 ====================================================
 ====================================================
 ====================================================
+
+Mantenha a formatação da resposta com títulos em inglês mesmo quando o conteúdo for em portugues, **Title:** ; **Overview:** ; **Key Takeaways:** ; **Macro Environment Impacts:**

@@ -2,11 +2,11 @@ import os
 
 files_to_consolidate = [
     #'app\\config.py',
-    #'app\\main.py',
-    #'app\\endpoints\\api.py',
-    #'app\\endpoints\\indicators_list.py',
-    #'app\\endpoints\\process_source.py',
-    #'app\\endpoints\\query_source.py',
+    'app\\main.py',
+    'app\\endpoints\\api.py',
+    'app\\endpoints\\indicators_list.py',
+    'app\\endpoints\\process_source.py',
+    'app\\endpoints\\query_source.py',
     #'app\\templates\\base.html',
     #'data\\database\\migrations\\clear_michigan.py',
     #'data\\database\\analysis_table.py',

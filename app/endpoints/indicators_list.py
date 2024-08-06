@@ -22,7 +22,7 @@ async def indicators_list(request: Request, user: dict = Depends(get_current_use
         cursor = conn.cursor()
 
         # Fetch unique document names and IDs for the sidebar
-        cursor.execute("SELECT DISTINCT document_name, document_id FROM documents_table")
+        cursor.execute("SELECT DISTINCT document_name, document_id, country, source_name FROM documents_table")
         document_names = cursor.fetchall()
         if document_names:
             logger.debug(f"Fetched document names: {document_names}")
@@ -38,3 +38,4 @@ async def indicators_list(request: Request, user: dict = Depends(get_current_use
     except Exception as e:
         logger.error(f"Error fetching indicators list: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail="Internal Server Error")
+

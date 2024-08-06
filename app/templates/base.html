@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>US Economy Indicators - AI Pipelines</title>
+    <title>🐲 DA Economics - AI Researcher 🤖</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body.dark-mode {
@@ -42,13 +42,50 @@
             border: 1px solid #d2691e;
             background-color: inherit;
             overflow-y: auto;
+            padding: 10px;
         }
-        .nav-bar .indicator-link {
+        .nav-bar .country {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-bottom: 1px solid #228b22;
+        padding-bottom: 5px;
+        color: #f1f1f1; /* Light text for readability */
+        padding: 10px; /* Padding for better visibility */
+        border-radius: 5px; /* Rounded corners */
+        }
+        .nav-bar .source::before {
+            content: "\25CF "; /* Black circle before source */
+            color: #d2691e; /* Orange color for the circle */
+        }
+        .nav-bar .source {
             font-family: Arial, sans-serif;
             font-size: 14px;
             font-weight: bold;
+            margin-left: 10px;
             margin-bottom: 5px;
-            text-transform: uppercase;
+            cursor: pointer;
+            color: #d2691e;
+        }
+
+        .nav-bar .indicator-link::before {
+            content: "\2605 "; /* Star symbol before documents */
+            color: #f1f1f1; /* Light color for the star */
+        }
+        .nav-bar .indicator-link {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            margin-left: 20px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            color: #f1f1f1;
+        }
+        .nav-bar .indicator-link.selected {
+            color: #d2691e;
+            font-style: italic;
         }
         .nav-bar .indicator-link:hover {
             color: #228b22;
@@ -57,6 +94,9 @@
             color: #228b22;
             text-align: center;
             margin: 5px 0;
+            width: 100%;
+            height: 1px;
+            background-color: #228b22;
         }
         .content {
             display: flex;
@@ -65,11 +105,14 @@
             margin-left: 250px;
             margin-top: 80px;
             overflow-y: auto;
+            padding: 20px;
         }
         .box {
             background-color: inherit;
             padding: 20px;
             margin-bottom: 20px;
+            border: 1px solid #d2691e;
+            border-radius: 5px;
         }
         .title, .subtitle {
             color: #d2691e;
@@ -157,6 +200,8 @@
             border-color: #d2691e;
         }
         .light-mode .header h1,
+        .light-mode .country,
+        .light-mode .source,
         .light-mode .indicator-link,
         .light-mode .title,
         .light-mode .subtitle {
@@ -182,6 +227,8 @@
             border-color: #d2691e;
         }
         .dark-mode .header h1,
+        .dark-mode .country,
+        .dark-mode .source,
         .dark-mode .indicator-link,
         .dark-mode .title,
         .dark-mode .subtitle {
@@ -312,23 +359,37 @@
         }
     </style>
 </head>
-<body class="light-mode">
+<body class="dark-mode">
     <div class="header" id="header">
         <div class="header-title">
-            <h1 class="text-4xl font-bold">US Economy Indicators - AI Pipelines</h1>
+            <h1 class="text-4xl font-bold">🐲 DA Economics - AI Researcher 🤖</h1>
         </div>
         <div class="theme-switcher cursor-pointer" id="theme-switcher">Switch Theme</div>
     </div>
     <div class="nav-bar p-4 fixed w-60 overflow-y-auto">
-        <h2 class="text-xl font-bold text-center mb-4">Select Publication Below</h2>
-        <ul>
-            {% for doc in document_names %}
-                <li class="my-2">
-                    <a href="#" class="indicator-link" data-document-id="{{ doc[1] }}">{{ doc[0] }}</a>
-                </li>
-                <span class="indicator-separator">-----</span>
+        <h2 class="text-xl font-bold text-center mb-4">Select a Report from the List Bellow</h2>
+        <div id="country-list">
+            {% for country, sources in country_sources_documents.items() %}
+                <div class="country" data-country-name="{{ country }}">
+                    {{ country }}
+                    <div class="source-list">
+                        {% for source, documents in sources.items() %}
+                            <div class="source" data-source-name="{{ source }}">
+                                {{ source }}
+                                <div class="document-list">
+                                    {% for doc in documents %}
+                                        <div class="indicator-link" data-document-id="{{ doc.document_id }}">
+                                            {{ doc.document_name }}
+                                        </div>
+                                        <span class="indicator-separator"></span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
             {% endfor %}
-        </ul>        
+        </div>             
     </div>
     <div class="content">
         <div id="placeholder" class="box">
@@ -418,6 +479,8 @@
     <div class="loading-indicator" id="loading-indicator"></div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            const countries = document.querySelectorAll('.country');
+            const sources = document.querySelectorAll('.source');
             const links = document.querySelectorAll('.indicator-link');
             const mainContainer = document.getElementById('main-container');
             const crudContainer = document.getElementById('crud-container');
@@ -438,9 +501,13 @@
             const addTaskButton = document.getElementById('add-task');
             const loadingIndicator = document.getElementById('loading-indicator');
             const overlay = document.getElementById('overlay');
+            const documentList = {};
 
             links.forEach(link => {
                 link.addEventListener('click', function () {
+                    links.forEach(link => link.classList.remove('selected'));
+                    this.classList.add('selected');
+
                     const docId = this.getAttribute('data-document-id');
                     console.log(`Document ID clicked: ${docId}`);
                     showLoading();
@@ -612,8 +679,8 @@
 
                     copyGeneratedSummaryButton.addEventListener('click', function () {
                         const summaryText = `
-Summary - Portuguese:
-${data.pt_summary}`;
+        Summary - Portuguese:
+        ${data.pt_summary}`;
                         copyToClipboard(summaryText);
                         alert("Summary copied to clipboard!");
                     });
@@ -648,7 +715,7 @@ ${data.pt_summary}`;
                         audience,
                         objective,
                         constraints_lang_usage: constraintsLangUsage,
-                        constraints_lang_style: constraints_langStyle,
+                        constraints_lang_style: constraintsLangStyle,
                         tasks
                     })
                 })
@@ -679,16 +746,16 @@ ${data.pt_summary}`;
 
             copySummaryButton.addEventListener('click', function () {
                 const summaryText = `
-Summary - English:
-${document.getElementById('en-summary').textContent}
+        Summary - English:
+        ${document.getElementById('en-summary').textContent}
 
-Summary - Portuguese:
-${document.getElementById('pt-summary').textContent}
+        Summary - Portuguese:
+        ${document.getElementById('pt-summary').textContent}
 
-Key Takeaways:
-${Array.from(document.querySelectorAll('#key-takeaways .key-takeaway-title')).map(title => {
-                    return `\n${title.textContent}\n${title.nextElementSibling.textContent}`;
-                }).join('\n')}`;
+        Key Takeaways:
+        ${Array.from(document.querySelectorAll('#key-takeaways .key-takeaway-title')).map(title => {
+                        return `\n${title.textContent}\n${title.nextElementSibling.textContent}`;
+                    }).join('\n')}`;
 
                 copyToClipboard(summaryText);
                 alert("Summary copied to clipboard!");
