@@ -308,7 +308,7 @@ def run_pipeline(document_id):
         return f"Unsupported country '{country}' for document_id {document_id}"
 
 if __name__ == "__main__":
-    document_ids = [43, 44, 45]  # Specify the document IDs to process
+    document_ids = range(1,45)  # Specify the document IDs to process
     statuses = []
     for document_id in document_ids:
         try:

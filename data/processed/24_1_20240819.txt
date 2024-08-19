@@ -1,0 +1,15 @@
+**Title:**
+{'Resultados Fiscais e Dívida Pública: Junho de 2024'}
+
+**Overview:**
+||O relatório apresenta uma análise detalhada dos resultados fiscais do setor público consolidado em junho de 2024, destacando um déficit primário de R$40,9 bilhões, uma melhora em relação ao déficit de R$48,9 bilhões no mesmo mês do ano anterior. A Dívida Líquida do Setor Público (DLSP) atingiu 62,2% do PIB, enquanto a Dívida Bruta do Governo Geral (DBGG) alcançou 77,8% do PIB. O relatório também discute as elasticidades da dívida em relação a variações na taxa de câmbio, taxa de juros e índices de preços.||
+
+**Key Takeaways:**
+- {**Déficit Primário**}: [O déficit primário do setor público consolidado foi de R$40,9 bilhões em junho de 2024, melhorando em R$8 bilhões em relação ao déficit de R$48,9 bilhões em junho de 2023.]
+- {**Déficit Nominal**}: [O resultado nominal do setor público consolidado foi deficitário em R$135,7 bilhões, com um déficit acumulado em doze meses de R$1.108,0 bilhões, equivalente a 9,92% do PIB.]
+- {**Dívida Líquida do Setor Público (DLSP)**}: [A DLSP atingiu 62,2% do PIB (R$6,9 trilhões) em junho, um aumento de 0,1 p.p. em relação ao mês anterior, refletindo principalmente os juros nominais apropriados (+0,8 p.p.) e o déficit primário (+0,4 p.p.).]
+- {**Dívida Bruta do Governo Geral (DBGG)**}: [A DBGG alcançou 77,8% do PIB (R$8,7 trilhões), um aumento de 1,1 p.p. do PIB em relação ao mês anterior, impulsionado por juros nominais apropriados (+0,6 p.p.) e emissões líquidas (+0,6 p.p.).]
+- {**Impacto da Desvalorização Cambial**}: [A desvalorização cambial de 6,1% em junho teve um impacto negativo de -0,7 p.p. na DLSP, enquanto a desvalorização acumulada no ano foi de 14,8%, resultando em um efeito de -1,6 p.p. na DLSP.]
+
+**Macro Environment Impacts:**
+||Os resultados fiscais de junho de 2024 indicam um cenário desafiador para a política fiscal brasileira, com um déficit primário que, embora tenha melhorado em relação ao ano anterior, ainda representa uma preocupação significativa. A DLSP em 62,2% do PIB sugere uma pressão crescente sobre a sustentabilidade fiscal, especialmente considerando o aumento dos juros nominais que impactam diretamente a dívida. A DBGG em 77,8% do PIB também reflete a necessidade de monitoramento constante das condições fiscais, uma vez que a combinação de déficits e desvalorização cambial pode levar a um aumento da percepção de risco por parte dos investidores. O Banco Central deve considerar esses dados ao formular políticas monetárias, pois a necessidade de ajustes fiscais pode influenciar as expectativas de inflação e as taxas de juros futuras. A análise das elasticidades da dívida em relação a variações na taxa de câmbio e juros é crucial para entender a vulnerabilidade do setor público a choques externos e internos, o que pode demandar uma resposta proativa para garantir a estabilidade econômica.||

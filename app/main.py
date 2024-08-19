@@ -36,9 +36,9 @@ db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
 logger.info(f"File permissions for {db_path}: {oct(os.stat(db_path).st_mode)[-3:]}")
 app = FastAPI()
 
-# Mount static files for serving downloads
-DATA_DIR = os.path.join(BASE_DIR, 'app', 'automations', 'grains', 'data')
-app.mount("/download", StaticFiles(directory=DATA_DIR), name="download")
+# Mount static files for serving downloads from automation data directory
+AUTOMATIONS_DATA_DIR = os.path.join(BASE_DIR, 'app', 'automations', 'grains', 'data')
+app.mount("/download", StaticFiles(directory=AUTOMATIONS_DATA_DIR), name="download")
 
 # Mount the static directory for serving static assets
 static_directory = os.path.join(BASE_DIR, 'app', 'static')
