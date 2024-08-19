@@ -1,7 +1,3 @@
-
-### .gitignore
-
-```plaintext
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -22,11 +18,15 @@ app/config.py
 # Logs
 *.log
 
-
 # Temp Data
 data/raw
 
+# Ignore CSV files in app/automations/data directory
+app/automations/grains/data/*.csv
+
+# Tests and documentation
 scripts/tests/generate_context.py
 scripts/tests/consolidated_code.md
+
 # Ensure SQLite file is not ignored
 !data/database.sqlite

@@ -17,6 +17,7 @@ sys.path.append(BASE_DIR)
 from scripts.utils.auth import get_current_user
 from scripts.pipelines.orchestrator import run_pipeline
 from app.endpoints.api import api_app
+from app.endpoints.automation import router as automation_router  # Import the automation router
 
 # Configure logging
 log_directory = os.path.join(BASE_DIR, 'app', 'logs')
@@ -35,11 +36,18 @@ db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
 logger.info(f"File permissions for {db_path}: {oct(os.stat(db_path).st_mode)[-3:]}")
 app = FastAPI()
 
-# Mount static files and API
+# Mount static files for serving downloads
+DATA_DIR = os.path.join(BASE_DIR, 'app', 'automations', 'grains', 'data')
+app.mount("/download", StaticFiles(directory=DATA_DIR), name="download")
+
+# Mount the static directory for serving static assets
 static_directory = os.path.join(BASE_DIR, 'app', 'static')
 app.mount("/static", StaticFiles(directory=static_directory), name="static")
 
 app.mount("/indicators/api", api_app)
+
+# Include the automation router
+app.include_router(automation_router)
 
 # Configure Jinja2 templates
 templates_directory = os.path.join(BASE_DIR, 'app', 'templates')
@@ -191,4 +199,3 @@ async def update_source(id: int = Query(...)):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=8000, log_level="info")
-

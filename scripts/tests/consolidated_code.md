@@ -1,3 +1,20 @@
+## config.py
+
+```python
+import os
+from openai import AzureOpenAI
+
+# Set up Azure OpenAI client
+client = AzureOpenAI(
+    api_key="9a6ebe3b4a664dbb90a5cab565a90785",
+    api_version="2024-02-01",
+    azure_endpoint="https://datagromarkets.openai.azure.com/"
+)
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+```
+
 ## main.py
 
 ```python
@@ -65,22 +82,34 @@ async def indicators_list(request: Request, user: dict = Depends(get_current_use
         cursor = conn.cursor()
 
         # Fetch unique document names and IDs for the sidebar
-        cursor.execute("SELECT DISTINCT document_name, document_id, country, source_name FROM documents_table")
-        document_names = cursor.fetchall()
+        cursor.execute("SELECT document_name, document_id, country, source_name FROM documents_table")
+        documents = cursor.fetchall()
 
-        # Fetch data for the main content
-        cursor.execute("SELECT document_id, document_name, source_name, path FROM documents_table")
-        data = cursor.fetchall()
+        # Structure data into a nested dictionary
+        country_sources_documents = {}
+        for document_name, document_id, country, source_name in documents:
+            if country not in country_sources_documents:
+                country_sources_documents[country] = {}
+            if source_name not in country_sources_documents[country]:
+                country_sources_documents[country][source_name] = []
+            country_sources_documents[country][source_name].append({
+                "document_name": document_name,
+                "document_id": document_id
+            })
 
         conn.close()
         logger.info("Returning template response")
-        return templates.TemplateResponse("base.html", {"request": request, "document_names": document_names, "data": data})
+        return templates.TemplateResponse("base.html", {
+            "request": request,
+            "country_sources_documents": country_sources_documents
+        })
     except sqlite3.Error as e:
         logger.error(f"Database error: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail="Internal Server Error")
     except Exception as e:
         logger.error(f"Error fetching indicators list: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail="Internal Server Error")
+
 
 @app.get("/indicators/query/{doc_id}", response_class=JSONResponse)
 async def query_source(request: Request, doc_id: int, date: Optional[str] = None):
