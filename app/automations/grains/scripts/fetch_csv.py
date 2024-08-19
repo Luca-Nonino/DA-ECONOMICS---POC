@@ -94,7 +94,7 @@ async def fetch_all_csvs(dataset_type):
     Args:
         dataset_type (str): Dataset type ('COMEX-EXP' or 'COMEX-IMP').
     """
-    connector = aiohttp.TCPConnector(limit_per_host=MAX_CONCURRENT_REQUESTS)
+    connector = aiohttp.TCPConnector(limit_per_host=MAX_CONCURRENT_REQUESTS, ssl=False)  # Disable SSL verification
     semaphore = asyncio.Semaphore(MAX_CONCURRENT_REQUESTS)  # Limit concurrent requests
 
     async with aiohttp.ClientSession(connector=connector) as session:
