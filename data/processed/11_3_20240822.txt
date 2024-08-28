@@ -1,0 +1,15 @@
+**Title:**
+{'Existing-Home Sales: July 2024'}
+
+**Overview:**
+||The report details the performance of existing-home sales in July 2024, indicating a 1.3% increase from June, halting a four-month decline. However, year-over-year sales decreased by 2.5%. The median sales price rose by 4.2% to $422,600, marking the 13th consecutive month of price gains. Inventory levels increased slightly, with unsold homes representing a 4.0-month supply at the current sales pace. The report highlights regional variations in sales and prices, with notable trends in first-time buyers and cash transactions.||
+
+**Key Takeaways:**
+- {**Sales Volume**}: [Existing-home sales rose to a seasonally adjusted annual rate of 3.95 million in July 2024, a 1.3% increase from June, but a 2.5% decline from July 2023.]
+- {**Median Sales Price**}: [The median existing-home price reached $422,600, up 4.2% from $405,600 in July 2023, indicating sustained price growth over the past year.]
+- {**Inventory Levels**}: [Total housing inventory increased by 0.8% from June to 1.33 million units, representing a 4.0-month supply, slightly down from 4.1 months in June but up from 3.3 months in July 2023.]
+- {**Regional Sales Trends**}: [Sales increased in three out of four major U.S. regions, with the Northeast seeing a 4.3% rise from June, while the Midwest remained unchanged.]
+- {**First-Time Buyers**}: [First-time buyers accounted for 29% of sales in July, consistent with June but down from 30% in July 2023, reflecting ongoing challenges in affordability.]
+
+**Macro Environment Impacts:**
+||The July 2024 existing-home sales report indicates a cautiously optimistic outlook for the housing market, as the 1.3% increase in sales suggests a potential stabilization after a prolonged decline. The year-over-year decrease of 2.5% highlights ongoing challenges, particularly in affordability and inventory constraints. The median price increase of 4.2% may exert upward pressure on inflation, prompting the Federal Reserve to consider these dynamics in its monetary policy decisions. According to the Taylor Rule, the Fed may need to balance the need for economic growth against inflationary pressures stemming from rising home prices. The slight increase in inventory could provide some relief to buyers, but the 4.0-month supply still indicates a tight market. The stability in first-time buyer participation suggests that while affordability remains a concern, there is still demand in the market. Overall, these indicators will be crucial for shaping future monetary policy and housing market strategies.||

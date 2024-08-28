@@ -31,7 +31,7 @@ def convert_columns_to_str(df, columns):
     """
     for col in columns:
         if col in df.columns:
-            df[col] = df[col].astype(str).str.strip()
+            df.loc[:, col] = df[col].astype(str).str.strip()
     return df
 
 def handle_duplicate_columns(df, column_base_names):

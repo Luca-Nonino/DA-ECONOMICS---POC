@@ -20,6 +20,9 @@ app/config.py
 
 # Temp Data
 data/raw
+scripts/fx/data/coins/raw
+scripts/fx/data/coins/prompt
+scripts/fx/data/coins/analysis
 
 # Ignore CSV files in app/automations/data directory
 app/automations/grains/data/*.csv

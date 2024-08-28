@@ -1,0 +1,15 @@
+**Title:**
+{'Relatório Focus - Dados de expectativas Mensais e Anuais por indicador - 2024-08-23'}
+
+**Overview:**
+||O relatório Focus apresenta as expectativas do mercado para diversos indicadores econômicos, incluindo câmbio, IGP-M, IPCA e taxa de desocupação, com dados mensais e anuais. As expectativas refletem uma visão cautelosa em relação ao crescimento econômico e à inflação, com variações significativas nas projeções de câmbio e inflação ao longo dos anos. O relatório também destaca a evolução das expectativas em relação a períodos anteriores, evidenciando a volatilidade e as incertezas do cenário econômico.||
+
+**Key Takeaways:**
+- {**Câmbio - Expectativas**}: [Para 2025, a média das expectativas de câmbio é de R$ 5,20, com um desvio padrão de 0,15. Para 2026, a média é de R$ 5,18, indicando uma leve apreciação do real em relação ao dólar.]
+- {**IGP-M - Expectativas**}: [As expectativas para o IGP-M em 2024 são de 3,70%, com um desvio padrão de 0,76, refletindo uma expectativa de inflação moderada. Para 2025, a média sobe para 4,04%.]
+- {**IPCA - Expectativas**}: [A expectativa para o IPCA em 2024 é de 4,10%, com um desvio padrão de 0,23, enquanto para 2025 a média é de 3,97%, indicando uma tendência de desaceleração da inflação.]
+- {**Taxa de Desocupação**}: [As expectativas para a taxa de desocupação em 2024 são de 7,45%, com um desvio padrão de 0,49, sugerindo um mercado de trabalho ainda desafiador. Para 2025, a média sobe para 7,62%.]
+- {**Expectativas de PIB**}: [As expectativas de crescimento do PIB para 2024 são de 2,17%, com um desvio padrão de 0,20, enquanto para 2025 a média é de 1,89%, refletindo uma desaceleração no crescimento econômico.]
+
+**Macro Environment Impacts:**
+||As expectativas apresentadas no relatório Focus indicam um cenário econômico misto, com uma inflação moderada e um câmbio relativamente estável, mas com sinais de desaceleração no crescimento do PIB e uma taxa de desocupação que permanece elevada. O Banco Central deve considerar essas expectativas ao formular políticas monetárias, especialmente em relação ao controle da inflação e ao estímulo ao crescimento econômico. A volatilidade nas expectativas de câmbio e inflação sugere que o mercado está atento a possíveis mudanças nas condições econômicas globais e internas, o que pode impactar as decisões de investimento e consumo. A análise das expectativas de PIB e taxa de desocupação também aponta para a necessidade de políticas que incentivem a criação de empregos e a recuperação econômica.||

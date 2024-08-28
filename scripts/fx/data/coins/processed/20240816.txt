@@ -1,0 +1,49 @@
+```
+🐉 _*Relatório Diário de FX - 16 de Agosto de 2024*_
+
+---
+
+ *Movimentação do Dólar/Real (USD/BRL):*
+   - O Dólar desvalorizou 📉 *-0,03%* frente ao Real ontem, após uma queda acumulada de *-0,88%* nos últimos 5 dias. No acumulado do mês, o Dólar caiu 📉 *-1,43%* contra o Real, refletindo a fraqueza contínua do Real em relação a outras moedas emergentes.
+
+---
+
+ *Movimentação do Dólar Global (DXY):*
+   - O índice DXY caiu 📉 *-0,50%* nos últimos 1 dia, com destaque para o par USD/JPY (-0,52%) e USD/CHF (-0,31%). No entanto, o par EUR/USD subiu 📈 *+0,09%*, mostrando resistência de algumas moedas contra o Dólar.
+
+---
+
+ *Movimentação do Dólar/Real em Termos Relativos (USD/BRL):*
+   - O Real teve desempenho inferior em comparação a outras moedas emergentes, como o Peso Mexicano (USD/MXN), que subiu 📈 *+0,14%* nos últimos 1 dia. No acumulado do ano, o Real segue enfraquecido, superando apenas o Rand Sul-Africano (USD/ZAR).
+
+---
+
+ *Análise de Movimentos Expressivos:*
+
+   *5 Dias:*
+   - Destaque para o USD/MXN com alta de 📈 *+4,33%*, enquanto o USD/BRL caiu 📉 *-0,88%*.
+
+   *MTD:*
+   - O USD/JPY sofreu uma queda marcante de 📉 *-5,63%*, enquanto o USD/MXN subiu 📈 *+4,33%*.
+
+   *3 Meses:*
+   - O GBP/USD se destacou com uma alta de 📈 *+1,78%*, seguido pelo EUR/USD com 📈 *+1,10%*. Por outro lado, o USD/JPY teve um desempenho fraco, caindo 📉 *-4,59%*, assim como o USD/CHF, que recuou 📉 *-3,99%*.
+
+   *6 Meses:*
+   - O USD/MXN teve uma forte valorização de 📈 *+11,58%*, enquanto o USD/BRL subiu 📈 *+6,56%*. No entanto, o USD/ZAR apresentou um desempenho negativo de 📉 *-5,80%*, e o USD/CNH recuou 📉 *-0,77%*.
+
+   *YTD:*
+   - O USD/MXN acumulou um expressivo ganho de 📈 *+9,29%*, enquanto o USD/ZAR registrou uma queda de 📉 *-3,70%*.
+
+---
+
+🔔 *Atenção:* Com base nas variações expressivas observadas recentemente, é importante acompanhar os seguintes pares de moedas nos próximos dias:
+
+- *USD/JPY*: Queda acentuada 📉 nos últimos meses.
+- *USD/MXN*: Forte valorização 📈 no mês e no acumulado do ano.
+- *USD/CHF*: Desempenho negativo 📉 significativo nos últimos 3 meses.
+- *USD/BRL*: Alta 📈 considerável no acumulado dos últimos 6 meses.
+- *USD/ZAR*: Desvalorização 📉 persistente no acumulado do ano e nos últimos 6 meses.
+
+---
+```

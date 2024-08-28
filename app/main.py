@@ -195,6 +195,13 @@ async def update_source(id: int = Query(...)):
     except Exception as e:
         logger.error(f"Error updating source with ID {id}: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail="Internal Server Error")
+    
+
+from app.endpoints.coin_monitor import router as coin_monitor_router
+
+# Include the coin_monitor router
+app.include_router(coin_monitor_router)
+
 
 if __name__ == "__main__":
     import uvicorn
