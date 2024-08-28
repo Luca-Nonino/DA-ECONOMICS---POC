@@ -1,5 +1,9 @@
-import pandas as pd
 import os
+import sys
+import pandas as pd
+
+# Add the project root directory to the system path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../..')))
 
 def craft_prompt(current_date):
     # Get the directory of the current script (craft_prompt.py)
