@@ -2,16 +2,20 @@ import os
 import time
 import sys
 
+# Determine the project root directory
+script_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.abspath(os.path.join(script_dir, '..', '..', '..', '..'))
+
 # Add the project root directory to the system path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../..')))
+sys.path.append(project_root)
+# Print the sys.path to debug
+print("Current sys.path:", sys.path)
+# Directories relative to the project root
+prompt_dir = os.path.join(project_root, "scripts", "fx", "data", "coins", "prompt")
+processed_dir = os.path.join(project_root, "scripts", "fx", "data", "coins", "processed")
 
 # Import the Azure OpenAI client configuration from the config module
 from app.config import client
-
-# Directories
-prompt_dir = "scripts/fx/data/coins/prompt"
-processed_dir = "scripts/fx/data/coins/processed"
-
 # Function to make requests to Azure OpenAI API
 def make_request(content, prompt):
     try:
@@ -37,7 +41,6 @@ def make_request(content, prompt):
     except Exception as e:
         print(f"Error in make_request: {e}")
         return None
-
 
 # Function to generate the report from the prompt
 def generate_report_from_prompt(prompt_file_path, retries=3, timeout=20):
