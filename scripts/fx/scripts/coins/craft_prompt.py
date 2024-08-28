@@ -2,38 +2,59 @@ import pandas as pd
 import os
 
 def craft_prompt(current_date):
-    # Define date string for file fetching
-    date_str = current_date.strftime('%Y%m%d')
+    # Get the directory of the current script (craft_prompt.py)
+    script_dir = os.path.dirname(os.path.abspath(__file__))
 
-    # Define the directories where files are stored
-    analysis_dir = "scripts/fx/data/coins/analysis"
-    prompt_dir = "scripts/fx/data/coins/prompt"
-    example_path = "scripts/fx/data/output_example.txt"
+    # Navigate to the root directory by moving up the directory structure
+    root_dir = os.path.abspath(os.path.join(script_dir, '..', '..'))
+
+    # Define the directories where files are stored relative to the root directory
+    analysis_dir = os.path.join(root_dir, "data", "coins", "analysis")
+    prompt_dir = os.path.join(root_dir, "data", "coins", "prompt")
+    example_path = os.path.join(root_dir, "data", "output_example.txt")
+
+    # Print the computed paths for debugging
+    print(f"Root Directory: {root_dir}")
+    print(f"Analysis Directory: {analysis_dir}")
+    print(f"Prompt Directory: {prompt_dir}")
+    print(f"Example Path: {example_path}")
 
     # Create the prompt directory if it doesn't exist
     os.makedirs(prompt_dir, exist_ok=True)
 
     # Define file paths dynamically based on the current date
+    date_str = current_date.strftime('%Y%m%d')
     dxy_pct_changes_path = os.path.join(analysis_dir, f"{date_str}_1.csv")
     non_dxy_pct_changes_path = os.path.join(analysis_dir, f"{date_str}_2.csv")
     top_and_worst_performers_path = os.path.join(analysis_dir, f"{date_str}_3.txt")
     dxy_contribution_analysis_path = os.path.join(analysis_dir, f"{date_str}_4.csv")
 
-    # Define the final markdown output path
     final_markdown_path = os.path.join(prompt_dir, f"{date_str}.md")
 
-    # Load data
-    dxy_pct_changes_df = pd.read_csv(dxy_pct_changes_path, encoding="utf-8")
-    non_dxy_pct_changes_df = pd.read_csv(non_dxy_pct_changes_path, encoding="utf-8")
-    dxy_contribution_analysis_df = pd.read_csv(dxy_contribution_analysis_path, encoding="utf-8")
+    # Load data (make sure files exist and handle exceptions accordingly)
+    try:
+        dxy_pct_changes_df = pd.read_csv(dxy_pct_changes_path, encoding="utf-8")
+        non_dxy_pct_changes_df = pd.read_csv(non_dxy_pct_changes_path, encoding="utf-8")
+        dxy_contribution_analysis_df = pd.read_csv(dxy_contribution_analysis_path, encoding="utf-8")
+    except FileNotFoundError as e:
+        print(f"Error loading files: {e}")
+        return
 
     # Load the top and worst performers as text
-    with open(top_and_worst_performers_path, "r", encoding="utf-8") as f:
-        top_and_worst_performers_content = f.read()
+    try:
+        with open(top_and_worst_performers_path, "r", encoding="utf-8") as f:
+            top_and_worst_performers_content = f.read()
+    except FileNotFoundError as e:
+        print(f"Error loading top and worst performers file: {e}")
+        return
 
     # Load the output example format
-    with open(example_path, "r", encoding="utf-8") as f:
-        output_example = f.read()
+    try:
+        with open(example_path, "r", encoding="utf-8") as f:
+            output_example = f.read()
+    except FileNotFoundError as e:
+        print(f"Error loading output example file: {e}")
+        return
 
     # Convert dataframes to CSV format strings
     dxy_pct_changes_content = dxy_pct_changes_df.to_csv(index=False)
