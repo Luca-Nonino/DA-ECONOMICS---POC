@@ -3,7 +3,6 @@ from datetime import datetime
 import holidays
 
 import sys
-import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../..')))
 
 # Import the functions from the respective modules using relative imports
@@ -17,7 +16,6 @@ from scripts.fx.scripts.coins.completions_coins import process_prompt_and_save_r
 # Define directories and paths
 processed_dir = "scripts/fx/data/coins/processed"
 
-# Function to check if the exchange is open
 # Function to check if the exchange is open
 def is_exchange_open(current_date):
     # Check if today is a weekend (Saturday or Sunday)
@@ -73,7 +71,11 @@ def orchestrator(current_date):
     except Exception as e:
         return f"Failed to run completions_coins.py: {e}"
     
-    # If all functions executed successfully, return a success message
+    # Step 8: Check if the processed file was created successfully
+    if not os.path.exists(processed_file_path):
+        return f"Warning: Report for {current_date.strftime('%Y-%m-%d')} was not successfully created. Process completed but no processed file found."
+
+    # If all functions executed successfully and the file exists, return a success message
     return f"Report for {current_date.strftime('%Y-%m-%d')} successfully created and processed."
 
 # Main execution

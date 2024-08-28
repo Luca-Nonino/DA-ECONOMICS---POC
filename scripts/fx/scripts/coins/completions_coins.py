@@ -3,7 +3,7 @@ import time
 import sys
 
 # Add the project root directory to the system path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..', '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../..')))
 
 # Import the Azure OpenAI client configuration from the config module
 from app.config import client
