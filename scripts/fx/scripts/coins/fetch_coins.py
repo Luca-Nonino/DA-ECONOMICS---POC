@@ -19,12 +19,16 @@ tickers = ["EURUSD", "USDJPY", "AUDUSD", "USDINR_BCBR", "USDTWD_BCBR", "GBPUSD",
 tickers = [ticker.replace("_BCBR", "") for ticker in tickers]
 
 def fetch_coins_data(current_date):
+    # Determine the project root directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.abspath(os.path.join(script_dir, '..', '..'))
+
     # Define date range
     end_date = current_date.strftime('%Y%m%d')
     start_date = (current_date - timedelta(days=365 + 5)).strftime('%Y%m%d')  # Added 5 days margin
 
-    # Ensure the 'data/' directory exists
-    output_dir = "scripts/fx/data/coins/raw"
+    # Ensure the 'data/' directory exists relative to the project root
+    output_dir = os.path.join(project_root, "data", "coins", "raw")
     os.makedirs(output_dir, exist_ok=True)
 
     # Initialize DataFrames for separate outputs

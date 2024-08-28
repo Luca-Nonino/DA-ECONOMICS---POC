@@ -2,16 +2,20 @@ import pandas as pd
 import os
 
 def analyse_coins_1(current_date):
+    # Determine the project root directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.abspath(os.path.join(script_dir, '..', '..'))
+
     # Define date string for the output filenames
     date_str = current_date.strftime('%Y%m%d')
 
-    # Define the output directory
-    output_dir = "scripts/fx/data/coins/analysis"
+    # Define the output directory relative to the project root
+    output_dir = os.path.join(project_root, "data", "coins", "analysis")
     os.makedirs(output_dir, exist_ok=True)
 
     # Load the saved data
-    non_dxy_data_path = f"scripts/fx/data/coins/raw/{date_str}_2.csv"
-    dxy_data_path = f"scripts/fx/data/coins/raw/{date_str}_1.csv"
+    non_dxy_data_path = os.path.join(project_root, "data", "coins", "raw", f"{date_str}_2.csv")
+    dxy_data_path = os.path.join(project_root, "data", "coins", "raw", f"{date_str}_1.csv")
     non_dxy_df = pd.read_csv(non_dxy_data_path)
     dxy_df = pd.read_csv(dxy_data_path)
 
@@ -156,5 +160,5 @@ def analyse_coins_1(current_date):
 if __name__ == "__main__":
     # This will be replaced by the orchestrator passing the date
     from datetime import datetime
-    current_date = datetime.today().date()  # 
+    current_date = datetime.today().date()  # Example usage, replace with orchestrator input
     analyse_coins_1(current_date)

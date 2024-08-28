@@ -4,6 +4,7 @@
     <title>🐲 DA Economics - AI Researcher 🤖</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
+        /* General Styles */
         body.dark-mode {
             background-color: #2a2a2a;
             color: #f1f1f1;
@@ -45,17 +46,17 @@
             padding: 10px;
         }
         .nav-bar .country {
-        font-family: Arial, sans-serif;
-        font-size: 16px;
-        font-weight: bold;
-        margin-bottom: 10px;
-        text-transform: uppercase;
-        cursor: pointer;
-        border-bottom: 1px solid #228b22;
-        padding-bottom: 5px;
-        color: #f1f1f1; /* Light text for readability */
-        padding: 10px; /* Padding for better visibility */
-        border-radius: 5px; /* Rounded corners */
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-bottom: 1px solid #228b22;
+            padding-bottom: 5px;
+            color: #f1f1f1; /* Light text for readability */
+            padding: 10px; /* Padding for better visibility */
+            border-radius: 5px; /* Rounded corners */
         }
         .nav-bar .source::before {
             content: "\25CF "; /* Black circle before source */
@@ -70,7 +71,6 @@
             cursor: pointer;
             color: #d2691e;
         }
-
         .nav-bar .indicator-link::before {
             content: "\2605 "; /* Star symbol before documents */
             color: #f1f1f1; /* Light color for the star */
@@ -367,7 +367,7 @@
         <div class="theme-switcher cursor-pointer" id="theme-switcher">Switch Theme</div>
     </div>
     <div class="nav-bar p-4 fixed w-60 overflow-y-auto">
-        <h2 class="text-xl font-bold text-center mb-4">Select a Report from the List Bellow</h2>
+        <h2 class="text-xl font-bold text-center mb-4">Select a Report from the List Below</h2>
         <div id="country-list">
             {% for country, sources in country_sources_documents.items() %}
                 <div class="country" data-country-name="{{ country }}">
