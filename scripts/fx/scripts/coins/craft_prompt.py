@@ -124,6 +124,9 @@ def craft_prompt(current_date):
     """
     markdown_content += f"```\n{output_example}\n```\n"
 
+    # -----> Add the explicit date reference here
+    markdown_content += f"\n\n## Data do Relatório\nEste relatório deve ser gerado para a data: **{current_date.strftime('%d/%m/%Y')}**\n\n"
+
     # Save the markdown content to a file
     with open(final_markdown_path, "w", encoding="utf-8") as f:
         f.write(markdown_content)

@@ -1,5 +1,5 @@
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 import holidays
 
 import sys
@@ -30,9 +30,11 @@ def is_exchange_open(current_date):
 
     return True
 
-# Orchestrator function
-def orchestrator(current_date):
-    # Step 1: Check if data is already processed for the current date
+def orchestrator(input_date):
+    # Adjust input date to D-1
+    current_date = input_date - timedelta(days=1)
+    
+    # Step 1: Check if data is already processed for the adjusted date (D-1)
     processed_file_path = os.path.join(processed_dir, f"{current_date.strftime('%Y%m%d')}.txt")
     if os.path.exists(processed_file_path):
         return f"Data for {current_date.strftime('%Y-%m-%d')} is already processed."
@@ -80,15 +82,28 @@ def orchestrator(current_date):
 
 # Main execution
 if __name__ == "__main__":
-    # Example 1: Run the orchestrator for each date in the provided table
+    # Original dates, to be adjusted by D+1
     dates = [
-        "2024-08-28"
+        "2024-08-14",
+        "2024-08-15",
+        "2024-08-16",
+        "2024-08-19",
+        "2024-08-20",
+        "2024-08-21",
+        "2024-08-22",
+        "2024-08-23",
+        "2024-08-26",
+        "2024-08-27"
     ]
-    
-    for date_str in dates:
-        current_date = datetime.strptime(date_str, "%Y-%m-%d").date()
-        result_message = orchestrator(current_date)
+
+    # Adjust each date by D+1
+    adjusted_dates = [(datetime.strptime(date_str, "%Y-%m-%d").date() + timedelta(days=1)).strftime("%Y-%m-%d") for date_str in dates]
+
+    for date_str in adjusted_dates:
+        input_date = datetime.strptime(date_str, "%Y-%m-%d").date()
+        result_message = orchestrator(input_date)
         print(result_message)
+
 
     # Example 2 (commented out): Run the orchestrator with the current date
     # current_date = datetime.today().date()

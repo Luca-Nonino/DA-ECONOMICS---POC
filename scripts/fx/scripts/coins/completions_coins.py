@@ -48,10 +48,13 @@ def generate_report_from_prompt(prompt_file_path, retries=3, timeout=20):
         prompt_content = f.read()
 
     system_prompt = (
-        "You are an assistant designed to generate a detailed financial analysis based on the prompt provided. "
-        "Please follow the given format and generate a comprehensive report. "
-        "Answer in Portuguese if the input is partially in Portuguese."
+        "Você é um assistente projetado para gerar uma análise financeira detalhada com base no prompt fornecido. "
+        "Siga o formato dado e gere um relatório abrangente. "
+        "É essencial que os números utilizados sejam obtidos corretamente das tabelas fornecidas, garantindo que as colunas e linhas correspondentes sejam lidas com precisão. "
+        "Certifique-se de que as cotações, variações percentuais e datas estejam exatas e referenciem os pares de moedas corretos. "
+        "Responda em português se a entrada estiver parcial ou totalmente em português."
     )
+
 
     for attempt in range(retries):
         try:

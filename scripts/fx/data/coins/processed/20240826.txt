@@ -1,49 +1,63 @@
 ```
-🐉 _*Relatório Diário de FX - 26 de Agosto de 2024*_
+🐉 *Morning Call - FX - Fechamento do dia 26 de Agosto de 2024*
+
+_Dados referentes ao BACEN - PETAX_
 
 ---
 
- *Movimentação do Dólar/Real (USD/BRL):*
-   - O Dólar desvalorizou 📉 *-0,62%* frente ao Real ontem, revertendo a alta dos últimos 5 dias (+1,26%). No acumulado do mês, o Dólar caiu 📉 *-2,73%* contra o Real, refletindo a fraqueza contínua do Real em relação a outras moedas emergentes.
+*Movimentação do Real/Dólar (BRL/USD):*
+   - *O Real desvalorizou-se* frente ao Dólar, fechando o dia em *R$ 5,4921*, com uma queda de 📉 *-0,62%* em relação ao fechamento anterior. No acumulado do mês, o Real apresenta uma desvalorização de 📉 *-2,73%* frente ao Dólar, refletindo a volatilidade do mercado emergente.
+
+*Movimentação do Dólar Global (DXY):*
+   - *O índice DXY fechou em 100,851*, apresentando uma leve valorização de 📈 *+0,13%* no dia. Nos últimos 5 dias, o DXY desvalorizou-se 📉 *-1,02%*, com destaque para o par USD/MXN que se valorizou 📈 *+1,65%*, enquanto o USD/JPY desvalorizou-se 📉 *-0,24%*.
+
+*Movimentação do Real em Relação a Outras Moedas:*
+   - *O Peso Mexicano (MXN) se valorizou* 📈 *+1,65%* frente ao Dólar nos últimos 5 dias, enquanto o Real desvalorizou-se 📉 *-0,62%* no mesmo período. No acumulado do ano, o Real continua a mostrar fraqueza, desvalorizando-se 📉 *-2,73%* frente ao Dólar, superando apenas o Rand Sul-Africano (ZAR).
 
 ---
 
- *Movimentação do Dólar Global (DXY):*
-   - O índice DXY subiu 📈 *+0,13%* no último dia, mas apresentou uma queda de 📉 *-1,02%* nos últimos 5 dias. O desempenho do DXY foi impactado negativamente por pares como USD/JPY (-0,24%) e USD/CAD (-0,21%), enquanto o USD/MXN teve um desempenho positivo (+1,65%).
-
----
-
- *Movimentação do Dólar/Real em Termos Relativos (USD/BRL):*
-   - O Real teve desempenho inferior em comparação a outras moedas emergentes, como o Peso Mexicano (USD/MXN), que subiu 📈 *+3,55%* nos últimos 5 dias. No acumulado do ano, o Real segue enfraquecido, superando apenas o Rand Sul-Africano (USD/ZAR).
-
----
-
- *Análise de Movimentos Expressivos:*
+*Análise de Movimentos Expressivos:*
 
    *5 Dias:*
-   - Destaque para o USD/MXN com alta de 📈 *+3,55%*, enquanto o USD/CHF caiu 📉 *-1,71%*.
+   - O Peso Mexicano (MXN) fechou a *19,4185*, com valorização de 📈 *+1,65%* frente ao Dólar, enquanto o Real (BRL) se desvalorizou 📉 *-0,62%*, fechando a *5,4921*.
 
-   *MTD:*
-   - O USD/JPY sofreu uma queda marcante de 📉 *-6,08%*, enquanto o USD/MXN subiu 📈 *+5,43%*.
+   *1 Mês | MTD:*
+   - O Iene Japonês (JPY) sofreu uma desvalorização marcante de 📉 *-6,08%* frente ao Dólar, fechando o dia a *144,52*. O Peso Mexicano (MXN) valorizou-se 📈 *+5,43%*, fechando a *19,4185*.
 
    *3 Meses:*
-   - O GBP/USD se destacou com uma alta de 📈 *+3,44%*, seguido pelo EUR/USD com 📈 *+2,87%*. Por outro lado, o USD/JPY teve um desempenho fraco, caindo 📉 *-7,90%*, assim como o USD/CHF, que recuou 📉 *-7,26%*.
+   - A Libra Esterlina (GBP) fechou a *1,3185*, com valorização de 📈 *+3,44%*, enquanto o Iene Japonês (JPY) se desvalorizou 📉 *-7,90%*, fechando o dia a *144,52*.
 
    *6 Meses:*
-   - O USD/MXN teve uma forte valorização de 📈 *+13,90%*, enquanto o USD/BRL subiu 📈 *+11,16%*. No entanto, o USD/ZAR apresentou um desempenho negativo de 📉 *-6,38%*, e o USD/CNH recuou 📉 *-1,08%*.
+   - O Peso Mexicano (MXN) valorizou-se fortemente, fechando a *19,4185*, com alta de 📈 *+16,34%* frente ao Dólar. O Rand Sul-Africano (ZAR) se desvalorizou 📉 *-6,38%*, fechando a *17,7107*.
 
    *YTD:*
-   - O USD/MXN acumulou um expressivo ganho de 📈 *+13,92%*, enquanto o USD/ZAR registrou uma queda de 📉 *-4,65%*.
+   - O Peso Mexicano (MXN) acumulou valorização, fechando a *19,4185*, com alta de 📈 *+13,92%* frente ao Dólar. O Rand Sul-Africano (ZAR) registrou desvalorização, fechando o dia a *17,7107*, com perda de 📉 *-4,65%*.
 
 ---
 
 🔔 *Atenção:* Com base nas variações expressivas observadas recentemente, é importante acompanhar os seguintes pares de moedas nos próximos dias:
 
-- *USD/JPY*: Queda acentuada 📉 nos últimos meses.
-- *USD/MXN*: Forte valorização 📈 no mês e no acumulado do ano.
-- *USD/CHF*: Desempenho negativo 📉 significativo nos últimos 3 meses.
-- *USD/BRL*: Alta 📈 considerável no acumulado dos últimos 6 meses.
-- *USD/ZAR*: Desvalorização 📉 persistente no acumulado do ano e nos últimos 6 meses.
+- *USD/JPY*: Fechou a *144,52*, desvalorização 📉 *-6,08%* nos últimos meses.
+- *USD/MXN*: Fechou a *19,4185*, valorização 📈 *+13,92%* no acumulado do ano.
+- *USD/CHF*: Fechou a *0,8482*, desvalorização 📉 *-3,92%* significativa nos últimos 3 meses.
+- *USD/BRL*: Fechou a *5,4921*, desvalorização 📉 *-2,73%* no acumulado dos últimos 6 meses.
+- *USD/ZAR*: Fechou a *17,7107*, desvalorização 📉 *-4,65%* persistente no acumulado do ano.
 
 ---
+
+Aqui está a versão curta, que faz referência precisa às cotações e aos time frames dos principais movimentos:
+
+---
+
+_*Versão Curta*_
+
+_No fechamento do dia 26 de agosto de 2024, o Real se desvalorizou 📉 -0,62% frente ao Dólar, encerrando o dia a R$ 5,4921. O índice DXY apresentou uma leve valorização 📈 de +0,13%, fechando a 100,851, enquanto o Peso Mexicano (MXN) se destacou com uma valorização 📈 de +1,65% nos últimos 5 dias, fechando a 19,4185. O Iene Japonês (JPY) desvalorizou-se 📉 -6,08% no mês, fechando a 144,52. O Rand Sul-Africano (ZAR) também mostrou fraqueza, fechando o dia a 17,7107._
+
+*Principais Pontos:*
+- Real (BRL) desvalorizou-se 📉 -0,62%, fechando a R$ 5,4921.
+- Índice DXY valorizou-se 📈 +0,13%, fechando a 100,851.
+- Peso Mexicano (MXN) valorizou-se 📈 +1,65% nos últimos 5 dias, fechando a 19,4185.
+- Iene Japonês (JPY) desvalorizou-se 📉 -6,08% no mês, fechando a 144,52.
+- Rand Sul-Africano (ZAR) desvalorizou-se 📉 -4,65% no acumulado do ano, fechando a 17,7107.
+
 ```
