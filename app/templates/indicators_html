@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="header" id="header">
+    <div class="header-title">
+        <h1 class="text-4xl font-bold">🐲 DA Economics - AI Researcher 🤖</h1>
+    </div>
+    <div class="theme-switcher cursor-pointer" id="theme-switcher">Switch Theme</div>
+</div>
+
+<div class="nav-bar p-4 fixed w-60 overflow-y-auto">
+    <h2 class="text-xl font-bold text-center mb-4">Select a Report from the List Below</h2>
+    <div id="country-list">
+        {% for country, sources in country_sources_documents.items() %}
+            <div class="country" data-country-name="{{ country }}">
+                {{ country }}
+                <div class="source-list">
+                    {% for source, documents in sources.items() %}
+                        <div class="source" data-source-name="{{ source }}">
+                            {{ source }}
+                            <div class="document-list">
+                                {% for doc in documents %}
+                                    <div class="indicator-link" data-document-id="{{ doc.document_id }}">
+                                        {{ doc.document_name }}
+                                    </div>
+                                    <span class="indicator-separator"></span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>             
+</div>
+
+<div class="content">
+    <div id="placeholder" class="box">
+        <h2 class="title text-2xl">Select a Publication from the list on the left</h2>
+    </div>
+    <div id="main-container" class="box hidden">
+        <div class="title-container flex justify-between items-center mb-4">
+            <div>
+                <h2 class="title text-2xl" id="document-title"></h2>
+                <p><a href="#" class="text-blue-800 hover:text-blue-600" id="document-path"></a></p>
+                <div class="dropdown mb-4">
+                    <span>Release Date: </span>
+                    <select id="release-date-select" class="bg-gray-700 text-white p-2 rounded"></select>
+                </div>
+            </div>
+            <div class="buttons flex flex-row gap-2">
+                <a class="button p-2 rounded cursor-pointer bg-green-500 hover:bg-green-700 text-white" id="run-ai-agent">Run AI Agent</a>
+                <button id="copy-summary" class="button">Copy to Clipboard</button>
+            </div>
+        </div>
+        <div class="mb-4">
+            <h3 class="subtitle text-xl mb-2">Summary - English</h3>
+            <p id="en-summary"></p>
+        </div>
+        <div class="mb-4">
+            <h3 class="subtitle text-xl mb-2">Summary - Portuguese</h3>
+            <p id="pt-summary"></p>
+        </div>
+        <div>
+            <h3 class="subtitle text-xl mb-2">Key Takeaways</h3>
+            <div id="key-takeaways"></div>
+        </div>
+    </div>
+    <div class="separator"></div>
+    <div id="crud-container" class="box hidden">
+        <h3 class="subtitle text-xl mb-4">View & Edit Prompts</h3>
+        <form id="crud-form">
+            <div class="edit-field">
+                <label>Macro Environment Impacts Description</label>
+                <textarea id="macro-env-desc"></textarea>
+            </div>
+            <div class="edit-field">
+                <label>Audience</label>
+                <textarea id="audience"></textarea>
+            </div>
+            <div class="edit-field">
+                <label>Objective</label>
+                <textarea id="objective"></textarea>
+            </div>
+            <div class="edit-field">
+                <label>Constraints Language Usage</label>
+                <textarea id="constraints-lang-usage"></textarea>
+            </div>
+            <div class="edit-field">
+                <label>Constraints Language Style</label>
+                <textarea id="constraints-lang-style"></textarea>
+            </div>
+            <div id="tasks-container">
+                <label>Tasks</label>
+                <div class="task">
+                    <textarea class="task-input"></textarea>
+                    <button class="delete-task" type="button">-</button>
+                </div>
+            </div>
+            <div class="buttons flex flex-row gap-2 mt-4">
+                <button id="add-task" type="button" class="button">Add Task</button>
+                <button type="button" id="test-prompt" class="button">Test Prompt</button>
+                <button type="button" id="save-changes" class="button">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="modal-body"></div>
+    </div>
+</div>
+<div id="generated-summary-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-summary-modal">&times;</span>
+        <div id="generated-summary-content"></div>
+        <button id="copy-generated-summary" class="button mt-4">Copy Summary</button>
+    </div>
+</div>
+<div class="overlay" id="overlay"></div>
+<div class="loading-indicator" id="loading-indicator"></div>
+{% endblock %}

@@ -25,33 +25,38 @@ os.makedirs(log_directory, exist_ok=True)
 log_file = os.path.join(log_directory, 'errors.log')
 
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.DEBUG,  # Set to DEBUG for capturing all logs
     handlers=[
         logging.FileHandler(log_file),
         logging.StreamHandler()
     ]
 )
+
 logger = logging.getLogger(__name__)
+
+# Database path logging
 db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
+logger.info(f"Database path: {db_path}")
 logger.info(f"File permissions for {db_path}: {oct(os.stat(db_path).st_mode)[-3:]}")
+
 app = FastAPI()
 
 # Mount static files for serving downloads from automation data directory
 AUTOMATIONS_DATA_DIR = os.path.join(BASE_DIR, 'app', 'automations', 'grains', 'data')
 app.mount("/download", StaticFiles(directory=AUTOMATIONS_DATA_DIR), name="download")
 
-# Mount the static directory for serving static assets
-static_directory = os.path.join(BASE_DIR, 'app', 'static')
-app.mount("/static", StaticFiles(directory=static_directory), name="static")
+app.mount("/static", StaticFiles(directory=os.path.join(BASE_DIR, 'app', 'static')), name="static")
 
+
+# Mount API and automation routers
 app.mount("/indicators/api", api_app)
-
-# Include the automation router
 app.include_router(automation_router)
 
 # Configure Jinja2 templates
 templates_directory = os.path.join(BASE_DIR, 'app', 'templates')
+logger.info(f"Template directory path: {templates_directory}")
 templates = Jinja2Templates(directory=templates_directory)
+
 
 @app.get("", response_class=HTMLResponse)
 async def redirect_to_list():
@@ -61,9 +66,19 @@ async def redirect_to_list():
 async def root():
     return RedirectResponse(url="/indicators/list")
 
+@app.get("/routes", response_class=JSONResponse)
+async def list_routes():
+    return {"routes": [route.path for route in app.router.routes]}
+
 @app.get("/indicators/list", response_class=HTMLResponse)
 async def indicators_list(request: Request, user: dict = Depends(get_current_user)):
     try:
+        # Adjust the logging based on what `get_current_user` returns.
+        if isinstance(user, dict):
+            logger.info(f"Rendering /indicators/list for user: {user['username']}")
+        elif isinstance(user, tuple):
+            logger.info(f"Rendering /indicators/list for user: {user[0]}")
+
         db_path = os.path.join(BASE_DIR, 'data', 'database', 'database.sqlite')
         logger.info(f"Connecting to database at {db_path}")
         conn = sqlite3.connect(db_path)
@@ -97,7 +112,6 @@ async def indicators_list(request: Request, user: dict = Depends(get_current_use
     except Exception as e:
         logger.error(f"Error fetching indicators list: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail="Internal Server Error")
-
 
 @app.get("/indicators/query/{doc_id}", response_class=JSONResponse)
 async def query_source(request: Request, doc_id: int, date: Optional[str] = None):
@@ -196,12 +210,10 @@ async def update_source(id: int = Query(...)):
         logger.error(f"Error updating source with ID {id}: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail="Internal Server Error")
     
-
 from app.endpoints.coin_monitor import router as coin_monitor_router
 
 # Include the coin_monitor router
 app.include_router(coin_monitor_router)
-
 
 if __name__ == "__main__":
     import uvicorn

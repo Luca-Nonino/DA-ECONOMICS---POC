@@ -7,14 +7,16 @@ files_to_consolidate = [
     'app\\endpoints\\indicators_list.py',
     'app\\endpoints\\process_source.py',
     'app\\endpoints\\query_source.py',
-    # 'app\\templates\\base.html',
-    # 'data\\database\\migrations\\clear_michigan.py',
-    # 'data\\database\\analysis_table.py',
-    # 'data\\database\\documents_table.py',
-    # 'data\\database\\keytakeaways_table.py',
-    # 'data\\database\\prompts_table.py',
-    # 'data\\database\\summary_table.py',
-    # 'data\\database\\users_table.py',
+    'app\\templates\\indicators_html',
+    'app\\templates\\base.html',
+    'app\\static\\js\\report.js',
+    'app\\static\\js\\prompts.js',
+    'app\\static\\js\\menu.js',
+    'app\\static\\js\\main.js',
+    'app\\static\\css\\report.css',
+    'app\\static\\css\\prompts.css',
+    'app\\static\\css\\menu.css',
+    'app\\static\\css\\main.css',
     'scripts\\html_scraping\\mdic_html.py',
     'scripts\\link_scraping\\ibge_link.py',
     'scripts\\link_scraping\\anfavea_link.py',
@@ -28,15 +30,9 @@ files_to_consolidate = [
     'scripts\\pdf\\pdf_download.py',
     'scripts\\pdf\\pdf_hash.py',
     'scripts\\pipelines\\orchestrator.py',
-    # 'scripts\\pipelines\\ocherstrator_br.py',
-    # "scripts\\pipelines\\modules\\fhfa.py",
-    # 'scripts\\tests\\consolidated_code.md',
-    # 'scripts\\tests\\generate_context.py',
-    # 'scripts\\utils\\auth.py',
     'scripts\\utils\\check_date.py',
     'scripts\\utils\\completions_general.py',
     'scripts\\utils\\parse_load.py',
-    # 'scripts\\utils\\token_count.py',
 ]
 
 
@@ -44,37 +40,11 @@ import os
 
 output_path = 'scripts\\tests\\consolidated_code.md'
 
-with open(output_path, 'w') as outfile:
+with open(output_path, 'w', encoding='utf-8') as outfile:
     for path in files_to_consolidate:
-        with open(path, 'r') as infile:
+        with open(path, 'r', encoding='utf-8') as infile:
             outfile.write(f"## {os.path.basename(path)}\n\n```python\n")
             outfile.write(infile.read())
             outfile.write("\n```\n\n")
 
-output_path = 'scripts\\tests\\consolidated_code.md'
 
-with open(output_path, 'w') as outfile:
-    for path in files_to_consolidate:
-        with open(path, 'r') as infile:
-            outfile.write(f"## {os.path.basename(path)}\n\n```python\n")
-            outfile.write(infile.read())
-            outfile.write("\n```\n\n")
-import os
-
-output_path = 'scripts\\tests\\consolidated_code.md'
-
-with open(output_path, 'w') as outfile:
-    for path in files_to_consolidate:
-        with open(path, 'r') as infile:
-            outfile.write(f"## {os.path.basename(path)}\n\n```python\n")
-            outfile.write(infile.read())
-            outfile.write("\n```\n\n")
-
-output_path = 'scripts\\tests\\consolidated_code.md'
-
-with open(output_path, 'w') as outfile:
-    for path in files_to_consolidate:
-        with open(path, 'r') as infile:
-            outfile.write(f"## {os.path.basename(path)}\n\n```python\n")
-            outfile.write(infile.read())
-            outfile.write("\n```\n\n")
