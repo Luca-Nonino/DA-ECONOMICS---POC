@@ -721,7 +721,6 @@ async def query_source(request: Request, document_id: int, date: Optional[str] =
 
 ```python
 {% extends 'base.html' %}
-
 {% block content %}
 <div class="header" id="header">
     <div class="header-title">
@@ -731,6 +730,13 @@ async def query_source(request: Request, document_id: int, date: Optional[str] =
 </div>
 
 <div class="nav-bar p-4 fixed w-60 overflow-y-auto">
+    <h2 class="text-xl font-bold text-center mb-4">Morning Call</h2>
+    <div id="fx-monitor" class="menu-section">
+        <div class="menu-title font-bold">FX Monitor</div>
+        <div class="menu-item">
+            <a href="#" id="coins-monitor-link" class="indicator-link">Coins Monitor</a>
+        </div>
+    </div>
     <h2 class="text-xl font-bold text-center mb-4">Select a Report from the List Below</h2>
     <div id="country-list">
         {% for country, sources in country_sources_documents.items() %}
@@ -753,7 +759,7 @@ async def query_source(request: Request, document_id: int, date: Optional[str] =
                 </div>
             </div>
         {% endfor %}
-    </div>             
+    </div>
 </div>
 
 <div class="content">
@@ -788,6 +794,25 @@ async def query_source(request: Request, document_id: int, date: Optional[str] =
             <div id="key-takeaways"></div>
         </div>
     </div>
+
+    <div id="coins-monitor-container" class="box hidden">
+        <div class="title-container flex justify-between items-center mb-4">
+            <div>
+                <h2 class="title text-2xl">Coins Monitor Report</h2>
+                <div class="dropdown mb-4">
+                    <span>Select Date: </span>
+                    <select id="coins-date-select" class="bg-gray-700 text-white p-2 rounded"></select>
+                </div>
+            </div>
+            <div class="buttons flex flex-row gap-2">
+                <button id="run-coins-ai-agent" class="button p-2 rounded bg-green-500 hover:bg-green-700 text-white">Run AI Agent</button>
+                <button id="copy-coins-report" class="button">Copy to Clipboard</button>
+                <div class="theme-switcher cursor-pointer" id="theme-switcher">Switch Theme</div>
+            </div>
+        </div>
+        <div id="coins-report-content" class="report-content"></div>
+    </div>
+
     <div class="separator"></div>
     <div id="crud-container" class="box hidden">
         <h3 class="subtitle text-xl mb-4">View & Edit Prompts</h3>
@@ -861,179 +886,494 @@ async def query_source(request: Request, document_id: int, date: Optional[str] =
     <link rel="stylesheet" href="/static/css/menu.css">
     <link rel="stylesheet" href="/static/css/prompts.css">
     <link rel="stylesheet" href="/static/css/report.css">
+    <link rel="stylesheet" href="/static/css/coins_monitor.css"> <!-- New CSS for Coins Monitor -->
 </head>
 <body class="dark-mode">
-    {% block content %}{% endblock %}
-    <script src="/static/js/main.js"></script>
-    <script src="/static/js/menu.js"></script>
-    <script src="/static/js/prompts.js"></script>
-    <script src="/static/js/report.js"></script>
+
+    <!-- Content Block Start -->
+    <div class="header" id="header">
+        <div class="header-title">
+            <h1 class="text-4xl font-bold">🐲 DA Economics - AI Researcher 🤖</h1>
+        </div>
+        <div class="theme-switcher cursor-pointer" id="theme-switcher">Switch Theme</div>
+    </div>
+
+    <div class="nav-bar p-4 fixed w-60 overflow-y-auto">
+        <h2 class="text-xl font-bold text-center mb-4">Morning Call</h2>
+        <div id="fx-monitor" class="menu-section">
+            <div class="menu-title font-bold">FX Monitor</div>
+            <div class="menu-item">
+                <a href="#" id="coins-monitor-link" class="indicator-link">Coins Monitor</a>
+            </div>
+        </div>
+        <h2 class="text-xl font-bold text-center mb-4">Select a Report from the List Below</h2>
+        <div id="country-list">
+            {% for country, sources in country_sources_documents.items() %}
+                <div class="country" data-country-name="{{ country }}">
+                    {{ country }}
+                    <div class="source-list">
+                        {% for source, documents in sources.items() %}
+                            <div class="source" data-source-name="{{ source }}">
+                                {{ source }}
+                                <div class="document-list">
+                                    {% for doc in documents %}
+                                        <div class="indicator-link" data-document-id="{{ doc.document_id }}">
+                                            {{ doc.document_name }}
+                                        </div>
+                                        <span class="indicator-separator"></span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="content">
+        <div id="placeholder" class="box">
+            <h2 class="title text-2xl">Select a Publication from the list on the left</h2>
+        </div>
+        <div id="main-container" class="box hidden">
+            <div class="title-container flex justify-between items-center mb-4">
+                <div>
+                    <h2 class="title text-2xl" id="document-title"></h2>
+                    <p><a href="#" class="text-blue-800 hover:text-blue-600" id="document-path"></a></p>
+                    <div class="dropdown mb-4">
+                        <span>Release Date: </span>
+                        <select id="release-date-select" class="bg-gray-700 text-white p-2 rounded"></select>
+                    </div>
+                </div>
+                <div class="buttons flex flex-row gap-2">
+                    <a class="button p-2 rounded cursor-pointer bg-green-500 hover:bg-green-700 text-white" id="run-ai-agent">Run AI Agent</a>
+                    <button id="copy-summary" class="button">Copy to Clipboard</button>
+                </div>
+            </div>
+            <div class="mb-4">
+                <h3 class="subtitle text-xl mb-2">Summary - English</h3>
+                <p id="en-summary"></p>
+            </div>
+            <div class="mb-4">
+                <h3 class="subtitle text-xl mb-2">Summary - Portuguese</h3>
+                <p id="pt-summary"></p>
+            </div>
+            <div>
+                <h3 class="subtitle text-xl mb-2">Key Takeaways</h3>
+                <div id="key-takeaways"></div>
+            </div>
+        </div>
+
+        <div id="coins-monitor-container" class="box hidden">
+            <div class="title-container flex justify-between items-center mb-4">
+                <div>
+                    <h2 class="title text-2xl">Coins Monitor Report</h2>
+                    <div class="dropdown mb-4">
+                        <span>Select Date: </span>
+                        <select id="coins-date-select" class="bg-gray-700 text-white p-2 rounded"></select>
+                    </div>
+                </div>
+                <div class="buttons flex flex-row gap-2">
+                    <button id="run-coins-ai-agent" class="button p-2 rounded bg-green-500 hover:bg-green-700 text-white">Run AI Agent</button>
+                    <button id="copy-coins-report" class="button">Copy to Clipboard</button>
+                    <div class="theme-switcher cursor-pointer" id="theme-switcher">Switch Theme</div>
+                </div>
+            </div>
+            <div id="coins-report-content" class="report-content"></div>
+        </div>
+
+        <div class="separator"></div>
+        <div id="crud-container" class="box hidden">
+            <h3 class="subtitle text-xl mb-4">View & Edit Prompts</h3>
+            <form id="crud-form">
+                <div class="edit-field">
+                    <label>Macro Environment Impacts Description</label>
+                    <textarea id="macro-env-desc"></textarea>
+                </div>
+                <div class="edit-field">
+                    <label>Audience</label>
+                    <textarea id="audience"></textarea>
+                </div>
+                <div class="edit-field">
+                    <label>Objective</label>
+                    <textarea id="objective"></textarea>
+                </div>
+                <div class="edit-field">
+                    <label>Constraints Language Usage</label>
+                    <textarea id="constraints-lang-usage"></textarea>
+                </div>
+                <div class="edit-field">
+                    <label>Constraints Language Style</label>
+                    <textarea id="constraints-lang-style"></textarea>
+                </div>
+                <div id="tasks-container">
+                    <label>Tasks</label>
+                    <div class="task">
+                        <textarea class="task-input"></textarea>
+                        <button class="delete-task" type="button">-</button>
+                    </div>
+                </div>
+                <div class="buttons flex flex-row gap-2 mt-4">
+                    <button id="add-task" type="button" class="button">Add Task</button>
+                    <button type="button" id="test-prompt" class="button">Test Prompt</button>
+                    <button type="button" id="save-changes" class="button">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+    <div id="generated-summary-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-summary-modal">&times;</span>
+            <div id="generated-summary-content"></div>
+            <button id="copy-generated-summary" class="button mt-4">Copy Summary</button>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+    <div class="loading-indicator" id="loading-indicator"></div>
+    <!-- Content Block End -->
+
+    <script src="/static/js/main.js" defer></script>
 </body>
 </html>
 
 ```
 
-## report.js
+## main.js
 
 ```python
 document.addEventListener('DOMContentLoaded', function () {
-    const releaseDateSelect = document.getElementById('release-date-select');
+    console.log("DOM fully loaded and parsed. Initializing AppData...");
 
-    if (releaseDateSelect) {
-        releaseDateSelect.addEventListener('change', function () {
+    // Initialize AppData with checks and logging
+    const AppData = {
+        themeSwitcher: document.getElementById('theme-switcher'),
+        links: document.querySelectorAll('.indicator-link'),
+        releaseDateSelect: document.getElementById('release-date-select'),
+        runAIButton: document.getElementById('run-ai-agent'),
+        tasksContainer: document.getElementById('tasks-container'),
+        placeholder: document.getElementById('placeholder'),
+        mainContainer: document.getElementById('main-container'),
+        crudContainer: document.getElementById('crud-container'),
+        modal: document.getElementById("myModal"),
+        modalBody: document.getElementById('modal-body'),
+        generatedSummaryModal: document.getElementById('generated-summary-modal'),
+        generatedSummaryContent: document.getElementById('generated-summary-content'),
+        copyGeneratedSummaryButton: document.getElementById('copy-generated-summary'),
+        copySummaryButton: document.getElementById('copy-summary'),
+        saveChangesButton: document.getElementById('save-changes'),
+        addTaskButton: document.getElementById('add-task'),
+        loadingIndicator: document.getElementById('loading-indicator'),
+        overlay: document.getElementById('overlay'),
+        span: document.getElementsByClassName("close")[0],
+        closeSummaryModal: document.getElementsByClassName("close-summary-modal")[0],
+        coinsMonitorLink: document.getElementById('coins-monitor-link'),
+        coinsContainer: document.getElementById('coins-monitor-container'),
+        coinsDateSelect: document.getElementById('coins-date-select'),
+        runCoinsAIButton: document.getElementById('run-coins-ai-agent'),
+        copyCoinsReportButton: document.getElementById('copy-coins-report'),
+        coinsReportContent: document.getElementById('coins-report-content'),
+    };
+
+    // Log for debugging
+    console.log('AppData initialized with elements:', AppData);
+
+    // Helper function to hide all containers
+    function hideAllContainers() {
+        AppData.mainContainer.style.display = 'none';
+        AppData.crudContainer.style.display = 'none';
+        AppData.coinsContainer.style.display = 'none';
+        AppData.placeholder.style.display = 'block'; // Show placeholder if no container is active
+    }
+
+    // Theme switcher logic
+    if (AppData.themeSwitcher) {
+        AppData.themeSwitcher.addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            document.body.classList.toggle('light-mode');
+            document.querySelectorAll('.button').forEach(button => {
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                button.style.backgroundColor = isDarkMode ? '#228b22' : '#d2691e';
+                button.style.color = 'white';
+            });
+        });
+    } else {
+        console.warn("Theme switcher element not found.");
+    }
+
+    // Menu logic for indicators
+    if (AppData.links.length > 0) {
+        AppData.links.forEach(link => {
+            link.addEventListener('click', function () {
+                AppData.links.forEach(link => link.classList.remove('selected'));
+                this.classList.add('selected');
+                const docId = this.getAttribute('data-document-id');
+                console.log(`Fetching data for Document ID: ${docId}`);
+                showLoading();
+
+                // Hide all containers first
+                hideAllContainers();
+
+                // Show relevant containers for indicators
+                AppData.mainContainer.style.display = 'block';
+                AppData.crudContainer.style.display = 'block';
+                AppData.placeholder.style.display = 'none';
+
+                fetch(`/indicators/query/${docId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('document-title').textContent = `${data.document_name.toUpperCase()} - ${data.source_name.toUpperCase()}`;
+                        document.getElementById('document-title').setAttribute('data-document-id', data.document_id);
+                        document.getElementById('document-path').href = data.path;
+                        document.getElementById('document-path').textContent = data.path;
+                        AppData.releaseDateSelect.innerHTML = data.release_dates.map(date => {
+                            const dateStr = String(date).replace(/(\d{4})(\d{2})(\d{2})/, '$1/$2/$3');
+                            return `<option value="${dateStr}">${dateStr}</option>`;
+                        }).join('');
+                        AppData.releaseDateSelect.setAttribute('data-document-id', data.document_id);
+                        AppData.runAIButton.setAttribute('data-document-id', data.document_id);
+                        document.getElementById('en-summary').textContent = data.en_summary;
+                        document.getElementById('pt-summary').textContent = data.pt_summary;
+                        document.getElementById('key-takeaways').innerHTML = data.key_takeaways.map(kt => `<h4 class="key-takeaway-title text-lg">${kt.title}</h4><p>${kt.content}</p>`).join('');
+                        hideLoading();
+                    }).catch(error => {
+                        console.error("Error fetching document data:", error);
+                        hideLoading();
+                    });
+
+                fetch(`/indicators/api/prompts/${docId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('macro-env-desc').value = data.format_output_macro_environment_impacts_description || '';
+                        document.getElementById('audience').value = data.audience || '';
+                        document.getElementById('objective').value = data.objective || '';
+                        document.getElementById('constraints-lang-usage').value = data.constraints_language_usage || '';
+                        document.getElementById('constraints-lang-style').value = data.constraints_language_style || '';
+                        AppData.tasksContainer.innerHTML = '';
+                        data.tasks.forEach(task => {
+                            const taskDiv = document.createElement('div');
+                            taskDiv.className = 'task';
+                            taskDiv.innerHTML = `<textarea class="task-input">${task}</textarea><button class="delete-task" type="button">-</button>`;
+                            AppData.tasksContainer.appendChild(taskDiv);
+                        });
+                        updateTaskEvents();
+                    }).catch(error => {
+                        console.error("Error fetching prompt data:", error);
+                        hideLoading();
+                    });
+            });
+        });
+    } else {
+        console.warn('No indicator links found.');
+    }
+
+    // Menu logic for FX Monitor
+    if (AppData.coinsMonitorLink) {
+        AppData.coinsMonitorLink.addEventListener('click', function () {
+            // Hide all containers first
+            hideAllContainers();
+
+            // Show relevant container for FX Monitor
+            AppData.coinsContainer.style.display = 'block';
+            fetchAvailableDates();
+        });
+    } else {
+        console.warn("Coins Monitor link not found.");
+    }
+
+    // Release Date change logic for indicators
+    if (AppData.releaseDateSelect) {
+        AppData.releaseDateSelect.addEventListener('change', function () {
             const docId = this.getAttribute('data-document-id');
             const date = this.value.replace(/\//g, '');
             showLoading();
+
             fetch(`/indicators/query/${docId}?date=${date}`)
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('en-summary').textContent = data.en_summary;
                     document.getElementById('pt-summary').textContent = data.pt_summary;
-                    document.getElementById('key-takeaways').innerHTML = data.key_takeaways.map(kt => `<h4 class="key-takeaway-title text-lg">${kt.title}</h4><p>${kt.content}</p>`).join('');
+                    document.getElementById('key-takeaways').innerHTML = data.key_takeaways.map(kt =>
+                        `<h4 class="key-takeaway-title text-lg">${kt.title}</h4><p>${kt.content}</p>`).join('');
                     hideLoading();
-                }).catch(hideLoading);
+                }).catch(error => {
+                    console.error('Error fetching data for release date:', error);
+                    hideLoading();
+                });
         });
+    } else {
+        console.warn('Release date select element not found.');
     }
 
-    function showLoading() {
-        document.getElementById('overlay').style.display = 'block';
-        document.getElementById('loading-indicator').style.display = 'block';
+    // AI Prompt logic for indicators
+    if (AppData.runAIButton) {
+        AppData.runAIButton.addEventListener('click', function () {
+            const docId = this.getAttribute('data-document-id');
+            showLoading();
+            fetch(`/indicators/update/?id=${docId}`)
+                .then(response => response.text())
+                .then(html => {
+                    AppData.modalBody.innerHTML = html;
+                    AppData.modal.style.display = "block";
+                    AppData.span.onclick = function () {
+                        AppData.modal.style.display = "none";
+                        fetchDocumentData(docId);
+                    };
+                    window.onclick = function (event) {
+                        if (event.target == AppData.modal) {
+                            AppData.modal.style.display = "none";
+                            fetchDocumentData(docId);
+                        }
+                    };
+                }).catch(error => {
+                    console.error("Error running AI Agent:", error);
+                    hideLoading();
+                });
+        });
+    } else {
+        console.warn("AI Run button not found.");
     }
 
-    function hideLoading() {
-        document.getElementById('overlay').style.display = 'none';
-        document.getElementById('loading-indicator').style.display = 'none';
-    }
-});
-
-```
-
-## prompts.js
-
-```python
-document.addEventListener('DOMContentLoaded', function () {
-    const testPromptButton = document.getElementById('test-prompt');
-    const saveChangesButton = document.getElementById('save-changes');
-    const addTaskButton = document.getElementById('add-task');
-
-    testPromptButton.addEventListener('click', function () {
-        const docId = document.getElementById('document-title').getAttribute('data-document-id');
-        const releaseDate = document.getElementById('release-date-select').value.replace(/\//g, '');
-        const enSummary = document.getElementById('en-summary').textContent;
-        const ptSummary = document.getElementById('pt-summary').textContent;
-        const keyTakeaways = Array.from(document.querySelectorAll('#key-takeaways .key-takeaway-title')).map(title => {
-            return {
-                title: title.textContent,
-                content: title.nextElementSibling.textContent
-            };
-        });
-
-        const promptData = {
-            macro_env_desc: document.getElementById('macro-env-desc').value,
-            audience: document.getElementById('audience').value,
-            objective: document.getElementById('objective').value,
-            constraints_lang_usage: document.getElementById('constraints-lang-usage').value,
-            constraints_lang_style: document.getElementById('constraints-lang-style').value,
-            tasks: Array.from(document.querySelectorAll('.task-input')).map(task => task.value)
-        };
-
-        fetch('/indicators/api/generate_pt_summary', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                doc_id: docId,
-                release_date: releaseDate,
-                en_summary: enSummary,
-                pt_summary: ptSummary,
-                key_takeaways: keyTakeaways,
-                prompt_data: promptData
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('generated-summary-content').innerHTML = formatMarkdown(data.pt_summary);
-            document.getElementById('generated-summary-modal').style.display = "block";
-
-            const closeSummaryModal = document.getElementsByClassName("close-summary-modal")[0];
-            closeSummaryModal.onclick = function() {
-                document.getElementById('generated-summary-modal').style.display = "none";
-            }
-
-            window.onclick = function(event) {
-                if (event.target == document.getElementById('generated-summary-modal')) {
-                    document.getElementById('generated-summary-modal').style.display = "none";
-                }
-            }
-
-            document.getElementById('copy-generated-summary').addEventListener('click', function () {
-                const summaryText = `
-    Summary - Portuguese:
-    ${data.pt_summary}`;
-                copyToClipboard(summaryText);
-                alert("Summary copied to clipboard!");
-            });
-        })
-        .catch(error => {
-            console.error('Error generating PT summary:', error);
-            alert('Failed to generate PT summary.');
-        });
-    });
-
-    saveChangesButton.addEventListener('click', function () {
-        const docId = document.getElementById('document-title').getAttribute('data-document-id');
-        const macroEnvDesc = document.getElementById('macro-env-desc').value;
-        const audience = document.getElementById('audience').value;
-        const objective = document.getElementById('objective').value;
-        const constraintsLangUsage = document.getElementById('constraints-lang-usage').value;
-        const constraintsLangStyle = document.getElementById('constraints-lang-style').value;
-        const tasks = Array.from(document.querySelectorAll('.task-input')).map(input => input.value);
-
-        fetch(`/indicators/api/update_all`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                prompt_id: docId,
-                macro_env_desc: macroEnvDesc,
-                audience,
-                objective,
-                constraints_lang_usage: constraintsLangUsage,
-                constraints_lang_style: constraintsLangStyle,
-                tasks
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                alert('Changes saved successfully!');
+    // Add Task logic for indicators
+    if (AppData.addTaskButton) {
+        AppData.addTaskButton.addEventListener('click', function () {
+            const taskCount = AppData.tasksContainer.querySelectorAll('.task').length;
+            if (taskCount < 5) {
+                const newTask = document.createElement('div');
+                newTask.className = 'task';
+                newTask.innerHTML = `<textarea class="task-input"></textarea><button class="delete-task" type="button">-</button>`;
+                AppData.tasksContainer.appendChild(newTask);
+                updateTaskEvents();
             } else {
-                alert('Failed to save changes.');
+                alert('Maximum 5 tasks allowed.');
             }
         });
-    });
+    } else {
+        console.warn("Add Task button not found.");
+    }
 
-    addTaskButton.addEventListener('click', function () {
-        const tasksContainer = document.getElementById('tasks-container');
-        const taskCount = tasksContainer.querySelectorAll('.task').length;
-        if (taskCount < 5) {
-            const newTask = document.createElement('div');
-            newTask.className = 'task';
-            newTask.innerHTML = `<textarea class="task-input"></textarea><button class="delete-task" type="button">-</button>`;
-            tasksContainer.appendChild(newTask);
-            updateTaskEvents();
-        } else {
-            alert('Maximum 5 tasks allowed.');
-        }
-    });
+    // Save Changes logic for indicators
+    if (AppData.saveChangesButton) {
+        AppData.saveChangesButton.addEventListener('click', function () {
+            const docId = document.getElementById('document-title').getAttribute('data-document-id');
+            const macroEnvDesc = document.getElementById('macro-env-desc').value;
+            const audience = document.getElementById('audience').value;
+            const objective = document.getElementById('objective').value;
+            const constraintsLangUsage = document.getElementById('constraints-lang-usage').value;
+            const constraintsLangStyle = document.getElementById('constraints-lang-style').value;
+            const tasks = Array.from(document.querySelectorAll('.task-input')).map(input => input.value);
+
+            showLoading();
+            fetch(`/indicators/api/update_all`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    prompt_id: docId,
+                    macro_env_desc: macroEnvDesc,
+                    audience,
+                    objective,
+                    constraints_lang_usage: constraintsLangUsage,
+                    constraints_lang_style: constraintsLangStyle,
+                    tasks
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        alert('Changes saved successfully!');
+                    } else {
+                        alert('Failed to save changes.');
+                    }
+                    hideLoading();
+                }).catch(error => {
+                    console.error("Error saving changes:", error);
+                    hideLoading();
+                });
+        });
+    } else {
+        console.warn("Save Changes button not found.");
+    }
+
+    // FX Monitor Date Select and Report logic
+    if (AppData.coinsDateSelect) {
+        AppData.coinsDateSelect.addEventListener('change', function () {
+            const selectedDate = AppData.coinsDateSelect.value;
+            fetchReportForDate(selectedDate);
+        });
+    } else {
+        console.warn("Coins date select element not found.");
+    }
+
+    if (AppData.runCoinsAIButton) {
+        AppData.runCoinsAIButton.addEventListener('click', function () {
+            const selectedDate = AppData.coinsDateSelect.value;
+            runAIForDate(selectedDate);
+        });
+    } else {
+        console.warn("Run Coins AI button not found.");
+    }
+
+    if (AppData.copyCoinsReportButton) {
+        AppData.copyCoinsReportButton.addEventListener('click', function () {
+            const reportText = AppData.coinsReportContent.textContent;
+            copyToClipboard(reportText);
+            alert("Report copied to clipboard!");
+        });
+    } else {
+        console.warn("Copy Coins Report button not found.");
+    }
+
+    // Helper functions
+    function fetchAvailableDates() {
+        fetch('/coin_monitor/available_dates')
+            .then(response => response.json())
+            .then(data => {
+                AppData.coinsDateSelect.innerHTML = data.available_dates.map(date =>
+                    `<option value="${date}">${date}</option>`).join('');
+                if (data.available_dates.length > 0) {
+                    fetchReportForDate(data.available_dates[0]);
+                }
+            })
+            .catch(error => console.error('Error fetching available dates:', error));
+    }
+
+    function fetchReportForDate(date) {
+        fetch(`/coin_monitor/report/${date}`)
+            .then(response => response.text())
+            .then(report => {
+                AppData.coinsReportContent.innerHTML = formatReportText(report);
+            })
+            .catch(error => console.error('Error fetching report:', error));
+    }
+
+    function runAIForDate(date) {
+        fetch('/coin_monitor/update_report', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ date: date })
+        })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                fetchReportForDate(date);
+            })
+            .catch(error => console.error('Error running AI agent:', error));
+    }
 
     function updateTaskEvents() {
         document.querySelectorAll('.delete-task').forEach(button => {
             button.addEventListener('click', function () {
-                const tasksContainer = document.getElementById('tasks-container');
-                const taskCount = tasksContainer.querySelectorAll('.task').length;
+                const taskCount = AppData.tasksContainer.querySelectorAll('.task').length;
                 if (taskCount > 1) {
                     this.parentElement.remove();
                 } else {
@@ -1043,10 +1383,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function formatMarkdown(text) {
+    function showLoading() {
+        AppData.overlay.style.display = 'block';
+        AppData.loadingIndicator.style.display = 'block';
+    }
+
+    function hideLoading() {
+        AppData.overlay.style.display = 'none';
+        AppData.loadingIndicator.style.display = 'none';
+    }
+
+    function formatReportText(text) {
         return text
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
-            .replace(/__(.*?)__/g, '<em>$1</em>'); // Italic
+            .replace(/__(.*?)__/g, '<em>$1</em>') // Italic
+            .replace(/\n/g, '<br>'); // Line breaks
     }
 
     function copyToClipboard(text) {
@@ -1059,115 +1410,40 @@ document.addEventListener('DOMContentLoaded', function () {
         document.execCommand('Copy');
         document.body.removeChild(tempInput);
     }
-});
 
-```
-
-## menu.js
-
-```python
-document.addEventListener('DOMContentLoaded', function () {
-    const links = document.querySelectorAll('.indicator-link');
-
-    links.forEach(link => {
-        link.addEventListener('click', function () {
-            links.forEach(link => link.classList.remove('selected'));
-            this.classList.add('selected');
-
-            const docId = this.getAttribute('data-document-id');
-            console.log(`Document ID clicked: ${docId}`);
-            showLoading();
-            fetch(`/indicators/query/${docId}`)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('document-title').textContent = data.document_name.toUpperCase() + ' - ' + data.source_name.toUpperCase();
-                    document.getElementById('document-title').setAttribute('data-document-id', data.document_id);
-                    document.getElementById('document-path').href = data.path;
-                    document.getElementById('document-path').textContent = data.path;
-                    document.getElementById('release-date-select').innerHTML = data.release_dates.map(date => {
-                        const dateStr = String(date).replace(/(\d{4})(\d{2})(\d{2})/, '$1/$2/$3');
-                        return `<option value="${dateStr}">${dateStr}</option>`;
-                    }).join('');
-                    document.getElementById('release-date-select').setAttribute('data-document-id', data.document_id);
-                    document.getElementById('run-ai-agent').setAttribute('data-document-id', data.document_id);
-                    document.getElementById('en-summary').textContent = data.en_summary;
-                    document.getElementById('pt-summary').textContent = data.pt_summary;
-                    document.getElementById('key-takeaways').innerHTML = data.key_takeaways.map(kt => `<h4 class="key-takeaway-title text-lg">${kt.title}</h4><p>${kt.content}</p>`).join('');
-                    document.getElementById('main-container').style.display = 'block';
-                    document.getElementById('crud-container').style.display = 'block';
-                    document.getElementById('placeholder').style.display = 'none';
-                    hideLoading();
-                }).catch(hideLoading);
-
-            fetch(`/indicators/api/prompts/${docId}`)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('macro-env-desc').value = data.format_output_macro_environment_impacts_description || '';
-                    document.getElementById('audience').value = data.audience || '';
-                    document.getElementById('objective').value = data.objective || '';
-                    document.getElementById('constraints-lang-usage').value = data.constraints_language_usage || '';
-                    document.getElementById('constraints-lang-style').value = data.constraints_language_style || '';
-
-                    const tasksContainer = document.getElementById('tasks-container');
-                    tasksContainer.innerHTML = '';
-                    data.tasks.forEach((task, index) => {
-                        if (task) {
-                            const taskDiv = document.createElement('div');
-                            taskDiv.className = 'task';
-                            taskDiv.innerHTML = `<textarea class="task-input">${task}</textarea><button class="delete-task" type="button">-</button>`;
-                            tasksContainer.appendChild(taskDiv);
-                        }
-                    });
-                    updateTaskEvents();
-                }).catch(hideLoading);
-        });
-    });
-
-    function updateTaskEvents() {
-        document.querySelectorAll('.delete-task').forEach(button => {
-            button.addEventListener('click', function () {
-                const tasksContainer = document.getElementById('tasks-container');
-                const taskCount = tasksContainer.querySelectorAll('.task').length;
-                if (taskCount > 1) {
-                    this.parentElement.remove();
-                } else {
-                    alert('At least one task is required.');
-                }
+    function fetchDocumentData(docId) {
+        fetch(`/indicators/query/${docId}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('en-summary').textContent = data.en_summary;
+                document.getElementById('pt-summary').textContent = data.pt_summary;
+                document.getElementById('key-takeaways').innerHTML = data.key_takeaways.map(kt => `<h4 class="key-takeaway-title text-lg">${kt.title}</h4><p>${kt.content}</p>`).join('');
+                AppData.testPromptButton.click();
+            }).catch(error => {
+                console.error('Error fetching document data:', error);
+                hideLoading();
             });
+    }
+
+    window.onclick = function (event) {
+        if (event.target == AppData.modal) {
+            AppData.modal.style.display = "none";
+            fetchDocumentData(document.getElementById('document-title').getAttribute('data-document-id'));
+        }
+        if (AppData.generatedSummaryModal && event.target == AppData.generatedSummaryModal) {
+            AppData.generatedSummaryModal.style.display = "none";
+            document.getElementById('header').style.zIndex = 999;
+        }
+    };
+
+    if (AppData.closeSummaryModal) {
+        AppData.closeSummaryModal.addEventListener('click', function () {
+            AppData.generatedSummaryModal.style.display = "none";
+            document.getElementById('header').style.zIndex = 999;
         });
+    } else {
+        console.warn("Close Summary Modal button not found.");
     }
-
-    function showLoading() {
-        document.getElementById('overlay').style.display = 'block';
-        document.getElementById('loading-indicator').style.display = 'block';
-    }
-
-    function hideLoading() {
-        document.getElementById('overlay').style.display = 'none';
-        document.getElementById('loading-indicator').style.display = 'none';
-    }
-});
-
-```
-
-## main.js
-
-```python
-document.addEventListener('DOMContentLoaded', function () {
-    const themeSwitcher = document.getElementById('theme-switcher');
-    themeSwitcher.addEventListener('click', function () {
-        document.body.classList.toggle('dark-mode');
-        document.body.classList.toggle('light-mode');
-        document.querySelectorAll('.button').forEach(button => {
-            if (document.body.classList.contains('dark-mode')) {
-                button.style.backgroundColor = '#228b22';
-                button.style.color = 'white';
-            } else {
-                button.style.backgroundColor = '#d2691e';
-                button.style.color = 'white';
-            }
-        });
-    });
 });
 
 ```
@@ -1184,6 +1460,7 @@ document.addEventListener('DOMContentLoaded', function () {
     overflow-y: auto;
     padding: 20px;
 }
+
 .box {
     background-color: inherit;
     padding: 20px;
@@ -1191,9 +1468,11 @@ document.addEventListener('DOMContentLoaded', function () {
     border: 1px solid #d2691e;
     border-radius: 5px;
 }
+
 .title, .subtitle {
     color: #d2691e;
 }
+
 .button {
     display: flex;
     align-items: center;
@@ -1207,8 +1486,137 @@ document.addEventListener('DOMContentLoaded', function () {
     transition: background-color 0.3s ease;
     white-space: nowrap;
 }
+
 .button:hover {
     background-color: #a0522d;
+}
+
+.report-content {
+    white-space: pre-wrap;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #f1f1f1; /* Default for dark mode */
+}
+
+/* Light mode adjustments */
+.light-mode .report-content {
+    color: #1a1a1a;
+}
+
+.report-content em {
+    font-style: italic;
+    color: #f1f1f1; /* Default for dark mode */
+}
+
+/* Light mode adjustments */
+.light-mode .report-content em {
+    color: #1a1a1a;
+}
+
+.report-content strong {
+    font-weight: bold;
+    color: #f1f1f1; /* Default for dark mode */
+}
+
+/* Light mode adjustments */
+.light-mode .report-content strong {
+    color: #1a1a1a;
+}
+
+```
+
+## coins_monitor.css
+
+```python
+/* Style for the Coins Monitor report content */
+.report-content {
+    white-space: pre-wrap;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #f1f1f1; /* Default for dark mode */
+}
+
+/* Light mode adjustments */
+.light-mode .report-content {
+    color: #1a1a1a;
+}
+
+/* Italic text */
+.report-content em {
+    font-style: italic;
+    color: #f1f1f1; /* Default for dark mode */
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle highlight for dark mode */
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+/* Light mode italic adjustments */
+.light-mode .report-content em {
+    color: #1a1a1a;
+    background-color: rgba(0, 0, 0, 0.05); /* Subtle highlight for light mode */
+}
+
+/* Bold text */
+.report-content strong {
+    font-weight: bold;
+    color: #f1f1f1; /* Default for dark mode */
+    background-color: rgba(255, 255, 255, 0.1); /* Stronger highlight for dark mode */
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+/* Light mode bold adjustments */
+.light-mode .report-content strong {
+    color: #1a1a1a;
+    background-color: rgba(0, 0, 0, 0.1); /* Stronger highlight for light mode */
+}
+
+/* Headings within the report */
+.report-content h4 {
+    font-size: 16px;
+    color: #ffdd57; /* Bright gold for headings to make them stand out */
+    margin-top: 20px;
+}
+
+/* Light mode heading adjustments */
+.light-mode .report-content h4 {
+    color: #b8860b; /* Darker gold for light mode */
+}
+
+/* Subtle horizontal rule styling */
+.report-content hr {
+    border: 0;
+    height: 1px;
+    background: #d2691e; /* Orange color for dark mode */
+    margin: 20px 0;
+}
+
+/* Light mode horizontal rule adjustments */
+.light-mode .report-content hr {
+    background: #8b4513; /* Slightly darker orange for light mode */
+}
+
+/* Enhanced list styling */
+.report-content ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.report-content ul li {
+    margin-bottom: 10px;
+}
+
+/* Highlight important sections */
+.report-content .important {
+    color: #ff6347; /* Tomato red for important notes */
+    font-weight: bold;
+}
+
+/* Light mode important adjustments */
+.light-mode .report-content .important {
+    color: #b22222; /* Firebrick red for light mode */
 }
 
 ```
@@ -1221,9 +1629,19 @@ document.addEventListener('DOMContentLoaded', function () {
     flex-direction: column;
     margin-bottom: 10px;
 }
+
+/* Label styles */
 .edit-field label {
     margin-bottom: 5px;
+    color: #f1f1f1; /* Default for dark mode */
 }
+
+/* Light mode label adjustments */
+.light-mode .edit-field label {
+    color: #1a1a1a;
+}
+
+/* Textarea styles */
 .edit-field textarea {
     padding: 5px;
     border: 1px solid #d2691e;
@@ -1234,12 +1652,24 @@ document.addEventListener('DOMContentLoaded', function () {
     overflow: hidden;
     width: 100%;
     box-sizing: border-box;
+    background-color: #2a2a2a; /* Updated for better dark mode consistency */
+    color: #f1f1f1; /* Ensures readability in dark mode */
 }
+
+/* Light mode textarea adjustments */
+.light-mode .edit-field textarea {
+    background-color: #f0f0f0;
+    color: #1a1a1a;
+}
+
+/* Task container styles */
 .task {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
 }
+
+/* Task textarea styles */
 .task textarea {
     flex: 2;
     margin-right: 10px;
@@ -1247,7 +1677,17 @@ document.addEventListener('DOMContentLoaded', function () {
     border: 1px solid #d2691e;
     border-radius: 4px;
     resize: vertical;
+    background-color: #2a2a2a; /* Updated for better dark mode consistency */
+    color: #f1f1f1; /* Ensures readability in dark mode */
 }
+
+/* Light mode task textarea adjustments */
+.light-mode .task textarea {
+    background-color: #f0f0f0;
+    color: #1a1a1a;
+}
+
+/* Task button styles */
 .task button {
     flex: 0;
     background-color: #d2691e;
@@ -1258,8 +1698,25 @@ document.addEventListener('DOMContentLoaded', function () {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
+/* Task button hover state */
 .task button:hover {
     background-color: #a0522d;
+}
+
+/* Ensuring container consistency across modes */
+.box {
+    background-color: #2a2a2a; /* Updated for better dark mode consistency */
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #d2691e;
+    border-radius: 5px;
+}
+
+/* Light mode box adjustments */
+.light-mode .box {
+    background-color: #f0f0f0;
+    color: #1a1a1a;
 }
 
 ```
@@ -1278,6 +1735,49 @@ document.addEventListener('DOMContentLoaded', function () {
     overflow-y: auto;
     padding: 10px;
 }
+
+/* Default text color for dark mode */
+.nav-bar .country, 
+.nav-bar .source, 
+.nav-bar .indicator-link {
+    color: #f1f1f1;
+}
+
+/* Light mode adjustments */
+.light-mode .nav-bar .country, 
+.light-mode .nav-bar .source, 
+.light-mode .nav-bar .indicator-link {
+    color: #1a1a1a;
+}
+
+/* Ensuring visibility of the selected item */
+.nav-bar .indicator-link.selected {
+    color: #d2691e;
+    font-style: italic;
+}
+
+/* Ensuring hover effects are visible in both modes */
+.nav-bar .indicator-link:hover {
+    color: #228b22;
+}
+
+/* Additional styling for light mode to fix visibility issues */
+.light-mode .nav-bar .country {
+    color: #1a1a1a; /* Dark text for readability */
+}
+
+.light-mode .nav-bar .source::before {
+    color: #d2691e; /* Retain the orange circle in light mode */
+}
+
+.light-mode .nav-bar .source {
+    color: #1a1a1a; /* Dark text for readability */
+}
+
+.light-mode .nav-bar .indicator-link::before {
+    color: #1a1a1a; /* Dark color for the star in light mode */
+}
+
 .nav-bar .country {
     font-family: Arial, sans-serif;
     font-size: 16px;
@@ -1287,14 +1787,15 @@ document.addEventListener('DOMContentLoaded', function () {
     cursor: pointer;
     border-bottom: 1px solid #228b22;
     padding-bottom: 5px;
-    color: #f1f1f1; /* Light text for readability */
     padding: 10px; /* Padding for better visibility */
     border-radius: 5px; /* Rounded corners */
 }
+
 .nav-bar .source::before {
     content: "\25CF "; /* Black circle before source */
     color: #d2691e; /* Orange color for the circle */
 }
+
 .nav-bar .source {
     font-family: Arial, sans-serif;
     font-size: 14px;
@@ -1302,27 +1803,20 @@ document.addEventListener('DOMContentLoaded', function () {
     margin-left: 10px;
     margin-bottom: 5px;
     cursor: pointer;
-    color: #d2691e;
 }
+
 .nav-bar .indicator-link::before {
     content: "\2605 "; /* Star symbol before documents */
-    color: #f1f1f1; /* Light color for the star */
 }
+
 .nav-bar .indicator-link {
     font-family: Arial, sans-serif;
     font-size: 12px;
     margin-left: 20px;
     margin-bottom: 5px;
     cursor: pointer;
-    color: #f1f1f1;
 }
-.nav-bar .indicator-link.selected {
-    color: #d2691e;
-    font-style: italic;
-}
-.nav-bar .indicator-link:hover {
-    color: #228b22;
-}
+
 .nav-bar .indicator-separator {
     color: #228b22;
     text-align: center;
@@ -1337,57 +1831,85 @@ document.addEventListener('DOMContentLoaded', function () {
 ## main.css
 
 ```python
-body.dark-mode {
-    background-color: #2a2a2a;
-    color: #f1f1f1;
-}
-body.light-mode {
-    background-color: #f0f0f0;
-    color: #1a1a1a;
-}
-.header {
-    border-color: #d2691e;
-    color: inherit;
-    background-color: inherit;
-    z-index: 999;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Main.css - Cross-checked and cleaned up */
+
+/* Keeping only unique styles in main.css */
+
+.nav-bar {
+    /* Ensure .nav-bar is only defined once */
     position: fixed;
     top: 0;
-    left: 250px;
-    right: 0;
-    width: calc(100% - 250px);
-    box-sizing: border-box;
-    height: 80px;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    border: 1px solid #d2691e;
+    background-color: inherit;
+    overflow-y: auto;
+    padding: 10px;
 }
-.header-title {
-    flex: 1;
-    text-align: center;
-}
-.theme-switcher {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #228b22;
-    color: white;
+
+.nav-bar .country {
+    /* Moved common .country styles to menu.css */
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-bottom: 1px solid #228b22;
+    padding-bottom: 5px;
     padding: 10px;
     border-radius: 5px;
+}
+
+.nav-bar .source::before {
+    /* Retaining unique styling */
+    content: "\25CF ";
+    color: #d2691e;
+}
+
+.nav-bar .source {
+    /* Moved common .source styles to menu.css */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-bottom: 5px;
     cursor: pointer;
-    z-index: 999;
+    color: #d2691e;
 }
-.light-mode .header,
-.light-mode .nav-bar,
-.light-mode .box {
-    background-color: #f0f0f0;
-    border-color: #d2691e;
+
+.nav-bar .indicator-link::before {
+    /* Moved common .indicator-link styles to menu.css */
+    content: "\2605 ";
+    color: #f1f1f1;
 }
-.dark-mode .header,
-.dark-mode .nav-bar,
-.dark-mode .box {
-    background-color: #2a2a2a;
-    border-color: #d2691e;
+
+.nav-bar .indicator-link {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    color: #f1f1f1;
+}
+
+.nav-bar .indicator-link.selected {
+    color: #d2691e;
+    font-style: italic;
+}
+
+.nav-bar .indicator-link:hover {
+    color: #228b22;
+}
+
+.nav-bar .indicator-separator {
+    color: #228b22;
+    text-align: center;
+    margin: 5px 0;
+    width: 100%;
+    height: 1px;
+    background-color: #228b22;
 }
 
 ```

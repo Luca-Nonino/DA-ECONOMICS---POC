@@ -4,7 +4,6 @@
 _Dados referentes ao BACEN - PETAX_
 
 ---
-
 *Movimentação do Real/Dólar (BRL/USD):*
    - *O Real se valorizou* frente ao Dólar, fechando o dia em *R$ 5,5524*, com uma valorização de 📈 *+1,49%* em relação ao fechamento anterior. No acumulado do mês, o Real apresenta uma desvalorização de 📉 *-1,46%* frente ao Dólar, refletindo a volatilidade do mercado emergente.
 
@@ -15,7 +14,6 @@ _Dados referentes ao BACEN - PETAX_
    - *O Peso Mexicano (MXN) se valorizou* 📈 *+1,21%* frente ao Dólar nos últimos 5 dias, enquanto o Real se valorizou 📈 *+1,49%* no mesmo período. No acumulado do ano, o Real continua a mostrar fraqueza, desvalorizando-se 📉 *-1,46%* frente ao Dólar, superando apenas o Rand Sul-Africano (ZAR).
 
 ---
-
 *Análise de Movimentos Expressivos:*
 
    *5 Dias:*
@@ -34,7 +32,6 @@ _Dados referentes ao BACEN - PETAX_
    - O Peso Mexicano (MXN) acumulou valorização, fechando a *19,4506*, com alta de 📈 *+14,11%* frente ao Dólar. O Rand Sul-Africano (ZAR) registrou desvalorização, fechando o dia a *18,0295*, com perda de 📉 *-2,94%*.
 
 ---
-
 🔔 *Atenção:* Com base nas variações expressivas observadas recentemente, é importante acompanhar os seguintes pares de moedas nos próximos dias:
 
 - *USD/JPY*: Fechou a *146,01*, desvalorização 📉 *-4,82%* nos últimos meses.
@@ -42,16 +39,10 @@ _Dados referentes ao BACEN - PETAX_
 - *USD/CHF*: Fechou a *0,8519*, desvalorização 📉 *-3,64%* significativa nos últimos 3 meses.
 - *USD/BRL*: Fechou a *5,5524*, valorização 📈 *+1,49%* no acumulado dos últimos 5 dias.
 - *USD/ZAR*: Fechou a *18,0295*, desvalorização 📉 *-2,94%* persistente no acumulado do ano.
-
 ---
-
-Aqui está a versão curta, que faz referência precisa às cotações e aos time frames dos principais movimentos:
-
----
-
 _*Versão Curta*_
 
-_No fechamento do dia 22 de agosto de 2024, o Real se valorizou 📈 +1,49% frente ao Dólar, encerrando o dia a R$ 5,5524. O índice DXY apresentou uma valorização 📈 de +0,46%, fechando a 101,508, enquanto o Peso Mexicano (MXN) se destacou com uma valorização 📈 de +1,21% nos últimos 5 dias, fechando a 19,4506. O Iene Japonês (JPY) desvalorizou-se 📉 -4,82% no mês, fechando a 146,01. O Rand Sul-Africano (ZAR) também mostrou fraqueza, fechando o dia a 18,0295._
+_No fechamento do dia 22 de agosto de 2024, o Real se valorizou 📈 +1,49% frente ao Dólar, encerrando o dia a R$ 5,5524. O índice DXY apresentou uma valorização 📈 de +0,46%, fechando a 101,508, enquanto o Peso Mexicano (MXN) se destacou com uma valorização 📈 de +1,21% nos últimos 5 dias, fechando a 19,4506. O Iene Japonês (JPY) registrou desvalorização expressiva nos últimos meses, fechando a 146,01. O Rand Sul-Africano (ZAR) também mostrou fraqueza, fechando o dia a 18,0295._
 
 *Principais Pontos:*
 - Real (BRL) valorizou-se 📈 +1,49%, fechando a R$ 5,5524.
@@ -59,5 +50,4 @@ _No fechamento do dia 22 de agosto de 2024, o Real se valorizou 📈 +1,49% fren
 - Peso Mexicano (MXN) valorizou-se 📈 +1,21% nos últimos 5 dias, fechando a 19,4506.
 - Iene Japonês (JPY) desvalorizou-se 📉 -4,82% no mês, fechando a 146,01.
 - Rand Sul-Africano (ZAR) desvalorizou-se 📉 -2,94% no acumulado do ano, fechando a 18,0295.
-
 ```
