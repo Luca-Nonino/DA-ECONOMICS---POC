@@ -32,6 +32,7 @@ def craft_prompt(current_date):
     non_dxy_pct_changes_path = os.path.join(analysis_dir, f"{date_str}_2.csv")
     top_and_worst_performers_path = os.path.join(analysis_dir, f"{date_str}_3.txt")
     dxy_contribution_analysis_path = os.path.join(analysis_dir, f"{date_str}_4.csv")
+    brl_usd_path = os.path.join(analysis_dir, f"{date_str}_5.txt")
 
     final_markdown_path = os.path.join(prompt_dir, f"{date_str}.md")
 
@@ -50,6 +51,14 @@ def craft_prompt(current_date):
             top_and_worst_performers_content = f.read()
     except FileNotFoundError as e:
         print(f"Error loading top and worst performers file: {e}")
+        return
+
+    # Load the BRL/USD analysis as text
+    try:
+        with open(brl_usd_path, "r", encoding="utf-8") as f:
+            brl_usd_content = f.read()
+    except FileNotFoundError as e:
+        print(f"Error loading BRL/USD file: {e}")
         return
 
     # Load the output example format
@@ -111,6 +120,17 @@ def craft_prompt(current_date):
     #### Tabela 4: DXY Contribution Analysis
     """
     markdown_content += f"```\n{dxy_contribution_analysis_content}\n```\n"
+
+    # Section 5: Instrução para analisar a Tabela 5 (BRL/USD Analysis)
+    markdown_content += """
+    ### Instrução para Analisar Tabela 5:
+    - Esta tabela inverte a relação USD/BRL para mostrar as variações percentuais do BRL contra o USD.
+    - Utilize esses dados para compreender a performance do Real Brasileiro (BRL) em diferentes períodos, considerando tanto os mercados desenvolvidos quanto emergentes.
+    - Compare as variações de curto e longo prazo para identificar as tendências específicas do BRL.
+
+    #### Tabela 5: BRL/USD Analysis
+    """
+    markdown_content += f"```\n{brl_usd_content}\n```\n"
 
     # General daily closing analysis instructions and example formatting
     markdown_content += """

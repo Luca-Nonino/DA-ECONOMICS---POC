@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🐲 DA Economics - AI Researcher 🤖</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> 
+    <!-- Style placeholder -->
     <style>
         /* General Styles */
         body.dark-mode {
             background-color: #2a2a2a;
             color: #f1f1f1;
         }
-
+    
         body.light-mode {
             background-color: #f0f0f0;
             color: #1a1a1a;
         }
-
+    
         /* Header */
         .header {
             border-color: #d2691e;
@@ -33,7 +34,10 @@
             width: calc(100% - 250px);
             height: 80px;
         }
-
+        /* Add spacing to the FX Monitor section */
+        .menu-section {
+            margin-bottom: 20px; /* Adjust to get the desired space */
+        }
         /* Navigation Bar */
         .nav-bar {
             position: fixed;
@@ -47,19 +51,23 @@
             padding: 10px;
         }
 
+        .nav-bar h2 {
+            margin-bottom: 20px; /* Adjust the value to get the desired spacing */
+        }
+    
         .nav-bar .country,
         .nav-bar .source,
         .nav-bar .indicator-link {
             color: #f1f1f1; /* Default text color for dark mode */
         }
-
+    
         /* Light mode adjustments for the menu */
         .light-mode .nav-bar .country,
         .light-mode .nav-bar .source,
         .light-mode .nav-bar .indicator-link {
             color: #1a1a1a; /* Dark text for readability */
         }
-
+        
         /* Indicator styles */
         .nav-bar .country {
             font-family: Arial, sans-serif;
@@ -73,12 +81,12 @@
             padding: 10px;
             border-radius: 5px;
         }
-
+    
         .nav-bar .source::before {
             content: "\25CF "; /* Black circle before source */
             color: #d2691e; /* Orange color for the circle */
         }
-
+    
         .nav-bar .source {
             font-family: Arial, sans-serif;
             font-size: 14px;
@@ -87,17 +95,17 @@
             margin-bottom: 5px;
             cursor: pointer;
         }
-
+    
         .nav-bar .indicator-link::before {
             content: "\2605 "; /* Star symbol before documents */
             color: #f1f1f1; /* Default color for the star in dark mode */
         }
-
+    
         /* Light mode adjustments for Indicator links */
         .light-mode .nav-bar .indicator-link::before {
             color: #1a1a1a; /* Dark color for the star in light mode */
         }
-
+    
         .nav-bar .indicator-link {
             font-family: Arial, sans-serif;
             font-size: 12px;
@@ -106,21 +114,21 @@
             cursor: pointer;
             color: #f1f1f1; /* Default color for dark mode */
         }
-
+    
         /* Light mode adjustments for Indicator links */
         .light-mode .nav-bar .indicator-link {
             color: #1a1a1a;
         }
-
+    
         .nav-bar .indicator-link.selected {
             color: #d2691e;
             font-style: italic;
         }
-
+    
         .nav-bar .indicator-link:hover {
             color: #228b22;
         }
-
+    
         .nav-bar .indicator-separator {
             color: #228b22;
             text-align: center;
@@ -129,7 +137,7 @@
             height: 1px;
             background-color: #228b22;
         }
-
+    
         /* Content Area */
         .content {
             display: flex;
@@ -140,7 +148,7 @@
             overflow-y: auto;
             padding: 20px;
         }
-
+    
         /* Box Styling */
         .box {
             background-color: inherit;
@@ -149,12 +157,12 @@
             border: 1px solid #d2691e;
             border-radius: 5px;
         }
-
+    
         /* Titles and Subtitles */
         .title, .subtitle {
             color: #d2691e;
         }
-
+    
         /* Button Styles */
         .button {
             display: flex;
@@ -169,17 +177,17 @@
             transition: background-color 0.3s ease;
             white-space: nowrap;
         }
-
+    
         .button:hover {
             background-color: #a0522d;
         }
-
+    
         /* Dropdown Styling */
         .dropdown select {
             background-color: #555;
             color: white;
         }
-
+    
         /* Theme Switcher */
         .theme-switcher {
             position: fixed;
@@ -192,23 +200,23 @@
             cursor: pointer;
             z-index: 999;
         }
-
+    
         /* Editing Fields */
         .edit-field {
             display: flex;
             flex-direction: column;
             margin-bottom: 10px;
         }
-
+    
         .edit-field label {
             margin-bottom: 5px;
             color: #f1f1f1; /* Default text color for dark mode */
         }
-
+    
         .light-mode .edit-field label {
             color: #1a1a1a; /* Light mode adjustments */
         }
-
+    
         /* Textarea in Editing Fields */
         .edit-field textarea {
             padding: 5px;
@@ -220,20 +228,20 @@
             background-color: #333; /* Dark mode background */
             color: #f1f1f1; /* Ensures readability in dark mode */
         }
-
+    
         /* Light mode adjustments for Textarea */
         .light-mode .edit-field textarea {
             background-color: #f0f0f0;
             color: #1a1a1a;
         }
-
+    
         /* Task Container */
         .task {
             display: flex;
             align-items: center;
             margin-bottom: 10px;
         }
-
+    
         .task textarea {
             flex: 2;
             margin-right: 10px;
@@ -244,13 +252,13 @@
             background-color: #333; /* Dark mode background */
             color: #f1f1f1; /* Ensures readability in dark mode */
         }
-
+    
         /* Light mode adjustments for Task Textarea */
         .light-mode .task textarea {
             background-color: #f0f0f0;
             color: #1a1a1a;
         }
-
+    
         .task button {
             flex: 0;
             background-color: #d2691e;
@@ -261,11 +269,11 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-
+    
         .task button:hover {
             background-color: #a0522d;
         }
-
+    
         /* Report Content (FX / Coins Monitor) */
         .report-content {
             white-space: pre-wrap;
@@ -274,12 +282,12 @@
             line-height: 1.5;
             color: #f1f1f1; /* Default text color for dark mode */
         }
-
+    
         /* Light mode adjustments for Report Content */
         .light-mode .report-content {
             color: #1a1a1a; /* Dark text for readability */
         }
-
+    
         /* Italic Text */
         .report-content em {
             font-style: italic;
@@ -288,13 +296,13 @@
             padding: 2px 4px;
             border-radius: 3px;
         }
-
+    
         /* Light mode adjustments for Italic Text */
         .light-mode .report-content em {
             color: #1a1a1a;
             background-color: rgba(0, 0, 0, 0.05); /* Subtle highlight for light mode */
         }
-
+    
         /* Bold Text */
         .report-content strong {
             font-weight: bold;
@@ -303,25 +311,25 @@
             padding: 2px 4px;
             border-radius: 3px;
         }
-
+    
         /* Light mode adjustments for Bold Text */
         .light-mode .report-content strong {
             color: #1a1a1a;
             background-color: rgba(0, 0, 0, 0.1); /* Stronger highlight for light mode */
         }
-
+    
         /* Headings within the report */
         .report-content h4 {
             font-size: 16px;
             color: #ffdd57; /* Bright gold for headings to make them stand out */
             margin-top: 20px;
         }
-
+    
         /* Light mode heading adjustments */
         .light-mode .report-content h4 {
             color: #b8860b; /* Darker gold for light mode */
         }
-
+    
         /* Horizontal Rule Styling */
         .report-content hr {
             border: 0;
@@ -329,33 +337,33 @@
             background: #d2691e; /* Orange color for dark mode */
             margin: 20px 0;
         }
-
+    
         /* Light mode horizontal rule adjustments */
         .light-mode .report-content hr {
             background: #8b4513; /* Slightly darker orange for light mode */
         }
-
+    
         /* Enhanced List Styling */
         .report-content ul {
             list-style-type: disc;
             padding-left: 20px;
         }
-
+    
         .report-content ul li {
             margin-bottom: 10px;
         }
-
+    
         /* Highlight Important Sections */
         .report-content .important {
             color: #ff6347; /* Tomato red for important notes */
             font-weight: bold;
         }
-
+    
         /* Light mode important adjustments */
         .light-mode .report-content .important {
             color: #b22222; /* Firebrick red for light mode */
         }
-
+    
         /* Modal Styles */
         .modal {
             display: none;
@@ -369,7 +377,7 @@
             overflow: auto;
             background-color: rgba(0,0,0,0.4);
         }
-
+    
         .modal-content {
             background-color: #f9f9f9;
             color: black;
@@ -381,13 +389,13 @@
             text-align: center;
             white-space: pre-wrap;
         }
-
+    
         /* Dark mode adjustments for Modal */
         .dark-mode .modal-content {
             background-color: #1a1a1a;
             color: white;
         }
-
+    
         /* Close Button Styling */
         .close {
             color: #aaa;
@@ -395,14 +403,14 @@
             font-size: 28px;
             font-weight: bold;
         }
-
+    
         .close:hover,
         .close:focus {
             color: black;
             text-decoration: none;
             cursor: pointer;
         }
-
+    
         /* Loading Indicator */
         .loading-indicator {
             border: 12px solid #f3f3f3;
@@ -418,12 +426,12 @@
             transform: translate(-50%, -50%);
             z-index: 1002;
         }
-
+    
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
+    
         /* Overlay */
         .overlay {
             position: fixed;
@@ -437,26 +445,26 @@
             background-color: rgba(0,0,0,0.5);
             z-index: 1000;
         }
-
+    
         /* Placeholder */
         #placeholder {
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
+    
         #placeholder h2 {
             font-size: 2rem;
             text-align: center;
         }
-
+    
         /* Separator */
         .separator {
             border-bottom: 3px solid #d2691e;
             margin: 20px 0;
         }
-
     </style>
+    
 </head>
 <body class="dark-mode">
 
@@ -469,15 +477,15 @@
     </div>
 
     <div class="nav-bar p-4 fixed w-60 overflow-y-auto">
-        <h2 class="text-xl font-bold text-center mb-4">Morning Call</h2>
+        <h2 class="text-xl font-bold text-center mb-4">--- Morning Call ---</h2>
         <div id="fx-monitor" class="menu-section">
             <div class="menu-title font-bold">FX Monitor</div>
             <div class="menu-item">
-                <a href="#" id="coins-monitor-link" class="indicator-link">Coins Monitor</a>
+                <a href="#" id="coins-monitor-link" class="indicator-link">Currency Monitor</a>
             </div>
         </div>
-        <h2 class="text-xl font-bold text-center mb-4">Select a Report from the List Below</h2>
-        <div id="country-list">
+        <h2 class="text-xl font-bold text-center mb-4">--- Flash Reading ---</h2>
+        <div id="country-list"> 
             {% for country, sources in country_sources_documents.items() %}
                 <div class="country" data-country-name="{{ country }}">
                     {{ country }}
@@ -518,6 +526,7 @@
                 <div class="buttons flex flex-row gap-2">
                     <a class="button p-2 rounded cursor-pointer bg-green-500 hover:bg-green-700 text-white" id="run-ai-agent">Run AI Agent</a>
                     <button id="copy-summary" class="button">Copy to Clipboard</button>
+                    <button id="gerar-traducao" class="button bg-blue-500 hover:bg-blue-700 text-white">Gerar Tradução</button> <!-- Newly added button -->
                 </div>
             </div>
             <div class="mb-4">
@@ -537,7 +546,7 @@
         <div id="coins-monitor-container" class="box hidden">
             <div class="title-container flex justify-between items-center mb-4">
                 <div>
-                    <h2 class="title text-2xl">Coins Monitor Report</h2>
+                    <h2 class="title text-2xl">Currency Monitor Report</h2>
                     <div class="dropdown mb-4">
                         <span>Select Date: </span>
                         <select id="coins-date-select" class="bg-gray-700 text-white p-2 rounded"></select>
@@ -609,415 +618,487 @@
     <div class="loading-indicator" id="loading-indicator"></div>
     <!-- Content Block End -->
 
-    <!-- Placeholder for additional scripts -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            console.log("DOM fully loaded and parsed. Initializing AppData...");
+    <!-- Script placeholder -->
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			console.log("DOM fully loaded and parsed. Initializing AppData...");
 
-            // Initialize AppData with checks and logging
-            const AppData = {
-                themeSwitcher: document.getElementById('theme-switcher'),
-                links: document.querySelectorAll('.indicator-link'),
-                releaseDateSelect: document.getElementById('release-date-select'),
-                runAIButton: document.getElementById('run-ai-agent'),
-                tasksContainer: document.getElementById('tasks-container'),
-                placeholder: document.getElementById('placeholder'),
-                mainContainer: document.getElementById('main-container'),
-                crudContainer: document.getElementById('crud-container'),
-                modal: document.getElementById("myModal"),
-                modalBody: document.getElementById('modal-body'),
-                generatedSummaryModal: document.getElementById('generated-summary-modal'),
-                generatedSummaryContent: document.getElementById('generated-summary-content'),
-                copyGeneratedSummaryButton: document.getElementById('copy-generated-summary'),
-                copySummaryButton: document.getElementById('copy-summary'),
-                saveChangesButton: document.getElementById('save-changes'),
-                addTaskButton: document.getElementById('add-task'),
-                loadingIndicator: document.getElementById('loading-indicator'),
-                overlay: document.getElementById('overlay'),
-                span: document.getElementsByClassName("close")[0],
-                closeSummaryModal: document.getElementsByClassName("close-summary-modal")[0],
-                coinsMonitorLink: document.getElementById('coins-monitor-link'),
-                coinsContainer: document.getElementById('coins-monitor-container'),
-                coinsDateSelect: document.getElementById('coins-date-select'),
-                runCoinsAIButton: document.getElementById('run-coins-ai-agent'),
-                copyCoinsReportButton: document.getElementById('copy-coins-report'),
-                coinsReportContent: document.getElementById('coins-report-content'),
-            };
+			// Initialize AppData with checks and logging
+			const AppData = {
+				themeSwitcher: document.getElementById('theme-switcher'),
+				links: document.querySelectorAll('.indicator-link'),
+				releaseDateSelect: document.getElementById('release-date-select'),
+				runAIButton: document.getElementById('run-ai-agent'),
+				gerarTraducaoButton: document.getElementById('gerar-traducao'),  // New Gerar Tradução button
+				tasksContainer: document.getElementById('tasks-container'),
+				placeholder: document.getElementById('placeholder'),
+				mainContainer: document.getElementById('main-container'),
+				crudContainer: document.getElementById('crud-container'),
+				modal: document.getElementById("myModal"),
+				modalBody: document.getElementById('modal-body'),
+				generatedSummaryModal: document.getElementById('generated-summary-modal'),
+				generatedSummaryContent: document.getElementById('generated-summary-content'),
+				copyGeneratedSummaryButton: document.getElementById('copy-generated-summary'),
+				copySummaryButton: document.getElementById('copy-summary'),
+				saveChangesButton: document.getElementById('save-changes'),
+				addTaskButton: document.getElementById('add-task'),
+				loadingIndicator: document.getElementById('loading-indicator'),
+				overlay: document.getElementById('overlay'),
+				span: document.getElementsByClassName("close")[0],
+				closeSummaryModal: document.getElementsByClassName("close-summary-modal")[0],
+				coinsMonitorLink: document.getElementById('coins-monitor-link'),
+				coinsContainer: document.getElementById('coins-monitor-container'),
+				coinsDateSelect: document.getElementById('coins-date-select'),
+				runCoinsAIButton: document.getElementById('run-coins-ai-agent'),
+				copyCoinsReportButton: document.getElementById('copy-coins-report'),
+				coinsReportContent: document.getElementById('coins-report-content'),
+			};
 
-            // Log for debugging
-            console.log('AppData initialized with elements:', AppData);
+			// Log for debugging
+			console.log('AppData initialized with elements:', AppData);
 
-            // Helper function to hide all containers
-            function hideAllContainers() {
-                AppData.mainContainer.style.display = 'none';
-                AppData.crudContainer.style.display = 'none';
-                AppData.coinsContainer.style.display = 'none';
-                AppData.placeholder.style.display = 'block'; // Show placeholder if no container is active
-            }
+			// Helper function to hide all containers
+			function hideAllContainers() {
+				AppData.mainContainer.style.display = 'none';
+				AppData.crudContainer.style.display = 'none';
+				AppData.coinsContainer.style.display = 'none';
+				AppData.placeholder.style.display = 'block'; // Show placeholder if no container is active
+			}
 
-            // Theme switcher logic
-            if (AppData.themeSwitcher) {
-                AppData.themeSwitcher.addEventListener('click', function () {
-                    document.body.classList.toggle('dark-mode');
-                    document.body.classList.toggle('light-mode');
-                    document.querySelectorAll('.button').forEach(button => {
-                        const isDarkMode = document.body.classList.contains('dark-mode');
-                        button.style.backgroundColor = isDarkMode ? '#228b22' : '#d2691e';
-                        button.style.color = 'white';
-                    });
+			// Theme switcher logic
+			if (AppData.themeSwitcher) {
+				AppData.themeSwitcher.addEventListener('click', function () {
+					document.body.classList.toggle('dark-mode');
+					document.body.classList.toggle('light-mode');
+					document.querySelectorAll('.button').forEach(button => {
+						const isDarkMode = document.body.classList.contains('dark-mode');
+						button.style.backgroundColor = isDarkMode ? '#228b22' : '#d2691e';
+						button.style.color = 'white';
+					});
+				});
+			} else {
+				console.warn("Theme switcher element not found.");
+			}
+
+			// Menu logic for indicators
+			if (AppData.links.length > 0) {
+				AppData.links.forEach(link => {
+					link.addEventListener('click', function () {
+						AppData.links.forEach(link => link.classList.remove('selected'));
+						this.classList.add('selected');
+						const docId = this.getAttribute('data-document-id');
+						console.log(`Fetching data for Document ID: ${docId}`);
+						showLoading();
+
+						// Hide all containers first
+						hideAllContainers();
+
+						// Show relevant containers for indicators
+						AppData.mainContainer.style.display = 'block';
+						AppData.crudContainer.style.display = 'block';
+						AppData.placeholder.style.display = 'none';
+
+						fetch(`/indicators/query/${docId}`)
+							.then(response => response.json())
+							.then(data => {
+								document.getElementById('document-title').textContent = `${data.document_name.toUpperCase()} - ${data.source_name.toUpperCase()}`;
+								document.getElementById('document-title').setAttribute('data-document-id', data.document_id);
+								document.getElementById('document-path').href = data.path;
+								document.getElementById('document-path').textContent = data.path;
+								AppData.releaseDateSelect.innerHTML = data.release_dates.map(date => {
+									const dateStr = String(date).replace(/(\d{4})(\d{2})(\d{2})/, '$1/$2/$3');
+									return `<option value="${dateStr}">${dateStr}</option>`;
+								}).join('');
+								AppData.releaseDateSelect.setAttribute('data-document-id', data.document_id);
+								AppData.runAIButton.setAttribute('data-document-id', data.document_id);
+								document.getElementById('en-summary').textContent = data.en_summary;
+								document.getElementById('pt-summary').textContent = data.pt_summary;
+								document.getElementById('key-takeaways').innerHTML = data.key_takeaways.map(kt => `<h4 class="key-takeaway-title text-lg">${kt.title}</h4><p>${kt.content}</p>`).join('');
+								hideLoading();
+							}).catch(error => {
+								console.error("Error fetching document data:", error);
+								hideLoading();
+							});
+
+						fetch(`/indicators/api/prompts/${docId}`)
+							.then(response => response.json())
+							.then(data => {
+								document.getElementById('macro-env-desc').value = data.format_output_macro_environment_impacts_description || '';
+								document.getElementById('audience').value = data.audience || '';
+								document.getElementById('objective').value = data.objective || '';
+								document.getElementById('constraints-lang-usage').value = data.constraints_language_usage || '';
+								document.getElementById('constraints-lang-style').value = data.constraints_language_style || '';
+								AppData.tasksContainer.innerHTML = '';
+								data.tasks.forEach(task => {
+									const taskDiv = document.createElement('div');
+									taskDiv.className = 'task';
+									taskDiv.innerHTML = `<textarea class="task-input">${task}</textarea><button class="delete-task" type="button">-</button>`;
+									AppData.tasksContainer.appendChild(taskDiv);
+								});
+								updateTaskEvents();
+							}).catch(error => {
+								console.error("Error fetching prompt data:", error);
+								hideLoading();
+							});
+					});
+				});
+			} else {
+				console.warn('No indicator links found.');
+			}
+
+			// Menu logic for FX Monitor
+			if (AppData.coinsMonitorLink) {
+				AppData.coinsMonitorLink.addEventListener('click', function () {
+					// Hide all containers first
+					hideAllContainers();
+
+					// Show relevant container for FX Monitor
+					AppData.coinsContainer.style.display = 'block';
+					fetchAvailableDates();
+				});
+			} else {
+				console.warn("Currency Monitor link not found.");
+			}
+
+			// Release Date change logic for indicators
+			if (AppData.releaseDateSelect) {
+				AppData.releaseDateSelect.addEventListener('change', function () {
+					const docId = this.getAttribute('data-document-id');
+					const date = this.value.replace(/\//g, '');
+					showLoading();
+
+					fetch(`/indicators/query/${docId}?date=${date}`)
+						.then(response => response.json())
+						.then(data => {
+							document.getElementById('en-summary').textContent = data.en_summary;
+							document.getElementById('pt-summary').textContent = data.pt_summary;
+							document.getElementById('key-takeaways').innerHTML = data.key_takeaways.map(kt =>
+								`<h4 class="key-takeaway-title text-lg">${kt.title}</h4><p>${kt.content}</p>`).join('');
+							hideLoading();
+						}).catch(error => {
+							console.error('Error fetching data for release date:', error);
+							hideLoading();
+						});
+				});
+			} else {
+				console.warn('Release date select element not found.');
+			}
+
+			// AI Prompt logic for indicators
+			if (AppData.runAIButton) {
+				AppData.runAIButton.addEventListener('click', function () {
+					const docId = this.getAttribute('data-document-id');
+					showLoading();
+					fetch(`/indicators/update/?id=${docId}`)
+						.then(response => response.text())
+						.then(html => {
+							AppData.modalBody.innerHTML = html;
+							AppData.modal.style.display = "block";
+							AppData.span.onclick = function () {
+								AppData.modal.style.display = "none";
+								fetchDocumentData(docId);
+							};
+							window.onclick = function (event) {
+								if (event.target == AppData.modal) {
+									AppData.modal.style.display = "none";
+									fetchDocumentData(docId);
+								}
+							};
+						}).catch(error => {
+							console.error("Error running AI Agent:", error);
+							hideLoading();
+						});
+				});
+			} else {
+				console.warn("AI Run button not found.");
+			}
+
+			// Event listener for "Gerar Tradução" button (new functionality)
+            AppData.gerarTraducaoButton.addEventListener('click', function () {
+                const docId = AppData.releaseDateSelect.getAttribute('data-document-id');
+                const releaseDateFormatted = AppData.releaseDateSelect.value.replace(/\//g, '');  // Reformat date
+                const enSummary = document.getElementById('en-summary').textContent;
+                const ptSummary = document.getElementById('pt-summary').textContent;
+
+                // Gather prompt data from form fields
+                const promptData = {
+                    macro_env_desc: document.getElementById('macro-env-desc').value,
+                    audience: document.getElementById('audience').value,
+                    objective: document.getElementById('objective').value,
+                    constraints_lang_usage: document.getElementById('constraints-lang-usage').value,
+                    constraints_lang_style: document.getElementById('constraints-lang-style').value,
+                    tasks: Array.from(document.querySelectorAll('.task-input')).map(input => input.value) // Gather tasks
+                };
+
+                const keyTakeaways = Array.from(document.querySelectorAll('#key-takeaways h4')).map(title => {
+                    return {
+                        title: title.textContent,
+                        content: title.nextElementSibling.textContent
+                    };
                 });
-            } else {
-                console.warn("Theme switcher element not found.");
-            }
 
-            // Menu logic for indicators
-            if (AppData.links.length > 0) {
-                AppData.links.forEach(link => {
-                    link.addEventListener('click', function () {
-                        AppData.links.forEach(link => link.classList.remove('selected'));
-                        this.classList.add('selected');
-                        const docId = this.getAttribute('data-document-id');
-                        console.log(`Fetching data for Document ID: ${docId}`);
-                        showLoading();
-
-                        // Hide all containers first
-                        hideAllContainers();
-
-                        // Show relevant containers for indicators
-                        AppData.mainContainer.style.display = 'block';
-                        AppData.crudContainer.style.display = 'block';
-                        AppData.placeholder.style.display = 'none';
-
-                        fetch(`/indicators/query/${docId}`)
-                            .then(response => response.json())
-                            .then(data => {
-                                document.getElementById('document-title').textContent = `${data.document_name.toUpperCase()} - ${data.source_name.toUpperCase()}`;
-                                document.getElementById('document-title').setAttribute('data-document-id', data.document_id);
-                                document.getElementById('document-path').href = data.path;
-                                document.getElementById('document-path').textContent = data.path;
-                                AppData.releaseDateSelect.innerHTML = data.release_dates.map(date => {
-                                    const dateStr = String(date).replace(/(\d{4})(\d{2})(\d{2})/, '$1/$2/$3');
-                                    return `<option value="${dateStr}">${dateStr}</option>`;
-                                }).join('');
-                                AppData.releaseDateSelect.setAttribute('data-document-id', data.document_id);
-                                AppData.runAIButton.setAttribute('data-document-id', data.document_id);
-                                document.getElementById('en-summary').textContent = data.en_summary;
-                                document.getElementById('pt-summary').textContent = data.pt_summary;
-                                document.getElementById('key-takeaways').innerHTML = data.key_takeaways.map(kt => `<h4 class="key-takeaway-title text-lg">${kt.title}</h4><p>${kt.content}</p>`).join('');
-                                hideLoading();
-                            }).catch(error => {
-                                console.error("Error fetching document data:", error);
-                                hideLoading();
-                            });
-
-                        fetch(`/indicators/api/prompts/${docId}`)
-                            .then(response => response.json())
-                            .then(data => {
-                                document.getElementById('macro-env-desc').value = data.format_output_macro_environment_impacts_description || '';
-                                document.getElementById('audience').value = data.audience || '';
-                                document.getElementById('objective').value = data.objective || '';
-                                document.getElementById('constraints-lang-usage').value = data.constraints_language_usage || '';
-                                document.getElementById('constraints-lang-style').value = data.constraints_language_style || '';
-                                AppData.tasksContainer.innerHTML = '';
-                                data.tasks.forEach(task => {
-                                    const taskDiv = document.createElement('div');
-                                    taskDiv.className = 'task';
-                                    taskDiv.innerHTML = `<textarea class="task-input">${task}</textarea><button class="delete-task" type="button">-</button>`;
-                                    AppData.tasksContainer.appendChild(taskDiv);
-                                });
-                                updateTaskEvents();
-                            }).catch(error => {
-                                console.error("Error fetching prompt data:", error);
-                                hideLoading();
-                            });
-                    });
+                console.log('Sending translation request with the following data:', {
+                    doc_id: docId,
+                    release_date: releaseDateFormatted,
+                    en_summary: enSummary,
+                    pt_summary: ptSummary,
+                    key_takeaways: keyTakeaways,
+                    prompt_data: promptData // Add the prompt_data to the request
                 });
-            } else {
-                console.warn('No indicator links found.');
-            }
 
-            // Menu logic for FX Monitor
-            if (AppData.coinsMonitorLink) {
-                AppData.coinsMonitorLink.addEventListener('click', function () {
-                    // Hide all containers first
-                    hideAllContainers();
+                showLoading(); // Lock the screen
 
-                    // Show relevant container for FX Monitor
-                    AppData.coinsContainer.style.display = 'block';
-                    fetchAvailableDates();
-                });
-            } else {
-                console.warn("Coins Monitor link not found.");
-            }
-
-            // Release Date change logic for indicators
-            if (AppData.releaseDateSelect) {
-                AppData.releaseDateSelect.addEventListener('change', function () {
-                    const docId = this.getAttribute('data-document-id');
-                    const date = this.value.replace(/\//g, '');
-                    showLoading();
-
-                    fetch(`/indicators/query/${docId}?date=${date}`)
-                        .then(response => response.json())
-                        .then(data => {
-                            document.getElementById('en-summary').textContent = data.en_summary;
-                            document.getElementById('pt-summary').textContent = data.pt_summary;
-                            document.getElementById('key-takeaways').innerHTML = data.key_takeaways.map(kt =>
-                                `<h4 class="key-takeaway-title text-lg">${kt.title}</h4><p>${kt.content}</p>`).join('');
-                            hideLoading();
-                        }).catch(error => {
-                            console.error('Error fetching data for release date:', error);
-                            hideLoading();
-                        });
-                });
-            } else {
-                console.warn('Release date select element not found.');
-            }
-
-            // AI Prompt logic for indicators
-            if (AppData.runAIButton) {
-                AppData.runAIButton.addEventListener('click', function () {
-                    const docId = this.getAttribute('data-document-id');
-                    showLoading();
-                    fetch(`/indicators/update/?id=${docId}`)
-                        .then(response => response.text())
-                        .then(html => {
-                            AppData.modalBody.innerHTML = html;
-                            AppData.modal.style.display = "block";
-                            AppData.span.onclick = function () {
-                                AppData.modal.style.display = "none";
-                                fetchDocumentData(docId);
-                            };
-                            window.onclick = function (event) {
-                                if (event.target == AppData.modal) {
-                                    AppData.modal.style.display = "none";
-                                    fetchDocumentData(docId);
-                                }
-                            };
-                        }).catch(error => {
-                            console.error("Error running AI Agent:", error);
-                            hideLoading();
-                        });
-                });
-            } else {
-                console.warn("AI Run button not found.");
-            }
-
-            // Add Task logic for indicators
-            if (AppData.addTaskButton) {
-                AppData.addTaskButton.addEventListener('click', function () {
-                    const taskCount = AppData.tasksContainer.querySelectorAll('.task').length;
-                    if (taskCount < 5) {
-                        const newTask = document.createElement('div');
-                        newTask.className = 'task';
-                        newTask.innerHTML = `<textarea class="task-input"></textarea><button class="delete-task" type="button">-</button>`;
-                        AppData.tasksContainer.appendChild(newTask);
-                        updateTaskEvents();
-                    } else {
-                        alert('Maximum 5 tasks allowed.');
-                    }
-                });
-            } else {
-                console.warn("Add Task button not found.");
-            }
-
-            // Save Changes logic for indicators
-            if (AppData.saveChangesButton) {
-                AppData.saveChangesButton.addEventListener('click', function () {
-                    const docId = document.getElementById('document-title').getAttribute('data-document-id');
-                    const macroEnvDesc = document.getElementById('macro-env-desc').value;
-                    const audience = document.getElementById('audience').value;
-                    const objective = document.getElementById('objective').value;
-                    const constraintsLangUsage = document.getElementById('constraints-lang-usage').value;
-                    const constraintsLangStyle = document.getElementById('constraints-lang-style').value;
-                    const tasks = Array.from(document.querySelectorAll('.task-input')).map(input => input.value);
-
-                    showLoading();
-                    fetch(`/indicators/api/update_all`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            prompt_id: docId,
-                            macro_env_desc: macroEnvDesc,
-                            audience,
-                            objective,
-                            constraints_lang_usage: constraintsLangUsage,
-                            constraints_lang_style: constraintsLangStyle,
-                            tasks
-                        })
-                    })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.status === 'success') {
-                                alert('Changes saved successfully!');
-                            } else {
-                                alert('Failed to save changes.');
-                            }
-                            hideLoading();
-                        }).catch(error => {
-                            console.error("Error saving changes:", error);
-                            hideLoading();
-                        });
-                });
-            } else {
-                console.warn("Save Changes button not found.");
-            }
-
-            // FX Monitor Date Select and Report logic
-            if (AppData.coinsDateSelect) {
-                AppData.coinsDateSelect.addEventListener('change', function () {
-                    const selectedDate = AppData.coinsDateSelect.value;
-                    fetchReportForDate(selectedDate);
-                });
-            } else {
-                console.warn("Coins date select element not found.");
-            }
-
-            if (AppData.runCoinsAIButton) {
-                AppData.runCoinsAIButton.addEventListener('click', function () {
-                    const selectedDate = AppData.coinsDateSelect.value;
-                    runAIForDate(selectedDate);
-                });
-            } else {
-                console.warn("Run Coins AI button not found.");
-            }
-
-            if (AppData.copyCoinsReportButton) {
-                AppData.copyCoinsReportButton.addEventListener('click', function () {
-                    const reportText = AppData.coinsReportContent.innerText;
-                    copyToClipboard(reportText);
-                    alert("Report copied to clipboard!");
-                });
-            } else {
-                console.warn("Copy Coins Report button not found.");
-            }
-
-            // Helper functions
-            function fetchAvailableDates() {
-                fetch('/coin_monitor/available_dates')
-                    .then(response => response.json())
-                    .then(data => {
-                        AppData.coinsDateSelect.innerHTML = data.available_dates.map(date =>
-                            `<option value="${date}">${date}</option>`).join('');
-                        if (data.available_dates.length > 0) {
-                            fetchReportForDate(data.available_dates[0]);
-                        }
-                    })
-                    .catch(error => console.error('Error fetching available dates:', error));
-            }
-
-            function fetchReportForDate(date) {
-                fetch(`/coin_monitor/report/${date}`)
-                    .then(response => response.text())
-                    .then(report => {
-                        AppData.coinsReportContent.innerHTML = formatReportText(report);
-                    })
-                    .catch(error => console.error('Error fetching report:', error));
-            }
-
-            function runAIForDate(date) {
-                fetch('/coin_monitor/update_report', {
+                // POST request to generate the Portuguese summary
+                fetch('/indicators/api/generate_pt_summary', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ date: date })
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        alert(data.message);
-                        fetchReportForDate(date);
+                    body: JSON.stringify({
+                        doc_id: docId,
+                        release_date: releaseDateFormatted,
+                        en_summary: enSummary,
+                        pt_summary: ptSummary,
+                        key_takeaways: keyTakeaways,
+                        prompt_data: promptData // Include prompt_data in the request body
                     })
-                    .catch(error => console.error('Error running AI agent:', error));
-            }
-
-            function updateTaskEvents() {
-                document.querySelectorAll('.delete-task').forEach(button => {
-                    button.addEventListener('click', function () {
-                        const taskCount = AppData.tasksContainer.querySelectorAll('.task').length;
-                        if (taskCount > 1) {
-                            this.parentElement.remove();
-                        } else {
-                            alert('At least one task is required.');
-                        }
-                    });
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.pt_summary) {
+                        AppData.generatedSummaryContent.textContent = data.pt_summary;
+                        AppData.generatedSummaryModal.style.display = 'block';
+                    } else {
+                        console.warn('Error generating translation. Response data:', data);
+                        alert('Erro ao gerar a tradução. Tente novamente.');
+                    }
+                    hideLoading(); // Unlock the screen
+                })
+                .catch(error => {
+                    console.error('Error generating PT summary:', error);
+                    hideLoading(); // Unlock the screen
                 });
-            }
+            });
 
-            function showLoading() {
-                AppData.overlay.style.display = 'block';
-                AppData.loadingIndicator.style.display = 'block';
-            }
 
-            function hideLoading() {
-                AppData.overlay.style.display = 'none';
-                AppData.loadingIndicator.style.display = 'none';
-            }
+			// Ensure modal can be closed
+			AppData.closeSummaryModal.addEventListener('click', function () {
+				AppData.generatedSummaryModal.style.display = "none";
+			});
 
-            function formatReportText(text) {
-                // Remove first and last line if they contain ```
-                text = text.replace(/^\`\`\`[\r\n]+|[\r\n]+\`\`\`$/g, '');
-                
-                // Replace markdown asterisks and underscores with HTML equivalents
-                text = text
-                    .replace(/\*(.*?)\*/g, '<strong>$1</strong>') // Bold for *text*
-                    .replace(/_(.*?)_/g, '<em>$1</em>') // Italic for _text_
-                    .replace(/---/g, '<hr>') // Horizontal line for ---
-                    .replace(/\n/g, '<br>'); // Line breaks
+			// Add Task logic for indicators
+			if (AppData.addTaskButton) {
+				AppData.addTaskButton.addEventListener('click', function () {
+					const taskCount = AppData.tasksContainer.querySelectorAll('.task').length;
+					if (taskCount < 5) {
+						const newTask = document.createElement('div');
+						newTask.className = 'task';
+						newTask.innerHTML = `<textarea class="task-input"></textarea><button class="delete-task" type="button">-</button>`;
+						AppData.tasksContainer.appendChild(newTask);
+						updateTaskEvents();
+					} else {
+						alert('Maximum 5 tasks allowed.');
+					}
+				});
+			} else {
+				console.warn("Add Task button not found.");
+			}
 
-                return text;
-            }
+			// Save Changes logic for indicators
+			if (AppData.saveChangesButton) {
+				AppData.saveChangesButton.addEventListener('click', function () {
+					const docId = document.getElementById('document-title').getAttribute('data-document-id');
+					const macroEnvDesc = document.getElementById('macro-env-desc').value;
+					const audience = document.getElementById('audience').value;
+					const objective = document.getElementById('objective').value;
+					const constraintsLangUsage = document.getElementById('constraints-lang-usage').value;
+					const constraintsLangStyle = document.getElementById('constraints-lang-style').value;
+					const tasks = Array.from(document.querySelectorAll('.task-input')).map(input => input.value);
 
-            function copyToClipboard(text) {
-                const tempInput = document.createElement('textarea');
-                tempInput.style.position = 'fixed';
-                tempInput.style.opacity = '0';
-                tempInput.value = text;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                document.execCommand('Copy');
-                document.body.removeChild(tempInput);
-            }
+					showLoading();
+					fetch(`/indicators/api/update_all`, {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({
+							prompt_id: docId,
+							macro_env_desc: macroEnvDesc,
+							audience,
+							objective,
+							constraints_lang_usage: constraintsLangUsage,
+							constraints_lang_style: constraintsLangStyle,
+							tasks
+						})
+					})
+						.then(response => response.json())
+						.then(data => {
+							if (data.status === 'success') {
+								alert('Changes saved successfully!');
+							} else {
+								alert('Failed to save changes.');
+							}
+							hideLoading();
+						}).catch(error => {
+							console.error("Error saving changes:", error);
+							hideLoading();
+						});
+				});
+			} else {
+				console.warn("Save Changes button not found.");
+			}
 
-            function fetchDocumentData(docId) {
-                fetch(`/indicators/query/${docId}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        document.getElementById('en-summary').textContent = data.en_summary;
-                        document.getElementById('pt-summary').textContent = data.pt_summary;
-                        document.getElementById('key-takeaways').innerHTML = data.key_takeaways.map(kt => `<h4 class="key-takeaway-title text-lg">${kt.title}</h4><p>${kt.content}</p>`).join('');
-                        AppData.testPromptButton.click();
-                    }).catch(error => {
-                        console.error('Error fetching document data:', error);
-                        hideLoading();
-                    });
-            }
+			// FX Monitor Date Select and Report logic
+			if (AppData.coinsDateSelect) {
+				AppData.coinsDateSelect.addEventListener('change', function () {
+					const selectedDate = AppData.coinsDateSelect.value;
+					fetchReportForDate(selectedDate);
+				});
+			} else {
+				console.warn("Coins date select element not found.");
+			}
 
-            window.onclick = function (event) {
-                if (event.target == AppData.modal) {
-                    AppData.modal.style.display = "none";
-                    fetchDocumentData(document.getElementById('document-title').getAttribute('data-document-id'));
-                }
-                if (AppData.generatedSummaryModal && event.target == AppData.generatedSummaryModal) {
-                    AppData.generatedSummaryModal.style.display = "none";
-                    document.getElementById('header').style.zIndex = 999;
-                }
-            };
+			if (AppData.runCoinsAIButton) {
+				AppData.runCoinsAIButton.addEventListener('click', function () {
+					const selectedDate = AppData.coinsDateSelect.value;
+					runAIForDate(selectedDate);
+				});
+			} else {
+				console.warn("Run Coins AI button not found.");
+			}
 
-            if (AppData.closeSummaryModal) {
-                AppData.closeSummaryModal.addEventListener('click', function () {
-                    AppData.generatedSummaryModal.style.display = "none";
-                    document.getElementById('header').style.zIndex = 999;
-                });
-            } else {
-                console.warn("Close Summary Modal button not found.");
-            }
-        });
+			if (AppData.copyCoinsReportButton) {
+				AppData.copyCoinsReportButton.addEventListener('click', function () {
+					const reportText = AppData.coinsReportContent.innerText;
+					copyToClipboard(reportText);
+					alert("Report copied to clipboard!");
+				});
+			} else {
+				console.warn("Copy Coins Report button not found.");
+			}
 
-    </script>
-    
-    <script src="/static/js/main.js" defer></script>
+			// Helper functions
+			function fetchAvailableDates() {
+				fetch('/coin_monitor/available_dates')
+					.then(response => response.json())
+					.then(data => {
+						AppData.coinsDateSelect.innerHTML = data.available_dates.map(date =>
+							`<option value="${date}">${date}</option>`).join('');
+						if (data.available_dates.length > 0) {
+							fetchReportForDate(data.available_dates[0]);
+						}
+					})
+					.catch(error => console.error('Error fetching available dates:', error));
+			}
+
+			function fetchReportForDate(date) {
+				fetch(`/coin_monitor/report/${date}`)
+					.then(response => response.text())
+					.then(report => {
+						AppData.coinsReportContent.innerHTML = formatReportText(report);
+					})
+					.catch(error => console.error('Error fetching report:', error));
+			}
+
+			function runAIForDate(date) {
+				fetch('/coin_monitor/update_report', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({ date: date })
+				})
+					.then(response => response.json())
+					.then(data => {
+						alert(data.message);
+						fetchReportForDate(date);
+					})
+					.catch(error => console.error('Error running AI agent:', error));
+			}
+
+			function updateTaskEvents() {
+				document.querySelectorAll('.delete-task').forEach(button => {
+					button.addEventListener('click', function () {
+						const taskCount = AppData.tasksContainer.querySelectorAll('.task').length;
+						if (taskCount > 1) {
+							this.parentElement.remove();
+						} else {
+							alert('At least one task is required.');
+						}
+					});
+				});
+			}
+
+			function showLoading() {
+				AppData.overlay.style.display = 'block';
+				AppData.loadingIndicator.style.display = 'block';
+			}
+
+			function hideLoading() {
+				AppData.overlay.style.display = 'none';
+				AppData.loadingIndicator.style.display = 'none';
+			}
+
+			function formatReportText(text) {
+				// Remove first and last line if they contain ```
+				text = text.replace(/^\`\`\`[\r\n]+|[\r\n]+\`\`\`$/g, '');
+				
+				// Replace markdown asterisks and underscores with HTML equivalents
+				text = text
+					.replace(/\*(.*?)\*/g, '<strong>$1</strong>') // Bold for *text*
+					.replace(/_(.*?)_/g, '<em>$1</em>') // Italic for _text_
+					.replace(/---/g, '<hr>') // Horizontal line for ---
+					.replace(/\n/g, '<br>'); // Line breaks
+
+				return text;
+			}
+
+			function copyToClipboard(text) {
+				const tempInput = document.createElement('textarea');
+				tempInput.style.position = 'fixed';
+				tempInput.style.opacity = '0';
+				tempInput.value = text;
+				document.body.appendChild(tempInput);
+				tempInput.select();
+				document.execCommand('Copy');
+				document.body.removeChild(tempInput);
+			}
+
+			function fetchDocumentData(docId) {
+				fetch(`/indicators/query/${docId}`)
+					.then(response => response.json())
+					.then(data => {
+						document.getElementById('en-summary').textContent = data.en_summary;
+						document.getElementById('pt-summary').textContent = data.pt_summary;
+						document.getElementById('key-takeaways').innerHTML = data.key_takeaways.map(kt => `<h4 class="key-takeaway-title text-lg">${kt.title}</h4><p>${kt.content}</p>`).join('');
+						AppData.testPromptButton.click();
+					}).catch(error => {
+						console.error('Error fetching document data:', error);
+						hideLoading();
+					});
+			}
+
+			window.onclick = function (event) {
+				if (event.target == AppData.modal) {
+					AppData.modal.style.display = "none";
+					fetchDocumentData(document.getElementById('document-title').getAttribute('data-document-id'));
+				}
+				if (AppData.generatedSummaryModal && event.target == AppData.generatedSummaryModal) {
+					AppData.generatedSummaryModal.style.display = "none";
+					document.getElementById('header').style.zIndex = 999;
+				}
+			};
+
+			if (AppData.closeSummaryModal) {
+				AppData.closeSummaryModal.addEventListener('click', function () {
+					AppData.generatedSummaryModal.style.display = "none";
+					document.getElementById('header').style.zIndex = 999;
+				});
+			} else {
+				console.warn("Close Summary Modal button not found.");
+			}
+		});
+	</script>
+
 </body>
 </html>

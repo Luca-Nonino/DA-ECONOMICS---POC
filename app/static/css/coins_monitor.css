@@ -1,0 +1,89 @@
+/* Style for the Coins Monitor report content */
+.report-content {
+    white-space: pre-wrap;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #f1f1f1; /* Default for dark mode */
+}
+
+/* Light mode adjustments */
+.light-mode .report-content {
+    color: #1a1a1a;
+}
+
+/* Italic text */
+.report-content em {
+    font-style: italic;
+    color: #f1f1f1; /* Default for dark mode */
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle highlight for dark mode */
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+/* Light mode italic adjustments */
+.light-mode .report-content em {
+    color: #1a1a1a;
+    background-color: rgba(0, 0, 0, 0.05); /* Subtle highlight for light mode */
+}
+
+/* Bold text */
+.report-content strong {
+    font-weight: bold;
+    color: #f1f1f1; /* Default for dark mode */
+    background-color: rgba(255, 255, 255, 0.1); /* Stronger highlight for dark mode */
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+/* Light mode bold adjustments */
+.light-mode .report-content strong {
+    color: #1a1a1a;
+    background-color: rgba(0, 0, 0, 0.1); /* Stronger highlight for light mode */
+}
+
+/* Headings within the report */
+.report-content h4 {
+    font-size: 16px;
+    color: #ffdd57; /* Bright gold for headings to make them stand out */
+    margin-top: 20px;
+}
+
+/* Light mode heading adjustments */
+.light-mode .report-content h4 {
+    color: #b8860b; /* Darker gold for light mode */
+}
+
+/* Subtle horizontal rule styling */
+.report-content hr {
+    border: 0;
+    height: 1px;
+    background: #d2691e; /* Orange color for dark mode */
+    margin: 20px 0;
+}
+
+/* Light mode horizontal rule adjustments */
+.light-mode .report-content hr {
+    background: #8b4513; /* Slightly darker orange for light mode */
+}
+
+/* Enhanced list styling */
+.report-content ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.report-content ul li {
+    margin-bottom: 10px;
+}
+
+/* Highlight important sections */
+.report-content .important {
+    color: #ff6347; /* Tomato red for important notes */
+    font-weight: bold;
+}
+
+/* Light mode important adjustments */
+.light-mode .report-content .important {
+    color: #b22222; /* Firebrick red for light mode */
+}

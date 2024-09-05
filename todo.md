@@ -1,9 +1,11 @@
 
-***TO-DO LIST***
+- Filter Products On Carrefour
+- schedule carrefour
+- automate email send carrefour
+- 
 
-# University Of Michican - document_id = 3
-    Change to web scraping
-# add a propoer header with a proper app name and menu
-# Adjust Routing
-     datagro.tech/solutions/DAE/ai-economist
-# STACK CONTAINERS VERTICALLY INSTEAD OF HORIZONTALLY
+
+
+- Adjust Lateral Menu Spacing between sections + Indicators Section Name
+- Adjust Ordering/Date Formatting on the dropdown for FX Monitor
+- Copy to Clipboard must retain source formatting

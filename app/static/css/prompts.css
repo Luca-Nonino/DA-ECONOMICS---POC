@@ -1,0 +1,94 @@
+.edit-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+/* Label styles */
+.edit-field label {
+    margin-bottom: 5px;
+    color: #f1f1f1; /* Default for dark mode */
+}
+
+/* Light mode label adjustments */
+.light-mode .edit-field label {
+    color: #1a1a1a;
+}
+
+/* Textarea styles */
+.edit-field textarea {
+    padding: 5px;
+    border: 1px solid #d2691e;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    min-height: 40px;
+    resize: vertical;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #2a2a2a; /* Updated for better dark mode consistency */
+    color: #f1f1f1; /* Ensures readability in dark mode */
+}
+
+/* Light mode textarea adjustments */
+.light-mode .edit-field textarea {
+    background-color: #f0f0f0;
+    color: #1a1a1a;
+}
+
+/* Task container styles */
+.task {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Task textarea styles */
+.task textarea {
+    flex: 2;
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #d2691e;
+    border-radius: 4px;
+    resize: vertical;
+    background-color: #2a2a2a; /* Updated for better dark mode consistency */
+    color: #f1f1f1; /* Ensures readability in dark mode */
+}
+
+/* Light mode task textarea adjustments */
+.light-mode .task textarea {
+    background-color: #f0f0f0;
+    color: #1a1a1a;
+}
+
+/* Task button styles */
+.task button {
+    flex: 0;
+    background-color: #d2691e;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Task button hover state */
+.task button:hover {
+    background-color: #a0522d;
+}
+
+/* Ensuring container consistency across modes */
+.box {
+    background-color: #2a2a2a; /* Updated for better dark mode consistency */
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #d2691e;
+    border-radius: 5px;
+}
+
+/* Light mode box adjustments */
+.light-mode .box {
+    background-color: #f0f0f0;
+    color: #1a1a1a;
+}

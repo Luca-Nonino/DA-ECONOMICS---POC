@@ -14,10 +14,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Add the root directory to the Python path
 sys.path.append(BASE_DIR)
 
+# Import dependencies from other modules
 from scripts.utils.auth import get_current_user
 from scripts.pipelines.orchestrator import run_pipeline
-from app.endpoints.api import api_app
+from app.endpoints.api import api_router  # Correct import from `api.py`
 from app.endpoints.automation import router as automation_router  # Import the automation router
+from app.endpoints.coin_monitor import router as coin_monitor_router  # Import coin monitor router
 
 # Configure logging
 log_directory = os.path.join(BASE_DIR, 'app', 'logs')
@@ -34,23 +36,27 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-# Database path logging
+# Log database path
 db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
 logger.info(f"Database path: {db_path}")
 logger.info(f"File permissions for {db_path}: {oct(os.stat(db_path).st_mode)[-3:]}")
 
+# Initialize FastAPI app
 app = FastAPI()
 
 # Mount static files for serving downloads from automation data directory
 AUTOMATIONS_DATA_DIR = os.path.join(BASE_DIR, 'app', 'automations', 'grains', 'data')
 app.mount("/download", StaticFiles(directory=AUTOMATIONS_DATA_DIR), name="download")
 
+# Mount static files for general assets (like JS, CSS)
 app.mount("/static", StaticFiles(directory=os.path.join(BASE_DIR, 'app', 'static')), name="static")
 
+# Include API router (instead of mount) for `/generate_pt_summary` to show up in the main docs
+app.include_router(api_router, prefix="/indicators/api")  # Use `api_router` now, not `api_app`
 
-# Mount API and automation routers
-app.mount("/indicators/api", api_app)
+# Include the other routers
 app.include_router(automation_router)
+app.include_router(coin_monitor_router)
 
 # Configure Jinja2 templates
 templates_directory = os.path.join(BASE_DIR, 'app', 'templates')
@@ -58,29 +64,33 @@ logger.info(f"Template directory path: {templates_directory}")
 templates = Jinja2Templates(directory=templates_directory)
 
 
+# Root redirection to indicators list
 @app.get("", response_class=HTMLResponse)
 async def redirect_to_list():
     return RedirectResponse(url="/indicators/list")
+
 
 @app.get("/", response_class=HTMLResponse)
 async def root():
     return RedirectResponse(url="/indicators/list")
 
+
+# List all available routes in the app
 @app.get("/routes", response_class=JSONResponse)
 async def list_routes():
     return {"routes": [route.path for route in app.router.routes]}
 
+
+# Indicators list endpoint that renders HTML using Jinja2 templates
 @app.get("/indicators/list", response_class=HTMLResponse)
 async def indicators_list(request: Request, user: dict = Depends(get_current_user)):
     try:
-        # Adjust the logging based on what `get_current_user` returns.
         if isinstance(user, dict):
             logger.info(f"Rendering /indicators/list for user: {user['username']}")
         elif isinstance(user, tuple):
             logger.info(f"Rendering /indicators/list for user: {user[0]}")
 
         db_path = os.path.join(BASE_DIR, 'data', 'database', 'database.sqlite')
-        logger.info(f"Connecting to database at {db_path}")
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
@@ -101,7 +111,6 @@ async def indicators_list(request: Request, user: dict = Depends(get_current_use
             })
 
         conn.close()
-        logger.info("Returning template response")
         return templates.TemplateResponse("base.html", {
             "request": request,
             "country_sources_documents": country_sources_documents
@@ -113,6 +122,8 @@ async def indicators_list(request: Request, user: dict = Depends(get_current_use
         logger.error(f"Error fetching indicators list: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
+
+# Query specific document data based on document ID and date
 @app.get("/indicators/query/{doc_id}", response_class=JSONResponse)
 async def query_source(request: Request, doc_id: int, date: Optional[str] = None):
     conn = None
@@ -163,6 +174,8 @@ async def query_source(request: Request, doc_id: int, date: Optional[str] = None
         if conn:
             conn.close()
 
+
+# Update specific fields in the prompts table
 @app.post("/indicators/api/update_field")
 async def update_field(data: dict):
     try:
@@ -181,6 +194,8 @@ async def update_field(data: dict):
         if conn:
             conn.close()
 
+
+# Update tasks in the prompts table
 @app.post("/indicators/api/update_tasks")
 async def update_tasks(data: dict):
     try:
@@ -199,6 +214,8 @@ async def update_tasks(data: dict):
         if conn:
             conn.close()
 
+
+# Run the pipeline for a specific indicator ID
 @app.get("/indicators/update", response_class=HTMLResponse)
 async def update_source(id: int = Query(...)):
     logger.info(f"Received request to update source with ID: {id}")
@@ -209,11 +226,7 @@ async def update_source(id: int = Query(...)):
     except Exception as e:
         logger.error(f"Error updating source with ID {id}: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail="Internal Server Error")
-    
-from app.endpoints.coin_monitor import router as coin_monitor_router
 
-# Include the coin_monitor router
-app.include_router(coin_monitor_router)
 
 if __name__ == "__main__":
     import uvicorn

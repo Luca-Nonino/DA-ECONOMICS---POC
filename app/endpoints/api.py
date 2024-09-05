@@ -1,26 +1,39 @@
 import logging
 import os
 import sqlite3
-from fastapi import FastAPI, Request, Query, HTTPException
+from fastapi import APIRouter, Request, Query, HTTPException
 from fastapi.responses import JSONResponse
 from datetime import datetime
 import time
 
 logger = logging.getLogger(__name__)
 import sys
-import os
 
 # Add the parent directory to sys.path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app.config import BASE_DIR, client
 
-api_app = FastAPI()
+# Use APIRouter instead of FastAPI for mounting in main.py
+api_router = APIRouter()
 
 # Set up file handler for logging errors
 file_handler = logging.FileHandler(os.path.join(BASE_DIR, 'app/logs/errors.log'))
 file_handler.setLevel(logging.ERROR)
 logger.addHandler(file_handler)
+
+
+from pydantic import BaseModel
+from typing import List
+
+class GenerateSummaryRequest(BaseModel):
+    doc_id: int
+    release_date: str
+    en_summary: str
+    pt_summary: str
+    key_takeaways: List[dict]
+    prompt_data: dict
+
 
 def log_all_documents(cursor):
     cursor.execute("SELECT document_id, document_name FROM documents_table")
@@ -31,7 +44,7 @@ def fetch_release_dates(cursor, document_id):
     cursor.execute("SELECT DISTINCT CAST(release_date AS INTEGER) FROM key_takeaways_table WHERE document_id = ? ORDER BY release_date DESC", (document_id,))
     return [row[0] for row in cursor.fetchall()]
 
-@api_app.get("/", response_class=JSONResponse)
+@api_router.get("/", response_class=JSONResponse)
 async def query_source_api(document_id: int, date: str):
     conn = None
     try:
@@ -91,7 +104,7 @@ async def query_source_api(document_id: int, date: str):
         if conn:
             conn.close()
 
-@api_app.post("/update_all")
+@api_router.post("/update_all")
 async def update_all(data: dict):
     try:
         db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')
@@ -132,7 +145,7 @@ async def update_all(data: dict):
         if conn:
             conn.close()
 
-@api_app.get("/prompts/{doc_id}", response_class=JSONResponse)
+@api_router.get("/prompts/{doc_id}", response_class=JSONResponse)
 async def get_prompts(doc_id: int):
     conn = None
     try:
@@ -180,15 +193,14 @@ async def get_prompts(doc_id: int):
         if conn:
             conn.close()
 
-@api_app.post("/generate_pt_summary")
-async def generate_pt_summary(request: Request):
-    data = await request.json()
-    doc_id = data['doc_id']
-    release_date = data['release_date']
-    en_summary = data['en_summary']
-    pt_summary = data['pt_summary']
-    key_takeaways = data['key_takeaways']
-    prompt_data = data['prompt_data']
+@api_router.post("/generate_pt_summary")
+async def generate_pt_summary(data: GenerateSummaryRequest):
+    doc_id = data.doc_id
+    release_date = data.release_date
+    en_summary = data.en_summary
+    pt_summary = data.pt_summary
+    key_takeaways = data.key_takeaways
+    prompt_data = data.prompt_data
 
     try:
         db_path = os.path.join(BASE_DIR, 'data/database/database.sqlite')

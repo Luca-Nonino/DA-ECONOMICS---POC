@@ -1,0 +1,101 @@
+.nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    border: 1px solid #d2691e;
+    background-color: inherit;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+/* Default text color for dark mode */
+.nav-bar .country, 
+.nav-bar .source, 
+.nav-bar .indicator-link {
+    color: #f1f1f1;
+}
+
+/* Light mode adjustments */
+.light-mode .nav-bar .country, 
+.light-mode .nav-bar .source, 
+.light-mode .nav-bar .indicator-link {
+    color: #1a1a1a;
+}
+
+/* Ensuring visibility of the selected item */
+.nav-bar .indicator-link.selected {
+    color: #d2691e;
+    font-style: italic;
+}
+
+/* Ensuring hover effects are visible in both modes */
+.nav-bar .indicator-link:hover {
+    color: #228b22;
+}
+
+/* Additional styling for light mode to fix visibility issues */
+.light-mode .nav-bar .country {
+    color: #1a1a1a; /* Dark text for readability */
+}
+
+.light-mode .nav-bar .source::before {
+    color: #d2691e; /* Retain the orange circle in light mode */
+}
+
+.light-mode .nav-bar .source {
+    color: #1a1a1a; /* Dark text for readability */
+}
+
+.light-mode .nav-bar .indicator-link::before {
+    color: #1a1a1a; /* Dark color for the star in light mode */
+}
+
+.nav-bar .country {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-bottom: 1px solid #228b22;
+    padding-bottom: 5px;
+    padding: 10px; /* Padding for better visibility */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.nav-bar .source::before {
+    content: "\25CF "; /* Black circle before source */
+    color: #d2691e; /* Orange color for the circle */
+}
+
+.nav-bar .source {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.nav-bar .indicator-link::before {
+    content: "\2605 "; /* Star symbol before documents */
+}
+
+.nav-bar .indicator-link {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.nav-bar .indicator-separator {
+    color: #228b22;
+    text-align: center;
+    margin: 5px 0;
+    width: 100%;
+    height: 1px;
+    background-color: #228b22;
+}

@@ -101,6 +101,31 @@ def analyse_coins_1(current_date):
     dxy_output_file = os.path.join(output_dir, f"{date_str}_2.csv")
     dxy_pct_changes.to_csv(dxy_output_file, index=False)
 
+    # BRL/USD Calculation and output
+    def calculate_brl_usd(df):
+        brl_usd_df = df[df['ticker'] == 'USDBRL'].copy()
+        brl_usd_df['ticker'] = 'BRLUSD'
+
+        # Invert the prices to get BRL/USD from USD/BRL
+        brl_usd_df['Last_Price'] = 1 / brl_usd_df['Last_Price']
+        brl_usd_df['PX_CLOSE_1D'] = 1 / brl_usd_df['PX_CLOSE_1D']
+        brl_usd_df['PX_CLOSE_2D'] = 1 / brl_usd_df['PX_CLOSE_2D']
+
+        # Invert the percentage changes as well
+        brl_usd_df['CHG_PCT_1D'] = -brl_usd_df['CHG_PCT_1D']
+        brl_usd_df['CHG_PCT_5D'] = -brl_usd_df['CHG_PCT_5D']
+        brl_usd_df['CHG_PCT_MTD'] = -brl_usd_df['CHG_PCT_MTD']
+        brl_usd_df['CHG_PCT_YTD'] = -brl_usd_df['CHG_PCT_YTD']
+        brl_usd_df['CHG_PCT_3M'] = -brl_usd_df['CHG_PCT_3M']
+        brl_usd_df['CHG_PCT_6M'] = -brl_usd_df['CHG_PCT_6M']
+
+        return brl_usd_df
+
+    # Calculate and save BRL/USD data
+    brl_usd_df = calculate_brl_usd(non_dxy_df)
+    brl_usd_output_file = os.path.join(output_dir, f"{date_str}_5.txt")
+    brl_usd_df.to_csv(brl_usd_output_file, index=False, sep='\t')
+
     # Function to get top and worst performers per timeframe and per type
     def get_top_and_worst_performers(df, timeframe):
         # Ensure USD/BRL is always included
@@ -155,6 +180,7 @@ def analyse_coins_1(current_date):
 
     print(f"Non-DXY data saved to {non_dxy_output_file}")
     print(f"DXY data saved to {dxy_output_file}")
+    print(f"BRL/USD data saved to {brl_usd_output_file}")
     print(f"Top and worst performers saved to {top_and_worst_performers_file}")
 
 if __name__ == "__main__":

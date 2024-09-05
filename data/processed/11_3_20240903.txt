@@ -1,0 +1,17 @@
+**Title:**
+{'Existing-Home Sales: July 2024'}
+
+**Overview:**
+||The report details the performance of existing-home sales in July 2024, indicating a 1.3% increase from June, halting a four-month decline. However, year-over-year sales decreased by 2.5%. The median sales price rose by 4.2% compared to July 2023, marking the 13th consecutive month of price gains. Inventory levels showed a slight increase, with unsold homes representing a 4.0-month supply at the current sales pace. The report also highlights regional variations in sales and prices, as well as trends in first-time buyers and cash transactions.||
+
+**Key Takeaways:**
+- {**Sales Volume**}: [Existing-home sales rose to a seasonally adjusted annual rate of 3.95 million in July 2024, a 1.3% increase from June, but a 2.5% decline from July 2023 (4.05 million).]
+- {**Median Sales Price**}: [The median existing-home price reached $422,600, reflecting a 4.2% increase from July 2023, indicating sustained upward pressure on home prices.]
+- {**Inventory Levels**}: [Total inventory of unsold existing homes increased by 0.8% from June to 1.33 million units, equivalent to a 4.0-month supply, slightly down from 4.1 months in June but up from 3.3 months in July 2023.]
+- {**Regional Sales Trends**}: [Sales increased in three out of four major U.S. regions, with the Northeast showing a 4.3% rise from June, while the Midwest remained unchanged. Year-over-year, sales fell in the Midwest and South.]
+- {**First-Time Buyers**}: [First-time buyers accounted for 29% of sales in July, unchanged from June but down from 30% in July 2023, indicating a slight decline in market entry by new buyers.]
+
+**Macro Environment Impacts:**
+||The July 2024 existing-home sales data reflects a cautiously optimistic outlook for the housing market, with a modest increase in sales volume signaling potential stabilization after a period of decline. The 4.2% rise in median prices suggests ongoing demand pressures, likely influenced by lower mortgage rates, which averaged 6.49% as of mid-August. This environment may encourage further consumer engagement in the housing market, although the year-over-year sales decline indicates lingering challenges. 
+
+From a monetary policy perspective, the Federal Reserve may interpret these trends as a sign of improving affordability and consumer confidence, which could influence their decisions regarding interest rates. The Taylor Rule suggests that if inflationary pressures persist alongside rising home prices, the Fed may need to consider tightening monetary policy to prevent overheating in the housing market. Additionally, the increase in inventory levels could provide more options for buyers, potentially alleviating some upward pressure on prices in the coming months. Overall, while the data presents a mixed picture, it underscores the importance of monitoring housing market dynamics as they relate to broader economic conditions and monetary policy adjustments.||

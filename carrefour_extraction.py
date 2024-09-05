@@ -1,3 +1,4 @@
+
 import os
 import pandas as pd
 from selenium import webdriver
@@ -9,6 +10,8 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 from datetime import datetime
 from webdriver_manager.chrome import ChromeDriverManager
+import asyncio
+import aiohttp
 
 # Define output directory at the root level with a single data folder
 output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), 'data-carrefour'))
@@ -21,7 +24,7 @@ chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
 # Initialize the Chrome driver using webdriver_manager
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
-def disable_cep_popup():
+async def disable_cep_popup():
     try:
         # Wait for the popup to appear and insert the CEP
         WebDriverWait(driver, 10).until(
@@ -42,7 +45,7 @@ def disable_cep_popup():
     except Exception as e:
         print(f"Failed to insert CEP: {e}")
 
-def fetch_data_using_javascript():
+async def fetch_data_using_javascript():
     try:
         # Use JavaScript to fetch product names and prices directly from the DOM
         script = """
@@ -73,7 +76,24 @@ def fetch_data_using_javascript():
         print(f"[JavaScript Method] Error: {e}")
         return []
 
-def main():
+async def fetch_product_data(term, base_url):
+    search_url = base_url.format(term.replace(' ', '+'))
+
+    # Load the page
+    driver.get(search_url)
+    
+    # Give the page some time to load
+    time.sleep(5)  # This can be adjusted based on page load speed
+    
+    # Disable the CEP popup
+    await disable_cep_popup()
+    
+    # Fetch data (current_date, product_name, price)
+    data_js = await fetch_data_using_javascript()
+    
+    return data_js
+
+async def main():
     # List of search terms
     search_terms = [
         "Filé de Frango Peito Congelado sem Osso Sadia 1Kg",
@@ -123,7 +143,171 @@ def main():
         "Iogurte Natural Integral Batavo 170g",
         "Leite Condensado MOÇA Lata 395g",
         "Leite Condensado Semidesnatado Piracanjuba Caixa 395g",
-        "Creme de Leite NESTLÉ 200g"
+        "Creme de Leite NESTLÉ 200g",
+            # Frango
+        "Filé de Frango Sadia",
+        "Peito de Frango Sadia",
+        "Frango Sadia",
+        "Sassami Sadia",
+        "Sobrecoxa de Frango Sadia",
+        "Frango Congelado Sadia",
+        "Asa de Frango Sadia",
+        "Coxinha da Asa Sadia",
+        "Pedaços de Frango Sadia",
+        
+        # Carne Bovina
+        "Picanha Bovina",
+        "Picanha",
+        "Filé Mignon",
+        "Cordão de Filé Mignon",
+        "Contra Filé",
+        "Alcatra",
+        "Coxão Duro",
+        "Patinho Bovino",
+        "Patinho Moído",
+        "Paleta Bovina",
+        "Músculo Bovina",
+        "Costela Bovina",
+        "Bife de Fígado",
+        "Cupim Bovino",
+        "Fraldinha",
+        "Maminha",
+        "Acém Bovino",
+        "Lagarto Bovino",
+        "Ossobuco",
+        "Capa de Filé",
+        
+        # Carne Suína
+        "Lombo Suíno",
+        "Lombo Assa Fácil",
+        "Filé Mignon Suíno",
+        "Pernil Suíno",
+        "Picanha Suína",
+        "Costela Suína",
+        
+        # Linguiça e Bacon
+        "Linguiça Calabresa",
+        "Linguiça Perdigão",
+        "Linguiça Toscana",
+        "Bacon Sadia",
+        "Linguiça Suína",
+        
+        # Leites
+        "Leite Integral Piracanjuba",
+        "Leite Piracanjuba",
+        "Leite Desnatado Piracanjuba",
+        "Leite Semidesnatado Piracanjuba",
+        "Leite Zero Lactose Piracanjuba",
+        "Leite em Pó Ninho",
+        "Leite Ninho",
+        
+        # Queijos
+        "Manteiga Président",
+        "Queijo Parmesão Président",
+        "Queijo Mussarela Lac Lelo",
+        "Queijo Prato Président",
+        "Queijo Minas",
+        "Requeijão Catupiry",
+        
+        # Iogurtes
+        "Iogurte Nestlé",
+        "Iogurte Integral Nestlé",
+        "Iogurte Batavo",
+        "Iogurte Integral Batavo",
+        
+        # Leite Condensado e Creme de Leite
+        "Leite Condensado MOÇA",
+        "Leite Condensado Piracanjuba",
+        "Creme de Leite Nestlé",
+        "Creme NESTLÉ",
+        "Leite Nestlé",
+        
+        # Additional Terms
+        "Picanha Suína",
+        "Filé Mignon Suíno",
+        "Costela Bovina Congelada",
+        "Coxão Mole",
+        "Picanha Assada",
+        "Alcatra Assada",
+        "Contra Filé Assado",
+        "Carne Moída Bovina",
+        "Carne Bovina Swift",
+        "Carne Suína Swift",
+        "Músculo Bovino Carrefour",
+        "Patinho Carrefour",
+        "Linguiça Suína Swift",
+        "Queijo Mussarela Swift",
+        "Leite Integral Swift",
+        "Manteiga com Sal",
+        "Queijo Prato",
+        "Queijo Minas Frescal",
+        "Requeijão Cremoso",
+        "Bacon Defumado",
+        "Linguiça Toscana Swift",
+        "Creme de Leite",
+        "Leite MOÇA",
+        "Iogurte Natural",
+        "Linguiça Swift",
+        "Frango Swift",
+        "Picanha Carrefour",
+        "Costela Swift",
+        "Costela Suína Swift",
+        "Linguiça Suína Sadia",
+        "Linguiça Perdigão",
+        "Leite Piracanjuba Zero Lactose",
+        "Queijo Parmesão",
+        "Filé de Frango Swift",
+        "Carne Bovina Carrefour",
+        "Carne Suína Carrefour",
+        "Filé Mignon Carrefour",
+        "Fraldinha Carrefour",
+        "Picanha Carrefour",
+        "Linguiça Carrefour",
+        "Bife de Fígado Carrefour",
+        "Carne Moída Carrefour",
+        "Costela Carrefour",
+        "Leite Desnatado Carrefour",
+        "Manteiga Carrefour",
+        "Queijo Mussarela Carrefour",
+        "Requeijão Carrefour",
+        "Linguiça Toscana Carrefour",
+        "Cupim Carrefour",
+        "Lagarto Carrefour",
+        "Maminha Carrefour",
+        "Acém Carrefour",
+        "Picanha Bovina Swift",
+        "Contra Filé Swift",
+        "Patinho Swift",
+        "Coxão Mole Swift",
+        "Paleta Swift",
+        "Músculo Swift",
+        "Costela Bovina Swift",
+        "Bife de Fígado Swift",
+        "Ossobuco Swift",
+        "Capa de Filé Swift",
+        "Lombo Suíno Swift",
+        "Filé Mignon Suíno Swift",
+        "Pernil Suíno Swift",
+        "Picanha Suína Swift",
+        "Costela Suína Swift",
+        "Linguiça Calabresa Swift",
+        "Bacon Swift",
+        "Linguiça Toscana Swift",
+        "Leite Integral Swift",
+        "Leite Desnatado Swift",
+        "Leite Semidesnatado Swift",
+        "Leite Zero Lactose Swift",
+        "Leite Ninho Swift",
+        "Manteiga Swift",
+        "Queijo Parmesão Swift",
+        "Queijo Mussarela Swift",
+        "Queijo Prato Swift",
+        "Queijo Minas Swift",
+        "Requeijão Cremoso Swift",
+        "Iogurte Integral Swift",
+        "Iogurte Natural Swift",
+        "Leite Condensado Swift",
+        "Creme de Leite Swift"
     ]
     
     # Base URL
@@ -132,35 +316,33 @@ def main():
     # Create an empty DataFrame to hold the results
     all_data = pd.DataFrame(columns=["date", "product_name", "price"])
     
-    # Loop through search terms
-    for term in search_terms:
-        search_url = base_url.format(term.replace(' ', '+'))
+    # Run 3 requests at a time
+    for i in range(0, len(search_terms), 3):
+        tasks = []
+        for term in search_terms[i:i+3]:  # Grouping 3 terms at a time
+            tasks.append(fetch_product_data(term, base_url))
         
-        # Load the page
-        driver.get(search_url)
+        # Run the 3 requests concurrently
+        results = await asyncio.gather(*tasks)
         
-        # Give the page some time to load
-        time.sleep(5)  # This can be adjusted based on page load speed
-        
-        # Disable the CEP popup
-        disable_cep_popup()
-        
-        # Fetch data (current_date, product_name, price)
-        data_js = fetch_data_using_javascript()
-        
-        # Append the data to the DataFrame
-        if data_js:
-            df = pd.DataFrame(data_js, columns=["date", "product_name", "price"])
-            all_data = pd.concat([all_data, df], ignore_index=True)
+        # Process the results
+        for result in results:
+            if result:
+                df = pd.DataFrame(result, columns=["date", "product_name", "price"])
+                all_data = pd.concat([all_data, df], ignore_index=True)
     
-    # Save the DataFrame to a CSV file
+    # Save the DataFrame to a CSV file, after removing duplicates
     current_date = datetime.now().strftime("%Y%m%d")
     os.makedirs(output_dir, exist_ok=True)  # Create the data directory if it doesn't exist
     output_file = os.path.join(output_dir, f"prices_carrefour_{current_date}.csv")
-    
+
+    # Remove duplicates before saving the file
+    all_data = all_data.drop_duplicates()
+
+    # Save the cleaned data to CSV
     all_data.to_csv(output_file, index=False, encoding="utf-8")
     print(f"Data saved to {output_file}")
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
     driver.quit()

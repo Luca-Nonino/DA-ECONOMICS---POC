@@ -58,19 +58,17 @@ def get_prompt(document_id):
                 f"#AUDIENCE:\n{prompt_dict['AUDIENCE']}\n\n"
                 f"#OBJECTIVE:\n{prompt_dict['OBJECTIVE']}\n\n"
                 f"#FORMAT_INPUT:\n{prompt_dict['FORMAT_INPUT']}\n\n"
-                f"#OVERVIEW:\n{prompt_dict['OVERVIEW_ENCLOSURE']}{prompt_dict['OVERVIEW_TITLE_ENCLOSURE']}{prompt_dict['OVERVIEW_TITLE']}{prompt_dict['OVERVIEW_TITLE_ENCLOSURE']}{prompt_dict['OVERVIEW_DESCRIPTION']}{prompt_dict['OVERVIEW_ENCLOSURE']}\n\n"
-                f"#KEY_TAKEAWAYS:\n{prompt_dict['KEY_TAKEAWAYS_ENCLOSURE']}{prompt_dict['KEY_TAKEAWAYS_TITLE_ENCLOSURE']}{prompt_dict['KEY_TAKEAWAYS_TITLE']}{prompt_dict['KEY_TAKEAWAYS_TITLE_ENCLOSURE']}{prompt_dict['KEY_TAKEAWAYS_DESCRIPTION']}{prompt_dict['KEY_TAKEAWAYS_ENCLOSURE']}\n\n"
-                f"#MACRO_ENVIRONMENT_IMPACTS:\n{prompt_dict['MACRO_ENVIRONMENT_IMPACTS_ENCLOSURE']}{prompt_dict['MACRO_ENVIRONMENT_IMPACTS_TITLE']}{prompt_dict['MACRO_ENVIRONMENT_IMPACTS_ENCLOSURE']}{prompt_dict['MACRO_ENVIRONMENT_IMPACTS_DESCRIPTION']}{prompt_dict['MACRO_ENVIRONMENT_IMPACTS_ENCLOSURE']}\n\n"
+                f"#OVERVIEW:\n{prompt_dict['OVERVIEW_TITLE']} {prompt_dict['OVERVIEW_DESCRIPTION']}\n\n"
+                f"#KEY_TAKEAWAYS:\n{prompt_dict['KEY_TAKEAWAYS_TITLE']} {prompt_dict['KEY_TAKEAWAYS_DESCRIPTION']}\n\n"
+                f"#MACRO_ENVIRONMENT_IMPACTS:\n{prompt_dict['MACRO_ENVIRONMENT_IMPACTS_TITLE']} {prompt_dict['MACRO_ENVIRONMENT_IMPACTS_DESCRIPTION']}\n\n"
                 "#TASKS:\n"
                 f"1. {prompt_dict['TASKS_1']}\n"
                 f"2. {prompt_dict['TASKS_2']}\n"
                 f"3. {prompt_dict['TASKS_3']}\n"
                 f"4. {prompt_dict['TASKS_4']}\n"
-                f"5. {prompt_dict['TASKS_5']}\n\n"
-                f"#CONSTRAINTS_LANGUAGE_USAGE:\n{prompt_dict['CONSTRAINTS_LANGUAGE_USAGE']}\n\n"
-                f"#CONSTRAINTS_LANGUAGE_STYLE:\n{prompt_dict['CONSTRAINTS_LANGUAGE_STYLE']}\n\n"
-                f"#CONSTRAINTS_SEARCH_TOOL_USE:\n{prompt_dict['CONSTRAINTS_SEARCH_TOOL_USE']}"
+                f"5. {prompt_dict['TASKS_5']}"
             )
+
             print(formatted_prompt)  # Added print statement to display the output
         else:
             print("Document ID not found")
