@@ -1,52 +1,62 @@
+CRUCIAL: The output must be exactly in the format bellow so we can parse into the frontend!!
+
 🐉 *Morning Call - FX - Fechamento do dia 16 de Agosto de 2024*
 
 _Dados referentes ao BACEN - PETAX_
 
 ---
-*Movimentação do Real/Dólar (BRL/USD):*
-   - *O Real desvalorizou-se* frente ao Dólar, fechando o dia em *R$ 5,4632*, com uma leve queda de 📉 *-0,03%* em relação ao fechamento anterior. No acumulado do mês, o Real apresenta uma desvalorização de 📉 *-1,43%* frente ao Dólar, refletindo a volatilidade do mercado emergente.
+
+*Movimentação do Real contra o Dólar (BRL/USD):*
+   - *O Real (BRL) se desvalorizou* frente ao Dólar (USD), fechando o dia a *R$ 5,4632*, com uma leve queda de 📉 *-0,03%* em relação ao fechamento anterior. No acumulado do mês, o Real (BRL) apresenta uma desvalorização de 📉 *-1,43%* contra o Dólar (USD), refletindo a volatilidade do mercado emergente.
 
 *Movimentação do Dólar Global (DXY):*
-   - *O índice DXY fechou em 102,463*, apresentando uma desvalorização de 📉 *-0,50%* no dia. Nos últimos 5 dias, o DXY desvalorizou-se 📉 *-0,65%*, com destaque para o par USD/MXN que se valorizou 📈 *+0,33%*, enquanto o USD/JPY desvalorizou-se 📉 *-0,52%*.
+   - *O índice DXY fechou em 102,463*, apresentando uma desvalorização de 📉 *-0,50%* no dia. Nos últimos 5 dias, o DXY desvalorizou-se 📉 *-0,65%*, com destaque para o _Peso Mexicano (MXN), que se desvalorizou contra o Dólar (USD)_ 📈 *+0,33%*, enquanto o _Dólar (USD) se desvalorizou contra o Iene Japonês (JPY)_ 📉 *-0,52%*.
 
 *Movimentação do Real em Relação a Outras Moedas:*
-   - *O Peso Mexicano (MXN) se valorizou* 📈 *+0,21%* frente ao Dólar nos últimos 5 dias, enquanto o Real desvalorizou-se 📉 *-0,03%* no mesmo período. No acumulado do ano, o Real continua a mostrar fraqueza, desvalorizando-se 📉 *-1,43%* frente ao Dólar, superando apenas o Rand Sul-Africano (ZAR).
+   - _O Peso Mexicano (MXN) se valorizou_ 📈 *+0,21%* frente ao Dólar (USD) nos últimos 5 dias, enquanto o Real (BRL) se desvalorizou 📉 *-0,03%* no mesmo período. No acumulado do ano, o Real continua a mostrar fraqueza, desvalorizando-se 📉 *-1,43%* frente ao Dólar (USD), superando apenas o Rand Sul-Africano (ZAR).
+
 ---
+
 *Análise de Movimentos Expressivos:*
 
    *5 Dias:*
-   - O Peso Mexicano (MXN) fechou a *18,6302*, com valorização de 📈 *+0,21%* frente ao Dólar, enquanto o Real (BRL) se desvalorizou 📉 *-0,03%*, fechando a *5,4632*.
+   - _O Peso Mexicano (MXN) fechou a 18,6302 contra o Dólar (USD)_, com valorização de 📈 *+0,21%*, enquanto o _Real (BRL) se desvalorizou_ 📉 *-0,03%*, fechando a *5,4632*.
 
-   *1 Mes | MTD:*
-   - O Iene Japonês (JPY) sofreu uma desvalorização marcante de 📉 *-5,63%* frente ao Dólar, fechando o dia a *148,14*. O Peso Mexicano (MXN) valorizou-se 📈 *+4,33%*, fechando a *18,6302*.
+   *1 Mês | MTD:*
+   - _O Iene Japonês (JPY) sofreu uma desvalorização marcante de_ 📉 *-5,63%* _contra o Dólar (USD)_, fechando o dia a *148,14*. _O Peso Mexicano (MXN) valorizou-se_ 📈 *+4,33%* _contra o Dólar (USD)_, fechando a *18,6302*.
 
    *3 Meses:*
-   - A Libra Esterlina (GBP) fechou a *1,2906*, com valorização de 📈 *+1,78%*, enquanto o Iene Japonês (JPY) se desvalorizou 📉 *-4,59%*, fechando o dia a *148,14*.
+   - _A Libra Esterlina (GBP) fechou a 1,2906 contra o Dólar (USD)_, com valorização de 📈 *+1,78%*, enquanto o _Iene Japonês (JPY) se desvalorizou_ 📉 *-4,59%* _contra o Dólar (USD)_, fechando o dia a *148,14*.
 
    *6 Meses:*
-   - O Peso Mexicano (MXN) valorizou-se fortemente, fechando a *18,6302*, com alta de 📈 *+11,58%* frente ao Dólar. O Rand Sul-Africano (ZAR) se desvalorizou 📉 *-5,80%*, fechando a *17,887*.
+   - _O Peso Mexicano (MXN) valorizou-se fortemente contra o Dólar (USD)_, fechando a *18,6302*, com alta de 📈 *+11,58%*. _O Rand Sul-Africano (ZAR) se desvalorizou_ 📉 *-5,80%* _contra o Dólar (USD)_, fechando a *17,887*.
 
    *YTD:*
-   - O Peso Mexicano (MXN) acumulou valorização, fechando a *18,6302*, com alta de 📈 *+9,29%* frente ao Dólar. O Rand Sul-Africano (ZAR) registrou desvalorização, fechando o dia a *17,887*, com perda de 📉 *-3,70%*.
+   - _O Peso Mexicano (MXN) acumulou valorização contra o Dólar (USD)_, fechando a *18,6302*, com alta de 📈 *+9,29%*. _O Rand Sul-Africano (ZAR) registrou desvalorização contra o Dólar (USD)_, fechando o dia a *17,887*, com perda de 📉 *-3,70%*.
+
 ---
+
 🔔 *Atenção:* Com base nas variações expressivas observadas recentemente, é importante acompanhar os seguintes pares de moedas nos próximos dias:
 
-- *USD/JPY*: Fechou a *148,14*, desvalorização 📉 *-5,63%* nos últimos meses.
-- *USD/MXN*: Fechou a *18,6302*, valorização 📈 *+9,29%* no acumulado do ano.
-- *USD/CHF*: Fechou a *0,8686*, desvalorização 📉 *-3,99%* significativa nos últimos 3 meses.
-- *USD/BRL*: Fechou a *5,4632*, desvalorização 📉 *-1,43%* no acumulado dos últimos 6 meses.
-- *USD/ZAR*: Fechou a *17,887*, desvalorização 📉 *-3,70%* persistente no acumulado do ano.
+- _Dólar (USD) contra o Iene Japonês (JPY)_: Fechou a *148,14*, desvalorização 📉 *-5,63%* nos últimos meses.
+- _Dólar (USD) contra o Peso Mexicano (MXN)_: Fechou a *18,6302*, valorização 📈 *+9,29%* no acumulado do ano.
+- _Dólar (USD) contra o Franco Suíço (CHF)_: Fechou a *0,8686*, desvalorização 📉 *-3,99%* significativa nos últimos 3 meses.
+- _Dólar (USD) contra o Real (BRL)_: Fechou a *5,4632*, desvalorização 📉 *-1,43%* no acumulado dos últimos 6 meses.
+- _Dólar (USD) contra o Rand Sul-Africano (ZAR)_: Fechou a *17,887*, desvalorização 📉 *-3,70%* persistente no acumulado do ano.
+
 ---
+
 _*Versão Curta*_
 
-_No fechamento do dia 16 de agosto de 2024, o Real se desvalorizou 📉 -0,03% frente ao Dólar, encerrando o dia a R$ 5,4632. O índice DXY apresentou uma desvalorização 📉 de -0,50%, fechando a 102,463, enquanto o Peso Mexicano (MXN) se destacou com uma valorização 📈 de +0,21% nos últimos 5 dias, fechando a 18,6302. O Iene Japonês (JPY) e o Franco Suíço (CHF) registraram desvalorizações expressivas nos últimos meses, fechando a 148,14 e 0,8686, respectivamente. O Rand Sul-Africano (ZAR) também mostrou fraqueza, fechando o dia a 17,887._
+_No fechamento do dia 16 de agosto de 2024, o Real (BRL) se desvalorizou 📉 -0,03% contra o Dólar (USD), encerrando o dia a R$ 5,4632. O índice DXY apresentou uma desvalorização 📉 de -0,50%, fechando a 102,463, enquanto o Peso Mexicano (MXN) se destacou com uma valorização 📈 de +0,21% contra o Dólar (USD) nos últimos 5 dias, fechando a 18,6302. O Iene Japonês (JPY) e o Franco Suíço (CHF) registraram desvalorizações expressivas contra o Dólar (USD) nos últimos meses, fechando a 148,14 e 0,8686, respectivamente. O Rand Sul-Africano (ZAR) também mostrou fraqueza, fechando o dia a 17,887._
 
 *Principais Pontos:*
-- Real (BRL) desvalorizou-se 📉 -0,03%, fechando a R$ 5,4632.
+- Real (BRL) desvalorizou-se 📉 -0,03%, fechando a R$ 5,4632 contra o Dólar (USD).
 - Índice DXY desvalorizou-se 📉 -0,50%, fechando a 102,463.
-- Peso Mexicano (MXN) valorizou-se 📈 +0,21% nos últimos 5 dias, fechando a 18,6302.
-- Iene Japonês (JPY) desvalorizou-se 📉 -5,63% no mês, fechando a 148,14.
-- Franco Suíço (CHF) desvalorizou-se 📉 -3,99% nos últimos 3 meses, fechando a 0,8686.
+- Peso Mexicano (MXN) valorizou-se 📈 +0,21% contra o Dólar (USD) nos últimos 5 dias, fechando a 18,6302.
+- Iene Japonês (JPY) desvalorizou-se 📉 -5,63% no mês contra o Dólar (USD), fechando a 148,14.
+- Franco Suíço (CHF) desvalorizou-se 📉 -3,99% contra o Dólar (USD) nos últimos 3 meses, fechando a 0,8686.
+
 ---
 
 CRUCIAL: The output must be exactly in the format above so we can parse into the frontend!!
@@ -70,4 +80,40 @@ Ao redigir o relatório diário de FX, siga as diretrizes abaixo:
 
 # Esse será um relatório diário focado nas principais movimentações de câmbio, tendo como publico consumidor economistas senior que acompanham os movimentos da economia global.
 
-IMPORTANTE: EXEMPLO USD/BRL -> POR DEFINIÇÃO OS DADOS REFLETEM MOVIMENTAÇÕES DOLAR/REAL -> É FUNDAMENTAL FAZER A CONVERSÃO DO NÚMERO EM QUESTÃO AO EXPRESSAR A MÉTRICA COMO UMA (DES)VALORIZAÇÃO DO REAL FRENTE AO DOLAR.
+---------------------
+
+É FUNDAMENTAL SEMPRE SE ATENTAR A DIREÇÃO DA MOVIMENTAÇÃO, BASEADO NO PAR AO QUAL SE REFERE, DE ACORDO COM AS REGRAS ABAIXO
+
+### **Categorias de Moedas e Exemplos de Escrita**
+
+#### **Moedas de Mercados Emergentes**
+Para moedas de mercados emergentes, utilizamos a forma **Moeda Local contra o Dólar Americano (USD)**. Ou seja, a moeda local é apresentada **primeira** e o dólar americano **depois**.
+
+**Exemplos de Moedas Emergentes:**
+- **Peso Mexicano (MXN)** contra Dólar Americano: **MXN/USD** – _Símbolo: $_
+- **Real Brasileiro (BRL)** contra Dólar Americano: **BRL/USD** – _Símbolo: R$_
+- **Rand Sul-Africano (ZAR)** contra Dólar Americano: **ZAR/USD** – _Símbolo: R_
+- **Rúpia Indiana (INR)** contra Dólar Americano: **INR/USD** – _Símbolo: ₹_
+- **Won Sul-Coreano (KRW)** contra Dólar Americano: **KRW/USD** – _Símbolo: ₩_
+- **Novo Dólar Taiwanês (TWD)** contra Dólar Americano: **TWD/USD** – _Símbolo: NT$_
+- **Yuan Chinês (CNH)** contra Dólar Americano: **CNH/USD** – _Símbolo: ¥_
+- **Novo Sol Peruano (PEN)** contra Dólar Americano: **PEN/USD** – _Símbolo: S/. _
+- **Dólar de Singapura (SGD)** contra Dólar Americano: **SGD/USD** – _Símbolo: S$_
+- **Peso Colombiano (COP)** contra Dólar Americano: **COP/USD** – _Símbolo: $_
+- **Peso Argentino (ARS)** contra Dólar Americano: **ARS/USD** – _Símbolo: $_
+
+#### **Moedas de Países Desenvolvidos**
+Para moedas de países desenvolvidos, o formato varia de acordo com o par cambial. Para alguns pares, a moeda local é apresentada **primeira** contra o Dólar Americano (USD). Para outros, o Dólar Americano é apresentado **primeiro** contra a moeda local.
+
+**Exemplos de Moedas Desenvolvidas:**
+
+- **Euro (EUR)** contra Dólar Americano: **EUR/USD** – _Símbolo: €_
+- **Libra Esterlina (GBP)** contra Dólar Americano: **GBP/USD** – _Símbolo: £_
+- **Dólar Australiano (AUD)** contra Dólar Americano: **AUD/USD** – _Símbolo: A$_
+
+Para os pares abaixo, o Dólar Americano é apresentado **primeiro**:
+
+- **Dólar Americano (USD)** contra Dólar Canadense (CAD): **USD/CAD** – _Símbolo: $_
+- **Dólar Americano (USD)** contra Franco Suíço (CHF): **USD/CHF** – _Símbolo: CHF_
+- **Dólar Americano (USD)** contra Iene Japonês (JPY): **USD/JPY** – _Símbolo: ¥_
+- **Dólar Americano (USD)** contra Coroa Sueca (SEK): **USD/SEK** – _Símbolo: kr_

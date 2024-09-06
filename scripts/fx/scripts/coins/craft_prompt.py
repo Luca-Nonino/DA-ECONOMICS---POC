@@ -32,7 +32,6 @@ def craft_prompt(current_date):
     non_dxy_pct_changes_path = os.path.join(analysis_dir, f"{date_str}_2.csv")
     top_and_worst_performers_path = os.path.join(analysis_dir, f"{date_str}_3.txt")
     dxy_contribution_analysis_path = os.path.join(analysis_dir, f"{date_str}_4.csv")
-    brl_usd_path = os.path.join(analysis_dir, f"{date_str}_5.txt")
 
     final_markdown_path = os.path.join(prompt_dir, f"{date_str}.md")
 
@@ -53,14 +52,6 @@ def craft_prompt(current_date):
         print(f"Error loading top and worst performers file: {e}")
         return
 
-    # Load the BRL/USD analysis as text
-    try:
-        with open(brl_usd_path, "r", encoding="utf-8") as f:
-            brl_usd_content = f.read()
-    except FileNotFoundError as e:
-        print(f"Error loading BRL/USD file: {e}")
-        return
-
     # Load the output example format
     try:
         with open(example_path, "r", encoding="utf-8") as f:
@@ -74,8 +65,30 @@ def craft_prompt(current_date):
     non_dxy_pct_changes_content = non_dxy_pct_changes_df.to_csv(index=False)
     dxy_contribution_analysis_content = dxy_contribution_analysis_df.to_csv(index=False)
 
-    # Generate markdown content with instructions and table content
+    # -----> Add the initial section with clear emphasis on the rules
     markdown_content = """
+    # 🔥 Instruções Cruciais para a Geração do Relatório 🔥
+
+    ## **Regras Importantes:**
+
+    1. **Sempre incluir as duas moedas no par de comparação**:
+       - É **crucial** que ambas as moedas sejam mencionadas explicitamente em todas as comparações. 
+       - **Nunca omita** a segunda moeda, pois a clareza do relatório depende de se saber **o que se valorizou ou desvalorizou em relação a quê**.
+       - Por exemplo, sempre escreva _"O Real (BRL) se desvalorizou frente ao Dólar (USD)"_ ou _"O Peso Mexicano (MXN) se valorizou contra o Dólar (USD)"_, **nunca omita** as duas moedas.
+
+    2. **Cuidado com a direção da movimentação**:
+       - Para que a análise seja precisa, preste **muita atenção** ao **sentido** da valorização ou desvalorização.
+       - A moeda local deve ser apresentada sempre em comparação ao Dólar Americano, conforme a categoria (Mercado Emergente ou Desenvolvido).
+
+    3. **Consistência em todas as seções**:
+       - Em **todas as seções** do relatório, seja nos 5 dias, 1 mês, 3 meses, 6 meses ou YTD, **ambas as moedas** devem estar sempre presentes e **em cada análise**.
+
+    4. **Formatação Padronizada**:
+       - Siga o exemplo fornecido no template e mantenha sempre a consistência de formatação, mencionando a cotação atual e a variação percentual para **ambas as moedas** em todos os momentos.
+
+    **Essas instruções são fundamentais para garantir a precisão e clareza do relatório gerado.** Não seguir essas regras pode gerar confusão e análises incorretas.
+    ---
+
     # Análise Diária de Fechamento do Dólar e Moedas Globais
 
     ## Instruções e Dados das Tabelas
@@ -120,17 +133,6 @@ def craft_prompt(current_date):
     #### Tabela 4: DXY Contribution Analysis
     """
     markdown_content += f"```\n{dxy_contribution_analysis_content}\n```\n"
-
-    # Section 5: Instrução para analisar a Tabela 5 (BRL/USD Analysis)
-    markdown_content += """
-    ### Instrução para Analisar Tabela 5:
-    - Esta tabela inverte a relação USD/BRL para mostrar as variações percentuais do BRL contra o USD.
-    - Utilize esses dados para compreender a performance do Real Brasileiro (BRL) em diferentes períodos, considerando tanto os mercados desenvolvidos quanto emergentes.
-    - Compare as variações de curto e longo prazo para identificar as tendências específicas do BRL.
-
-    #### Tabela 5: BRL/USD Analysis
-    """
-    markdown_content += f"```\n{brl_usd_content}\n```\n"
 
     # General daily closing analysis instructions and example formatting
     markdown_content += """

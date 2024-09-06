@@ -82,21 +82,7 @@ def orchestrator(input_date):
 
 # Main execution
 if __name__ == "__main__":
-    # Original dates, to be adjusted by D+1
-    dates = [
-        "2024-08-30",
-    ]
-
-    # Adjust each date by D+1
-    adjusted_dates = [(datetime.strptime(date_str, "%Y-%m-%d").date() + timedelta(days=1)).strftime("%Y-%m-%d") for date_str in dates]
-
-    for date_str in adjusted_dates:
-        input_date = datetime.strptime(date_str, "%Y-%m-%d").date()
-        result_message = orchestrator(input_date)
-        print(result_message)
-
-
     # Example 2 (commented out): Run the orchestrator with the current date
-    # current_date = datetime.today().date()
-    # result_message = orchestrator(current_date)
-    # print(result_message)
+    current_date = datetime.today().date()
+    result_message = orchestrator(current_date)
+    print(result_message)

@@ -20,7 +20,7 @@ from app.config import client
 def make_request(content, prompt):
     try:
         response = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model="gpt-4o",
             messages=[
                 {"role": "system", "content": prompt},
                 {"role": "user", "content": content},
@@ -53,6 +53,7 @@ def generate_report_from_prompt(prompt_file_path, retries=3, timeout=20):
         "É essencial que os números utilizados sejam obtidos corretamente das tabelas fornecidas, garantindo que as colunas e linhas correspondentes sejam lidas com precisão. "
         "Certifique-se de que as cotações, variações percentuais e datas estejam exatas e referenciem os pares de moedas corretos. "
         "Responda em português se a entrada estiver parcial ou totalmente em português."
+        "Sempre se atente na classificação do mercado da moeda, emergente ou desenvoldido, para usar as convenções de comuniacção e direção correta de análise provida pelo usuário"
     )
 
 
