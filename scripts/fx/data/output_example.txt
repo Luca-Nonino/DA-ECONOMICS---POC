@@ -59,8 +59,6 @@ _No fechamento do dia 16 de agosto de 2024, o Real (BRL) se desvalorizou 📉 -0
 
 ---
 
-CRUCIAL: The output must be exactly in the format above so we can parse into the frontend!!
-
 
 ### Instrução Final De formatação, Tom e Persona:
 
