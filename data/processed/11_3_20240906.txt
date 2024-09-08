@@ -1,0 +1,15 @@
+**Title:**
+{'Existing-Home Sales: July 2024'}
+
+**Overview:**
+||The report details the performance of existing-home sales in July 2024, indicating a 1.3% increase from June, halting a four-month decline. However, sales are down 2.5% compared to the previous year. The median sales price rose by 4.2% year-over-year to $422,600, marking the 13th consecutive month of price increases. Inventory levels saw a slight uptick, with unsold homes totaling 1.33 million, representing a 4.0-month supply at the current sales pace. The report also highlights regional variations in sales and prices, as well as trends in buyer demographics.||
+
+**Key Takeaways:**
+- {**Sales Volume**}: [Existing-home sales increased by 1.3% in July 2024 to a seasonally adjusted annual rate of 3.95 million, breaking a four-month decline, but down 2.5% from July 2023.]
+- {**Median Sales Price**}: [The median existing-home price rose to $422,600, a 4.2% increase from $405,600 in July 2023, indicating sustained price growth across all U.S. regions.]
+- {**Inventory Levels**}: [Total unsold inventory increased by 0.8% from June to 1.33 million units, reflecting a 19.8% rise year-over-year, equating to a 4.0-month supply at the current sales pace.]
+- {**Regional Sales Trends**}: [Sales rose in three out of four major U.S. regions, with the Northeast seeing a 4.3% increase from June, while the Midwest remained unchanged.]
+- {**First-Time Buyers**}: [First-time buyers accounted for 29% of sales in July, consistent with June but down from 30% in July 2023, indicating a slight decline in new entrants to the market.]
+
+**Macro Environment Impacts:**
+||The July 2024 existing-home sales data presents a mixed picture for the housing market, with a modest recovery in sales volume but persistent year-over-year declines. The increase in the median sales price suggests ongoing demand despite the overall sales drop, which may be attributed to lower interest rates improving affordability. The slight rise in inventory levels indicates a potential easing of supply constraints, which could stabilize prices in the long term. According to the Taylor Rule, the Federal Reserve may need to consider these dynamics when adjusting monetary policy, particularly as rising prices could exert upward pressure on inflation. The stability in first-time buyer participation is crucial, as it reflects the health of the entry-level market segment, which is vital for overall market recovery. The regional variations in sales performance also highlight the need for targeted policy measures to address localized market conditions. Overall, while the data suggests some positive momentum, the underlying challenges in sales volume and year-over-year comparisons warrant careful monitoring and strategic adjustments in macroeconomic policies.||
